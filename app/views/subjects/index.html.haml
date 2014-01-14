@@ -10,10 +10,10 @@
   - @subjects.each do |subject|
     %tr
       %td= subject.name
-      %td= link_to 'Show', subject
-      %td= link_to 'Edit', edit_subject_path(subject)
-      %td= link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', period_subject_path(@period, subject)
+      %td= link_to 'Edit', edit_period_subject_path(@period, subject)
+      %td= link_to 'Destroy', period_subject_path(@period, subject), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Subject', new_subject_path
+= link_to 'New Subject', new_period_subject_path

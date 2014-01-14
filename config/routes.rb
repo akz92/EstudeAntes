@@ -1,14 +1,15 @@
 Agenda::Application.routes.draw do
-  resources :periods
-
   devise_for :user
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :home
   resources :dashboard
 
-  resources :subjects do
-    resources :test
+  resources :periods do
+    resources :subjects do
+      resources :tests
+      resources :projects
+    end
   end
   # You can have the root of your site routed with "root"
   root 'home#index'

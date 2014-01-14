@@ -26,6 +26,10 @@ class PeriodsController < ApplicationController
   def create
     @period = Period.new(period_params)
 
+    if (Date.today > @period.init_date) && (Date.today < @period.final_date)
+          @period.current_period = true
+    end
+
     respond_to do |format|
       if @period.save
         format.html { redirect_to @period, notice: 'Period was successfully created.' }

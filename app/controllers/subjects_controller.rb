@@ -1,10 +1,14 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
+  before_filter do
+    @period = Period.find(params[:period_id])
+  end
+
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+    @subjects = @period.subjects.all
   end
 
   # GET /subjects/1
@@ -14,7 +18,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/new
   def new
-    @subject = Subject.new
+    @subject = @period.subjects.new
   end
 
   # GET /subjects/1/edit
@@ -24,11 +28,11 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = Subject.new(subject_params)
+    @subject = @period.subjects.new(subject_params)
 
     respond_to do |format|
       if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
+        format.html { redirect_to period_subjects_url, notice: 'Subject was successfully created.' }
         format.json { render action: 'show', status: :created, location: @subject }
       else
         format.html { render action: 'new' }
@@ -42,7 +46,7 @@ class SubjectsController < ApplicationController
   def update
     respond_to do |format|
       if @subject.update(subject_params)
-        format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
+        format.html { redirect_to period_subjects_url, notice: 'Subject was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +60,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.destroy
     respond_to do |format|
-      format.html { redirect_to subjects_url }
+      format.html { redirect_to period_subjects_url }
       format.json { head :no_content }
     end
   end
@@ -64,7 +68,8 @@ class SubjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subject
-      @subject = Subject.find(params[:id])
+      @period = Period.find(params[:period_id])
+      @subject = @period.subjects.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
