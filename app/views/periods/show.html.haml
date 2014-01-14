@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Init date:
+  = @period.init_date
+%p
+  %b Final date:
+  = @period.final_date
+%p
+  %b Number:
+  = @period.number
+
+= link_to 'Edit', edit_period_path(@period)
+\|
+= link_to 'Back', periods_path

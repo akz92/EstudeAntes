@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2014-01-13
+  value: 
+  grade: 1
+  matter: MyString
+
+two:
+  date: 2014-01-13
+  value: 
+  grade: 1
+  matter: MyString
