@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @project.date
+%p
+  %b Value:
+  = @project.value
+%p
+  %b Grade:
+  = @project.grade
+%p
+  %b Note:
+  = @project.note
+
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path

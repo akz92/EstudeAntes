@@ -1,0 +1,25 @@
+%h1 Listing tests
+
+%table
+  %tr
+    %th Date
+    %th Value
+    %th Grade
+    %th Note
+    %th
+    %th
+    %th
+
+  - @tests.each do |test|
+    %tr
+      %td= test.date
+      %td= test.value
+      %td= test.grade
+      %td= test.note
+      %td= link_to 'Show', test
+      %td= link_to 'Edit', edit_test_path(test)
+      %td= link_to 'Destroy', test, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Test', new_period_subject_test_path

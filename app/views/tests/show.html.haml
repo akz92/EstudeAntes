@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @test.date
+%p
+  %b Value:
+  = @test.value
+%p
+  %b Grade:
+  = @test.grade
+%p
+  %b Note:
+  = @test.note
+
+= link_to 'Edit', edit_test_path(@test)
+\|
+= link_to 'Back', tests_path
