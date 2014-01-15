@@ -14,10 +14,27 @@ Agenda::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Default url to send mails
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Delivery method
+  config.action_mailer.delivery_method = :smtp
+
+  # Should we perform deliveries?
+  config.action_mailer.perform_deliveries = false
+
+  # smtp configuration
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => :plain,
+    :user_name => "@gmail.com",
+    :password => "********",
+    :enable_starttls_auto => true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

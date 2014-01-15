@@ -61,9 +61,29 @@ Agenda::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
+  # Default url to send mails
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Delivery method
+  config.action_mailer.delivery_method = :smtp
+
+  # Should we perform deliveries?
+  config.action_mailer.perform_deliveries = true
+
+  # smtp configuration
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => :plain,
+    :user_name => "@gmail.com",
+    :password => "********",
+    :enable_starttls_auto => true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
