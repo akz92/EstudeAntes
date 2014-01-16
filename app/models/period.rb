@@ -10,4 +10,5 @@ class Period < ActiveRecord::Base
       errors.add(:base, "You already have a current period")
     end
   end
+
 end

@@ -5,6 +5,8 @@ Agenda::Application.routes.draw do
   resources :home
   resources :dashboard
 
+  get '/periods/all', to: 'periods#all'
+
   resources :periods do
     resources :subjects do
       resources :tests
@@ -12,7 +14,7 @@ Agenda::Application.routes.draw do
     end
   end
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'periods#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

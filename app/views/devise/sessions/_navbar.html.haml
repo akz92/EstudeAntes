@@ -9,6 +9,7 @@
       .nav-collapse
         %ul.nav
           %li= link_to "Home", root_path
+          %li= link_to "Outros períodos", periods_all_path
         %ul.nav.pull-right
           %li
             #user_nav
@@ -19,11 +20,11 @@
                     #{current_user.email}
                     %b.caret
                   %ul.dropdown-menu
-                    %li= link_to "Edit Account", edit_user_registration_path
-                    %li= link_to "Logout", destroy_user_session_path, :method => :delete
+                    %li= link_to "Editar Conta", edit_user_registration_path
+                    %li= link_to "Sair", destroy_user_session_path, :method => :delete
               - else
-                %li= link_to "Sign in", new_user_session_path
-                %li= link_to "Sign up", new_user_registration_path
+                %li= link_to "Entrar", new_user_session_path
+                %li= link_to "Criar conta", new_user_registration_path
 
 
 

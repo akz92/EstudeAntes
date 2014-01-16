@@ -1,23 +1,23 @@
-%h1 Listing periods
-
-%table
-  %tr
-    %th Init date
-    %th Final date
-    %th Number
-    %th
-    %th
-    %th
-
+%table.table.table-striped
   - @periods.each do |period|
-    %tr
-      %td= period.init_date
-      %td= period.final_date
-      %td= period.number
-      %td= link_to 'Show', period
-      %td= link_to 'Edit', edit_period_path(period)
-      %td= link_to 'Destroy', period, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - if period.current_period
+      %h2.period
+        = "Período #{period.number}"
+        .btn-group.butt
+          = link_to 'Editar período', edit_period_path(period), class: "btn btn-small"
+          = link_to 'Deletar período', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
+    %thead
+      %tr
+        - if period.current_period
+          %td= "Disciplinas"
+          %td= "Notas"
+    %tbody
+      - if period.current_period
+        - period.subjects.each do |subject|
+          %tr
+            %td= link_to subject.name, period_subject_path(period, subject)
+            %td= "#{subject.grade} / #{subject.value}"
 
-%br
 
-= link_to 'New Period', new_period_path
+=link_to "Novo período", new_period_path
+
