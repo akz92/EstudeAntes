@@ -1,34 +1,34 @@
 class PeriodsController < ApplicationController
   before_action :set_period, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /periods
   # GET /periods.json
   def index
-    @periods = Period.all
+    @periods = current_user.periods.all
     @periods.each do |period|
       if period.current_period
         @subjects = period.subjects.all
+        @subjects.each do |subject|
+          subject.grade = 0
+          subject.value = 0
+          subject.tests.each do |test|
+            subject.grade += test.grade
+            subject.value += test.value
+          end
+          subject.projects.each do |project|
+            subject.grade += project.grade
+            subject.value += project.value
+          end
+          subject.save
+        end
       end
     end
-
-   @subjects.each do |subject|
-     subject.grade = 0
-     subject.value = 0
-     subject.tests.each do |test|
-       subject.grade += test.grade
-       subject.value += test.value
-     end
-     subject.projects.each do |project|
-       subject.grade += project.grade
-       subject.value += project.value
-     end
-     subject.save
-   end
 
   end
 
   def all
-    @periods = Period.all
+    @periods = current_user.periods.all
   end
   # GET /periods/1
   # GET /periods/1.json
@@ -37,7 +37,7 @@ class PeriodsController < ApplicationController
 
   # GET /periods/new
   def new
-    @period = Period.new
+    @period = current_user.periods.new
   end
 
   # GET /periods/1/edit
@@ -47,7 +47,7 @@ class PeriodsController < ApplicationController
   # POST /periods
   # POST /periods.json
   def create
-    @period = Period.new(period_params)
+    @period = current_user.periods.new(period_params)
 
     if (Date.today > @period.init_date) && (Date.today < @period.final_date)
       @period.current_period = true
@@ -91,7 +91,7 @@ class PeriodsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_period
-      @period = Period.find(params[:id])
+      @period = current_user.periods.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
