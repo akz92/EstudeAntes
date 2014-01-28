@@ -4,6 +4,8 @@
   %b Name:
   = @subject.name
 
+= link_to 'New test', new_period_subject_test_path(@period, @subject)
+\|
 = link_to 'Edit', edit_period_subject_path(@period, @subject)
 \|
 = link_to 'Back', period_subjects_path

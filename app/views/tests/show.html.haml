@@ -13,6 +13,6 @@
   %b Note:
   = @test.note
 
-= link_to 'Edit', edit_test_path(@test)
+= link_to 'Edit', edit_period_subject_test_path(@period, @subject, @test)
 \|
-= link_to 'Back', tests_path
+= link_to 'Back', period_subject_tests_path(@period, @subject)

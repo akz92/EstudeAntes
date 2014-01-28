@@ -1,4 +1,4 @@
-= form_for @test do |f|
+= form_for([@period, @subject, @test]) do |f|
   - if @test.errors.any?
     #error_explanation
       %h2= "#{pluralize(@test.errors.count, "error")} prohibited this test from being saved:"

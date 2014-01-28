@@ -16,9 +16,9 @@
       %td= test.value
       %td= test.grade
       %td= test.note
-      %td= link_to 'Show', test
-      %td= link_to 'Edit', edit_test_path(test)
-      %td= link_to 'Destroy', test, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', period_subject_test_path(@period, @subject, test)
+      %td= link_to 'Edit', edit_period_subject_test_path(@period, @subject, test)
+      %td= link_to 'Destroy', period_subject_test_path(@period, @subject, test), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

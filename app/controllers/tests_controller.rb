@@ -1,10 +1,14 @@
 class TestsController < ApplicationController
   before_action :set_test, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    @period = Period.find(params[:period_id])
+    @subject = @period.subjects.find(params[:subject_id])
+  end
 
   # GET /tests
   # GET /tests.json
   def index
-    @tests = Test.all
+    @tests = @subject.tests.all
   end
 
   # GET /tests/1
@@ -14,7 +18,7 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
-    @test = Test.new
+    @test = @subject.tests.new
   end
 
   # GET /tests/1/edit
@@ -24,11 +28,11 @@ class TestsController < ApplicationController
   # POST /tests
   # POST /tests.json
   def create
-    @test = Test.new(test_params)
+    @test = @subject.tests.new(test_params)
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test, notice: 'Test was successfully created.' }
+        format.html { redirect_to period_subjects_path(@period), notice: 'Test was successfully created.' }
         format.json { render action: 'show', status: :created, location: @test }
       else
         format.html { render action: 'new' }
@@ -42,7 +46,7 @@ class TestsController < ApplicationController
   def update
     respond_to do |format|
       if @test.update(test_params)
-        format.html { redirect_to @test, notice: 'Test was successfully updated.' }
+        format.html { redirect_to period_subjects_path(@period), notice: 'Test was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,7 +68,9 @@ class TestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
-      @test = Test.find(params[:id])
+      @period = Period.find(params[:period_id])
+      @subject = @period.subjects.find(params[:subject_id])
+      @test = @subject.tests.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
