@@ -16,10 +16,10 @@
       %td= project.value
       %td= project.grade
       %td= project.note
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', period_subject_project_path(@period, @subject, project)
+      %td= link_to 'Edit', edit_period_subject_project_path(@period, @subject, project)
+      %td= link_to 'Destroy', period_subject_project_path(@period, @subject, project), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Project', new_project_path
+= link_to 'New Project', new_period_subject_project_path(@period, @subject)

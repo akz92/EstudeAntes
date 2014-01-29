@@ -18,6 +18,9 @@
             %td= link_to subject.name, period_subject_path(period, subject)
             %td= "#{subject.grade} / #{subject.value}"
 
-
+- @periods.each do |period|
+  - if period.current_period
+    = link_to "Adicionar disciplina", new_period_subject_path(period)
+\|
 =link_to "Novo período", new_period_path
 

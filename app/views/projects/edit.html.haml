@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @project
+= link_to 'Show', period_subject_project_path(@period, @subject, @project)
 \|
-= link_to 'Back', projects_path
+= link_to 'Back', period_subject_projects_path(@period, @subject)

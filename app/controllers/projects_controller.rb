@@ -1,10 +1,14 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    @period = Period.find(params[:period_id])
+    @subject = @period.subjects.find(params[:subject_id])
+  end
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = @subject.projects.all
   end
 
   # GET /projects/1
@@ -14,7 +18,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = @subject.projects.new
   end
 
   # GET /projects/1/edit
@@ -24,11 +28,11 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = @subject.projects.new(project_params)
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to period_subject_projects_path(@period, @subject), notice: 'Project was successfully created.' }
         format.json { render action: 'show', status: :created, location: @project }
       else
         format.html { render action: 'new' }
@@ -42,7 +46,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to period_subject_projects_path(@period, @subject), notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +60,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to period_subject_projects_path(@period, @subject) }
       format.json { head :no_content }
     end
   end
@@ -64,7 +68,9 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @period = Period.find(params[:period_id])
+      @subject = @period.subjects.find(params[:subject_id])
+      @project = @subject.projects.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
