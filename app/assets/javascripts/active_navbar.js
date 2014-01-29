@@ -1,9 +1,9 @@
-$(document).ready (function(){
-  var url = document.URL;
-  if (url.match(/periods/g)){
+$(document).on("page:change", function(){
+  var pathname = document.location.pathname;
+  if (pathname == "/"){
     $('.nav a:contains("Home")').parent().addClass('active');
   }
-  if (url.match(/periods/all/g)){
+  if (pathname == "/periods/all"){
     $('.nav a:contains("Outros períodos")').parent().addClass('active');
   }
 });
