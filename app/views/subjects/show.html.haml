@@ -1,13 +1,61 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @subject.name
-
+%table.table.table-striped
+  %h2= @subject.name
+  %thead
+    %tr
+      - if @tests.count == 0
+        - if @projects.count == 0
+          %td= "This subject doesn't have any tests or projects yet"
+        - else
+          %td= "This subject doesn't have any tests yet"
+      - else
+        %th Tests dates
+        %th Grades
+        %th Subject
+  %tbody
+    - @tests.each do |test|
+      %tr
+        %br
+        %td.subject
+          = link_to "#{test.date}", period_subject_test_path(@period, @subject, test)
+          .btn-group.butt
+            = link_to 'Edit', edit_period_subject_test_path(@period, @subject, test), class: "btn btn-small"
+            = link_to 'Delete', period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small"
+        %td= "#{test.grade} / #{test.value}"
+        - unless test.note
+          %td= "Nothing added"
+        - else
+          %td= "#{test.note}"
+    %br
+    %br
+%table.table.table-striped
+  %thead
+    %tr
+      - if @projects.count == 0
+        -if @tests.count != 0
+          %td= "This subject doesn't have any projects yet"
+      - else
+        %th Project dates
+        %th Grades
+        %th Subject
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %br
+        %td.subject
+          = link_to "#{project.date}", period_subject_project_path(@period, @subject, project)
+          .btn-group.butt
+            = link_to 'Edit', edit_period_subject_project_path(@period, @subject, project), class: "btn btn-small"
+            = link_to 'Delete', period_subject_project_path(@period, @subject, project), class: "btn btn-small", method: :delete, data: { confirm: 'Are you sure?' }
+        %td= "#{project.grade} / #{project.value}"
+        %td= "#{project.note}"
+%br
+%br
 = link_to 'New test', new_period_subject_test_path(@period, @subject)
 \|
 = link_to 'New project', new_period_subject_project_path(@period, @subject)
 \|
-= link_to 'Edit', edit_period_subject_path(@period, @subject)
+= link_to 'New event', new_period_subject_event_path(@period, @subject)
 \|
-= link_to 'Back', period_subjects_path
+= link_to 'Edit subject', edit_period_subject_path(@period, @subject)
+\|
+= link_to 'Back', periods_path

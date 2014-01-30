@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Weekday:
+  = @event.weekday
+%p
+  %b Init time:
+  = @event.init_time
+%p
+  %b Final time:
+  = @event.final_time
+%p
+  %b Recurrent:
+  = @event.recurrent
+
+= link_to 'Edit', edit_period_subject_event_path(@period, @subject, @event)
+\|
+= link_to 'Back', period_subject_events_path(@period, @subject)

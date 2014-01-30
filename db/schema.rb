@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127162929) do
+ActiveRecord::Schema.define(version: 20140130155307) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.integer  "weekday"
+    t.time     "init_time"
+    t.time     "final_time"
+    t.boolean  "recurrent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "subject_id"
   end
 
   create_table "periods", force: true do |t|
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140127162929) do
     t.string   "unconfirmed_email"
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

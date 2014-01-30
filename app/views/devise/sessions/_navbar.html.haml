@@ -17,7 +17,7 @@
                 /Signed in as #{current_user.email}. Not you?
                 %li.dropdown
                   %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                    #{current_user.email}
+                    #{current_user.name}
                     %b.caret
                   %ul.dropdown-menu
                     %li= link_to "Editar Conta", edit_user_registration_path

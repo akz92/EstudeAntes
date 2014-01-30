@@ -1,0 +1,22 @@
+= form_for([@period, @subject, @event]) do |f|
+  - if @event.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :weekday
+    = f.number_field :weekday
+  .field
+    = f.label :init_time
+    = f.time_select :init_time
+  .field
+    = f.label :final_time
+    = f.time_select :final_time
+  .field
+    = f.label :recurrent
+    = f.check_box :recurrent
+  .actions
+    = f.submit 'Save'

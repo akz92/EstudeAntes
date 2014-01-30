@@ -8,10 +8,13 @@ class PeriodsController < ApplicationController
     @periods = current_user.periods.all
     @periods.each do |period|
       if period.current_period
+        @period = period
         @subjects = period.subjects.all
-        @subjects.each do |subject|
-          subject.grade = 0
-          subject.value = 0
+      end
+    end
+    @periods.each do |period|
+      if period.current_period
+        period.subjects.all.each do |subject|
           subject.tests.each do |test|
             subject.grade += test.grade
             subject.value += test.value
@@ -49,7 +52,7 @@ class PeriodsController < ApplicationController
   def create
     @period = current_user.periods.new(period_params)
 
-    if (Date.today > @period.init_date) && (Date.today < @period.final_date)
+    if (Date.today >= @period.init_date) && (Date.today <= @period.final_date)
       @period.current_period = true
     end
 
@@ -68,6 +71,12 @@ class PeriodsController < ApplicationController
   # PATCH/PUT /periods/1.json
   def update
     respond_to do |format|
+      if @period.current_period == true
+        @period.current_period = false
+      end
+      if (Date.today >= @period.init_date) && (Date.today <= @period.final_date)
+        @period.current_period = true
+      end
       if @period.update(period_params)
         format.html { redirect_to @period, notice: 'Period was successfully updated.' }
         format.json { head :no_content }

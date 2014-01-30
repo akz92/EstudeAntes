@@ -14,6 +14,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
+    @tests = @subject.tests.all
+    @projects = @subject.projects.all
   end
 
   # GET /subjects/new
