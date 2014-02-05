@@ -9,8 +9,8 @@
     %thead
       %tr
         - if period.current_period
-          %td= "Disciplinas"
-          %td= "Notas"
+          %th= "Disciplinas"
+          %th= "Notas"
     %tbody
       - if period.current_period
         - period.subjects.each do |subject|
@@ -18,88 +18,29 @@
             %td= link_to subject.name, period_subject_path(period, subject)
             %td= "#{subject.grade} / #{subject.value}"
 
-%table.table.table-striped
-  %h2 Calendario Semanal
-  %thead
-    %tr
-      %th Domingo
-      %th Segunda
-      %th Terca
-      %th Quarta
-      %th Quinta
-      %th Sexta
-      %th Sabado
-  %tbody
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 0
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = subject.name
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
+- unless @subjects.nil?
+  %table.table.table-striped
+    %h2 Calendario Semanal
+    %thead
+      %tr
+        %th Domingo
+        %th Segunda
+        %th Terca
+        %th Quarta
+        %th Quinta
+        %th Sexta
+        %th Sabado
+    %tbody
+      - for n in 0..6 do
+        %td
+          - @events.each do |event|
+            - if event.weekday == n
+              - @subjects.each do |subject|
+                - if subject.id == event.subject_id
+                  = link_to subject.name, period_subject_event_path(@period, subject.id, event.id)
+              = "#{event.formatted_init_time} - #{event.formatted_final_time}"
+              %br
 
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 1
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
-
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 2
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
-
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 3
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
-
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 4
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
-
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 5
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
-
-    %td
-      - @subjects.each do |subject|
-        - subject.events.each do |event|
-          - if event.weekday == 6
-            = link_to subject.name, period_subject_event_path(@period, subject, event)
-            = event.formatted_init_time
-            = "-"
-            = event.formatted_final_time
-            %br
 - @periods.each do |period|
   - if period.current_period
     = link_to "Adicionar disciplina", new_period_subject_path(period)

@@ -5,11 +5,11 @@ class PeriodsController < ApplicationController
   # GET /periods
   # GET /periods.json
   def index
-    @periods = current_user.periods.all
+    @periods = current_user.periods
     @periods.each do |period|
       if period.current_period
         @period = period
-        @subjects = period.subjects.all
+        @subjects = period.subjects
       end
     end
     @periods.each do |period|
@@ -27,11 +27,23 @@ class PeriodsController < ApplicationController
         end
       end
     end
-
+    @events = []
+    unless @subjects.nil?
+      @subjects.each do |subject|
+        subject.events.each do |event|
+          @events << event
+            #@events << [event.weekday, event.formatted_init_time, event.formatted_final_time, subject.name, event.id, subject.id] if event.weekday == n
+        end
+      end
+      @events = @events.sort_by { |a| [a.weekday, a.init_time, a.final_time] }
+      #@events.sort! do |a,b|
+      #  [a[0],b[1]] <=> [b[0], a[1]]
+      #end
+    end
   end
 
   def all
-    @periods = current_user.periods.all
+    @periods = current_user.periods
   end
   # GET /periods/1
   # GET /periods/1.json

@@ -8,10 +8,10 @@ class Event < ActiveRecord::Base
   end
 
   def formatted_init_time
-    self.init_time.strftime("%H:%m")
+    self.init_time.strftime("%H:%M")
   end
 
   def formatted_final_time
-    self.final_time.strftime("%H:%m")
+    self.final_time.strftime("%H:%M")
   end
 end
