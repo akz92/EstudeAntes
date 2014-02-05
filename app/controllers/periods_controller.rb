@@ -12,23 +12,22 @@ class PeriodsController < ApplicationController
         @subjects = period.subjects
       end
     end
-    @periods.each do |period|
-      if period.current_period
-        period.subjects.all.each do |subject|
-          subject.tests.each do |test|
-            subject.grade += test.grade
-            subject.value += test.value
-          end
-          subject.projects.each do |project|
-            subject.grade += project.grade
-            subject.value += project.value
-          end
-          subject.save
-        end
+
+    @subjects.each do |subject|
+      subject.grade = 0
+      subject.value = 0
+      subject.tests.each do |test|
+        subject.grade += test.grade
+        subject.value += test.value
       end
+      subject.projects.each do |project|
+        subject.grade += project.grade
+        subject.value += project.value
+      end
+      subject.save
     end
     @events = []
-    unless @subjects.nil?
+    if @subjects
       @subjects.each do |subject|
         subject.events.each do |event|
           @events << event

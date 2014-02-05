@@ -60,7 +60,7 @@ class TestsController < ApplicationController
   def destroy
     @test.destroy
     respond_to do |format|
-      format.html { redirect_to tests_url }
+      format.html { redirect_to period_subject_tests_url(@period, @subject) }
       format.json { head :no_content }
     end
   end
