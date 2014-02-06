@@ -1,3 +1,4 @@
+- require 'date'
 %table.table.table-striped
   - @periods.each do |period|
     - if period.current_period
@@ -18,32 +19,43 @@
             %td= link_to subject.name, period_subject_path(period, subject)
             %td= "#{subject.grade} / #{subject.value}"
 
-- unless @subjects.nil?
+- @periods.each do |period|
+  - if period.current_period
+    = link_to "Adicionar disciplina", new_period_subject_path(period)
+
+- if @subjects
   %table.table.table-striped
     %h2 Calendario Semanal
-    %thead
+    %tr
+      %th
+        - (Date::DAYNAMES).each do |dayname|
+          %th #{dayname}
+        -#- for n in 0..6 do
+          %th #{(Date.today+n).strftime("%A")}
+    - @init_times.each do |init_time|
       %tr
-        %th Domingo
-        %th Segunda
-        %th Terca
-        %th Quarta
-        %th Quinta
-        %th Sexta
-        %th Sabado
-    %tbody
+        %th{scope: "row"} #{init_time}
+        - n = 0
+        - @events.each do |event|
+          - if event.formatted_init_time == init_time
+            - while n <= event.weekday.to_i
+              - if event.weekday.to_i == n
+                - @subjects.each do |subject|
+                  - if subject.id == event.subject_id
+                    %td #{subject.name}
+              - else
+                %td
+              - n += 1
+    -#%tbody
       - for n in 0..6 do
         %td
           - @events.each do |event|
-            - if event.weekday == n
+            - if event.weekday.to_i == (Date.today+n).strftime("%w").to_i
               - @subjects.each do |subject|
                 - if subject.id == event.subject_id
                   = link_to subject.name, period_subject_event_path(@period, subject.id, event.id)
               = "#{event.formatted_init_time} - #{event.formatted_final_time}"
               %br
 
-- @periods.each do |period|
-  - if period.current_period
-    = link_to "Adicionar disciplina", new_period_subject_path(period)
-    \|
 =link_to "Novo período", new_period_path
 
