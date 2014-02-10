@@ -29,7 +29,7 @@
     %tr
       %th
         - (Date::DAYNAMES).each do |dayname|
-          %th #{dayname}
+          %th.table-font #{dayname}
         -#- for n in 0..6 do
           %th #{(Date.today+n).strftime("%A")}
     - @init_times.each do |init_time|
@@ -42,10 +42,28 @@
               - if event.weekday.to_i == n
                 - @subjects.each do |subject|
                   - if subject.id == event.subject_id
-                    %td #{subject.name}
+                    - x = false
+                    - y = false
+                    - subject.tests.each do |test|
+                      - if test.date.strftime("%U").to_i == Date.today.strftime("%U").to_i
+                        - x = true
+                        %td.table-align.table-font.azul #{subject.name}
+                    - subject.projects.each do |project|
+                      - if project.date.strftime("%U").to_i == Date.today.strftime("%U").to_i
+                        - y = true
+                        %td.table-align.table-font.amarelo #{subject.name}
+                    - unless x || y
+                      %td.table-font #{subject.name}
               - else
                 %td
               - n += 1
+    %ul.legenda
+      %li
+        %span.box.azul
+        Prova
+      %li
+        %span.box.amarelo
+        Entrega de Trabalho
     -#%tbody
       - for n in 0..6 do
         %td

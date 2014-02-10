@@ -2,3 +2,45 @@ body{
   padding-top: 40px;
   padding-left: 40px;
 }
+
+.table .table-align {
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.table .table-font{
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-align.table-font.azul {
+  background-color: #007fff;
+}
+
+.table-align.table-font.amarelo {
+  background-color: #ffcc00;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+
+.legenda {
+  margin: 0;
+  list-style: none;
+}
+
+.legenda li {
+  display: inline;
+}
+
+.box.azul {
+  border-left: 15px solid #007fff;
+}
+
+.box.amarelo {
+  border-left: 15px solid #ffcc00;
+}

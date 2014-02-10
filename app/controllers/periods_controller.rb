@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_action :set_period, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  before_filter :check_current_period
+  #before_filter :check_current_period
 
   # GET /periods
   # GET /periods.json
@@ -75,7 +75,10 @@ class PeriodsController < ApplicationController
       @period.current_period = false
     end
 
-    unless check_current_period(@period.current_period)
+    #unless check_current_period(@period.current_period)
+    if  @period.current_period && current_user.periods.where(current_period: true).count > 0
+      render action: "new"
+    else
       if @period.save
         redirect_to @period, notice: 'Period was successfully created.'
       end
@@ -92,11 +95,11 @@ class PeriodsController < ApplicationController
    # end
   end
 
-  def check_current_period(check)
-    if check && current_user.periods.where(current_period: true).count > 0
-      redirect_to "new", notice: "bla"
-    end
-  end
+ # def check_current_period(check)
+ #   if check && current_user.periods.where(current_period: true).count > 0
+ #     redirect_to "new", notice: "bla"
+ #   end
+ # end
   # PATCH/PUT /periods/1
   # PATCH/PUT /periods/1.json
   def update
