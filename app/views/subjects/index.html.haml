@@ -1,3 +1,4 @@
+=include_gon
 %h1 Listing subjects
 
 %table
@@ -19,3 +20,55 @@
 = link_to 'New Subject', new_period_subject_path
 \|
 = link_to 'Back', periods_path
+
+
+%hr       
+
+%canvas#canvas{:height => "330", :width => "470"}
+
+:javascript
+
+  var subjectNames = new Array();
+  var subjectGrades = new Array();
+  var averageGrades = new Array();
+
+
+  for(var i = 0; i < gon.subjects.length; i++){
+   subjectNames.push(gon.subjects[i].name)
+   subjectGrades.push(gon.subjects[i].grade)
+   averageGrades.push(60)
+  };
+
+  data = {
+    labels : subjectNames, 
+    datasets : [
+      {
+        fillColor : "rgba(100,100,180,0.5)",
+        strokeColor : "rgba(100,100,180,1)",
+        pointColor : "rgba(100,100,180,1)",
+        pointStrokeColor : "#fff",
+        data : subjectGrades
+      },
+      {
+        fillColor : "rgba(220,50,50,0.3)",
+        strokeColor : "rgba(220,50,50,1)",
+        pointColor : "rgba(220,50,50,1)",
+        pointStrokeColor : "#fff",
+        data : averageGrades 
+      }
+    ]
+  }
+
+  var ctx = document.getElementById("canvas").getContext("2d");
+  var myNewChart = new Chart(ctx).Line(data);
+
+  var options = {
+    scaleOverride   : true,
+    scaleSteps      : 10,
+    scaleStepWidth  : 10,
+    scaleStartValue : 0,
+    datasetFill : false
+  }
+  
+  new Chart(ctx).Line(data, options);
+

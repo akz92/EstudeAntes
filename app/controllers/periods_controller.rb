@@ -45,6 +45,11 @@ class PeriodsController < ApplicationController
       #end
       @datetoday = Date.today
     end
+    @periods.each do |period|
+      @subjects = period.subjects.all    
+      gon.periods = period
+      gon.subjects = period.subjects.map &:attributes
+    end
   end
 
   def all
