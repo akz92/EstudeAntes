@@ -14,36 +14,27 @@ class PeriodsController < ApplicationController
       end
     end
 
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+
     if @subjects
-      @subjects.each do |subject|
-        subject.grade = 0
-        subject.value = 0
-        subject.tests.each do |test|
-          subject.grade += test.grade
-          subject.value += test.value
-        end
-        subject.projects.each do |project|
-          subject.grade += project.grade
-          subject.value += project.value
-        end
-        subject.save
-      end
       @events = []
       @init_times = []
+      @tests = []
       @subjects.each do |subject|
+        subject.tests.each do |test|
+          if (test.date.strftime("%U").to_i == @date.strftime("%U").to_i)
+            @tests << test
+          end
+        end
         subject.events.each do |event|
           @events << event
           @init_times << event.formatted_init_time
-            #@events << [event.weekday, event.formatted_init_time, event.formatted_final_time, subject.name, event.id, subject.id] if event.weekday == n
         end
       end
-      @events = @events.sort_by { |a| [a.weekday, a.init_time, a.final_time] }
-      @init_times = @init_times.uniq
-      @init_times = @init_times.sort
-      #@events.sort! do |a,b|
-      #  [a[0],b[1]] <=> [b[0], a[1]]
-      #end
-      @datetoday = Date.today
+      @events.sort_by! { |a| [a.weekday, a.init_time, a.final_time] }
+
+      @init_times.uniq!.sort!
+
     end
   end
 

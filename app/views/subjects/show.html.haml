@@ -50,9 +50,10 @@
         %td= "#{project.note}"
 %br
 %br
+- x = true
 = link_to 'New test', new_period_subject_test_path(@period, @subject)
 \|
-= link_to 'New project', new_period_subject_project_path(@period, @subject)
+= link_to 'New project', new_period_subject_test_path(@period, @subject)
 \|
 = link_to 'New event', new_period_subject_event_path(@period, @subject)
 \|

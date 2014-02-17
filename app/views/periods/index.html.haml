@@ -28,42 +28,61 @@
     %h2 Calendario Semanal
     %tr
       %th
+        - n = 0
         - (Date::DAYNAMES).each do |dayname|
-          %th.table-font #{dayname}
-        -#- for n in 0..6 do
-          %th #{(Date.today+n).strftime("%A")}
+          %th.table-font
+            #{dayname},
+            %br
+            %font{size: "2"} #{(@date+n-1).strftime("%d")}
+          - n += 1
+
+    %font{size: "6"}
+      = link_to "<", date: @date.prev_week
+    %font{size: "6"}
+      = link_to ">", date: @date.next_week
+
+    %h3.align-right
+      = @date.strftime("%B %Y")
+
     - @init_times.each do |init_time|
       %tr
         %th{scope: "row"} #{init_time}
         - n = 0
         - @events.each do |event|
           - if event.formatted_init_time == init_time
-            - while n <= event.weekday.to_i
-              - if event.weekday.to_i == n
-                - @subjects.each do |subject|
-                  - if subject.id == event.subject_id
-                    - x = false
-                    - y = false
-                    - subject.tests.each do |test|
-                      - if test.date.strftime("%U").to_i == Date.today.strftime("%U").to_i
-                        - x = true
-                        %td.table-align.table-font.azul #{subject.name}
-                    - subject.projects.each do |project|
-                      - if project.date.strftime("%U").to_i == Date.today.strftime("%U").to_i
-                        - y = true
-                        %td.table-align.table-font.amarelo #{subject.name}
-                    - unless x || y
-                      %td.table-font #{subject.name}
+            - while n <= event.weekday
+              - if event.weekday == n
+                - x = 0
+                - y = 0
+                - @tests.each do |test|
+                  - if (test.subject_id == event.subject_id) && (test.date.strftime("%w").to_i == event.weekday) && (test.is_project == false)
+                    - x += 1
+                  - elsif (test.subject_id == event.subject_id) && (test.date.strftime("%w").to_i == event.weekday) && (test.is_project == true)
+                    - x += 1
+                    - y += 1
+                - if x == 1 && y == 0
+                  %td.table-align.table-font.azul #{event.subject_name}
+                - elsif x == 2
+                  %td.table-align.table-font.verde #{event.subject_name}
+                - elsif x == 1 && y == 1
+                  %td.table-align.table-font.amarelo #{event.subject_name}
+                - else
+                  %td.table-align.table-font #{event.subject_name}
               - else
                 %td
               - n += 1
+
     %ul.legenda
       %li
         %span.box.azul
         Prova
       %li
         %span.box.amarelo
-        Entrega de Trabalho
+        Entrega de trabalho
+      %li
+        %span.box.verde
+          Prova e entrega de trabalho
+
     -#%tbody
       - for n in 0..6 do
         %td

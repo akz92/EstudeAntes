@@ -14,12 +14,20 @@ body{
   vertical-align: middle;
 }
 
+.table .date-font {
+  font-size: 10px;
+}
+
 .table-align.table-font.azul {
   background-color: #007fff;
 }
 
 .table-align.table-font.amarelo {
   background-color: #ffcc00;
+}
+
+.table-align.table-font.verde {
+  background-color: #008000;
 }
 
 .box {
@@ -43,4 +51,12 @@ body{
 
 .box.amarelo {
   border-left: 15px solid #ffcc00;
+}
+
+.box.verde {
+ border-left: 15px solid #008000;
+}
+
+.align-right {
+  float: right;
 }

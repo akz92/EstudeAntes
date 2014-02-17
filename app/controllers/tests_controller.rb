@@ -29,6 +29,13 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = @subject.tests.new(test_params)
+    @test.is_project = params[:test][:is_project]
+    @test.subject_name = @subject.name
+    #@test.is_project = params[:bool]
+
+    @subject.value += @test.value
+    @subject.grade += @test.grade
+    @subject.save
 
     respond_to do |format|
       if @test.save
@@ -44,6 +51,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
+    @test.is_project = params[:test][:is_project]
     respond_to do |format|
       if @test.update(test_params)
         format.html { redirect_to period_subjects_path(@period), notice: 'Test was successfully updated.' }
@@ -53,11 +61,26 @@ class TestsController < ApplicationController
         format.json { render json: @test.errors, status: :unprocessable_entity }
       end
     end
+
+    @subject.value = 0
+    @subject.grade = 0
+
+    @subject.tests.each do |test|
+      @subject.value += test.value
+      @subject.grade += test.grade
+    end
+
+    @subject.save
+
   end
 
   # DELETE /tests/1
   # DELETE /tests/1.json
   def destroy
+    @subject.value -= @test.value
+    @subject.grade -= @test.grade
+    @subject.save
+
     @test.destroy
     respond_to do |format|
       format.html { redirect_to period_subject_tests_url(@period, @subject) }
