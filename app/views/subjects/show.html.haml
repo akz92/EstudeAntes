@@ -1,3 +1,4 @@
+=include_gon
 %table.table.table-striped
   %h2= @subject.name
   %thead
@@ -60,3 +61,26 @@
 = link_to 'Edit subject', edit_period_subject_path(@period, @subject)
 \|
 = link_to 'Back', periods_path
+
+%hr
+%h5 Aproveitamento
+%canvas#canvas{:height => "300", :width => "450"}
+
+:javascript
+  
+  data = [
+    {
+      value : gon.subject.value - gon.subject.grade,
+      color : "#E0E4CC"
+    },
+    {
+      value : gon.subject.grade,
+      color : "#69D2E7"
+    }
+        ];
+
+  var ctx = document.getElementById("canvas").getContext("2d");
+  var myNewChart = new Chart(ctx).Doughnut(data);
+
+  new Chart(ctx).Dounghnut(data);
+

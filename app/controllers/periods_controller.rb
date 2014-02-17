@@ -36,6 +36,11 @@ class PeriodsController < ApplicationController
       @init_times.uniq!.sort!
 
     end
+    @periods.each do |period|
+      @subjects = period.subjects.all    
+      gon.periods = period
+      gon.subjects = period.subjects.map &:attributes
+    end
   end
 
   def all

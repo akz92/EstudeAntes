@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require Chart
 //= require_tree .
 //
 if (window.location.href.indexOf('#_=_') > 0) {
