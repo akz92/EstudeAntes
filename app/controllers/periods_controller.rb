@@ -33,7 +33,7 @@ class PeriodsController < ApplicationController
       end
       @events.sort_by! { |a| [a.weekday, a.init_time, a.final_time] }
 
-      @init_times.uniq!.sort!
+      #@init_times.uniq!.sort!
 
     end
     @periods.each do |period|
