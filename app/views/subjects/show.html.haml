@@ -70,11 +70,12 @@
   
   data = [
     {
-      value : gon.subject.value - gon.subject.grade,
+      value : 100 - (gon.subject.grade / gon.subject.value)*100,
       color : "#E0E4CC"
     },
     {
-      value : gon.subject.grade,
+      value : (gon.subject.grade / gon.subject.value)*100,
+
       color : "#69D2E7"
     }
         ];
