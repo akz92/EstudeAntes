@@ -1,107 +1,81 @@
 - require 'date'
 =include_gon
-%table.table.table-striped
-  - @periods.each do |period|
-    - if period.current_period
-      %h2.period
-        = "Período #{period.number}"
-      .btn-group.butt
-        = link_to 'Editar período', edit_period_path(period), class: "btn btn-small"
-        = link_to 'Deletar período', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
-    %thead
-      %tr
-        - if period.current_period
-          %th= "Disciplinas"
-          %th= "Notas"
-    %tbody
-      - if period.current_period
-        - period.subjects.each do |subject|
-          %tr
-            %td= link_to subject.name, period_subject_path(period, subject)
-            %td= "#{subject.grade} / #{subject.value}"
 
-- @periods.each do |period|
-  - if period.current_period
-    = link_to "Adicionar disciplina", new_period_subject_path(period)
+.row
+  .span12
+    %h2.period
+      = "Período #{@dados["period"].number}"
+    .btn-group.butt
+      = link_to 'Editar período', edit_period_path(@dados["period"]), class: "btn btn-small"
+      = link_to 'Deletar período', @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
 
-- if @subjects
-  %table.table.table-striped
-    %h2 Calendario Semanal
-    %tr
-      %th
-        - n = 0
-        - (Date::DAYNAMES).each do |dayname|
-          %th.table-font
-            #{dayname},
-            %br
-            %font{size: "2"} #{(@date+n-1).strftime("%d")}
-          - n += 1
-
-    %font{size: "6"}
-      = link_to "<", date: @date.prev_week
-    %font{size: "6"}
-      = link_to ">", date: @date.next_week
-
-    %h3.align-right
-      = @date.strftime("%B %Y")
-
-    - @init_times.each do |init_time|
-      %tr
-        %th{scope: "row"} #{init_time}
-        - n = 0
-        - @events.each do |event|
-          - if event.formatted_init_time == init_time
-            - while n <= event.weekday
-              - if event.weekday == n
-                - x = 0
-                - y = 0
-                - @tests.each do |test|
-                  - if (test.subject_id == event.subject_id) && (test.date.strftime("%w").to_i == event.weekday) && (test.is_project == false)
-                    - x += 1
-                  - elsif (test.subject_id == event.subject_id) && (test.date.strftime("%w").to_i == event.weekday) && (test.is_project == true)
-                    - x += 1
-                    - y += 1
-                - if x == 1 && y == 0
-                  %td.table-align.table-font.azul #{event.subject_name}
-                - elsif x == 2
-                  %td.table-align.table-font.verde #{event.subject_name}
-                - elsif x == 1 && y == 1
-                  %td.table-align.table-font.amarelo #{event.subject_name}
-                - else
-                  %td.table-align.table-font #{event.subject_name}
-              - else
-                %td
+    - if @dados["subjects"]
+      %table.table.table-striped
+        %h4 Calendario Semanal
+        %tr
+          %th
+            - n = 0
+            - (Date::DAYNAMES).each do |dayname|
+              %th.table-font
+                #{dayname},
+                %br
+                %font{size: "2"} #{(@date+n-1).strftime("%d")}
               - n += 1
 
-    %ul.legenda
-      %li
-        %span.box.azul
-        Prova
-      %li
-        %span.box.amarelo
-        Entrega de trabalho
-      %li
-        %span.box.verde
-          Prova e entrega de trabalho
+        %font{size: "6"}
+          = link_to "<", date: @date.prev_week
+        %font{size: "6"}
+          = link_to ">", date: @date.next_week
 
-    -#%tbody
-      - for n in 0..6 do
-        %td
-          - @events.each do |event|
-            - if event.weekday.to_i == (Date.today+n).strftime("%w").to_i
-              - @subjects.each do |subject|
-                - if subject.id == event.subject_id
-                  = link_to subject.name, period_subject_event_path(@period, subject.id, event.id)
-              = "#{event.formatted_init_time} - #{event.formatted_final_time}"
-              %br
+        %h3.align-right
+          = @date.strftime("%B %Y")
 
-=link_to "Novo período", new_period_path
+        - @dados["init_times"].each do |init_time|
+          %tr
+            %th{scope: "row"} #{init_time}
+            - n = 0
+            - @dados["events"].each do |event|
+              - if event.formatted_init_time == init_time
+                - while n <= event.weekday
+                  = calendar_events(@dados["tests"], event, n)
+                  - n += 1
+            - while n <= 6
+              %td
+              - n += 1
+
+        %ul.legenda
+          %li
+            %span.box.azul
+              Prova
+          %li
+            %span.box.amarelo
+              Entrega de trabalho
+          %li
+            %span.box.verde
+              Prova e entrega de trabalho
 
 
-%hr
-%h4 Current Period
-%canvas#canvas{:height => "380", :width => "530"}
-  
+.row-fluid
+  .span12
+    %hr
+    .span6
+      %table.table.table-striped
+        %thead
+          %tr
+            %th= "Disciplinas"
+            %th= "Notas"
+        %tbody
+          - @dados["subjects"].each do |subject|
+            %tr
+              %td= link_to subject.name, period_subject_path(@dados["period"], subject)
+              %td= "#{subject.grade} / #{subject.value}"
+
+
+
+    .span6
+      %h4 Current Period
+      %canvas#canvas{:height => "380", :width => "530"}
+
 :javascript
 
   var subjectNames = new Array();
@@ -115,7 +89,7 @@
   };
 
   data = {
-    labels : subjectNames, 
+    labels : subjectNames,
     datasets : [
       {
         fillColor : "rgba(100,100,180,0.5)",
@@ -129,7 +103,7 @@
         strokeColor : "rgba(220,50,50,1)",
         pointColor : "rgba(220,50,50,1)",
         pointStrokeColor : "#fff",
-        data : averageGrades 
+        data : averageGrades
       }
     ]
   }
@@ -144,6 +118,12 @@
     scaleStartValue : 0,
     datasetFill : false
   }
-  
+
   new Chart(ctx).Line(data, options);
 
+
+.row
+  .span12
+    = link_to "Adicionar disciplina", new_period_subject_path(@dados["period"])
+    |
+    = link_to "Novo período", new_period_path

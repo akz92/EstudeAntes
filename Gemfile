@@ -55,3 +55,4 @@ gem 'omniauth-facebook'
 gem 'certified'
 gem 'brazilian-rails'
 gem 'gon'
+gem 'pry', group: [:development]

@@ -17,4 +17,7 @@ class Test < ActiveRecord::Base
     self.date.strftime("%H:%M")
   end
 
+  def self.init
+  end
+
 end
