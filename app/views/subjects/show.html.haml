@@ -1,4 +1,4 @@
-=include_gon
+=include gon
 %table.table.table-striped
   %h2= @subject.name
   %thead
@@ -68,13 +68,16 @@
 
 :javascript
 
+  var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value)*100 );
+
   data = [
     {
-      value : gon.subject.value - gon.subject.grade,
+      value : 100 - subjectPercentage,
       color : "#E0E4CC"
     },
     {
-      value : gon.subject.grade,
+      value : subjectPercentage,
+
       color : "#69D2E7"
     }
         ];
