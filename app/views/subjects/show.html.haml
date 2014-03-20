@@ -1,4 +1,4 @@
-=include gon
+=include_gon
 %table.table.table-striped
   %h2= @subject.name
   %thead
@@ -68,8 +68,11 @@
 
 :javascript
 
+<<<<<<< HEAD
+=======
   var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value)*100 );
 
+>>>>>>> 6ee32bc54cbcb8dbc23ceb162650d192c0cd1312
   data = [
     {
       value : 100 - subjectPercentage,

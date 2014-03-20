@@ -1,3 +1,41 @@
 // Place all the styles related to the periods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.butt {
+  display: block;
+  float: left;
+}
+
+.period:hover .butt {
+  display: block;
+}
+
+.vertical_line
+{
+  border: thin solid #c0c0c0;
+}
+
+.floating
+{
+  float: right;
+  }
+
+.vertical_line.floating
+{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.Center-Container {
+  position: relative;
+}
+
+.Absolute-Center {
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}

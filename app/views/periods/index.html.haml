@@ -1,65 +1,73 @@
 - require 'date'
 =include_gon
 
-.row
-  .span12
+.row-fluid
+  .span2
     %h2.period
       = "Período #{@dados["period"].number}"
+  .span6
+    %br
     .btn-group.butt
-      = link_to 'Editar período', edit_period_path(@dados["period"]), class: "btn btn-small"
-      = link_to 'Deletar período', @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
+      = link_to 'Editar', edit_period_path(@dados["period"]), class: "btn btn-small"
+      = link_to 'Deletar', @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
 
-    - if @dados["subjects"]
-      %table.table.table-striped
-        %h4 Calendario Semanal
-        %tr
-          %th
-            - n = 0
-            - (Date::DAYNAMES).each do |dayname|
-              %th.table-font
-                #{dayname},
-                %br
-                %font{size: "2"} #{(@date+n-1).strftime("%d")}
-              - n += 1
-
-        %font{size: "6"}
-          = link_to "<", date: @date.prev_week
-        %font{size: "6"}
-          = link_to ">", date: @date.next_week
-
-        %h3.align-right
-          = @date.strftime("%B %Y")
-
-        - @dados["init_times"].each do |init_time|
+.row-fluid
+  .span12
+    .span1.vertical_line.fluidHeight
+      %span.vertical_line.floating{size: "6"}
+        = link_to "<", date: @date.prev_week
+    .span10.fluidHeight
+      - if @dados["subjects"]
+        %table.table.table-striped.vertical_line
+          %h4 Calendario Semanal
           %tr
-            %th{scope: "row"} #{init_time}
-            - n = 0
-            - @dados["events"].each do |event|
-              - if event.formatted_init_time == init_time
-                - while n <= event.weekday
-                  = calendar_events(@dados["tests"], event, n)
-                  - n += 1
-            - while n <= 6
-              %td
-              - n += 1
+            %th
+              - n = 0
+              - (Date::DAYNAMES).each do |dayname|
+                %th.table-font
+                  #{dayname}
+                  %br
+                  %font{size: "2"} #{(@date+n-1).strftime("%d")}
+                - n += 1
 
-        %ul.legenda
-          %li
-            %span.box.azul
-              Prova
-          %li
-            %span.box.amarelo
-              Entrega de trabalho
-          %li
-            %span.box.verde
-              Prova e entrega de trabalho
+
+          %h3.align-right
+            = @date.strftime("%B %Y")
+
+          - @dados["init_times"].each do |init_time|
+            %tr
+              %th{scope: "row"} #{init_time}
+              - n = 0
+              - @dados["events"].each do |event|
+                - if event.formatted_init_time == init_time
+                  - while n <= event.weekday
+                    = calendar_events(@dados["tests"], event, n)
+                    - n += 1
+              - while n <= 6
+                %td
+                - n += 1
+
+          %ul.legenda
+            %li
+              %span.box.azul
+                Prova
+            %li
+              %span.box.amarelo
+                Entrega de trabalho
+            %li
+              %span.box.verde
+                Prova e entrega de trabalho
+    .span1.vertical_line.fluidHeight
+      %h1.vertical_line{size: "6"}
+        = link_to ">", date: @date.next_week
 
 
 .row-fluid
   .span12
     %hr
+  .span12
     .span6
-      %table.table.table-striped
+      %table.table.table-striped.vertical_line
         %thead
           %tr
             %th= "Disciplinas"
@@ -70,10 +78,12 @@
               %td= link_to subject.name, period_subject_path(@dados["period"], subject)
               %td= "#{subject.grade} / #{subject.value}"
 
-
+      = link_to "Adicionar disciplina", new_period_subject_path(@dados["period"])
+      |
+      = link_to "Novo período", new_period_path
 
     .span6
-      %h4 Current Period
+      %h5
       %canvas#canvas{:height => "380", :width => "530"}
 
 :javascript
@@ -120,10 +130,3 @@
   }
 
   new Chart(ctx).Line(data, options);
-
-
-.row
-  .span12
-    = link_to "Adicionar disciplina", new_period_subject_path(@dados["period"])
-    |
-    = link_to "Novo período", new_period_path
