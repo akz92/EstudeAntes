@@ -1,90 +1,88 @@
-- require 'date'
 =include_gon
 
-.row-fluid
-  .span2
-    %h2.period
-      = "Período #{@dados["period"].number}"
-  .span6
-    %br
-    .btn-group.butt
-      = link_to 'Editar', edit_period_path(@dados["period"]), class: "btn btn-small"
-      = link_to 'Deletar', @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
+-unless @dados["period"] == []
 
-.row-fluid
-  .span12
-    .span1.vertical_line.fluidHeight
-      %span.vertical_line.floating{size: "6"}
-        = link_to "<", date: @date.prev_week
-    .span10.fluidHeight
-      - if @dados["subjects"]
-        %table.table.table-striped.vertical_line
-          %h4 Calendario Semanal
-          %tr
-            %th
-              - n = 0
-              - (Date::DAYNAMES).each do |dayname|
-                %th.table-font
-                  #{dayname}
-                  %br
-                  %font{size: "2"} #{(@date+n-1).strftime("%d")}
-                - n += 1
+  .row-fluid
+    .span12
+      .span2
+        %h4 Calendario Semanal
+      .span1
+        = link_to "Hoje", { date: Date.today.beginning_of_week }, class: "btn"
+      .span1
+        %p.floating
+          .btn-group
+            = link_to "<", { date: @date.prev_week }, class: "btn"
+            = link_to ">", { date: @date.next_week }, class: "btn"
+      .span4
+        %h4.align-left
+          = @date.strftime("%B %Y")
+      .span4.align-right
+        %ul.legenda.bottom
+          %li
+            %span.box.azul
+              Prova
+          %li
+            %span.box.amarelo
+              Trabalho
+          %li
+            %span.box.verde
+              Prova e trabalho
 
-
-          %h3.align-right
-            = @date.strftime("%B %Y")
-
-          - @dados["init_times"].each do |init_time|
+  - if @dados["init_times"] == []
+    %td= "Adicione os horários das disciplinas para visualizar o calendário"
+  - else
+    .row-fluid
+      .span12
+        - if @dados["subjects"]
+          %table.table.table-striped.table_border
             %tr
-              %th{scope: "row"} #{init_time}
-              - n = 0
-              - @dados["events"].each do |event|
-                - if event.formatted_init_time == init_time
-                  - while n <= event.weekday
-                    = calendar_events(@dados["tests"], event, n)
-                    - n += 1
-              - while n <= 6
-                %td
-                - n += 1
-
-          %ul.legenda
-            %li
-              %span.box.azul
-                Prova
-            %li
-              %span.box.amarelo
-                Entrega de trabalho
-            %li
-              %span.box.verde
-                Prova e entrega de trabalho
-    .span1.vertical_line.fluidHeight
-      %h1.vertical_line{size: "6"}
-        = link_to ">", date: @date.next_week
+              %th
+                - n = 0
+                - (Date::DAYNAMES).each do |dayname|
+                  %th.table-font
+                    #{dayname}
+                    %br
+                    %font{size: "2"} #{(@date+n-1).strftime("%d")}
+                  - n += 1
 
 
-.row-fluid
-  .span12
+            - @dados["init_times"].each do |init_time|
+              %tr
+                %th{scope: "row"} #{init_time}
+                - n = 0
+                - @dados["events"].each do |event|
+                  - if event.formatted_init_time == init_time
+                    - while n <= event.weekday
+                      = calendar_events(@dados["tests"], event, n)
+                      - n += 1
+                - while n <= 6
+                  %td
+                  - n += 1
+      .span12
+        .span8
+
+  .row-fluid
     %hr
-  .span12
-    .span6
-      %table.table.table-striped.vertical_line
-        %thead
-          %tr
-            %th= "Disciplinas"
-            %th= "Notas"
-        %tbody
-          - @dados["subjects"].each do |subject|
+    .span12
+      .span6
+        %table.table.table-striped.table_border
+          %thead.grey
             %tr
-              %td= link_to subject.name, period_subject_path(@dados["period"], subject)
-              %td= "#{subject.grade} / #{subject.value}"
+              %th= "Disciplinas"
+              %th= "Notas"
+          %tbody
+            %tr
+            - @dados["subjects"].each do |subject|
+              %tr
+                %td= link_to subject.name, period_subject_path(@dados["period"], subject)
+                %td= "#{subject.grade} / #{subject.value}"
 
-      = link_to "Adicionar disciplina", new_period_subject_path(@dados["period"])
-      |
-      = link_to "Novo período", new_period_path
-
-    .span6
-      %h5
-      %canvas#canvas{:height => "380", :width => "530"}
+      .span6
+        %h5
+        %canvas#canvas{:height => "170", :width => "260"}
+-else
+  %br
+  = link_to "Novo periodo", new_period_path, class: "btn btn-small"
 
 :javascript
 
@@ -114,6 +112,7 @@
         pointColor : "rgba(220,50,50,1)",
         pointStrokeColor : "#fff",
         data : averageGrades
+        data : averageGrades
       }
     ]
   }
@@ -129,4 +128,3 @@
     datasetFill : false
   }
 
-  new Chart(ctx).Line(data, options);

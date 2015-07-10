@@ -2,4 +2,7 @@
 
 = render 'form'
 
-= link_to 'Back', period_subjects_path
+- if @period.current_period
+  = link_to 'Cancelar', periods_path, class: "btn btn-small"
+- else
+  = link_to 'Cancelar', periods_all_path, class: "btn btn-small"

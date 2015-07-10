@@ -1,4 +1,4 @@
-= form_for([@period, @subject, @event]) do |f|
+= simple_form_for([@period, @subject, @event]) do |f|
   - if @event.errors.any?
     #error_explanation
       %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
@@ -8,15 +8,20 @@
 
   .field
     = f.label :weekday
-    = f.number_field :weekday
+    = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a)
   .field
-    = f.label :init_time
-    = f.time_select :init_time
+    = f.input :init_time, as: :time_picker
   .field
-    = f.label :final_time
-    = f.time_select :final_time
+    = f.input :final_time, as: :time_picker
   .field
-    = f.label :recurrent
-    = f.check_box :recurrent
+    = f.input :recurrent
   .actions
     = f.submit 'Save'
+
+:javascript
+  $(function() {
+    $('.timepicker').datetimepicker({
+      language: 'pt-BR'
+      showMeridian: true
+    });
+  });

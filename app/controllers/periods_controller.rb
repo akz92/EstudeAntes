@@ -1,17 +1,20 @@
 class PeriodsController < ApplicationController
-  before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_periods, only: [:index, :all, :new, :create]
   before_filter :authenticate_user!
+  before_action :set_period, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_period, only: [:index]
+  before_action :set_other_periods, only: [:all]
+  before_action :set_periods, only: [:new, :create]
 
   # GET /periods
   # GET /periods.json
   def index
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @dados = Period.get_tests_events_init_times(@periods, @date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
+    @dados = Period.get_tests_events_init_times(@current_period, @date)
     gon.subjects = @dados["subjects"].map &:attributes
   end
 
   def all
+    Period.get_periods_and_means(@other_periods)
   end
   # GET /periods/1
   # GET /periods/1.json
@@ -36,9 +39,13 @@ class PeriodsController < ApplicationController
     if  @period.current_period && current_user.periods.where(current_period: true).count > 0
       render action: "new"
     else
-      if @period.save
-        redirect_to @period, notice: 'Period was successfully created.'
-      end
+	    if @period.save
+		    if @period.current_period
+			    redirect_to root_path, notice: 'Periodo criado com sucesso'
+		    else
+			    redirect_to periods_all_path, notice: 'Periodo criado com sucesso'
+		    end
+	    end
     end
 
   end
@@ -46,15 +53,13 @@ class PeriodsController < ApplicationController
   # PATCH/PUT /periods/1
   # PATCH/PUT /periods/1.json
   def update
-    respond_to do |format|
-      @period = Period.check_current_period(@period)
+    @period = Period.check_current_period(@period)
 
-      if @period.update(period_params)
-        format.html { redirect_to @period, notice: 'Period was successfully updated.' }
-        format.json { head :no_content }
+    if @period.update(period_params)
+      if @period.current_period
+        redirect_to periods_path, notice: 'Periodo atualizado com sucesso'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @period.errors, status: :unprocessable_entity }
+        redirect_to periods_all_path, notice: 'Periodo atualizado com sucesso'
       end
     end
   end
@@ -63,9 +68,11 @@ class PeriodsController < ApplicationController
   # DELETE /periods/1.json
   def destroy
     @period.destroy
-    respond_to do |format|
-      format.html { redirect_to periods_url }
-      format.json { head :no_content }
+
+    if @period.current_period
+      redirect_to periods_url, notice: 'Periodo removido com sucesso'
+    else
+      redirect_to periods_all_path, notice: 'Periodo removido com sucesso'
     end
   end
 
@@ -77,6 +84,26 @@ class PeriodsController < ApplicationController
 
     def set_periods
       @periods = current_user.periods
+    end
+
+    def set_current_period
+      @current_period = []
+      periods = current_user.periods
+      periods.each do |period|
+        if period.current_period
+          @current_period << period
+        end
+      end
+    end
+
+    def set_other_periods
+      @other_periods = []
+      periods = current_user.periods
+      periods.each do |period|
+        unless period.current_period
+          @other_periods << period
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

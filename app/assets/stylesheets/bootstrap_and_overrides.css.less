@@ -19,6 +19,7 @@
 //@import "twitter/bootstrap/sprites.less";
 
 // Your custom LESS stylesheets goes here
+@import 'bootstrap-datetimepicker.css';
 //
 // Since bootstrap was imported above you have access to its mixins which
 // you may use and inherit here
@@ -28,3 +29,17 @@
 //
 // Example:
 // @linkColor: #ff0000;
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+display: inline-block;
+height: 30px;
+padding: 4px 6px;
+margin-bottom: 10px;
+font-size: 14px;
+line-height: 20px;
+color: #555555;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+vertical-align: middle;
+}

@@ -1,16 +1,31 @@
-%table.table.table-striped
-  %thead
-    %tr
-      %td= 'Outros períodos'
-  %tbody
-    %tr
-    - @periods.each do |period|
-      - unless period.current_period
-        %tr
-          %td.period
-            = link_to "Period #{period.number}", period_subjects_path(period)
-            .btn-group.butt
-              = link_to 'Editar período', edit_period_path(period), class: "btn btn-small"
-              = link_to 'Deletar período', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "btn btn-small"
+.row-fluid
+  .span12
+    - if @other_periods.count > 0
+      .span6
+        %br
+        %table.table.table-striped.table_border
+          %thead.grey
+            %tr
+              %td= 'Outros períodos'
+              %td= 'Média'
+          %tbody
+            %tr
+            - @other_periods.each do |period|
+              - unless period.current_period
+                %tr
+                  %td
+                    .span4
+                      = link_to "#{period.number}º Período", period_subjects_path(period)
+                  %td
+                    .span2
+                      = "#{trim(period.mean)}/100"
+                    .span10
+                      .dropdown.align-right
+                        %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                          %b.caret
+                        %ul.dropdown-menu
+                          %li= link_to ' Editar', edit_period_path(period), class: "icon-pencil icon-white"
+                          %li.divider
+                          %Li= link_to ' Deletar', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
 %br
-= link_to 'Novo período', new_period_path, class: "btn"
+= link_to "Novo perído", new_period_path, class: "btn btn-small"

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  weekday: 1
+  init_time: 2014-01-30 13:13:40
+  final_time: 2014-01-30 13:13:40
+  recurrent: false
+
+two:
+  weekday: 1
+  init_time: 2014-01-30 13:13:40
+  final_time: 2014-01-30 13:13:40
+  recurrent: false

@@ -1,0 +1,37 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand Agenda Universitaria
+      .nav-collapse
+        %ul.nav
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                #{@dados["period_number"]}º Período
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Editar periodo', edit_period_path(@dados["period"])
+                %li= link_to "Adicionar disciplina", new_period_subject_path(@dados["period"])
+                %li= link_to "Adicionar novo periodo", new_period_path
+            %li= link_to "Outros períodos", periods_all_path
+        %ul.nav.pull-right
+          %li
+            #user_nav
+              - if user_signed_in?
+                /Signed in as #{current_user.email}. Not you?
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                    - if current_user.name
+                      #{current_user.name}
+                    - else
+                      #{current_user.email}
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to "Editar Conta", edit_user_registration_path
+                    %li= link_to "Sair", destroy_user_session_path, :method => :delete
+              - else
+                %li= link_to "Entrar", new_user_session_path
+                %li= link_to "Criar conta", new_user_registration_path
+
+
+

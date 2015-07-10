@@ -1,37 +1,40 @@
 =include_gon
-%h1 Listing subjects
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @subjects.each do |subject|
-    %tr
-      %td= subject.name
-      %td= link_to 'Show', period_subject_path(@period, subject)
-      %td= link_to 'Edit', edit_period_subject_path(@period, subject)
-      %td= link_to 'Destroy', period_subject_path(@period, subject), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+.row-fluid
+  .span2
+    %h3= "#{@dados["period_number"]} Periodo"
+  .span6
+    %br
+    = link_to '', edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
+    = link_to '', @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
 %br
+-if @dados["subjects"].count >= 1
+  .row-fluid
+    .span12
+      .span6
+        %table.table.table-striped.table_border
+          %thead
+            %tr
+              %th= "Disciplinas"
+              %th= "Notas"
+          %tbody
+            - @dados["subjects"].each do |subject|
+              %tr
+                %td= link_to subject.name, period_subject_path(@dados["period"], subject)
+                %td= "#{subject.grade} / #{subject.value}"
 
-= link_to 'New Subject', new_period_subject_path
-\|
-= link_to 'Back', periods_path
+      .span6
+        %h5
+        %canvas#canvas{:height => "170", :width => "260"}
 
-
-%hr       
-
-%canvas#canvas{:height => "330", :width => "470"}
+-else
+  %p= "Este periodo nao possui disciplinas"
 
 :javascript
 
   var subjectNames = new Array();
   var subjectGrades = new Array();
   var averageGrades = new Array();
-
 
   for(var i = 0; i < gon.subjects.length; i++){
    subjectNames.push(gon.subjects[i].name)
@@ -40,7 +43,7 @@
   };
 
   data = {
-    labels : subjectNames, 
+    labels : subjectNames,
     datasets : [
       {
         fillColor : "rgba(100,100,180,0.5)",
@@ -54,7 +57,7 @@
         strokeColor : "rgba(220,50,50,1)",
         pointColor : "rgba(220,50,50,1)",
         pointStrokeColor : "#fff",
-        data : averageGrades 
+        data : averageGrades
       }
     ]
   }
@@ -69,6 +72,8 @@
     scaleStartValue : 0,
     datasetFill : false
   }
-  
+
   new Chart(ctx).Line(data, options);
 
+%br
+= link_to "Adicionar disciplina", new_period_subject_path(@dados["period"]), class: "btn btn-small"

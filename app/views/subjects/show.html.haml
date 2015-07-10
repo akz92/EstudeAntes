@@ -1,78 +1,134 @@
+# encoding: utf-8
 =include_gon
-%table.table.table-striped
-  %h2= @subject.name
-  %thead
-    %tr
-      - if @tests.count == 0
-        - if @projects.count == 0
-          %td= "This subject doesn't have any tests or projects yet"
-        - else
-          %td= "This subject doesn't have any tests yet"
-      - else
-        %th Tests dates
-        %th Grades
-        %th Subject
-  %tbody
-    - @tests.each do |test|
-      %tr
-        %br
-        %td.subject
-          = link_to "#{test.date}", period_subject_test_path(@period, @subject, test)
-          .btn-group.butt
-            = link_to 'Edit', edit_period_subject_test_path(@period, @subject, test), class: "btn btn-small"
-            = link_to 'Delete', period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small"
-        %td= "#{test.grade} / #{test.value}"
-        - unless test.note
-          %td= "Nothing added"
-        - else
-          %td= "#{test.note}"
-    %br
-    %br
-%table.table.table-striped
-  %thead
-    %tr
-      - if @projects.count == 0
-        -if @tests.count != 0
-          %td= "This subject doesn't have any projects yet"
-      - else
-        %th Project dates
-        %th Grades
-        %th Subject
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %br
-        %td.subject
-          = link_to "#{project.date}", period_subject_project_path(@period, @subject, project)
-          .btn-group.butt
-            = link_to 'Edit', edit_period_subject_project_path(@period, @subject, project), class: "btn btn-small"
-            = link_to 'Delete', period_subject_project_path(@period, @subject, project), class: "btn btn-small", method: :delete, data: { confirm: 'Are you sure?' }
-        %td= "#{project.grade} / #{project.value}"
-        %td= "#{project.note}"
-%br
-%br
-- x = true
-= link_to 'New test', new_period_subject_test_path(@period, @subject)
-\|
-= link_to 'New project', new_period_subject_test_path(@period, @subject)
-\|
-= link_to 'New event', new_period_subject_event_path(@period, @subject)
-\|
-= link_to 'Edit subject', edit_period_subject_path(@period, @subject)
-\|
-= link_to 'Back', periods_path
 
-%hr
-%h5 Aproveitamento
-%canvas#canvas{:height => "300", :width => "450"}
+.row-fluid
+  .span12
+    .span1
+      %h3= @subject.name
+    .span1
+      .dropdown.align-left
+        %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %b.caret
+        %ul.dropdown-menu
+          %li= link_to ' Editar', edit_period_subject_path(@period, @subject), class: "icon-pencil icon-white"
+          %li.divider
+          %li= link_to ' Deletar', period_subject_path(@period, @subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a disciplina?' }, class: "icon-trash icon-white"
+
+
+-#.tabbable.tabs-left
+  %ul.nav.nav-tabs
+    %li
+      %a{"data-toggle" => "tab", :href => "#lA"} Section 1
+    %li
+      %a{"data-toggle" => "tab", :href => "#lB"} Section 2
+  .tab-content
+    #lA.tab-pane
+      %p I'm in Section A.
+    = tests_table()
+
+:javascript
+  function show(id) {
+    document.getElementById(id).style.visibility = "visible";
+  }
+  function hide(id) {
+    document.getElementById(id).style.visibility = "hidden";
+  }
+
+.row-fluid
+  .span12
+    .span8
+      %table.table.table-striped.table_border
+        %thead.grey
+          - if @dados["tests"] == []
+            - if @dados["projects"] == []
+              %td= "Essa disciplina ainda não tem provas nem trabalhos"
+            - else
+              %td= "Essa disciplina ainda não tem provas"
+          - else
+            %th Provas
+            %th Nota
+            %th Materia
+
+        %tbody
+          %tr
+            - @dados["tests"].each do |test|
+              %tr
+                %br
+                %td.normal
+                  = formatted_date(test.date)
+                %td
+                  #{trim(test.grade)} / #{test.value}
+                %td
+                  #{test.note}
+                  .dropdown.align-right
+                    %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                      %b.caret
+                    %ul.dropdown-menu
+                      %li= link_to ' Editar', edit_period_subject_test_path(@period, @subject, test), class: "icon-pencil icon-white"
+                      %li.divider
+                      %li= link_to ' Deletar', period_subject_test_path(@period, @subject, test), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
+          %br
+          %br
+
+      %table.table.table-striped.table_border
+        %thead
+          %tr
+            - if @dados["projects"] == []
+              -if @dados["tests"] == []
+                %td= "Essa disciplina ainda não tem trabalhos"
+            - else
+              %th Trabalhos
+              %th Nota
+              %th Detalhes
+              %th= link_to 'Editar'
+        %tbody
+          - @dados["projects"].each do |project|
+            %tr
+              %br
+              %td.subject
+                = formatted_date(project.date)
+              %td= "#{trim(project.grade)} / #{project.value}"
+              %td= project.note
+              %td
+                = link_to '', edit_period_subject_test_path(@period, @subject, project), class: "icon-pencil icon-white"
+                = link_to '', period_subject_test_path(@period, @subject, project), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
+      %br
+      %table.table.table-striped.table_border
+        %thead
+          %tr.grey
+            %th Aulas
+        %tbody
+          %tr
+            - @dados["events"].each do |event|
+              %tr
+                %td
+                  = "#{Date::DAYNAMES[event.weekday]} #{event.init_time.strftime("%H:%M")} - #{event.final_time.strftime("%H:%M")}"
+                  .dropdown.align-right
+                    %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                      %b.caret
+                    %ul.dropdown-menu
+                      %li= link_to ' Editar', edit_period_subject_event_path(@period, @subject, event), class: "icon-pencil icon-white"
+                      %li.divider
+                      %li= link_to ' Deletar', period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: "icon-trash icon-white"
+      %br
+      .btn-group
+        = link_to 'Nova prova/trabalho', new_period_subject_test_path(@period, @subject), class: "btn btn-small"
+        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-small"
+
+    .span4
+      %h5 Aproveitamento
+      %canvas#canvas{:height => "300", :width => "450"}
 
 :javascript
 
-<<<<<<< HEAD
-=======
+
   var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value)*100 );
 
->>>>>>> 6ee32bc54cbcb8dbc23ceb162650d192c0cd1312
+  if (gon.subject.grade === 0)
+  {
+    subjectPercentage = 100;
+  }
+
   data = [
     {
       value : 100 - subjectPercentage,
@@ -80,7 +136,6 @@
     },
     {
       value : subjectPercentage,
-
       color : "#69D2E7"
     }
         ];
@@ -89,4 +144,7 @@
   var myNewChart = new Chart(ctx).Doughnut(data);
 
   new Chart(ctx).Dounghnut(data);
+
+
+
 

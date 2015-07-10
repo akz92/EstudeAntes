@@ -2,6 +2,9 @@
 
 = render 'form'
 
-= link_to 'Show', @period
-\|
-= link_to 'Back', periods_path
+- if @period.current_period
+  = link_to 'Cancelar', periods_path, class: "btn btn-small"
+- else
+  = link_to 'Cancelar', periods_all_path, class: "btn btn-small"
+
+= link_to 'Deletar periodo', @period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o periodo?' }, class: "btn btn-small"

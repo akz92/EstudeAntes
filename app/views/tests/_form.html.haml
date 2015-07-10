@@ -1,4 +1,4 @@
-= form_for([@period, @subject, @test]) do |f|
+= simple_form_for([@period, @subject, @test]) do |f|
   - if @test.errors.any?
     #error_explanation
       %h2= "#{pluralize(@test.errors.count, "error")} prohibited this test from being saved:"
@@ -7,19 +7,13 @@
           %li= msg
 
   .field
-    = f.label :date
-    = f.datetime_select :date
+    = f.input :date, as: :datetime_picker
   .field
-    = f.label :value
-    = f.number_field :value
+    = f.input :value
   .field
-    = f.label :grade
-    = f.number_field :grade
+    = f.input :grade
   .field
-    = f.label :note
-    = f.text_field :note
-  .field
-    = f.label :is_project
-    = f.check_box :is_project
-  .actions
-    = f.submit 'Save'
+    = f.input :note
+  .actions.btn-group
+    = f.button :submit, 'Salvar prova'
+    = f.button :submit, 'Salvar trabalho'

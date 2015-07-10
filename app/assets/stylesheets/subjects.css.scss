@@ -1,3 +1,22 @@
 // Place all the styles related to the subjects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h3{
+	display: inline-block;
+}
+
+.tiptext {
+	background:#ccc;
+	border: 1px #333 solid;
+	padding:5px;
+	width:100px;
+	}
+.description {
+	display:none;
+	position:absolute;
+	border:1px solid #000;
+	width:400px;
+	height:400px;
+   	}
+

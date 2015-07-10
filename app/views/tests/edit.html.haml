@@ -2,6 +2,4 @@
 
 = render 'form'
 
-= link_to 'Show', period_subject_test_path(@period, @subject, @test)
-\|
-= link_to 'Back', period_subject_tests_path
+= link_to 'Cancelar', period_subject_path(@period, @subject), class: "btn btn-small"

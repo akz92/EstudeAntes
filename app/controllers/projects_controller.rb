@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to period_subject_projects_path(@period, @subject) }
+      format.html { redirect_to period_subject_path(@period, @subject) }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy]
   before_filter do
     @period = Period.find(params[:period_id])
@@ -32,6 +33,11 @@ class TestsController < ApplicationController
     @test.is_project = params[:test][:is_project]
     @test.subject_name = @subject.name
     #@test.is_project = params[:bool]
+    if params[:commit] == "Adicionar prova"
+      @test.is_project = false
+    elsif params[:commit] == "Adicionar trabalho"
+      @test.is_project = true
+    end
 
     @subject.value += @test.value
     @subject.grade += @test.grade
@@ -39,7 +45,7 @@ class TestsController < ApplicationController
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to period_subjects_path(@period), notice: 'Test was successfully created.' }
+        format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully created.' }
         format.json { render action: 'show', status: :created, location: @test }
       else
         format.html { render action: 'new' }
@@ -54,7 +60,7 @@ class TestsController < ApplicationController
     @test.is_project = params[:test][:is_project]
     respond_to do |format|
       if @test.update(test_params)
-        format.html { redirect_to period_subjects_path(@period), notice: 'Test was successfully updated.' }
+        format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,10 +88,7 @@ class TestsController < ApplicationController
     @subject.save
 
     @test.destroy
-    respond_to do |format|
-      format.html { redirect_to period_subject_tests_url(@period, @subject) }
-      format.json { head :no_content }
-    end
+    redirect_to period_subject_path(@period, @subject)
   end
 
   private

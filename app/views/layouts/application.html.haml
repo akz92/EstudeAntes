@@ -2,9 +2,20 @@
   %head
     %title Agenda
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    %link{:href => "css/custom.css", :rel => "stylesheet", :type => "text/css"}/
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = render partial: "/devise/sessions/navbar"
-    .container
-      = yield
+    - if @dados
+      -if @dados["current_period"]
+        = render partial: "/periods/navbar"
+        .container
+          = yield
+      - else
+        = render partial: "/devise/sessions/navbar"
+        .container
+          = yield
+    - else
+      = render partial: "/devise/sessions/navbar"
+      .container
+        = yield

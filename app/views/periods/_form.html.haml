@@ -1,4 +1,4 @@
-= form_for @period do |f|
+= simple_form_for @period do |f|
   - if @period.errors.any?
     #error_explanation
       %h2= "#{pluralize(@period.errors.count, "error")} prohibited this period from being saved:"
@@ -7,13 +7,18 @@
           %li= msg
 
   .field
-    = f.label :init_date
-    = f.date_select :init_date
+    = f.input :init_date, as: :date_picker
   .field
-    = f.label :final_date
-    = f.date_select :final_date
+    = f.input :final_date, as: :date_picker
   .field
-    = f.label :number
-    = f.number_field :number
+    = f.input :number
   .actions
     = f.submit 'Save'
+
+:javascript
+  $(function() {
+    $('.datepicker').datetimepicker({
+      language: 'pt-BR'
+      showMeridian: true
+    });
+  });

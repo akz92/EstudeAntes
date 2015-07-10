@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   before_filter do
@@ -8,16 +9,15 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = @period.subjects.all
-    gon.subjects = @period.subjects.map &:attributes 
+		@dados = Subject.get_period_and_subjects(@period)
+    gon.subjects = @period.subjects.map &:attributes
   end
 
   # GET /subjects/1
   # GET /subjects/1.json
   def show
-    @tests = @subject.tests.all
-    @projects = @subject.projects.all
-    gon.subject = @subject 
+		@dados = Subject.get_tests_and_projects(@subject)
+    gon.subject = @subject
   end
 
   # GET /subjects/new
@@ -34,15 +34,15 @@ class SubjectsController < ApplicationController
   def create
     @subject = @period.subjects.new(subject_params)
 
-    respond_to do |format|
-      if @subject.save
-        format.html { redirect_to period_subjects_url, notice: 'Subject was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @subject }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
-    end
+		if @subject.save
+			if @period.current_period
+				redirect_to periods_path, notice: 'Disciplina criada com sucesso'
+			else
+				redirect_to period_subjects_path(@period, @subjects), notice: 'Disciplina criada com sucesso'
+			end
+		else
+			render action: 'new'
+		end
   end
 
   # PATCH/PUT /subjects/1
@@ -50,7 +50,7 @@ class SubjectsController < ApplicationController
   def update
     respond_to do |format|
       if @subject.update(subject_params)
-        format.html { redirect_to period_subjects_url, notice: 'Subject was successfully updated.' }
+        format.html { redirect_to period_subject_url(@period, @subject), notice: 'Subject was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -63,10 +63,12 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1.json
   def destroy
     @subject.destroy
-    respond_to do |format|
-      format.html { redirect_to period_subjects_url }
-      format.json { head :no_content }
-    end
+
+		if @period.current_period
+			redirect_to periods_url
+		else
+			redirect_to period_subjects_path(@period, @subject)
+		end
   end
 
   private

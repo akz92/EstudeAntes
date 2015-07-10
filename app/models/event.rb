@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :subject
   after_initialize :init_values
+  validates_presence_of :weekday, :init_time, :final_time
 
   def init_values
     self.weekday ||= 1

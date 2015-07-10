@@ -2,15 +2,25 @@
 class Period < ActiveRecord::Base
   belongs_to :user
   has_many :subjects
+  after_initialize :init_values
+  validates_presence_of :init_date, :final_date, :number
   # validate :check_current_period
 
+  def init_values
+    self.mean ||= 0
+  end
+
   def self.get_tests_events_init_times(periods, date)
-    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> []}
+    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> [], "period_number" => [], "current_period" => []}
 
     periods.each do |period|
+      dados["period"] = period
+      dados["subjects"] = period.subjects
+      dados["period_number"] = period.number
       if period.current_period
-        dados["period"] = period
-        dados["subjects"] = period.subjects
+        dados["current_period"] = true
+      else
+        dados["current_period"] = false
       end
     end
 
@@ -28,7 +38,11 @@ class Period < ActiveRecord::Base
     end
 
     dados["events"].sort_by! { |a| [a.weekday, a.init_time, a.final_time] }
-    dados["init_times"].uniq!.sort!
+
+    unless dados["init_times"] == []
+      dados["init_times"].uniq!
+      dados["init_times"].sort!
+    end
 
     return dados
   end
@@ -41,5 +55,22 @@ class Period < ActiveRecord::Base
     end
 
     return period
+  end
+
+  def self.get_periods_and_means(periods)
+    periods.each do |period|
+      unless period.subjects.size == 0
+        period.subjects.each do |subject|
+          unless subject.value == 0
+            period.mean += (subject.grade * 100) / subject.value
+          else
+            period.mean += 100
+          end
+        end
+        period.mean = period.mean / period.subjects.size
+      else
+        period.mean = 100
+      end
+    end
   end
 end
