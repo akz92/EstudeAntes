@@ -33,9 +33,9 @@ class TestsController < ApplicationController
     @test.is_project = params[:test][:is_project]
     @test.subject_name = @subject.name
     #@test.is_project = params[:bool]
-    if params[:commit] == "Adicionar prova"
+    if params[:commit] == "Salvar prova"
       @test.is_project = false
-    elsif params[:commit] == "Adicionar trabalho"
+    elsif params[:commit] == "Salvar trabalho"
       @test.is_project = true
     end
 
@@ -101,6 +101,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:date, :value, :grade, :note)
+      params.require(:test).permit(:date, :value, :grade, :note, :is_project)
     end
 end

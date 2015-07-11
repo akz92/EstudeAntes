@@ -5,7 +5,9 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand Agenda Universitaria
+      %a.brand{:href => "#{root_url}"}
+        Agenda Universitaria
+      /%a.brand Agenda Universitaria
       .nav-collapse
         %ul.nav
           - if user_signed_in?

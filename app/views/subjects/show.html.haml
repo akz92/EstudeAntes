@@ -48,18 +48,21 @@
             %th Provas
             %th Nota
             %th Materia
+            %th
 
         %tbody
           %tr
+            - @dados["tests"] = @dados["tests"].sort_by &:date
             - @dados["tests"].each do |test|
               %tr
                 %br
-                %td.normal
+                %td.datewidth
                   = formatted_date(test.date)
-                %td
+                %td.gradewidth
                   #{trim(test.grade)} / #{test.value}
                 %td
                   #{test.note}
+                %td
                   .dropdown.align-right
                     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                       %b.caret
@@ -67,9 +70,7 @@
                       %li= link_to ' Editar', edit_period_subject_test_path(@period, @subject, test), class: "icon-pencil icon-white"
                       %li.divider
                       %li= link_to ' Deletar', period_subject_test_path(@period, @subject, test), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
-          %br
-          %br
-
+      %br
       %table.table.table-striped.table_border
         %thead
           %tr
@@ -80,29 +81,39 @@
               %th Trabalhos
               %th Nota
               %th Detalhes
-              %th= link_to 'Editar'
+              %th
         %tbody
+          - @dados["projects"] = @dados["projects"].sort_by &:date
           - @dados["projects"].each do |project|
             %tr
               %br
-              %td.subject
+              %td.datewidth
                 = formatted_date(project.date)
-              %td= "#{trim(project.grade)} / #{project.value}"
-              %td= project.note
+              %td.gradewidth
+                #{trim(project.grade)} / #{project.value}
               %td
-                = link_to '', edit_period_subject_test_path(@period, @subject, project), class: "icon-pencil icon-white"
-                = link_to '', period_subject_test_path(@period, @subject, project), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
+                #{project.note}
+              %td
+                .dropdown.align-right
+                  %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to '', edit_period_subject_test_path(@period, @subject, project), class: "icon-pencil icon-white"
+                    %li.divider
+                    %li= link_to '', period_subject_test_path(@period, @subject, project), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
       %br
       %table.table.table-striped.table_border
         %thead
           %tr.grey
             %th Aulas
+            %th
         %tbody
           %tr
             - @dados["events"].each do |event|
               %tr
                 %td
                   = "#{Date::DAYNAMES[event.weekday]} #{event.init_time.strftime("%H:%M")} - #{event.final_time.strftime("%H:%M")}"
+                %td
                   .dropdown.align-right
                     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                       %b.caret
@@ -116,7 +127,8 @@
         = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-small"
 
     .span4
-      %h5 Aproveitamento
+      /%h5 Aproveitamento
+      %br
       %canvas#canvas{:height => "300", :width => "450"}
 
 :javascript

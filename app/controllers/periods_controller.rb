@@ -2,14 +2,14 @@ class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
   before_action :set_current_period, only: [:index]
-  before_action :set_other_periods, only: [:all]
+  before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create]
 
   # GET /periods
   # GET /periods.json
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
-    @dados = Period.get_tests_events_init_times(@current_period, @date)
+    @dados = Period.get_tests_events_init_times(@current_period, @date, @other_periods)
     gon.subjects = @dados["subjects"].map &:attributes
   end
 

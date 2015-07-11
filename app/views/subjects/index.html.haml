@@ -2,11 +2,8 @@
 
 .row-fluid
   .span2
-    %h3= "#{@dados["period_number"]} Periodo"
-  .span6
-    %br
-    = link_to '', edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
-    = link_to '', @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
+    %h3= "#{@dados["period_number"]}º Periodo"
+
 %br
 -if @dados["subjects"].count >= 1
   .row-fluid
@@ -74,6 +71,3 @@
   }
 
   new Chart(ctx).Line(data, options);
-
-%br
-= link_to "Adicionar disciplina", new_period_subject_path(@dados["period"]), class: "btn btn-small"

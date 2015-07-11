@@ -9,7 +9,7 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-		@dados = Subject.get_period_and_subjects(@period)
+    @dados = Subject.get_period_and_subjects(@period)
     gon.subjects = @period.subjects.map &:attributes
   end
 

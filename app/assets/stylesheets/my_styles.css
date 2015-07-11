@@ -103,6 +103,14 @@ body{
   display: block;
 }
 
+.datewidth {
+  width: 170px;
+}
+
+.gradewidth {
+  width: 70px;
+}
+
 * {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;

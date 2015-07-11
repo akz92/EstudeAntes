@@ -10,8 +10,8 @@ class Period < ActiveRecord::Base
     self.mean ||= 0
   end
 
-  def self.get_tests_events_init_times(periods, date)
-    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> [], "period_number" => [], "current_period" => []}
+  def self.get_tests_events_init_times(periods, date, other_periods)
+    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> [], "period_number" => [], "current_period" => [], "all_periods" => []}
 
     periods.each do |period|
       dados["period"] = period
@@ -23,6 +23,11 @@ class Period < ActiveRecord::Base
         dados["current_period"] = false
       end
     end
+
+    other_periods.each do |period|
+      dados["all_periods"] << period
+    end
+
 
     dados["subjects"].each do |subject|
       subject.tests.each do |test|
