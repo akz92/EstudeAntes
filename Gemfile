@@ -49,7 +49,7 @@ end
 gem 'therubyracer'
 gem 'devise'
 gem 'haml-rails'
-gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails', :branch => 'bootstrap3'
+#gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails', :branch => 'bootstrap3'
 gem 'less-rails'
 gem 'better_errors'
 gem 'ice_cube'

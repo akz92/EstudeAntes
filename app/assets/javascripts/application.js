@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap.min
 //= require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker/core
 //= require bootstrap-datetimepicker/pickers

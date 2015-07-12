@@ -1,22 +1,21 @@
 =include_gon
 
 -unless @dados["period"] == []
-
-  .row-fluid
-    .span12
-      .span2
+  .container-fluid
+    .row
+      .col-xs-3
         %h4 Calendario Semanal
-      .span1
-        = link_to "Hoje", { date: Date.today.beginning_of_week }, class: "btn"
-      .span1
-        %p.floating
+      .col-xs-1
+        = link_to "Hoje", { date: Date.today.beginning_of_week }, class: "btn btn-default"
+      .col-xs-2
+        %p
           .btn-group
-            = link_to "<", { date: @date.prev_week }, class: "btn"
-            = link_to ">", { date: @date.next_week }, class: "btn"
-      .span4
+            = link_to "<", { date: @date.prev_week }, class: "btn btn-default"
+            = link_to ">", { date: @date.next_week }, class: "btn btn-default"
+      .col-xs-4
         %h4.align-left
           = @date.strftime("%B %Y")
-      .span4.align-right
+      .col-xs-4.align-right
         %ul.legenda.bottom
           %li
             %span.box.azul
@@ -31,8 +30,8 @@
   - if @dados["init_times"] == []
     %td= "Adicione os horários das disciplinas para visualizar o calendário"
   - else
-    .row-fluid
-      .span12
+    .container-fluid
+      .row
         - if @dados["subjects"]
           %table.table.table-striped.table_border
             %tr
@@ -58,13 +57,11 @@
                 - while n <= 6
                   %td
                   - n += 1
-      .span12
-        .span8
 
-  .row-fluid
+  .container-fluid
     %hr
-    .span12
-      .span6
+    .row
+      .col-xs-6
         %table.table.table-striped.table_border
           %thead.grey
             %tr
@@ -77,10 +74,13 @@
                 %td= link_to subject.name, period_subject_path(@dados["period"], subject)
                 %td= "#{subject.grade} / #{subject.value}"
 
-      .span6
+      .col-xs-6
         %h5
         %canvas#canvas{:height => "170", :width => "260"}
 -else
+  %br
+  %br
+  %br
   %br
   = link_to "Novo periodo", new_period_path, class: "btn btn-small"
 

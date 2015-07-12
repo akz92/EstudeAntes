@@ -16,7 +16,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
-		@dados = Subject.get_tests_and_projects(@subject)
+    @dados = Subject.get_tests_and_projects(@subject)
+    @dados_periodo = Subject.get_period_and_subjects(@period)
     gon.subject = @subject
   end
 

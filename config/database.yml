@@ -15,3 +15,13 @@ test:
   template: template0
   username: akz
   password:
+
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: agenda_production
+  pool: 5
+  template: template0
+  username: akz
+  password:
