@@ -10,9 +10,9 @@
         %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %b.caret
         %ul.dropdown-menu
-          %li= link_to ' Editar', edit_period_subject_path(@period, @subject), class: "icon-pencil icon-white"
+          %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_path(@period, @subject)
           %li.divider
-          %li= link_to ' Deletar', period_subject_path(@period, @subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a disciplina?' }, class: "icon-trash icon-white"
+            %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_path(@period, @subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a disciplina?' }
 
 
 -#.tabbable.tabs-left
@@ -66,9 +66,9 @@
                     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                       %b.caret
                     %ul.dropdown-menu
-                      %li= link_to ' Editar', edit_period_subject_test_path(@period, @subject, test), class: "icon-pencil icon-white"
+                      %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_test_path(@period, @subject, test)
                       %li.divider
-                      %li= link_to ' Deletar', period_subject_test_path(@period, @subject, test), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
+                      %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Are you sure?' }
       %br
       %table.table.table-striped.table_border
         %thead.grey
@@ -96,9 +96,9 @@
                   %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                     %b.caret
                   %ul.dropdown-menu
-                    %li= link_to ' Editar', edit_period_subject_test_path(@period, @subject, project), class: "icon-pencil icon-white"
+                    %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_test_path(@period, @subject, project)
                     %li.divider
-                    %li= link_to ' Deletar', period_subject_test_path(@period, @subject, project), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
+                    %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, project), method: :delete, data: { confirm: 'Are you sure?' }
       %br
       %table.table.table-striped.table_border
         %thead
@@ -116,9 +116,9 @@
                     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                       %b.caret
                     %ul.dropdown-menu
-                      %li= link_to ' Editar', edit_period_subject_event_path(@period, @subject, event), class: "icon-pencil icon-white"
+                      %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_event_path(@period, @subject, event)
                       %li.divider
-                      %li= link_to ' Deletar', period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: "icon-trash icon-white"
+                      %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
       .btn-group
         = link_to 'Nova prova/trabalho', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
