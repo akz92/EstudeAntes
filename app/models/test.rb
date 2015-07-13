@@ -18,6 +18,13 @@ class Test < ActiveRecord::Base
     self.date.strftime("%H:%M")
   end
 
+  def self.period_number(period)
+    dados_periodo = {"period_number" => []}
+    dados_periodo["period_number"] = period.number
+
+    return dados_periodo
+  end
+
   def self.init
   end
 

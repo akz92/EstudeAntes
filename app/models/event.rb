@@ -15,4 +15,11 @@ class Event < ActiveRecord::Base
   def formatted_final_time
     self.final_time.strftime("%H:%M")
   end
+
+  def self.period_number(period)
+    dados_periodo = {"period_number" => []}
+    dados_periodo["period_number"] = period.number
+
+    return dados_periodo
+  end
 end

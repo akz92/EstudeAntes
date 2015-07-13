@@ -1,11 +1,11 @@
 # encoding: utf-8
 =include_gon
 
-.row-fluid
-  .span12
-    .span1
+.container-fluid
+  .row
+    .col-xs-2
       %h3= @subject.name
-    .span1
+    .col-xs-1
       .dropdown.align-left
         %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %b.caret
@@ -34,16 +34,16 @@
     document.getElementById(id).style.visibility = "hidden";
   }
 
-.row-fluid
-  .span12
-    .span8
+.container-fluid
+  .row
+    .col-xs-8
       %table.table.table-striped.table_border
         %thead.grey
           - if @dados["tests"] == []
             - if @dados["projects"] == []
-              %td= "Essa disciplina ainda não tem provas nem trabalhos"
+              %td.table_border= "Essa disciplina ainda não tem provas nem trabalhos"
             - else
-              %td= "Essa disciplina ainda não tem provas"
+              %td.table_border= "Essa disciplina ainda não tem provas"
           - else
             %th Provas
             %th Nota
@@ -55,7 +55,6 @@
             - @dados["tests"] = @dados["tests"].sort_by &:date
             - @dados["tests"].each do |test|
               %tr
-                %br
                 %td.datewidth
                   = formatted_date(test.date)
                 %td.gradewidth
@@ -72,11 +71,11 @@
                       %li= link_to ' Deletar', period_subject_test_path(@period, @subject, test), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
       %br
       %table.table.table-striped.table_border
-        %thead
+        %thead.grey
           %tr
             - if @dados["projects"] == []
-              -if @dados["tests"] == []
-                %td= "Essa disciplina ainda não tem trabalhos"
+              -unless @dados["tests"] == []
+                %td.table_border= "Essa disciplina ainda não tem trabalhos"
             - else
               %th Trabalhos
               %th Nota
@@ -86,7 +85,6 @@
           - @dados["projects"] = @dados["projects"].sort_by &:date
           - @dados["projects"].each do |project|
             %tr
-              %br
               %td.datewidth
                 = formatted_date(project.date)
               %td.gradewidth
@@ -98,9 +96,9 @@
                   %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                     %b.caret
                   %ul.dropdown-menu
-                    %li= link_to '', edit_period_subject_test_path(@period, @subject, project), class: "icon-pencil icon-white"
+                    %li= link_to ' Editar', edit_period_subject_test_path(@period, @subject, project), class: "icon-pencil icon-white"
                     %li.divider
-                    %li= link_to '', period_subject_test_path(@period, @subject, project), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
+                    %li= link_to ' Deletar', period_subject_test_path(@period, @subject, project), class: "icon-trash icon-white", method: :delete, data: { confirm: 'Are you sure?' }
       %br
       %table.table.table-striped.table_border
         %thead
@@ -123,12 +121,11 @@
                       %li= link_to ' Deletar', period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: "icon-trash icon-white"
       %br
       .btn-group
-        = link_to 'Nova prova/trabalho', new_period_subject_test_path(@period, @subject), class: "btn btn-small"
-        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-small"
+        = link_to 'Nova prova/trabalho', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
+        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-default"
 
-    .span4
+    .col-xs-4
       /%h5 Aproveitamento
-      %br
       %canvas#canvas{:height => "300", :width => "450"}
 
 :javascript

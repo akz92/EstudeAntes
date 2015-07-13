@@ -1,21 +1,22 @@
+!!!
 %html
   %head
-    %title Agenda
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
+    %meta{content: "", name: "description"}
+    %meta{content: "", name: "author"}
+    %title Agenda Universitaria
+
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      = javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     %link{:href => "css/custom.css", :rel => "stylesheet", :type => "text/css"}/
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    - if @dados
-      -if @dados["current_period"]
-        = render partial: "/periods/navbar"
-        .container
-          = yield
-      - else
-        = render partial: "/subjects/navbar"
-        .container
-          = yield
-    - else
-      = render partial: "/devise/sessions/navbar"
-      .container
-        = yield
+    = navbar_select
+    .container
+      = yield

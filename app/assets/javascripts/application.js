@@ -20,6 +20,7 @@
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu.js
 //= require turbolinks
 //= require Chart
+//= require bootstrap
 //= require_tree .
 //
 if (window.location.href.indexOf('#_=_') > 0) {

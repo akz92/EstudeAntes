@@ -63,3 +63,4 @@ gem "font-awesome-rails"
 gem 'bootstrap-datetimepicker-rails'
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'jquery-turbolinks'
+gem 'bootstrap-generators', '~> 3.3.4'

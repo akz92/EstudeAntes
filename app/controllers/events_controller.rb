@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :get_period_number, only: [:new, :edit]
   before_filter do
     @period = Period.find(params[:period_id])
     @subject = @period.subjects.find(params[:subject_id])
@@ -73,6 +74,11 @@ class EventsController < ApplicationController
       @period = Period.find(params[:period_id])
       @subject = @period.subjects.find(params[:subject_id])
       @event = @subject.events.find(params[:id])
+    end
+
+    def get_period_number
+      @period = Period.find(params[:period_id])
+      @dados_periodo = Event.period_number(@period)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

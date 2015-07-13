@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index]
+  before_action :set_current_period, only: [:index, :new, :edit]
   before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create]
 
@@ -40,11 +40,7 @@ class PeriodsController < ApplicationController
       render action: "new"
     else
 	    if @period.save
-		    if @period.current_period
-			    redirect_to root_path, notice: 'Periodo criado com sucesso'
-		    else
-			    redirect_to periods_all_path, notice: 'Periodo criado com sucesso'
-		    end
+		    redirect_to root_path, notice: 'Periodo criado com sucesso'
 	    end
     end
 
@@ -88,10 +84,12 @@ class PeriodsController < ApplicationController
 
     def set_current_period
       @current_period = []
+      @dados_periodo = {"period_number" => []}
       periods = current_user.periods
       periods.each do |period|
         if period.current_period
           @current_period << period
+	  @dados_periodo["period_number"] = period.number
         end
       end
     end
