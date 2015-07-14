@@ -27,7 +27,7 @@ Agenda::Application.routes.draw do
 	  end
 
 	  unauthenticated do
-		  root 'devise/registrations#new', as: :unauthenticated_root
+		  root 'devise/sessions#new', as: :unauthenticated_root
 	  end
   end
   # Example of regular route:

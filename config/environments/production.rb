@@ -98,4 +98,7 @@ Agenda::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #trying to solve precompile issue
+  Rails.application.config.assets.precompile += %w( * )
 end
