@@ -1,6 +1,6 @@
 =include_gon
 
--unless @dados["period"] == []
+-unless @dados["periods"] == []
   .container-fluid
     .row
       .col-xs-3
@@ -77,12 +77,13 @@
       .col-xs-6
         %h5
         %canvas#canvas{:height => "170", :width => "260"}
+
 -else
   %br
   %br
   %br
   %br
-  = link_to "Novo periodo", new_period_path, class: "btn btn-small"
+  = link_to "Criar periodo", new_period_path, class: "btn btn-small"
 
 :javascript
 

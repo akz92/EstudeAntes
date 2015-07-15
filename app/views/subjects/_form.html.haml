@@ -1,12 +1,5 @@
-= simple_form_for([@period,@subject]) do |f|
-  - if @subject.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@subject.errors.count, "error")} prohibited this subject from being saved:"
-      %ul
-        - @subject.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.input :name
-  .actions
-    = f.button :submit, 'Salvar'
+= bootstrap_form_for([@period,@subject]) do |f|
+  = f.text_field :name, label: 'Nome'
+  /= f.submit 'Salvar'
+  %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Salvar
+  %br

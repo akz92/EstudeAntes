@@ -10,6 +10,7 @@ Agenda::Application.routes.draw do
   resources :dashboard
 
   get '/periods/all', to: 'periods#all'
+  get '/periods/:period_id/subjects/:subject_id/tests/trabalho', to: 'tests#trabalho', as: 'trabalho'
 
   resources :periods do
     resources :subjects do

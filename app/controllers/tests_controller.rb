@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy]
-  before_action :get_period_number, only: [:new, :edit]
+  before_action :get_period_number, only: [:new, :edit, :trabalho]
   before_filter do
     @period = Period.find(params[:period_id])
     @subject = @period.subjects.find(params[:subject_id])
@@ -23,6 +23,11 @@ class TestsController < ApplicationController
     @test = @subject.tests.new
   end
 
+  # GET /tests/trabalho
+  def trabalho
+    @test = @subject.tests.new
+  end
+
   # GET /tests/1/edit
   def edit
   end
@@ -31,7 +36,7 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = @subject.tests.new(test_params)
-    @test.is_project = params[:test][:is_project]
+    #@test.is_project = params[:test][:is_project]
     @test.subject_name = @subject.name
     #@test.is_project = params[:bool]
     if params[:commit] == "Salvar prova"

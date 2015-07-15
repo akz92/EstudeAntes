@@ -68,7 +68,7 @@
                     %ul.dropdown-menu
                       %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_test_path(@period, @subject, test)
                       %li.divider
-                      %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Are you sure?' }
+                      %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir essa prova?' }
       %br
       %table.table.table-striped.table_border
         %thead.grey
@@ -98,7 +98,7 @@
                   %ul.dropdown-menu
                     %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_test_path(@period, @subject, project)
                     %li.divider
-                    %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, project), method: :delete, data: { confirm: 'Are you sure?' }
+                    %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, project), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir esse trabalho?' }
       %br
       %table.table.table-striped.table_border
         %thead
@@ -120,9 +120,10 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
-      .btn-group
-        = link_to 'Nova prova/trabalho', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
-        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-default"
+      .btn-group.btn-block
+        = link_to 'Nova prova', new_period_subject_test_path(@period, @subject), class: "btn btn-lg btn-default"
+        = link_to 'Novo trabalho', trabalho_path(@period, @subject), class: "btn btn-lg btn-default"
+        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-lg btn-default"
 
     .col-xs-4
       /%h5 Aproveitamento

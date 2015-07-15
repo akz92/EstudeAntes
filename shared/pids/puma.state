@@ -1,0 +1,27 @@
+---
+pid: 16724
+config: !ruby/object:Puma::Configuration
+  options:
+    :min_threads: 1
+    :max_threads: 6
+    :quiet: false
+    :debug: false
+    :binds:
+    - unix:///home/deployer/agenda/shared/sockets/puma.sock
+    :workers: 1
+    :daemon: false
+    :worker_directory: "/home/deployer/agenda"
+    :config_file: config/puma.rb
+    :mode: :http
+    :worker_timeout: 60
+    :worker_shutdown_timeout: 30
+    :environment: production
+    :redirect_stdout: "/home/deployer/agenda/shared/log/puma.stdout.log"
+    :redirect_stderr: "/home/deployer/agenda/shared/log/puma.stderr.log"
+    :redirect_append: true
+    :pidfile: "/home/deployer/agenda/shared/pids/puma.pid"
+    :state: "/home/deployer/agenda/shared/pids/puma.state"
+    :control_url: unix:///tmp/puma-status-1436975828095-16724
+    :control_url_temp: "/tmp/puma-status-1436975828095-16724"
+    :control_auth_token: 22de696a7bf9de9dc6eaebafd14f48
+    :tag: agenda

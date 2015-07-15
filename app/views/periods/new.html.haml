@@ -1,5 +1,6 @@
-%h1 New period
-
-= render 'form'
-
-= link_to 'Cancelar', periods_path, class: "btn btn-small"
+.container-fluid
+  .row
+    .col-xs-4
+      %h3 Criar Periodo
+      = render 'form'
+      = link_to 'Cancelar', periods_path, class: "btn btn-lg btn-warning btn-block"

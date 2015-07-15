@@ -1,19 +1,8 @@
-= simple_form_for([@period, @subject, @test]) do |f|
-  - if @test.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@test.errors.count, "error")} prohibited this test from being saved:"
-      %ul
-        - @test.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.input :date, as: :datetime_picker
-  .field
-    = f.input :value
-  .field
-    = f.input :grade
-  .field
-    = f.input :note
-  .actions.btn-group
-    = f.button :submit, 'Salvar prova'
-    = f.button :submit, 'Salvar trabalho'
+= bootstrap_form_for([@period, @subject, @test]) do |f|
+  = f.datetime_local_field :date, label: 'Data'#, as: :datetime_picker
+  = f.number_field :value, label: 'Valor'
+  = f.number_field :grade, label: 'Minha nota'
+  = f.text_field :note, label: 'Detalhes'
+  /%button.btn.btn-lg.btn-block.col-lg-2.btn-primary{:type => "submit"} Salvar prova
+  %button.btn.btn-lg.btn-block.btn-primary{:name => "commit", :type => "submit", :value => "Salvar prova"} Salvar prova
+  %br

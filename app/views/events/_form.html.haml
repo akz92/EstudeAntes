@@ -1,22 +1,11 @@
-= simple_form_for([@period, @subject, @event]) do |f|
-  - if @event.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
-      %ul
-        - @event.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :weekday
-    = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a)
-  .field
-    = f.input :init_time, as: :time_picker
-  .field
-    = f.input :final_time, as: :time_picker
-  .field
-    = f.input :recurrent
-  .actions
-    = f.submit 'Save'
+= bootstrap_form_for([@period, @subject, @event]) do |f|
+  = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana' 
+  = f.time_field :init_time, label: 'Horario de inicio'#, as: :time_picker
+  = f.time_field :final_time, label: 'Horario de termino'#, as: :time_picker
+  = f.check_box :recurrent, label: 'Recorrente'
+  /= f.submit 'Criar'
+  %button.btn.btn-lg.btn-block.btn-primary{type: ' submit' } Salvar
+  %br
 
 :javascript
   $(function() {

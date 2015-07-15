@@ -67,6 +67,17 @@ body{
   background-color: #F8F8F8;
 }
 
+.login {
+  background-color: #F8F8F8;
+  border: 1px solid #e8e8e8;
+  padding: 25px;
+  margin: auto;
+  width: 33%
+}
+
+.logincomplement {
+  text-align: center;
+}
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
 	   background-color: #F8F8F8;
@@ -109,6 +120,10 @@ body{
 
 .gradewidth {
   width: 70px;
+}
+
+.center {
+  display: inline-block;
 }
 
 * {

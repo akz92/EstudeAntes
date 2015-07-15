@@ -1,8 +1,6 @@
-%h1 New subject
-
-= render 'form'
-
-- if @period.current_period
-  = link_to 'Cancelar', periods_path, class: "btn btn-small"
-- else
-  = link_to 'Cancelar', periods_all_path, class: "btn btn-small"
+.container-fluid
+  .row
+    .col-xs-4
+      %h3 Adicionar disciplina
+      = render 'form'
+      = link_to 'Cancelar', periods_path, class: "btn btn-lg btn-warning btn-block"
