@@ -9,7 +9,7 @@ module SubjectsHelper
         " + formatted_date(test.date) + "
   #collapse" + test.id.to_s + ".panel-collapse.collapse.in
     .panel-body
-      Nota:" + trim(test.grade).to_s + "/" + test.value.to_s + "
+      Nota:" + test.grade.to_s + "/" + test.value.to_s + "
       %br
       Materia:" + test.note.to_s + "
       %br

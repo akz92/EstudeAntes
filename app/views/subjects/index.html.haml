@@ -1,8 +1,19 @@
 =include_gon
 
-.row-fluid
-  .span2
-    %h3= "#{@dados["period_number"]}º Periodo"
+.container-fluid
+  .row
+    .col-xs-2
+      %h3= "#{@dados["period_number"]}º Periodo"
+    .col-xs-1
+      .dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %b.caret
+        %ul.dropdown-menu
+          %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"])
+          %li.divider
+          %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
+          %li.divider
+          %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
 
 %br
 -if @dados["subjects"].count >= 1

@@ -15,7 +15,7 @@
               %li.divider
               %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
               %li.divider
-              /%li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
+              %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               Outros Períodos

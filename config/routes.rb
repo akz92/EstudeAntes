@@ -8,7 +8,9 @@ Agenda::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :home
   resources :dashboard
-
+  #new controller for static pages
+  #resources :pages, :only => :show
+  get '/help', to: 'pages#help', as: 'help'
   get '/periods/all', to: 'periods#all'
   get '/periods/:period_id/subjects/:subject_id/tests/trabalho', to: 'tests#trabalho', as: 'trabalho'
 

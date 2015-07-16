@@ -75,9 +75,10 @@ body{
   width: 33%
 }
 
-.logincomplement {
+.centertext {
   text-align: center;
 }
+
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
 	   background-color: #F8F8F8;
@@ -124,6 +125,10 @@ body{
 
 .center {
   display: inline-block;
+}
+
+.bottom {
+  vertical-align: bottom;
 }
 
 * {

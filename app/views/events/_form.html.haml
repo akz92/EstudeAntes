@@ -1,7 +1,7 @@
 = bootstrap_form_for([@period, @subject, @event]) do |f|
   = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana' 
-  = f.time_field :init_time, label: 'Horario de inicio'#, as: :time_picker
-  = f.time_field :final_time, label: 'Horario de termino'#, as: :time_picker
+  = f.time_select :init_time, label: 'Horario de inicio'#, as: :time_picker
+  = f.time_select :final_time, label: 'Horario de termino'#, as: :time_picker
   = f.check_box :recurrent, label: 'Recorrente'
   /= f.submit 'Criar'
   %button.btn.btn-lg.btn-block.btn-primary{type: ' submit' } Salvar

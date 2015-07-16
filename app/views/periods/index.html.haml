@@ -1,88 +1,18 @@
 =include_gon
 
--unless @dados["periods"] == []
-  .container-fluid
-    .row
-      .col-xs-3
-        %h4 Calendario Semanal
-      .col-xs-1
-        = link_to "Hoje", { date: Date.today.beginning_of_week }, class: "btn btn-default"
-      .col-xs-2
-        %p
-          .btn-group
-            = link_to "<", { date: @date.prev_week }, class: "btn btn-default"
-            = link_to ">", { date: @date.next_week }, class: "btn btn-default"
-      .col-xs-4
-        %h4.align-left
-          = @date.strftime("%B %Y")
-      .col-xs-4.align-right
-        %ul.legenda.bottom
-          %li
-            %span.box.azul
-              Prova
-          %li
-            %span.box.amarelo
-              Trabalho
-          %li
-            %span.box.verde
-              Prova e trabalho
+-if @dados["period_number"] != [] && @dados["init_times"] != []
+  = render "/periods/calendariosemanal"
+  = render "periods/subjectstable"
 
-  - if @dados["init_times"] == []
-    %td= "Adicione os horários das disciplinas para visualizar o calendário"
-  - else
-    .container-fluid
-      .row
-        - if @dados["subjects"]
-          %table.table.table-striped.table_border
-            %tr
-              %th
-                - n = 0
-                - (Date::DAYNAMES).each do |dayname|
-                  %th.table-font
-                    #{dayname}
-                    %br
-                    %font{size: "2"} #{(@date+n-1).strftime("%d")}
-                  - n += 1
+-elsif @dados["period_number"] != [] && @dados["subjects"] != []
+  %h4.centertext= "Adicione os horários das disciplinas para visualizar o calendário"
+  = render "periods/subjectstable"
 
-
-            - @dados["init_times"].each do |init_time|
-              %tr
-                %th{scope: "row"} #{init_time}
-                - n = 0
-                - @dados["events"].each do |event|
-                  - if event.formatted_init_time == init_time
-                    - while n <= event.weekday
-                      = calendar_events(@dados["tests"], event, n)
-                      - n += 1
-                - while n <= 6
-                  %td
-                  - n += 1
-
-  .container-fluid
-    %hr
-    .row
-      .col-xs-6
-        %table.table.table-striped.table_border
-          %thead.grey
-            %tr
-              %th= "Disciplinas"
-              %th= "Notas"
-          %tbody
-            %tr
-            - @dados["subjects"].each do |subject|
-              %tr
-                %td= link_to subject.name, period_subject_path(@dados["period"], subject)
-                %td= "#{subject.grade} / #{subject.value}"
-
-      .col-xs-6
-        %h5
-        %canvas#canvas{:height => "170", :width => "260"}
+-elsif @dados["period_number"] != []
+  %h4.centertext= "Começe adicionando as disciplinas"
 
 -else
-  %br
-  %br
-  %br
-  %br
+  %h5 Para comecar adicione um periodo
   = link_to "Criar periodo", new_period_path, class: "btn btn-small"
 
 :javascript
@@ -93,7 +23,11 @@
 
   for(var i = 0; i < gon.subjects.length; i++){
    subjectNames.push(gon.subjects[i].name)
-   subjectGrades.push(gon.subjects[i].grade)
+   if (gon.subjects[i].value == 0) {
+     subjectGrades.push(gon.subjects[i].grade)
+   } else {
+     subjectGrades.push((100 * gon.subjects[i].grade)/gon.subjects[i].value)
+   }
    averageGrades.push(60)
   };
 
@@ -113,7 +47,6 @@
         pointColor : "rgba(220,50,50,1)",
         pointStrokeColor : "#fff",
         data : averageGrades
-        data : averageGrades
       }
     ]
   }
@@ -129,3 +62,4 @@
     datasetFill : false
   }
 
+  new Chart(ctx).Line(data, options);

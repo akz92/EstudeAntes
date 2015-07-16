@@ -38,7 +38,6 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    bootstrap-datetimepicker-rails (0.0.11)
     bootstrap_form (2.3.0)
     brI18n (3.3.0)
       actionpack (>= 3.0.0)
@@ -237,7 +236,6 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  bootstrap-datetimepicker-rails
   bootstrap_form
   brazilian-rails
   certified
