@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: 36d21cec5da7f5b214925804f60e63c61c747023
-  specs:
-    datetimepicker-rails (4.7.16)
-      momentjs-rails (>= 2.9.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -137,8 +130,6 @@ GEM
       open4 (~> 1.3.4)
       rake
     minitest (4.7.5)
-    momentjs-rails (2.10.3)
-      railties (>= 3.1)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -240,7 +231,6 @@ DEPENDENCIES
   brazilian-rails
   certified
   coffee-rails (~> 4.0.0)
-  datetimepicker-rails!
   devise
   font-awesome-rails
   gon

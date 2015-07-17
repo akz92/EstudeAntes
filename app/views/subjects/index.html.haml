@@ -4,37 +4,10 @@
   .row
     .col-xs-2
       %h3= "#{@dados["period_number"]}º Periodo"
-    .col-xs-1
-      .dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %b.caret
-        %ul.dropdown-menu
-          %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"])
-          %li.divider
-          %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
-          %li.divider
-          %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
 
 %br
 -if @dados["subjects"].count >= 1
-  .row-fluid
-    .span12
-      .span6
-        %table.table.table-striped.table_border
-          %thead
-            %tr
-              %th= "Disciplinas"
-              %th= "Notas"
-          %tbody
-            - @dados["subjects"].each do |subject|
-              %tr
-                %td= link_to subject.name, period_subject_path(@dados["period"], subject)
-                %td= "#{subject.grade} / #{subject.value}"
-
-      .span6
-        %h5
-        %canvas#canvas{:height => "170", :width => "260"}
-
+  = render "periods/subjectstable"
 -else
   %p= "Este periodo nao possui disciplinas"
 

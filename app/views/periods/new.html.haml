@@ -2,5 +2,4 @@
   .row
     .col-xs-4
       %h3 Criar Periodo
-      = render 'form'
-      = link_to 'Cancelar', periods_path, class: "btn btn-lg btn-warning btn-block"
+      = render 'form', dom_id: 'new'

@@ -5,5 +5,5 @@
   = f.text_field :note, label: 'Detalhes'
   /%button.btn.btn-lg.btn-block.col-lg-2.btn-primary{:type => "submit", value: "Salvar trabalho"} Salvar trabalho
   /= f.submit 'Salvar trabalho'
-  %button.btn.btn-lg.btn-block.btn-primary{:name => "commit", :type => "submit", :value => "Salvar trabalho"} Salvar trabalho
-  = link_to 'Cancelar', period_subject_path(@period, @subject), class: "btn btn-lg btn-warning btn-block"
+  %button.btn.btn-primary{:name => "commit", :type => "submit", :value => "Salvar trabalho"} Salvar trabalho
+  = link_to 'Cancelar', period_subject_path(@period, @subject), class: "btn btn-warning"

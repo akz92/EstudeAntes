@@ -53,9 +53,9 @@ class PeriodsController < ApplicationController
 
     if @period.update(period_params)
       if @period.current_period
-        redirect_to periods_path, notice: 'Periodo atualizado com sucesso'
+        redirect_to root_path, notice: 'Periodo atualizado com sucesso'
       else
-        redirect_to periods_all_path, notice: 'Periodo atualizado com sucesso'
+        redirect_to period_subjects_path(@period), notice: 'Periodo atualizado com sucesso'
       end
     end
   end

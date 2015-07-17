@@ -1,8 +1,8 @@
 .navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %a.navbar-brand
-        Agenda Universitaria
+      %a.navbar-brand{href: "#{root_url}"}
+        EstudeAntes
     .container.nav-collapse
       %ul.nav.navbar-nav
         - if user_signed_in?

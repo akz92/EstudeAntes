@@ -1,7 +1,5 @@
-%h1 Editing event
-
-= render 'form'
-
-= link_to 'Show', period_subject_event_path(@period, @subject, @event)
-\|
-= link_to 'Back', period_subject_events_path(@period, @subject)
+.container-fluid
+  .row
+    .col-xs-4
+      %h3 Editing event
+      = render 'form'

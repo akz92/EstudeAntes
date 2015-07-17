@@ -120,10 +120,11 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
-      .btn-group.btn-block
-        = link_to 'Nova prova', new_period_subject_test_path(@period, @subject), class: "btn btn-lg btn-default"
-        = link_to 'Novo trabalho', trabalho_path(@period, @subject), class: "btn btn-lg btn-default"
-        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-lg btn-default"
+      //.btn-group.btn-block
+      .bs-component
+        = link_to 'Nova prova', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
+        = link_to 'Novo trabalho', trabalho_path(@period, @subject), class: "btn btn-default"
+        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-default"
 
     .col-xs-4
       /%h5 Aproveitamento

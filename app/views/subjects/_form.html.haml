@@ -1,5 +1,10 @@
 = bootstrap_form_for([@period,@subject]) do |f|
   = f.text_field :name, label: 'Nome'
-  /= f.submit 'Salvar'
-  %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Salvar
-  %br
+  - if dom_id == 'new'
+    .bs-component
+      %button.btn.btn-primary{:type => "submit"} Salvar
+      = link_to 'Cancelar', periods_path, class: "btn btn-warning"
+  - elsif dom_id == 'edit'
+    .bs-component
+      %button.btn.btn-primary{:type => "submit"} Salvar
+      = link_to 'Cancelar', period_subject_path(@period, @subject), class: "btn btn-warning"

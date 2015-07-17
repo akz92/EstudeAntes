@@ -2,7 +2,7 @@
   .row
     .col-xs-4
       %h3 Editar periodo
-      = render 'form'
-      = link_to 'Cancelar', periods_path, class: "btn btn-warning btn-lg btn-block"
-      
-      = link_to 'Deletar periodo', @period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o periodo?' }, class: "btn btn-small"
+      - if @period.current_period
+        = render 'form', dom_id: 'edit_current'
+      - else
+        = render 'form', dom_id: 'edit'
