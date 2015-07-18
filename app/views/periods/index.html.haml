@@ -17,6 +17,27 @@
   %h5 Para comecar adicione um periodo
   = link_to "Criar periodo", new_period_path, class: "btn btn-small"
 
+%button.btn.btn-info.btn-lg{"data-target" => "#PeriodModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
+=render "periods/modal"
+/ Modal
+-##myModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+        %h4.modal-title Adicionar periodo
+      .modal-body
+        = bootstrap_form_for Period.new do |f|
+          = f.date_field :init_date, label: 'Data inicial', required: true#,  as: :date_picker
+          = f.date_field :final_date, label: 'Data final', required:true#, as: :date_picker
+          = f.number_field :number, in: 1..20, label: 'Numero do periodo', required: true
+          %button.btn.btn-primary{:type => "submit"} Salvar
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+-#%button.btn.btn-info.btn-lg{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
+-#=render "subjects/modal"
+
 :javascript
 
   var subjectNames = new Array();

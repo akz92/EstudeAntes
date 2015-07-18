@@ -3,13 +3,14 @@ class PeriodsController < ApplicationController
   before_action :set_period, only: [:show, :edit, :update, :destroy]
   before_action :set_current_period, only: [:index, :new, :edit]
   before_action :set_other_periods, only: [:all, :index]
-  before_action :set_periods, only: [:new, :create]
+  before_action :set_periods, only: [:new, :create, :index]
 
   # GET /periods
   # GET /periods.json
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
     @dados = Period.get_tests_events_init_times(@current_period, @date, @other_periods)
+    @period = @periods.new
     gon.subjects = @dados["subjects"].map &:attributes
   end
 
@@ -38,10 +39,10 @@ class PeriodsController < ApplicationController
 
     if  @period.current_period && current_user.periods.where(current_period: true).count > 0
       render action: "new"
+    elsif @period.save
+      redirect_to root_path, notice: 'Periodo criado com sucesso'
     else
-	    if @period.save
-		    redirect_to root_path, notice: 'Periodo criado com sucesso'
-	    end
+      render action: "new"
     end
 
   end
@@ -65,11 +66,7 @@ class PeriodsController < ApplicationController
   def destroy
     @period.destroy
 
-    if @period.current_period
-      redirect_to periods_url, notice: 'Periodo removido com sucesso'
-    else
-      redirect_to periods_all_path, notice: 'Periodo removido com sucesso'
-    end
+    redirect_to root_url, notice: 'Periodo removido com sucesso'
   end
 
   private

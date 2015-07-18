@@ -16,15 +16,11 @@
 //= require bootstrap.min
 //= require turbolinks
 //= require Chart
+//= require civem
 //= require bootstrap
 //= require_tree .
 //
 if (window.location.href.indexOf('#_=_') > 0) {
 
 window.location = window.location.href.replace(/#.*/, '');
-//= require bootstrap-datetimepicker
-//= require bootstrap-datetimepicker/core
-//= require bootstrap-datetimepicker/pickers
-//= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu.js
-
 }

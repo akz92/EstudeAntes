@@ -4,8 +4,8 @@
   = render "devise/shared/facebook"
   %h4 Ou faca login para continuar
   = bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = f.email_field :email, placeholder: 'Email', label: false, :required => false, :autofocus => true, :input_html => {:style => 'width: 300px'}
-    = f.password_field :password, placeholder: 'Senha', label: false, :required => false
+    = f.email_field :email, placeholder: 'Email', hide_label: true, :required => true, :autofocus => true, :input_html => {:style => 'width: 300px'}
+    = f.password_field :password, placeholder: 'Senha', hide_label: true, :required => true
     = f.check_box :remember_me, label: 'Continuar Conectado', :as => :boolean if devise_mapping.rememberable?
     %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Entrar
   = render "devise/shared/links"

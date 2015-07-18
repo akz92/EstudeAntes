@@ -1,5 +1,5 @@
 = bootstrap_form_for([@period,@subject]) do |f|
-  = f.text_field :name, label: 'Nome'
+  = f.text_field :name, label: 'Nome', required: true
   - if dom_id == 'new'
     .bs-component
       %button.btn.btn-primary{:type => "submit"} Salvar
