@@ -51,13 +51,13 @@ gem 'devise'
 gem 'haml-rails'
 #gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails', :branch => 'bootstrap3'
 gem 'less-rails'
-gem 'better_errors'
-gem 'ice_cube'
+#gem 'better_errors'
+#gem 'ice_cube'
 gem 'omniauth-facebook'
 gem 'certified'
 gem 'brazilian-rails'
-gem 'gon'
-gem 'pry', group: [:development]
+#gem 'gon'
+#gem 'pry', group: [:development]
 gem 'rails-i18n', '~> 4.0.0'
 gem "font-awesome-rails"
 #gem 'bootstrap-datetimepicker-rails'
@@ -65,9 +65,9 @@ gem "font-awesome-rails"
 gem 'jquery-turbolinks'
 #gem 'bootstrap-generators', '~> 3.3.4'
 gem 'puma'
-gem 'mina'
+#gem 'mina'
 gem 'bootstrap_form'
 gem 'bootstrap-social-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem "recurrence", :require => "recurrence/namespace"
+#gem "recurrence", :require => "recurrence/namespace"
