@@ -41,7 +41,7 @@ class SubjectsController < ApplicationController
       if @period.current_period
         format.html { redirect_to root_url }
       else
-        format.html { redirect_to period_subjects_path(@period) }
+        format.html { redirect_to period_subjects_path(@period, @subjects) }
       end
     end
     #if @subject.save
