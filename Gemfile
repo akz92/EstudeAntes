@@ -56,7 +56,7 @@ gem 'less-rails'
 gem 'omniauth-facebook'
 gem 'certified'
 gem 'brazilian-rails'
-#gem 'gon'
+gem 'gon'
 #gem 'pry', group: [:development]
 gem 'rails-i18n', '~> 4.0.0'
 gem "font-awesome-rails"
