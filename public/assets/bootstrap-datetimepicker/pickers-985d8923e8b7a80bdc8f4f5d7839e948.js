@@ -1,1 +1,0 @@
-$(function(){$(".datepicker").datetimepicker({pickTime:!1})}),$(function(){$(".datetimepicker").datetimepicker({pickSeconds:!1})}),$(function(){$(".timepicker").datetimepicker({pickDate:!1,pickSeconds:!1})});

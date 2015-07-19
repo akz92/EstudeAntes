@@ -1,1 +1,0 @@
-(function(){var t;t=void 0,t=function(){return $(".tiptext").mouseover(function(){$(this).children(".description").show()}).mouseout(function(){$(this).children(".description").hide()})},$("#").on("change",function(){$("#esatu").toggle($(this).hasClass("relat__atu_yes"))})}).call(this);
