@@ -1,0 +1,27 @@
+.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{href: "#{root_url}"}
+        EstudeAntes
+    .container.nav-collapse
+      %ul.nav.navbar-nav.pull-right
+        %li
+          #user_nav
+            - if user_signed_in?
+              /Signed in as #{current_user.email}. Not you?
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  - if current_user.name
+                    #{current_user.name}
+                  - else
+                    #{current_user.email}
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to "Editar Conta", edit_user_registration_path
+                  %li= link_to "Sair", destroy_user_session_path, :method => :delete
+            - else
+              %li= link_to "Entrar", new_user_session_path
+              %li= link_to "Criar conta", new_user_registration_path
+
+
+
