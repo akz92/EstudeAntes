@@ -9,8 +9,8 @@
     = link_to 'Cancelar', periods_path, class: "btn btn-warning"
   - elsif dom_id == 'edit'
     = link_to 'Cancelar', period_subjects_path(@period), class: "btn btn-warning"
-  - unless dom_id == 'new'
-    = link_to 'Deletar periodo', @period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o periodo?' }, class: "btn btn-danger"
+  /- unless dom_id == 'new'
+  /  = link_to 'Deletar periodo', @period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o periodo?' }, class: "btn btn-danger"
   %br
   %br
       
