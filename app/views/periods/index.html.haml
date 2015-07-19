@@ -12,7 +12,7 @@
 
 -elsif @dados["period_number"] != []
   %h4.centertext= "Começe adicionando as disciplinas"
-  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"]), class: 'btn btn-primary'
+  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"]), class: 'btn btn-lg btn-primary'
 
 -else
   %h5 Para comecar adicione um periodo
