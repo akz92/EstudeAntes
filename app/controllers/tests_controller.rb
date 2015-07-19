@@ -2,6 +2,7 @@ class TestsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy]
   before_action :get_period_number, only: [:new, :edit, :trabalho]
+  respond_to :html, :json
   before_filter do
     @period = Period.find(params[:period_id])
     @subject = @period.subjects.find(params[:subject_id])
@@ -49,30 +50,42 @@ class TestsController < ApplicationController
     @subject.grade += @test.grade
     @subject.save
 
-    respond_to do |format|
-      if @test.save
-        format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @test }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
-      end
+    if @test.is_project
+      flash[:notice] = "Trabalho adicionado com sucesso." if @test.save
+    else
+      flash[:notice] = "Prova adicionada com sucesso." if @test.save
     end
+    respond_with(@test, location: period_subject_path(@period, @subject))
+    #respond_to do |format|
+    #  if @test.save
+    #    format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully created.' }
+    #    format.json { render action: 'show', status: :created, location: @test }
+    #  else
+    #    format.html { render action: 'new' }
+    #    format.json { render json: @test.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    @test.is_project = params[:test][:is_project]
-    respond_to do |format|
-      if @test.update(test_params)
-        format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
-      end
+    #@test.is_project = params[:test][:is_project]
+    if @test.is_project
+      flash[:notice] = "Trabalho alterado com sucesso." if @test.save
+    else
+      flash[:notice] = "Prova alterada com sucesso." if @test.save
     end
+    respond_with(@test, location: period_subject_path(@period, @subject))
+    #respond_to do |format|
+    #  if @test.update(test_params)
+    #    format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully updated.' }
+    #    format.json { head :no_content }
+    #  else
+    #    format.html { render action: 'edit' }
+    #    format.json { render json: @test.errors, status: :unprocessable_entity }
+    #  end
+    #end
 
     @subject.value = 0
     @subject.grade = 0
@@ -93,8 +106,14 @@ class TestsController < ApplicationController
     @subject.grade -= @test.grade
     @subject.save
 
-    @test.destroy
-    redirect_to period_subject_path(@period, @subject)
+    if @test.is_project
+      params[:notice] = "Trabalho removido com sucesso." if @test.destroy
+    else
+      params[:notice] = "Prova removida com sucesso" if @test.destroy
+    end
+    respond_with(@test, location: period_subject_path(@period, @subject))
+    #@test.destroy
+    #redirect_to period_subject_path(@period, @subject)
   end
 
   private

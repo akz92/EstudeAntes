@@ -1,5 +1,6 @@
 =include_gon
 
+/= flash[:notice]
 -if @dados["period_number"] != [] && @dados["init_times"] != []
   = render "/periods/calendariosemanal"
   %hr

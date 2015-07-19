@@ -1,5 +1,6 @@
 .container-fluid
   .row
     .col-xs-4
+      /= flash[:notice]
       %h3 Criar Periodo
       = render 'form', dom_id: 'new'

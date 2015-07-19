@@ -1,9 +1,10 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :new, :edit, :fullcalendar_events]
+  before_action :set_current_period, only: [:index, :new, :edit]#, :fullcalendar_events]
   before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create, :index]
+  respond_to :html, :json
 
   # GET /periods
   # GET /periods.json
@@ -14,10 +15,10 @@ class PeriodsController < ApplicationController
     gon.subjects = @dados["subjects"].map &:attributes
   end
 
-  def fullcalendar_events
-    events = Period.get_events(@current_period)
-    render text: events.to_json
-  end
+  #def fullcalendar_events
+  #  events = Period.get_events(@current_period)
+  #  render text: events.to_json
+  #end
 
   def all
     Period.get_periods_and_means(@other_periods)
@@ -44,11 +45,21 @@ class PeriodsController < ApplicationController
 
     if  @period.current_period && current_user.periods.where(current_period: true).count > 0
       render action: "new"
-    elsif @period.save
-      redirect_to root_path, notice: 'Periodo criado com sucesso'
+      flash[:notice] = "Ja existe um periodo vigente."
     else
-      render action: "new"
+      flash[:notice] = "Periodo criado com sucesso." if  @period.save
+      respond_with(@period) do |format|
+        format.html { redirect_to root_path }
+      end
     end
+
+    #if  @period.current_period && current_user.periods.where(current_period: true).count > 0
+    #  render action: "new"
+    #elsif @period.save
+    #  redirect_to root_path, notice: 'Periodo criado com sucesso'
+    #else
+    #  render action: "new"
+    #end
 
   end
 
@@ -57,21 +68,31 @@ class PeriodsController < ApplicationController
   def update
     @period = Period.check_current_period(@period)
 
-    if @period.update(period_params)
+    flash[:notice] = "Periodo atualizado com sucesso." if @period.update(period_params)
+    respond_with(@period) do |format|
       if @period.current_period
-        redirect_to root_path, notice: 'Periodo atualizado com sucesso'
+        format.html { redirect_to root_path }
       else
-        redirect_to period_subjects_path(@period), notice: 'Periodo atualizado com sucesso'
+        format.html { redirect_to period_subjects_path(@period) }
       end
     end
+    #if @period.update(period_params)
+    #  if @period.current_period
+    #    redirect_to root_path, notice: 'Periodo atualizado com sucesso'
+    #  else
+    #    redirect_to period_subjects_path(@period), notice: 'Periodo atualizado com sucesso'
+    #  end
+    #end
   end
 
   # DELETE /periods/1
   # DELETE /periods/1.json
   def destroy
-    @period.destroy
+    #@period.destroy
 
-    redirect_to root_url, notice: 'Periodo removido com sucesso'
+    flash[:notice] = "Periodo removido com sucesso." if @period.destroy
+    respond_with(@period)
+    #redirect_to root_url, notice: 'Periodo removido com sucesso'
   end
 
   private
