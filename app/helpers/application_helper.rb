@@ -13,5 +13,4 @@ module ApplicationHelper
       render partial: "/subjects/navbar"
     end
   end
-
 end
