@@ -3919,3 +3919,193 @@ I, [2015-07-17T13:38:37.667415 #32343]  INFO -- omniauth: (facebook) Callback ph
 [6048] * Starting control server on unix:///tmp/puma-status-1437238948207-6048
 [6048] - Worker 0 (pid: 6097) booted, phase: 0
 I, [2015-07-18T13:17:08.919109 #6097]  INFO -- omniauth: (facebook) Request phase initiated.
+[6048] - Gracefully shutting down workers...
+[6048] === puma shutdown: 2015-07-18 13:29:39 -0400 ===
+[6048] - Goodbye!
+=== puma startup: 2015-07-18 13:29:40 -0400 ===
+[6510] * Starting control server on unix:///tmp/puma-status-1437240580269-6510
+[6510] - Worker 0 (pid: 6559) booted, phase: 0
+[6510] - Gracefully shutting down workers...
+[6510] === puma shutdown: 2015-07-18 13:31:01 -0400 ===
+[6510] - Goodbye!
+=== puma startup: 2015-07-18 13:31:02 -0400 ===
+[6653] * Starting control server on unix:///tmp/puma-status-1437240662558-6653
+[6653] - Worker 0 (pid: 6702) booted, phase: 0
+[6653] - Gracefully shutting down workers...
+[6653] === puma shutdown: 2015-07-18 13:34:04 -0400 ===
+[6653] - Goodbye!
+=== puma startup: 2015-07-18 13:34:05 -0400 ===
+[6725] * Starting control server on unix:///tmp/puma-status-1437240845418-6725
+[6725] - Worker 0 (pid: 6774) booted, phase: 0
+[6725] - Gracefully shutting down workers...
+[6725] === puma shutdown: 2015-07-18 13:34:45 -0400 ===
+[6725] - Goodbye!
+=== puma startup: 2015-07-18 13:34:46 -0400 ===
+[6792] * Starting control server on unix:///tmp/puma-status-1437240886511-6792
+[6792] - Worker 0 (pid: 6841) booted, phase: 0
+[6792] - Gracefully shutting down workers...
+[6792] === puma shutdown: 2015-07-18 13:35:50 -0400 ===
+[6792] - Goodbye!
+=== puma startup: 2015-07-18 13:35:50 -0400 ===
+[6862] * Starting control server on unix:///tmp/puma-status-1437240950819-6862
+[6862] - Worker 0 (pid: 6912) booted, phase: 0
+[6862] - Gracefully shutting down workers...
+[6862] === puma shutdown: 2015-07-18 13:36:57 -0400 ===
+[6862] - Goodbye!
+=== puma startup: 2015-07-18 13:36:57 -0400 ===
+[6932] * Starting control server on unix:///tmp/puma-status-1437241017824-6932
+[6932] - Worker 0 (pid: 6981) booted, phase: 0
+[6932] - Gracefully shutting down workers...
+[6932] === puma shutdown: 2015-07-18 13:37:59 -0400 ===
+[6932] - Goodbye!
+=== puma startup: 2015-07-18 13:38:00 -0400 ===
+[7001] * Starting control server on unix:///tmp/puma-status-1437241080664-7001
+[7001] - Worker 0 (pid: 7050) booted, phase: 0
+[7001] - Gracefully shutting down workers...
+[7001] === puma shutdown: 2015-07-18 13:38:59 -0400 ===
+[7001] - Goodbye!
+=== puma startup: 2015-07-18 13:38:59 -0400 ===
+[7070] * Starting control server on unix:///tmp/puma-status-1437241139985-7070
+[7070] - Worker 0 (pid: 7119) booted, phase: 0
+[7070] - Gracefully shutting down workers...
+[7070] === puma shutdown: 2015-07-18 13:40:35 -0400 ===
+[7070] - Goodbye!
+=== puma startup: 2015-07-18 13:40:36 -0400 ===
+[7140] * Starting control server on unix:///tmp/puma-status-1437241236122-7140
+[7140] - Worker 0 (pid: 7189) booted, phase: 0
+[7140] - Gracefully shutting down workers...
+[7140] === puma shutdown: 2015-07-18 13:40:50 -0400 ===
+[7140] - Goodbye!
+=== puma startup: 2015-07-18 13:40:50 -0400 ===
+[7207] * Starting control server on unix:///tmp/puma-status-1437241250709-7207
+[7207] - Worker 0 (pid: 7256) booted, phase: 0
+[7207] - Gracefully shutting down workers...
+[7207] === puma shutdown: 2015-07-18 13:42:44 -0400 ===
+[7207] - Goodbye!
+=== puma startup: 2015-07-18 13:42:44 -0400 ===
+[7278] * Starting control server on unix:///tmp/puma-status-1437241364763-7278
+[7278] - Worker 0 (pid: 7327) booted, phase: 0
+[7278] - Gracefully shutting down workers...
+[7278] === puma shutdown: 2015-07-18 13:44:30 -0400 ===
+[7278] - Goodbye!
+=== puma startup: 2015-07-18 13:44:31 -0400 ===
+[7349] * Starting control server on unix:///tmp/puma-status-1437241471194-7349
+[7349] - Worker 0 (pid: 7398) booted, phase: 0
+[7349] - Gracefully shutting down workers...
+[7349] === puma shutdown: 2015-07-18 13:46:41 -0400 ===
+[7349] - Goodbye!
+=== puma startup: 2015-07-18 13:46:41 -0400 ===
+[7420] * Starting control server on unix:///tmp/puma-status-1437241601992-7420
+[7420] - Worker 0 (pid: 7469) booted, phase: 0
+[7420] - Gracefully shutting down workers...
+[7420] === puma shutdown: 2015-07-18 13:50:55 -0400 ===
+[7420] - Goodbye!
+=== puma startup: 2015-07-18 13:50:55 -0400 ===
+[7500] * Starting control server on unix:///tmp/puma-status-1437241855944-7500
+[7500] - Worker 0 (pid: 7549) booted, phase: 0
+[7500] - Gracefully shutting down workers...
+[7500] === puma shutdown: 2015-07-18 13:52:44 -0400 ===
+[7500] - Goodbye!
+=== puma startup: 2015-07-18 13:52:44 -0400 ===
+[7570] * Starting control server on unix:///tmp/puma-status-1437241964942-7570
+[7570] - Worker 0 (pid: 7619) booted, phase: 0
+[7570] - Gracefully shutting down workers...
+[7570] === puma shutdown: 2015-07-18 13:54:19 -0400 ===
+[7570] - Goodbye!
+=== puma startup: 2015-07-18 13:54:20 -0400 ===
+[7641] * Starting control server on unix:///tmp/puma-status-1437242060232-7641
+[7641] - Worker 0 (pid: 7690) booted, phase: 0
+[7641] - Gracefully shutting down workers...
+[7641] === puma shutdown: 2015-07-18 14:19:55 -0400 ===
+[7641] - Goodbye!
+=== puma startup: 2015-07-18 14:19:56 -0400 ===
+[7883] * Starting control server on unix:///tmp/puma-status-1437243596129-7883
+[7883] - Worker 0 (pid: 7932) booted, phase: 0
+=== puma startup: 2015-07-18 14:24:41 -0400 ===
+[928] * Starting control server on unix:///tmp/puma-status-1437243881736-928
+[928] - Worker 0 (pid: 1011) booted, phase: 0
+[928] - Gracefully shutting down workers...
+[928] === puma shutdown: 2015-07-18 14:37:26 -0400 ===
+[928] - Goodbye!
+=== puma startup: 2015-07-18 14:37:26 -0400 ===
+[1602] * Starting control server on unix:///tmp/puma-status-1437244646664-1602
+[1602] - Worker 0 (pid: 1651) booted, phase: 0
+[1602] - Gracefully shutting down workers...
+[1602] === puma shutdown: 2015-07-18 14:38:04 -0400 ===
+[1602] - Goodbye!
+=== puma startup: 2015-07-18 14:38:04 -0400 ===
+[1670] * Starting control server on unix:///tmp/puma-status-1437244684816-1670
+[1670] - Worker 0 (pid: 1719) booted, phase: 0
+[1670] - Gracefully shutting down workers...
+[1670] === puma shutdown: 2015-07-18 14:56:38 -0400 ===
+[1670] - Goodbye!
+=== puma startup: 2015-07-18 14:56:39 -0400 ===
+[1995] * Starting control server on unix:///tmp/puma-status-1437245799528-1995
+[1995] - Worker 0 (pid: 2044) booted, phase: 0
+[1995] - Gracefully shutting down workers...
+[1995] === puma shutdown: 2015-07-18 14:58:42 -0400 ===
+[1995] - Goodbye!
+=== puma startup: 2015-07-18 14:58:43 -0400 ===
+[2118] * Starting control server on unix:///tmp/puma-status-1437245923428-2118
+[2118] - Worker 0 (pid: 2167) booted, phase: 0
+[2118] - Gracefully shutting down workers...
+[2118] === puma shutdown: 2015-07-18 14:59:47 -0400 ===
+[2118] - Goodbye!
+=== puma startup: 2015-07-18 14:59:48 -0400 ===
+[2236] * Starting control server on unix:///tmp/puma-status-1437245988582-2236
+[2236] - Worker 0 (pid: 2285) booted, phase: 0
+[2236] - Gracefully shutting down workers...
+[2236] === puma shutdown: 2015-07-18 15:01:06 -0400 ===
+[2236] - Goodbye!
+=== puma startup: 2015-07-18 15:01:07 -0400 ===
+[2353] * Starting control server on unix:///tmp/puma-status-1437246067660-2353
+[2353] - Worker 0 (pid: 2402) booted, phase: 0
+[2353] - Gracefully shutting down workers...
+[2353] === puma shutdown: 2015-07-18 15:03:40 -0400 ===
+[2353] - Goodbye!
+=== puma startup: 2015-07-18 15:03:41 -0400 ===
+[2429] * Starting control server on unix:///tmp/puma-status-1437246221417-2429
+[2429] - Worker 0 (pid: 2478) booted, phase: 0
+[2429] - Gracefully shutting down workers...
+[2429] === puma shutdown: 2015-07-18 15:04:15 -0400 ===
+[2429] - Goodbye!
+=== puma startup: 2015-07-18 15:04:15 -0400 ===
+[2529] * Starting control server on unix:///tmp/puma-status-1437246255734-2529
+[2529] - Worker 0 (pid: 2578) booted, phase: 0
+[2529] - Gracefully shutting down workers...
+[2529] === puma shutdown: 2015-07-18 15:20:46 -0400 ===
+[2529] - Goodbye!
+=== puma startup: 2015-07-18 15:20:47 -0400 ===
+[2638] * Starting control server on unix:///tmp/puma-status-1437247247739-2638
+[2638] - Worker 0 (pid: 2687) booted, phase: 0
+[2638] - Gracefully shutting down workers...
+[2638] === puma shutdown: 2015-07-18 15:29:16 -0400 ===
+[2638] - Goodbye!
+=== puma startup: 2015-07-18 15:29:16 -0400 ===
+[2728] * Starting control server on unix:///tmp/puma-status-1437247756928-2728
+[2728] - Worker 0 (pid: 2777) booted, phase: 0
+[2728] - Gracefully shutting down workers...
+[2728] === puma shutdown: 2015-07-18 15:29:59 -0400 ===
+[2728] - Goodbye!
+=== puma startup: 2015-07-18 15:29:59 -0400 ===
+[2797] * Starting control server on unix:///tmp/puma-status-1437247799899-2797
+[2797] - Worker 0 (pid: 2846) booted, phase: 0
+I, [2015-07-18T16:22:07.633937 #2846]  INFO -- omniauth: (facebook) Request phase initiated.
+[2797] - Gracefully shutting down workers...
+[2797] === puma shutdown: 2015-07-18 18:39:35 -0400 ===
+[2797] - Goodbye!
+=== puma startup: 2015-07-18 18:39:35 -0400 ===
+[4656] * Starting control server on unix:///tmp/puma-status-1437259175734-4656
+[4656] - Worker 0 (pid: 4705) booted, phase: 0
+[4656] - Gracefully shutting down workers...
+[4656] === puma shutdown: 2015-07-18 18:40:59 -0400 ===
+[4656] - Goodbye!
+=== puma startup: 2015-07-18 18:41:00 -0400 ===
+[4800] * Starting control server on unix:///tmp/puma-status-1437259260248-4800
+[4800] - Worker 0 (pid: 4849) booted, phase: 0
+[4800] - Gracefully shutting down workers...
+[4800] === puma shutdown: 2015-07-18 20:08:14 -0400 ===
+[4800] - Goodbye!
+=== puma startup: 2015-07-18 20:08:15 -0400 ===
+[5386] * Starting control server on unix:///tmp/puma-status-1437264495951-5386
+[5386] - Worker 0 (pid: 5435) booted, phase: 0

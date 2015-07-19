@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :get_period_number, only: [:new, :edit]
+  respond_to :json
   before_filter do
     @period = Period.find(params[:period_id])
     @subject = @period.subjects.find(params[:subject_id])
@@ -11,6 +12,15 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = @subject.events.all
+  end
+
+  def get_events
+    @events = @subject.events.all
+    fullcalendar_events = []
+    @events.each do |event|
+      fullcalendar_events << {id: event.id, title: @subject.name, start: event.init_time, end: event.final_time}
+    end
+    render text: fullcalendar_events.to_json
   end
 
   # GET /events/1

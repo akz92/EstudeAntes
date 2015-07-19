@@ -53,6 +53,17 @@ class Period < ActiveRecord::Base
     return dados
   end
 
+  def self.get_events(period)
+    events = []
+    period[0].subjects.each do |subject|
+      subject.events.each do |event|
+        events << {id: event.id, title: subject.name, start: event.init_time.strftime("%Y-%m-%d"),  end: event.final_time.strftime("%Y-%m-%d")}
+      end
+    end
+  
+  return events
+  end
+
   def self.check_current_period(period)
     if (period.init_date != nil && period.final_date != nil &&(Date.today >= period.init_date) && (Date.today <= period.final_date))
       period.current_period = true

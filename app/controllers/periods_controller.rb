@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :new, :edit]
+  before_action :set_current_period, only: [:index, :new, :edit, :fullcalendar_events]
   before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create, :index]
 
@@ -12,6 +12,11 @@ class PeriodsController < ApplicationController
     @dados = Period.get_tests_events_init_times(@current_period, @date, @other_periods)
     @period = @periods.new
     gon.subjects = @dados["subjects"].map &:attributes
+  end
+
+  def fullcalendar_events
+    events = Period.get_events(@current_period)
+    render text: events.to_json
   end
 
   def all

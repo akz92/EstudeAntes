@@ -28,7 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Simple Form: modelo simplificado para formularios em geral
-gem 'simple_form'
+#gem 'simple_form'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -68,3 +68,6 @@ gem 'puma'
 gem 'mina'
 gem 'bootstrap_form'
 gem 'bootstrap-social-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem "recurrence", :require => "recurrence/namespace"
