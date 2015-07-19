@@ -70,8 +70,11 @@ class PeriodsController < ApplicationController
 
     flash[:notice] = "Periodo atualizado com sucesso." if @period.update(period_params)
     respond_with(@period) do |format|
-      format.html { redirect_to root_path } if @period.current_period
-      format.html { redirect_to period_subjects_path(@period) } unless @period.current_period
+      if @period.current_period
+        format.html { redirect_to root_path }
+      else
+        format.html { redirect_to period_subjects_path(@period) }
+      end
     end
     #if @period.update(period_params)
     #  if @period.current_period
