@@ -7954,3 +7954,14 @@
 /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:79: warning: circular argument reference - reflection
 /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:83: warning: circular argument reference - reflection
 /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:102: warning: circular argument reference - reflection
+=== puma startup: 2015-07-19 18:54:40 -0400 ===
+=== puma startup: 2015-07-19 18:56:46 -0400 ===
+=== puma startup: 2015-07-19 19:00:59 -0400 ===
+=== puma startup: 2015-07-19 19:20:09 -0400 ===
+/home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.0.0/lib/active_support/values/time_zone.rb:282: warning: circular argument reference - now
+/home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:75: warning: circular argument reference - reflection
+/home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:79: warning: circular argument reference - reflection
+/home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:83: warning: circular argument reference - reflection
+/home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activerecord-4.0.0/lib/active_record/associations/has_many_association.rb:102: warning: circular argument reference - reflection
+=== puma startup: 2015-07-19 19:24:46 -0400 ===
+DEPRECATION WARNING: The configuration option `config.serve_static_assets` has been renamed to `config.serve_static_files` to clarify its role (it merely enables serving everything in the `public` folder and is unrelated to the asset pipeline). The `serve_static_assets` alias will be removed in Rails 5.0. Please migrate your configuration files accordingly. (called from block in <top (required)> at /home/deployer/agenda/config/environments/production.rb:23)

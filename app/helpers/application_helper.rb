@@ -4,6 +4,8 @@ module ApplicationHelper
     if @dados
       if @dados["current_period"] && @dados["period_number"] != []
         render partial: "/periods/navbar"
+      elsif @period == nil
+        render partial: "/periods/initial_navbar"
       elsif @dados["period_number"] != []
         render partial: "/subjects/navbar"
       else
