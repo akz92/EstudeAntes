@@ -38,8 +38,11 @@ class SubjectsController < ApplicationController
 
     params[:notice] = "Disciplina criada com sucesso." if @subject.save
     respond_with(@subject) do |format|
-      format.html { redirect_to root_path } if @period.current_period
-      format.html { redirect_to period_subjects_path(@period) } unless @period.current_period
+      if @period.current_period
+        format.html { redirect_to root_url }
+      else
+        format.html { redirect_to period_subjects_path(@period, @subjects) }
+      end
     end
     #if @subject.save
     #  if @period.current_period
