@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_action :get_period_number, only: [:index, :show, :edit, :new]
+  respond_to :html, :json
 
   before_filter do
     @period = Period.find(params[:period_id])
@@ -35,41 +36,59 @@ class SubjectsController < ApplicationController
   def create
     @subject = @period.subjects.new(subject_params)
 
-		if @subject.save
-			if @period.current_period
-				redirect_to periods_path, notice: 'Disciplina criada com sucesso'
-			else
-				redirect_to period_subjects_path(@period, @subjects), notice: 'Disciplina criada com sucesso'
-			end
-		else
-			render action: 'new'
-		end
+    params[:notice] = "Disciplina criada com sucesso." if @subject.save
+    respond_with(@subject) do |format|
+      if @period.current_period
+        format.html { redirect_to root_path }
+      else
+        format.html { redirect_to period_subjects_path(@period) }
+      end
+    end
+    #if @subject.save
+    #  if @period.current_period
+    #    redirect_to periods_path, notice: 'Disciplina criada com sucesso'
+    #  else
+    #    redirect_to period_subjects_path(@period, @subjects), notice: 'Disciplina criada com sucesso'
+    #  end
+    #else
+    #  render action: 'new'
+    #end
   end
 
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
   def update
-    respond_to do |format|
-      if @subject.update(subject_params)
-        format.html { redirect_to period_subject_url(@period, @subject), notice: 'Subject was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
-    end
+    params[:notice] = "Disciplina alterada com sucesso." if @subject.update(subject_params)
+    respond_with(@subject, location: period_subject_path(@period, @subject))
+    #respond_to do |format|
+    #  if @subject.update(subject_params)
+    #    format.html { redirect_to period_subject_url(@period, @subject), notice: 'Subject was successfully updated.' }
+    #    format.json { head :no_content }
+    #  else
+    #    format.html { render action: 'edit' }
+    #    format.json { render json: @subject.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    @subject.destroy
+    params[:notice] = "Disciplina removida com sucesso." if @subject.destroy
+    respond_with(@subject) do |format|
+      if @period.current_period
+        format.html { redirect_to root_url }
+      else
+        format.html { redirect_to period_subjects_path(@period, @subject) }
+      end
+    end
+    #@subject.destroy
 
-		if @period.current_period
-			redirect_to periods_url
-		else
-			redirect_to period_subjects_path(@period, @subject)
-		end
+    #if @period.current_period
+    #  redirect_to periods_url
+    #else
+    #  redirect_to period_subjects_path(@period, @subject)
+    #end
   end
 
   private
