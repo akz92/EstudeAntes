@@ -4133,3 +4133,22 @@ I, [2015-07-18T16:22:07.633937 #2846]  INFO -- omniauth: (facebook) Request phas
 === puma startup: 2015-07-19 19:24:46 -0400 ===
 [2205] * Starting control server on unix:///tmp/puma-status-1437348286537-2205
 [2205] - Worker 0 (pid: 2255) booted, phase: 0
+[2205] - Gracefully shutting down workers...
+[2205] === puma shutdown: 2015-07-19 19:45:48 -0400 ===
+[2205] - Goodbye!
+=== puma startup: 2015-07-19 19:45:49 -0400 ===
+[2463] * Starting control server on unix:///tmp/puma-status-1437349549514-2463
+[2463] - Worker 0 (pid: 2513) booted, phase: 0
+[2463] - Gracefully shutting down workers...
+[2463] === puma shutdown: 2015-07-19 19:51:18 -0400 ===
+[2463] - Goodbye!
+=== puma startup: 2015-07-19 19:51:19 -0400 ===
+[2586] * Starting control server on unix:///tmp/puma-status-1437349879561-2586
+[2586] - Worker 0 (pid: 2636) booted, phase: 0
+I, [2015-07-19T20:01:58.815623 #2636]  INFO -- omniauth: (facebook) Request phase initiated.
+[2586] - Gracefully shutting down workers...
+[2586] === puma shutdown: 2015-07-19 21:48:01 -0400 ===
+[2586] - Goodbye!
+=== puma startup: 2015-07-19 21:48:02 -0400 ===
+[3233] * Starting control server on unix:///tmp/puma-status-1437356882270-3233
+[3233] - Worker 0 (pid: 3283) booted, phase: 0

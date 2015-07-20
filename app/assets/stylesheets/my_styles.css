@@ -106,15 +106,6 @@ body{
   webkit-box-shadow: none;
 }
 
-.hidden {
-  display: none;
-}
-
-.normal:hover .hidden {
-  background-color: red;
-  display: block;
-}
-
 .datewidth {
   width: 170px;
 }
@@ -129,6 +120,11 @@ body{
 
 .bottom {
   vertical-align: bottom;
+}
+
+table, th, td {
+    border: 1px solid grey !important;
+    border-collapse: collapse !important;
 }
 
 * {
