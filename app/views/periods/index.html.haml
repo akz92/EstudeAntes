@@ -11,12 +11,12 @@
   = render "periods/subjectstable"
 
 -elsif @dados["period_number"] != []
-  %h4.centertext= "Começe adicionando as disciplinas"
+  %h4.centertext= "Agora adicione as disciplinas"
   %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"]), class: 'btn btn-primary'
 
 -else
-  %h5 Para comecar adicione um periodo
-  = link_to "Criar periodo", new_period_path, class: "btn btn-small"
+  %h4.centertext= "Começe adicionando um período"
+  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar período'.html_safe, new_period_path, class: 'btn btn-primary'
 
 -#%button.btn.btn-info.btn-lg{"data-target" => "#PeriodModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
 -#=render "periods/modal"
