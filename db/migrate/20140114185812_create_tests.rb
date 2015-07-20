@@ -5,6 +5,7 @@ class CreateTests < ActiveRecord::Migration
       t.integer :value
       t.integer :grade
       t.string :note
+      t.integer :subject_id
 
       t.timestamps
     end

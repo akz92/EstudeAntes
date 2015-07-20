@@ -1,5 +1,5 @@
 ---
-pid: 3233
+pid: 17809
 config: !ruby/object:Puma::Configuration
   options:
     :min_threads: 1
@@ -21,7 +21,7 @@ config: !ruby/object:Puma::Configuration
     :redirect_append: true
     :pidfile: "/home/deployer/agenda/shared/pids/puma.pid"
     :state: "/home/deployer/agenda/shared/pids/puma.state"
-    :control_url: unix:///tmp/puma-status-1437356882270-3233
-    :control_url_temp: "/tmp/puma-status-1437356882270-3233"
-    :control_auth_token: 1b6e4cbb6faa66df3c405eccc5466ae
+    :control_url: unix:///tmp/puma-status-1437403801196-17809
+    :control_url_temp: "/tmp/puma-status-1437403801196-17809"
+    :control_auth_token: 26c14cb7f6b00a3bfcabed391c1295
     :tag: agenda

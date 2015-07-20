@@ -16,13 +16,7 @@ ActiveRecord::Schema.define(version: 20150716012137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "courses", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.integer  "weekday"
     t.time     "init_time"
     t.time     "final_time"
@@ -33,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150716012137) do
     t.string   "subject_name"
   end
 
-  create_table "periods", force: true do |t|
+  create_table "periods", force: :cascade do |t|
     t.date     "init_date"
     t.date     "final_date"
     t.integer  "number"
@@ -44,17 +38,7 @@ ActiveRecord::Schema.define(version: 20150716012137) do
     t.float    "mean"
   end
 
-  create_table "projects", force: true do |t|
-    t.datetime "date"
-    t.integer  "value"
-    t.integer  "grade"
-    t.string   "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "subject_id"
-  end
-
-  create_table "subjects", force: true do |t|
+  create_table "subjects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -63,19 +47,18 @@ ActiveRecord::Schema.define(version: 20150716012137) do
     t.float    "grade"
   end
 
-  create_table "tests", force: true do |t|
+  create_table "tests", force: :cascade do |t|
     t.datetime "date"
     t.integer  "value"
     t.float    "grade"
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "subject_id"
     t.string   "subject_name"
     t.boolean  "is_project"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
