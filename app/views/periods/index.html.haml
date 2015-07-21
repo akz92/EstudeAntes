@@ -2,7 +2,7 @@
 
 /= flash[:notice]
 -if @dados["period_number"] != [] && @dados["init_times"] != []
-  /= render "/periods/calendariosemanal"
+  = render "/periods/calendariosemanal"
   %hr
   = render "periods/subjectstable"
 

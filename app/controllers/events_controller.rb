@@ -42,8 +42,6 @@ class EventsController < ApplicationController
   def create
     @event = @subject.events.new(event_params)
     @event.subject_name = @subject.name
-    @event.start_date = @period.init_date
-    @event.end_date = @period.final_date
 
     flash[:notice] = "Evento criado com sucesso." if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))

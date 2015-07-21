@@ -43,7 +43,7 @@ class Period < ActiveRecord::Base
       end
     end
 
-    dados["events"].sort_by! { |a| [a.init_time, a.final_time] }
+    dados["events"].sort_by! { |a| [a.weekday, a.init_time, a.final_time] }
 
     unless dados["init_times"] == []
       dados["init_times"].uniq!
