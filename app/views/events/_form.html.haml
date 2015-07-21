@@ -1,8 +1,7 @@
-= bootstrap_form_for([@period, @subject, @event]) do |f|
+= bootstrap_form_for([@period, @subject, @form_data]) do |f|
   = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana' 
   = f.time_select :init_time, label: 'Horario de inicio'#, as: :time_picker
   = f.time_select :final_time, label: 'Horario de termino'#, as: :time_picker
-  = f.check_box :recurrent, label: 'Recorrente'
   /= f.submit 'Criar'
   %button.btn.btn-primary{type: ' submit' } Salvar
   = link_to 'Cancelar', period_subject_path(@period, @subject), class: "btn btn-warning"

@@ -68,6 +68,6 @@ gem 'puma'
 #gem 'mina'
 gem 'bootstrap_form'
 gem 'bootstrap-social-rails'
-gem 'fullcalendar-rails'
-gem 'momentjs-rails'
+#gem 'fullcalendar-rails'
+#gem 'momentjs-rails'
 gem "recurrence", :require => "recurrence/namespace"

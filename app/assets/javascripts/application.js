@@ -17,8 +17,6 @@
 //= require turbolinks
 //= require Chart
 //= require civem
-//= require moment
-//= require fullcalendar
 //= require bootstrap
 //= require_tree .
 //
