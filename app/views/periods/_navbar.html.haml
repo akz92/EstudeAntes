@@ -1,4 +1,104 @@
-.navbar.navbar-default.navbar-fixed-top
+%nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+  / Brand and toggle get grouped for better mobile display
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#{root_url}"} EstudeAntes
+    / Collection of nav links and other content for toggling
+    #navbarCollapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            #{@dados["period_number"]}º Período
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"])
+            %li.divider
+            %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
+            %li.divider
+            %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            Outros Períodos
+            %b.caret
+          %ul.dropdown-menu
+            - @dados["all_periods"].each do |period|
+              %li= link_to "#{period.number}º Período", period_subjects_path(period)
+              %li.divider
+            %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar novo periodo'.html_safe, new_period_path, class: "icon-plus icon-white"
+        /%li= link_to "Outros períodos", periods_all_path
+      %ul.nav.navbar-nav.pull-right
+        %li
+          #user_nav
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                - if current_user.name
+                  #{current_user.name}
+                - else
+                  #{current_user.email}
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to "Editar Conta", edit_user_registration_path
+                %li= link_to "Sair", destroy_user_session_path, :method => :delete
+-#%nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+  .container
+    .navbar-header
+      %a.navbar-brand{href: "#{root_url}"}
+        EstudeAntes
+        %button.navbar-toggle{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle Navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+    #navbarCollapse.collapse.nav-collapse
+      %ul.nav.navbar-nav
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              #{@dados["period_number"]}º Período
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"])
+              %li.divider
+              %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@dados["period"]), class: "icon-pencil icon-white"
+              %li.divider
+              %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @dados["period"], method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Outros Períodos
+              %b.caret
+            %ul.dropdown-menu
+              - @dados["all_periods"].each do |period|
+                %li= link_to "#{period.number}º Período", period_subjects_path(period)
+                %li.divider
+              %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar novo periodo'.html_safe, new_period_path, class: "icon-plus icon-white"
+          /%li= link_to "Outros períodos", periods_all_path
+      %ul.nav.navbar-nav.pull-right
+        %li
+          #user_nav
+            - if user_signed_in?
+              /Signed in as #{current_user.email}. Not you?
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  - if current_user.name
+                    #{current_user.name}
+                  - else
+                    #{current_user.email}
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to "Editar Conta", edit_user_registration_path
+                  %li= link_to "Sair", destroy_user_session_path, :method => :delete
+            - else
+              %li= link_to "Entrar", new_user_session_path
+              %li= link_to "Criar conta", new_user_registration_path
+-#:javascript
+  $(".collapse").collapse({"toggle": "show"});
+
+-#.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       %a.navbar-brand{href: "#{root_url}"}
@@ -44,6 +144,3 @@
             - else
               %li= link_to "Entrar", new_user_session_path
               %li= link_to "Criar conta", new_user_registration_path
-
-
-

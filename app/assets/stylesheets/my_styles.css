@@ -71,8 +71,6 @@ body{
   background-color: #F8F8F8;
   border: 1px solid #e8e8e8;
   padding: 25px;
-  margin: auto;
-  width: 33%
 }
 
 .centertext {
@@ -125,6 +123,17 @@ body{
 table, th, td {
     border: 1px solid grey !important;
     border-collapse: collapse !important;
+}
+
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  text-align: left;
+  margin-right: -4px;
 }
 
 * {
