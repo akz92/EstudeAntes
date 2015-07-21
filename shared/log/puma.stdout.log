@@ -4275,3 +4275,12 @@ I, [2015-07-19T20:01:58.815623 #2636]  INFO -- omniauth: (facebook) Request phas
 === puma startup: 2015-07-20 18:24:04 -0400 ===
 [27777] * Starting control server on unix:///tmp/puma-status-1437431044607-27777
 [27777] - Worker 0 (pid: 27827) booted, phase: 0
+=== puma startup: 2015-07-20 20:36:38 -0400 ===
+[32734] * Starting control server on unix:///tmp/puma-status-1437438998907-32734
+[32734] - Worker 0 (pid: 316) booted, phase: 0
+[32734] - Gracefully shutting down workers...
+[32734] === puma shutdown: 2015-07-20 20:41:30 -0400 ===
+[32734] - Goodbye!
+=== puma startup: 2015-07-20 20:41:31 -0400 ===
+[951] * Starting control server on unix:///tmp/puma-status-1437439291796-951
+[951] - Worker 0 (pid: 1001) booted, phase: 0

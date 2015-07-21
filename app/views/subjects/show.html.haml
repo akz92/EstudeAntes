@@ -110,7 +110,8 @@
             - @dados["events"].each do |event|
               %tr
                 %td
-                  = "#{Date::DAYNAMES[event.weekday]} #{event.init_time.strftime("%H:%M")} - #{event.final_time.strftime("%H:%M")}"
+                  /= "#{Date::DAYNAMES[event.weekday]} #{event.init_time.strftime("%H:%M")} - #{event.final_time.strftime("%H:%M")}"
+                  = event.dates
                 %td
                   .dropdown.align-right
                     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
