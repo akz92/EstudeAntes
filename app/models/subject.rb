@@ -3,6 +3,7 @@ class Subject < ActiveRecord::Base
   has_many :tests
   has_many :projects
   has_many :events
+  has_many :event_recurrences
   after_initialize :init_values
   validates_presence_of :name
   accepts_nested_attributes_for :tests, :reject_if => lambda { |a| a[:content].blank? }

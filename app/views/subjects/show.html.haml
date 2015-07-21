@@ -129,6 +129,7 @@
     .col-xs-4
       /%h5 Aproveitamento
       %canvas#canvas{:height => "300", :width => "450"}
+= link_to 'evento recorrente', new_event_recurrence_path(@period, @subject), class: "btn btn-default"
 
 :javascript
 
