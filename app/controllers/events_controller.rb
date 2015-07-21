@@ -11,11 +11,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = @subject.events.all
   end
 
   #def get_events
-  #  @events = Event.all
+  #  @events = @subject.events.all
   #  fullcalendar_events = []
   #  @events.each do |event|
   #    fullcalendar_events << {id: event.id, title: @subject.name, start: event.init_time, end: event.final_time}
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = @subject.events.new
   end
 
   # GET /events/1/edit
@@ -40,11 +40,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @form_data = Event.new(event_params)
-    #@event.title = @subject.name
-    #@event.start_date = @period.init_date
-    #@event.end_date = @period.final_date
-    @event = Event.new(start_date: @period.init_date, every: @form_data.every, end_date: @period.final_date, title: @subject.name, start_time: @form_data.start_time, end_time: @form_data.end_time)
+    @event = @subject.events.new(event_params)
+    @event.subject_name = @subject.name
 
     flash[:notice] = "Evento criado com sucesso." if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
@@ -91,8 +88,8 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @period = Period.find(params[:period_id])
-      #@subject = @period.subjects.find(params[:subject_id])
-      @event = Event.find(params[:id])
+      @subject = @period.subjects.find(params[:subject_id])
+      @event = @subject.events.find(params[:id])
     end
 
     def get_period_number

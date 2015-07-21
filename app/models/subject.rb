@@ -2,6 +2,7 @@ class Subject < ActiveRecord::Base
   belongs_to :period
   has_many :tests
   has_many :projects
+  has_many :events
   after_initialize :init_values
   validates_presence_of :name
   accepts_nested_attributes_for :tests, :reject_if => lambda { |a| a[:content].blank? }
@@ -37,7 +38,7 @@ class Subject < ActiveRecord::Base
 			end
 		end
 
-		events = Event.where("title = '#{subject.name}'")
+		events = Event.where("subject_id = #{subject.id}")
 
 		events.each do |event|
 			dados["events"] << event

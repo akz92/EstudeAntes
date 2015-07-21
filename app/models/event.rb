@@ -1,35 +1,18 @@
 class Event < ActiveRecord::Base
-  #after_initialize :init_values
-  validates_presence_of :start_date
-  validates_presence_of :end_date
-  validates_presence_of :every
-  validates_presence_of :title
-  validates_presence_of :start_time
-  validates_presence_of :end_time
+  belongs_to :subject
+  after_initialize :init_values
+  validates_presence_of :weekday, :init_time, :final_time
 
-  def dates(options={})
-    options = {:every => every, :starts => start_date, :until => end_date}.merge(options)
-    options[:on] = case options[:every]
-    when 'year'
-      [options[:starts].month, options[:starts].day]
-    when 'week'
-      options[:starts].strftime('%A').downcase.to_sym
-    when 'day', 'month'
-      options[:starts].day
-    end
-    Recurrence.new(options).events
+  def init_values
+    self.weekday ||= 1
+    self.recurrent ||= true
   end
 
-  #def init_values
-  #  self.weekday ||= 1
-  #  self.recurrent ||= true
-  #end
-
-  def formatted_start_time
+  def formatted_init_time
     self.init_time.strftime("%H:%M")
   end
 
-  def formatted_end_time
+  def formatted_final_time
     self.final_time.strftime("%H:%M")
   end
 
