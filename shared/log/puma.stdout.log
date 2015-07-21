@@ -4275,3 +4275,9 @@ I, [2015-07-19T20:01:58.815623 #2636]  INFO -- omniauth: (facebook) Request phas
 === puma startup: 2015-07-20 18:24:04 -0400 ===
 [27777] * Starting control server on unix:///tmp/puma-status-1437431044607-27777
 [27777] - Worker 0 (pid: 27827) booted, phase: 0
+=== puma startup: 2015-07-20 21:38:03 -0400 ===
+[4397] * Starting control server on unix:///tmp/puma-status-1437442683779-4397
+[4397] - Worker 0 (pid: 4447) booted, phase: 0
+I, [2015-07-20T21:38:36.377895 #4447]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-20T21:38:37.347801 #4447]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-20T21:38:38.645748 #4447]  INFO -- omniauth: (facebook) Request phase initiated.

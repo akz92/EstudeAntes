@@ -63,7 +63,7 @@ Agenda::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Default url to send mails
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'estudeantes.com' }
 
   # Delivery method
   config.action_mailer.delivery_method = :sendmail
