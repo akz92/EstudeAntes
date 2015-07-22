@@ -18,7 +18,7 @@ class EventsController < ApplicationController
   #  @events = @subject.events.all
   #  fullcalendar_events = []
   #  @events.each do |event|
-  #    fullcalendar_events << {id: event.id, title: @subject.name, start: event.init_time, end: event.final_time}
+  #    fullcalendar_events << {id: event.id, title: @subject.name, start: event.iiinit_time, end: event.final_time}
   #  end
   #  render text: fullcalendar_events.to_json
   #end
@@ -35,13 +35,21 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event.weekday = @event.start_date.wday
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = @subject.events.new(event_params)
-    @event.subject_name = @subject.name
+    @event.title = @subject.name
+    #@event.start_date =  Event.next_weekday(@period.init_date, @event.weekday.to_i)
+    weekday = @event.weekday.to_i
+    @event.start_date= @period.init_date
+    @event.start_date += ((weekday - @period.init_date.wday) % 7)
+    #@event.start_date = weekday > @period.init_date.wday ? @period.init_date + (weekday - @period.init_date.wday) : @period.init_date.next_week.next_day(weekday)
+    #@event.start_date = @period.init_date
+    @event.end_date = @period.final_date
 
     flash[:notice] = "Evento criado com sucesso." if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
@@ -99,6 +107,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:weekday, :init_time, :final_time, :recurrent)
+      params.require(:event).permit(:start_date, :every, :end_date, :start_time, :end_time, :title, :weekday)
     end
 end

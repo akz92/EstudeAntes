@@ -1,5 +1,5 @@
 class AddAColumnToEvents < ActiveRecord::Migration
   def change
-    add_column :events, :subject_name, :string
+    add_column :events, :title, :string
   end
 end

@@ -1,5 +1,6 @@
 Agenda::Application.routes.draw do
 
+  #resources :event_recurrences
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -19,7 +20,7 @@ Agenda::Application.routes.draw do
       resources :tests
       resources :projects
       resources :events
-    end
+        end
   end
   
   #get '/fullcalendar_events', to: 'periods#fullcalendar_events', as: 'fullcalendar_events'

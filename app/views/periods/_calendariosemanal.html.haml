@@ -40,8 +40,8 @@
             %th{scope: "row"} #{init_time}
             - n = 0
             - @dados["events"].each do |event|
-              - if event.formatted_init_time == init_time
-                - while n <= event.weekday
+              - if event.formatted_start_time == init_time
+                - while n <= event.start_date.wday
                   = calendar_events(@dados["tests"], event, n)
                   - n += 1
             - while n <= 6

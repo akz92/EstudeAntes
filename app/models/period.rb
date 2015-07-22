@@ -39,11 +39,11 @@ class Period < ActiveRecord::Base
 
       subject.events.each do |event|
         dados["events"] << event
-        dados["init_times"] << event.formatted_init_time
+        dados["init_times"] << event.formatted_start_time
       end
     end
 
-    dados["events"].sort_by! { |a| [a.weekday, a.init_time, a.final_time] }
+    #dados["events"].sort_by! { |a| [DAYNAMES[a.wday], a.start_time, a.end_time] }
 
     unless dados["init_times"] == []
       dados["init_times"].uniq!
@@ -55,7 +55,7 @@ class Period < ActiveRecord::Base
 
   def self.get_events(period)
     events = []
-    period[0].subjects.each do |subject|
+    period.subjects.each do |subject|
       subject.events.each do |event|
         events << {id: event.id, title: subject.name, start: event.init_time.strftime("%Y-%m-%d"),  end: event.final_time.strftime("%Y-%m-%d")}
       end

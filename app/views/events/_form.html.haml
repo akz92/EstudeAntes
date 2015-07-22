@@ -1,8 +1,17 @@
 = bootstrap_form_for([@period, @subject, @event]) do |f|
-  = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana' 
-  = f.time_select :init_time, label: 'Horario de inicio'#, as: :time_picker
-  = f.time_select :final_time, label: 'Horario de termino'#, as: :time_picker
-  = f.check_box :recurrent, label: 'Recorrente'
+  = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana' #[["Domingo", 0], ["Segunda", 1], ["Terça", 2], ["Quarta", 3], ["Quinta", 4], ["Sexta", 5], ["Sábado", 6]]#Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana' 
+  -#= f.form_group :weekday do
+    = f.check_box :weekday, { multiple: true }, '0', nil
+    = f.check_box :weekday, { multiple: true }, '1', nil
+    = f.check_box :weekday, { multiple: true }, '2', nil
+    = f.check_box :weekday, { multiple: true }, '3', nil
+    = f.check_box :weekday, { multiple: true }, '4', nil
+    = f.check_box :weekday, { multiple: true }, '5', nil
+    = f.check_box :weekday, { multiple: true }, '6', nil
+  = f.select :every, [["Semanal", "week"], ["Diaria", "day"], ["Mensal", "month"]], label: 'Repeticao'
+  = f.time_select :start_time, label: 'Horario de inicio', default: {minute: '00' }#, as: :time_picker
+  = f.time_select :end_time, label: 'Horario de termino', default:{minute: '00'}#, as: :time_picker
+  /= f.check_box :recurrent, label: 'Recorrente'
   /= f.submit 'Criar'
   %button.btn.btn-primary{type: ' submit' } Salvar
   = link_to 'Cancelar', period_subject_path(@period, @subject), class: "btn btn-warning"

@@ -17,14 +17,15 @@ ActiveRecord::Schema.define(version: 20150720150414) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.integer  "weekday"
-    t.time     "init_time"
-    t.time     "final_time"
-    t.boolean  "recurrent"
+    t.date     "start_date"
+    t.text     "every"
+    t.date     "end_date"
+    t.time     "start_time"
+    t.time     "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "subject_id"
-    t.string   "subject_name"
+    t.string   "title"
   end
 
   create_table "periods", force: :cascade do |t|
