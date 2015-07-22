@@ -5431,3 +5431,21 @@ I, [2015-07-22T09:43:57.371164 #21343]  INFO -- omniauth: (facebook) Request pha
 === puma startup: 2015-07-22 15:28:26 -0400 ===
 [29951] * Starting control server on unix:///tmp/puma-status-1437593306419-29951
 [29951] - Worker 0 (pid: 30001) booted, phase: 0
+[29951] - Gracefully shutting down workers...
+[29951] === puma shutdown: 2015-07-22 15:37:23 -0400 ===
+[29951] - Goodbye!
+=== puma startup: 2015-07-22 15:37:24 -0400 ===
+[30082] * Starting control server on unix:///tmp/puma-status-1437593844654-30082
+[30082] - Worker 0 (pid: 30134) booted, phase: 0
+[30082] - Gracefully shutting down workers...
+[30082] === puma shutdown: 2015-07-22 15:46:11 -0400 ===
+[30082] - Goodbye!
+=== puma startup: 2015-07-22 15:46:12 -0400 ===
+[30255] * Starting control server on unix:///tmp/puma-status-1437594372676-30255
+[30255] - Worker 0 (pid: 30305) booted, phase: 0
+[30255] - Gracefully shutting down workers...
+[30255] === puma shutdown: 2015-07-22 15:46:42 -0400 ===
+[30255] - Goodbye!
+=== puma startup: 2015-07-22 15:46:43 -0400 ===
+[30342] * Starting control server on unix:///tmp/puma-status-1437594403322-30342
+[30342] - Worker 0 (pid: 30392) booted, phase: 0

@@ -56,6 +56,9 @@
 :javascript
   $('#calendar').fullCalendar({
   defaultView: "agendaWeek", 
+  header: {
+    right: 'today prev,next month,agendaWeek,agendaDay'
+  },
   dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
   monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
   allDaySlot: false,
