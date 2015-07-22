@@ -1,54 +1,5 @@
 =include_gon
--#.container-fluid
-  .row
-    .col-xs-4.col-md-3
-      %h4 Calendario Semanal
-    .col-xs-5.col-md-2
-      .bs-component
-        /= link_to '<i class="glyphicon glyphicon-chevron-left"></i>'.html_safe, { date: @date.prev_week }, class: "btn btn-default"
-        = link_to '<'.html_safe, { date: @date.prev_week }, class: "btn btn-default btn-sm"
-        = link_to "Hoje", { date: Date.today.beginning_of_week }, class: "btn btn-default btn-sm"
-        = link_to ">", { date: @date.next_week }, class: "btn btn-default btn-sm"
-    .col-xs-3.col-md-2
-      %h4.align-left
-        = Date::MONTHNAMES[@date.month]
-        = @date.strftime("%Y")
-    -#.col-xs-4.align-right.bottom
-      %span.box.azul
-        Prova
-      %span.box.amarelo
-        Trabalho
-      %span.box.verde
-        Prova e trabalho
-
--#.container-fluid
-  .row
-    .col-xs-12
-      %table.table.table-striped.table_border
-        %tr
-          %th
-            - n = 0
-            - (Date::DAYNAMES).each do |dayname|
-              %th.table-font
-                #{dayname.partition("-").first}
-                %br
-                %font{size: "2"} #{(@date+n-1).strftime("%d")}
-              - n += 1
-  
-        - @dados["init_times"].each do |init_time|
-          %tr
-            %th{scope: "row"} #{init_time}
-            - n = 0
-            - @dados["events"].each do |event|
-              - if ((@date+n-1) > event.start_date && (@date+n-1) < event.end_date && event.formatted_start_time == init_time)
-                - while n <= event.start_date.wday
-                  = calendar_events(@dados["tests"], event, n)
-                  - n += 1
-            - while n <= 6
-              %td
-              - n += 1
-
-.col-xs-12.col-lg-6
+.col-xs-12.col-md-7
   #calendar
 
 

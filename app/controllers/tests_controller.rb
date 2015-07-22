@@ -37,9 +37,7 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = @subject.tests.new(test_params)
-    #@test.is_project = params[:test][:is_project]
     @test.subject_name = @subject.name
-    #@test.is_project = params[:bool]
     if params[:commit] == "Salvar prova"
       @test.is_project = false
     elsif params[:commit] == "Salvar trabalho"
@@ -56,36 +54,17 @@ class TestsController < ApplicationController
       flash[:notice] = "Prova adicionada com sucesso." if @test.save
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
-    #respond_to do |format|
-    #  if @test.save
-    #    format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully created.' }
-    #    format.json { render action: 'show', status: :created, location: @test }
-    #  else
-    #    format.html { render action: 'new' }
-    #    format.json { render json: @test.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    #@test.is_project = params[:test][:is_project]
     if @test.is_project
       flash[:notice] = "Trabalho alterado com sucesso." if @test.save
     else
       flash[:notice] = "Prova alterada com sucesso." if @test.save
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
-    #respond_to do |format|
-    #  if @test.update(test_params)
-    #    format.html { redirect_to period_subject_path(@period, @subject), notice: 'Test was successfully updated.' }
-    #    format.json { head :no_content }
-    #  else
-    #    format.html { render action: 'edit' }
-    #    format.json { render json: @test.errors, status: :unprocessable_entity }
-    #  end
-    #end
 
     @subject.value = 0
     @subject.grade = 0
@@ -96,7 +75,6 @@ class TestsController < ApplicationController
     end
 
     @subject.save
-
   end
 
   # DELETE /tests/1
@@ -112,8 +90,6 @@ class TestsController < ApplicationController
       params[:notice] = "Prova removida com sucesso" if @test.destroy
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
-    #@test.destroy
-    #redirect_to period_subject_path(@period, @subject)
   end
 
   private

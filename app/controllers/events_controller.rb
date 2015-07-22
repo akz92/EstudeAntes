@@ -14,15 +14,6 @@ class EventsController < ApplicationController
     @events = @subject.events.all
   end
 
-  #def get_events
-  #  @events = @subject.events.all
-  #  fullcalendar_events = []
-  #  @events.each do |event|
-  #    fullcalendar_events << {id: event.id, title: @subject.name, start: event.iiinit_time, end: event.final_time}
-  #  end
-  #  render text: fullcalendar_events.to_json
-  #end
-
   # GET /events/1
   # GET /events/1.json
   def show
@@ -43,25 +34,13 @@ class EventsController < ApplicationController
   def create
     @event = @subject.events.new(event_params)
     @event.title = @subject.name
-    #@event.start_date =  Event.next_weekday(@period.init_date, @event.weekday.to_i)
     weekday = @event.weekday.to_i
     @event.start_date= @period.init_date
     @event.start_date += ((weekday - @period.init_date.wday) % 7)
-    #@event.start_date = weekday > @period.init_date.wday ? @period.init_date + (weekday - @period.init_date.wday) : @period.init_date.next_week.next_day(weekday)
-    #@event.start_date = @period.init_date
     @event.end_date = @period.final_date
 
     flash[:notice] = "Evento criado com sucesso." if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
-    #respond_to do |format|
-    #  if @event.save
-    #    format.html { redirect_to period_subject_path(@period, @subject), notice: 'Event was successfully created.' }
-    #    format.json { render action: 'show', status: :created, location: @event }
-    #  else
-    #    format.html { render action: 'new' }
-    #    format.json { render json: @event.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   # PATCH/PUT /events/1
@@ -69,15 +48,6 @@ class EventsController < ApplicationController
   def update
     flash[:notice] = "Evento atualizado com sucesso." if @event.update(event_params)
     respond_with(@event, location: period_subject_path(@period, @subject))
-    #respond_to do |format|
-    #  if @event.update(event_params)
-    #    format.html { redirect_to period_subject_path(@period, @subject), notice: 'Event was successfully updated.' }
-    #    format.json { head :no_content }
-    #  else
-    #    format.html { render action: 'edit' }
-    #    format.json { render json: @event.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   # DELETE /events/1
@@ -85,11 +55,6 @@ class EventsController < ApplicationController
   def destroy
     flash[:notice] = "Evento removido com sucesso." if @event.destroy
     respond_with(@event, location: period_subject_path(@period, @subject))
-    #@event.destroy
-    #respond_to do |format|
-    #  format.html { redirect_to period_subject_path(@period, @subject) }
-    #  format.json { head :no_content }
-    #end
   end
 
   private

@@ -14,26 +14,6 @@
           %li.divider
             %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_path(@period, @subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a disciplina?' }
 
-
--#.tabbable.tabs-left
-  %ul.nav.nav-tabs
-    %li
-      %a{"data-toggle" => "tab", :href => "#lA"} Section 1
-    %li
-      %a{"data-toggle" => "tab", :href => "#lB"} Section 2
-  .tab-content
-    #lA.tab-pane
-      %p I'm in Section A.
-    = tests_table()
-
-:javascript
-  function show(id) {
-    document.getElementById(id).style.visibility = "visible";
-  }
-  function hide(id) {
-    document.getElementById(id).style.visibility = "hidden";
-  }
-
 .container-fluid
   .row
     .col-xs-8
@@ -111,7 +91,6 @@
               %tr
                 %td
                   = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")}"
-                  /= event.dates
                 %td
                   .dropdown.align-right
                     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -121,7 +100,6 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
-      //.btn-group.btn-block
       .bs-component
         = link_to 'Nova prova', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
         = link_to 'Novo trabalho', trabalho_path(@period, @subject), class: "btn btn-default"
@@ -132,8 +110,6 @@
       %canvas#canvas{:height => "300", :width => "450"}
 
 :javascript
-
-
   var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value)*100 );
 
   if (gon.subject.grade === 0)
@@ -156,7 +132,3 @@
   var myNewChart = new Chart(ctx).Doughnut(data);
 
   new Chart(ctx).Dounghnut(data);
-
-
-
-

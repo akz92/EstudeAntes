@@ -44,15 +44,6 @@ class SubjectsController < ApplicationController
         format.html { redirect_to period_subjects_path(@period) }
       end
     end
-    #if @subject.save
-    #  if @period.current_period
-    #    redirect_to periods_path, notice: 'Disciplina criada com sucesso'
-    #  else
-    #    redirect_to period_subjects_path(@period, @subjects), notice: 'Disciplina criada com sucesso'
-    #  end
-    #else
-    #  render action: 'new'
-    #end
   end
 
   # PATCH/PUT /subjects/1
@@ -60,15 +51,6 @@ class SubjectsController < ApplicationController
   def update
     params[:notice] = "Disciplina alterada com sucesso." if @subject.update(subject_params)
     respond_with(@subject, location: period_subject_path(@period, @subject))
-    #respond_to do |format|
-    #  if @subject.update(subject_params)
-    #    format.html { redirect_to period_subject_url(@period, @subject), notice: 'Subject was successfully updated.' }
-    #    format.json { head :no_content }
-    #  else
-    #    format.html { render action: 'edit' }
-    #    format.json { render json: @subject.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   # DELETE /subjects/1
@@ -82,13 +64,6 @@ class SubjectsController < ApplicationController
         format.html { redirect_to period_subjects_path(@period, @subject) }
       end
     end
-    #@subject.destroy
-
-    #if @period.current_period
-    #  redirect_to periods_url
-    #else
-    #  redirect_to period_subjects_path(@period, @subject)
-    #end
   end
 
   private

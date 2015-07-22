@@ -1,9 +1,12 @@
-.login
-  %h3 Crie uma conta
-  = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.email_field :email, label: 'Email', :required => true, :autofocus => true
-    = f.password_field :password, label: 'Senha', :required => true
-    = f.password_field :password_confirmation, label: 'Confirme a senha', :required => true
-    .bs-component
-      %button.btn.btn-primary{:type => "submit"} Criar
-      = link_to 'Cancelar', root_path, class: 'btn btn-warning'
+.container-fluid
+  .row.row-centered
+    .col-xs-12.col-lg-4.col-centered
+      .login
+        %h3 Crie uma conta
+        = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = f.email_field :email, label: 'Email', :required => true, :autofocus => true
+          = f.password_field :password, label: 'Senha', :required => true
+          = f.password_field :password_confirmation, label: 'Confirme a senha', :required => true
+          .bs-component
+            %button.btn.btn-primary{:type => "submit"} Criar
+            = link_to 'Cancelar', root_path, class: 'btn btn-warning'

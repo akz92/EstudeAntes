@@ -48,12 +48,6 @@ class Period < ActiveRecord::Base
       dados["highest_endtime"] = dados["highest_endtime"].last
     end
     
-    #hours_between = []
-    #(dados["init_times"].first..dados["init_times"].last).step(100) { |n| hours_between << n }
-    #dados["init_times"] = hours_between
-
-    #dados["events"].sort_by! { |a| [a.start_date.wday, a.start_time, a.end_time] }
-
     unless dados["init_times"] == []
       dados["init_times"].uniq!
       dados["init_times"].sort!
