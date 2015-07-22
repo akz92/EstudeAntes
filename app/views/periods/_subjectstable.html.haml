@@ -1,22 +1,20 @@
-.container
-  .row
-    .col-xs-12.col-md-6
-      %table.table.table-striped.table_border
-        %thead.grey
-          %tr
-            %th= "Disciplinas"
-            %th= "Notas"
-        %tbody
-          %tr
-          - @dados["subjects"].each do |subject|
-            %tr
-              %td= link_to subject.name, period_subject_path(@dados["period"], subject)
-              %td= "#{trim(subject.grade)} / #{subject.value}"
+.col-xs-12.col-md-6
+  %table.table.table-striped.table_border
+    %thead.grey
+      %tr
+        %th= "Disciplinas"
+        %th= "Notas"
+    %tbody
+      %tr
+      - @dados["subjects"].each do |subject|
+        %tr
+          %td= link_to subject.name, period_subject_path(@dados["period"], subject)
+          %td= "#{trim(subject.grade)} / #{subject.value}"
 
-    .col-xs-12.col-md-6
-      -if @dados["subjects"].count < 2
-        %h5.centertext= "Adicione pelo menos duas disciplinas para visualizar o gráfico do seu rendimento"
-      -else
-        %h5
-        %canvas#canvas
+.col-xs-12.col-md-6
+  -if @dados["subjects"].count < 2
+    %h5.centertext= "Adicione pelo menos duas disciplinas para visualizar o gráfico do seu rendimento"
+  -else
+    %h5
+    %canvas#canvas
 /{:height => "120px", :width => "200px"}

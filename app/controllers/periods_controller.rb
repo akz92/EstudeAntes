@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :new, :edit]#, :fullcalendar_events]
+  before_action :set_current_period, only: [:index, :new, :edit, :fullcalendar_events]
   before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
@@ -13,12 +13,23 @@ class PeriodsController < ApplicationController
     @dados = Period.get_tests_events_init_times(@current_period, @date, @other_periods)
     @period = @periods.new
     gon.subjects = @dados["subjects"].map &:attributes
+    gon.mintime = @dados["init_times"].first
+    gon.maxtime = @dados["highest_endtime"]
   end
 
-  #def fullcalendar_events
-  #  events = Period.get_events(@current_period)
-  #  render text: events.to_json
-  #end
+  def fullcalendar_events
+    events = Period.get_events(@current_period)
+    
+    #events = [
+    #  {
+    #    title: "Teste",
+    #    start: '2015-07-07T10:00:00',
+    #    end: '2015-07-07T10:00:00',
+    #    allDay: false
+    #  }
+    #]
+    render json: events
+  end
 
   def all
     Period.get_periods_and_means(@other_periods)

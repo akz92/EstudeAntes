@@ -35,6 +35,16 @@ class Event < ActiveRecord::Base
   #  date
   #end
 
+  def as_json(options = {})
+    {
+      id: self.id,
+      title: self.title,
+      start: self.start_time,
+      end: self.end_time,
+      allDay: false
+    }
+  end
+
   def formatted_start_time
     self.start_time.strftime("%H:%M")
   end

@@ -12,7 +12,7 @@ class Period < ActiveRecord::Base
   end
 
   def self.get_tests_events_init_times(periods, date, other_periods)
-    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> [], "period_number" => [], "current_period" => [], "all_periods" => []}
+    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> [], "period_number" => [], "current_period" => [], "all_periods" => [], "highest_endtime" => []}
 
     periods.each do |period|
       dados["period"] = period
@@ -40,10 +40,19 @@ class Period < ActiveRecord::Base
       subject.events.each do |event|
         dados["events"] << event
         dados["init_times"] << event.formatted_start_time
+        dados["highest_endtime"] << event.formatted_end_time
       end
     end
+    unless dados["highest_endtime"] == []
+      dados["highest_endtime"].sort!
+      dados["highest_endtime"] = dados["highest_endtime"].last
+    end
+    
+    #hours_between = []
+    #(dados["init_times"].first..dados["init_times"].last).step(100) { |n| hours_between << n }
+    #dados["init_times"] = hours_between
 
-    #dados["events"].sort_by! { |a| [DAYNAMES[a.wday], a.start_time, a.end_time] }
+    #dados["events"].sort_by! { |a| [a.start_date.wday, a.start_time, a.end_time] }
 
     unless dados["init_times"] == []
       dados["init_times"].uniq!
@@ -55,9 +64,13 @@ class Period < ActiveRecord::Base
 
   def self.get_events(period)
     events = []
-    period.subjects.each do |subject|
+    period[0].subjects.each do |subject|
       subject.events.each do |event|
-        events << {id: event.id, title: subject.name, start: event.init_time.strftime("%Y-%m-%d"),  end: event.final_time.strftime("%Y-%m-%d")}
+        event.dates.each do |date|
+          fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
+          fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
+          events << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
+        end
       end
     end
   

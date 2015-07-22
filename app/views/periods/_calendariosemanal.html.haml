@@ -1,4 +1,5 @@
-.container-fluid
+=include_gon
+-#.container-fluid
   .row
     .col-xs-4.col-md-3
       %h4 Calendario Semanal
@@ -20,7 +21,7 @@
       %span.box.verde
         Prova e trabalho
 
-.container-fluid
+-#.container-fluid
   .row
     .col-xs-12
       %table.table.table-striped.table_border
@@ -34,32 +35,37 @@
                 %font{size: "2"} #{(@date+n-1).strftime("%d")}
               - n += 1
   
-  
         - @dados["init_times"].each do |init_time|
           %tr
             %th{scope: "row"} #{init_time}
             - n = 0
             - @dados["events"].each do |event|
-              - if event.formatted_start_time == init_time
+              - if ((@date+n-1) > event.start_date && (@date+n-1) < event.end_date && event.formatted_start_time == init_time)
                 - while n <= event.start_date.wday
                   = calendar_events(@dados["tests"], event, n)
                   - n += 1
             - while n <= 6
               %td
               - n += 1
--#.container-fluid
-  .row
-    .col-xs-6
-      #calendar
 
--#:javascript
+.col-xs-12.col-lg-6
+  #calendar
+
+
+
+:javascript
   $('#calendar').fullCalendar({
   defaultView: "agendaWeek", 
   dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
   monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
   allDaySlot: false,
-  minTime: "05:00:00",
-  maxTime: "22:00:00",
+  slotDuration: "00:30:00",
+  axisFormat: 'HH:mm',
+  timeFormat: 'H(:mm)',
+  minTime: gon.mintime,
+  maxTime: gon.maxtime,
+  contentHeight: "auto",
   buttonText: { today: 'hoje' },
-  events: "/fullcalendar_events.json"
+  events: '/fullcalendar_events.json'
+
   });

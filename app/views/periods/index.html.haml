@@ -2,9 +2,11 @@
 
 /= flash[:notice]
 -if @dados["period_number"] != [] && @dados["init_times"] != []
-  = render "/periods/calendariosemanal"
-  %hr
-  = render "periods/subjectstable"
+  .container-fluid
+    .row
+      = render "/periods/calendariosemanal"
+      /%hr
+      = render "periods/subjectstable"
 
 -elsif @dados["period_number"] != [] && @dados["subjects"] != []
   %h4.centertext= "Adicione os horários das disciplinas para visualizar o calendário"

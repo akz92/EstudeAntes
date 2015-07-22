@@ -23,7 +23,7 @@ Agenda::Application.routes.draw do
         end
   end
   
-  #get '/fullcalendar_events', to: 'periods#fullcalendar_events', as: 'fullcalendar_events'
+  get '/fullcalendar_events', to: 'periods#fullcalendar_events', as: 'fullcalendar_events'
   #get '/get_events', to: 'events#get_events'
 
   # You can have the root of your site routed with "root"
