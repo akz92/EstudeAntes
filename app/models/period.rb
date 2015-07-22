@@ -12,7 +12,7 @@ class Period < ActiveRecord::Base
   end
 
   def self.get_tests_events_init_times(periods, date, other_periods)
-    dados = {"events"=> [], "tests"=> [], "init_times"=> [], "subjects"=> [], "period"=> [], "period_number" => [], "current_period" => [], "all_periods" => [], "highest_endtime" => []}
+    dados = {"first_and_last_hour"=> [], "subjects"=> [], "period_number" => [], "period" => [], "current_period" => false}
 
     periods.each do |period|
       dados["period"] = period
@@ -20,37 +20,20 @@ class Period < ActiveRecord::Base
       dados["period_number"] = period.number
       if period.current_period
         dados["current_period"] = true
-      else
-        dados["current_period"] = false
       end
     end
 
-    other_periods.each do |period|
-      dados["all_periods"] << period
-    end
-
-
+    hours = []
     dados["subjects"].each do |subject|
-      subject.tests.each do |test|
-        if (test.date.strftime("%U").to_i == date.strftime("%U").to_i)
-          dados["tests"] << test
-        end
-      end
-
       subject.events.each do |event|
-        dados["events"] << event
-        dados["init_times"] << event.formatted_start_time
-        dados["highest_endtime"] << event.formatted_end_time
+        hours << event.formatted_start_time
+        hours << event.formatted_end_time
       end
-    end
-    unless dados["highest_endtime"] == []
-      dados["highest_endtime"].sort!
-      dados["highest_endtime"] = dados["highest_endtime"].last
     end
     
-    unless dados["init_times"] == []
-      dados["init_times"].uniq!
-      dados["init_times"].sort!
+    unless hours == []
+      hours.sort!
+      dados["first_and_last_hour"] << hours.first << hours.last
     end
 
     return dados

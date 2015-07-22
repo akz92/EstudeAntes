@@ -13,8 +13,8 @@ class PeriodsController < ApplicationController
     @dados = Period.get_tests_events_init_times(@current_period, @date, @other_periods)
     @period = @periods.new
     gon.subjects = @dados["subjects"].map &:attributes
-    gon.mintime = @dados["init_times"].first
-    gon.maxtime = @dados["highest_endtime"]
+    gon.mintime = @dados["first_and_last_hour"].first
+    gon.maxtime = @dados["first_and_last_hour"].last
   end
 
   def fullcalendar_events
