@@ -1,7 +1,8 @@
 #encoding: utf-8
-class Period < ActiveRecord::Base
+class Period < ActiveRecord::Base  
   belongs_to :user
   has_many :subjects
+  has_many :events, through: :subjects
   after_initialize :init_values
   validates_presence_of :init_date, :final_date, :number
   validates_numericality_of :number
@@ -11,7 +12,7 @@ class Period < ActiveRecord::Base
     self.mean ||= 0
   end
 
-  def self.get_tests_events_init_times(periods, date, other_periods)
+  def self.get_period_info(periods)
     dados = {"first_and_last_hour"=> [], "subjects"=> [], "period_number" => [], "period" => [], "current_period" => false}
 
     periods.each do |period|
@@ -41,15 +42,19 @@ class Period < ActiveRecord::Base
 
   def self.get_events(period)
     events = []
-    period[0].subjects.each do |subject|
-      subject.events.each do |event|
-        event.dates.each do |date|
-          fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
-          fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
-          events << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
-        end
+    #period[0].subjects.each do |subject|
+    #  subject.events.each do |event|
+    #    event.dates.each do |date|
+    period[0].events.each do |event|
+      event.dates.each do |date|
+        fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
+        fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
+        events << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
       end
     end
+    #    end
+    #  end
+    #end
   
   return events
   end

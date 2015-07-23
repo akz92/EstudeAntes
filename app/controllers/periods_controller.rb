@@ -10,7 +10,7 @@ class PeriodsController < ApplicationController
   # GET /periods.json
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
-    @dados = Period.get_tests_events_init_times(@current_period, @date, @other_periods)
+    @dados = Period.get_period_info(@current_period)
     @period = @periods.new
     gon.subjects = @dados["subjects"].map &:attributes
     gon.mintime = @dados["first_and_last_hour"].first

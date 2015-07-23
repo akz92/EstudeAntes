@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :subject
+  has_one :period, through: :subject
   attr_accessor :weekday
   validates_presence_of :start_date, :every, :end_date
 
