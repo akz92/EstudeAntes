@@ -12,14 +12,25 @@
   },
   dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
   monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+  monthNames: ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
   allDaySlot: false,
   slotDuration: "00:30:00",
   axisFormat: 'HH:mm',
   timeFormat: 'H(:mm)',
-  contentHeight: "auto",
+  titleFormat: 'MMMM YYYY',
   minTime: gon.mintime,
   maxTime: gon.maxtime,
-  buttonText: { today: 'hoje' },
+  views: {
+    week: {
+      columnFormat: 'ddd D'
+    }
+  },
+  buttonText: { 
+    today: 'hoje',
+    month: 'mes',
+    week: 'semana',
+    day: 'dia'
+  },
   events: '/fullcalendar_events.json'
 
   });
