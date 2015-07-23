@@ -24,13 +24,13 @@ class Period < ActiveRecord::Base
       end
     end
     
-    #if hours != []
-    #  hours.sort!
-    #  first_and_last_hour << hours.first << hours.last
-    #else
-    #  first_and_last_hour << "06:00" << "22:00"
-    #end
-    first_and_last_hour << "06:00" << "22:00"
+    if (hours != [] && ((hours.last[0..1].to_i - hours.first[0..1].to_i) >= 9))
+      hours.sort!
+      first_and_last_hour << hours.first << hours.last
+    elsif hours != []
+      first_and_last_hour << hours.first << "#{hours.first[0..1].to_i + 9}:00"
+    end
+    #first_and_last_hour << "06:00" << "22:00".to_i - "06:00".to_i
 
     return first_and_last_hour
   end
