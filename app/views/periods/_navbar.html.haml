@@ -1,4 +1,5 @@
 =render "periods/modal"
+/=render 'devise/registrations/modal_edit'
 /=render "subjects/modal"
 %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   / Brand and toggle get grouped for better mobile display
@@ -50,5 +51,7 @@
                   #{current_user.email}
                 %b.caret
               %ul.dropdown-menu
+                -#%li
+                  %a{href: "#", "data-target" => "#EditUserModalForm", "data-toggle" => "modal"} Editar conta
                 %li= link_to "Editar Conta", edit_user_registration_path
                 %li= link_to "Sair", destroy_user_session_path, :method => :delete

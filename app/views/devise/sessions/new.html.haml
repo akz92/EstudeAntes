@@ -1,4 +1,5 @@
 = render partial: 'devise/sessions/navbar'
+= render 'devise/registrations/modal'
 .container-fluid
   .row.row-centered
     .col-xs-12.col-lg-4.col-centered
@@ -14,4 +15,6 @@
         = render "devise/shared/links"
       .centertext
         %br
-        = link_to 'Crie uma conta', new_user_registration_path
+        /= link_to 'Crie uma conta', new_user_registration_path
+        %a{href: "#", "data-target" => "#SignUpModalForm", "data-toggle" => "modal"} Crie uma conta
+        /%button.btn{"data-target" => "#SignUpModalForm", "data-toggle" => "modal", :type => "button"} Crie uma conta

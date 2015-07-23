@@ -136,6 +136,10 @@ table, th, td {
   margin-right: -4px;
 }
 
+.hiddenRow {
+  padding: 0 !important;
+}
+
 * {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
