@@ -7,8 +7,8 @@ Agenda::Application.routes.draw do
   devise_for :user, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :home
-  resources :dashboard
+  #resources :home
+  #resources :dashboard
   #new controller for static pages
   #resources :pages, :only => :show
   get '/help', to: 'pages#help', as: 'help'
@@ -24,7 +24,6 @@ Agenda::Application.routes.draw do
   end
   
   get '/fullcalendar_events', to: 'periods#fullcalendar_events', as: 'fullcalendar_events'
-  #get '/get_events', to: 'events#get_events'
 
   # You can have the root of your site routed with "root"
   #root 'periods#index'

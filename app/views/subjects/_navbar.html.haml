@@ -12,21 +12,29 @@
     #navbarCollapse.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.dropdown
-          %a{href: "#"}
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             #{@period.number}º Período
-      %ul.nav.navbar-nav.pull-right
-        %li
-          #user_nav
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                - if current_user.name
-                  #{current_user.name}
-                - else
-                  #{current_user.email}
-                %b.caret
-              %ul.dropdown-menu
-                %li= link_to "Editar Conta", edit_user_registration_path
-                %li= link_to "Sair", destroy_user_session_path, :method => :delete
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period)
+            %li.divider
+            %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@period), class: "icon-pencil icon-white"
+            %li.divider
+            %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, @period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }, class: "icon-trash icon-white"
+      - if user_signed_in?
+        %ul.nav.navbar-nav.pull-right
+          %li
+            #user_nav
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  - if current_user.name
+                    #{current_user.name}
+                  - else
+                    #{current_user.email}
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to "Editar Conta", edit_user_registration_path
+                  %li= link_to "Sair", destroy_user_session_path, :method => :delete
 -#.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header

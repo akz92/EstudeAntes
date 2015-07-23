@@ -1,6 +1,7 @@
 # encoding: utf-8
 =include_gon
-
+= render 'events/modal'
+= render 'tests/modal'
 .container-fluid
   .row
     .col-xs-2
@@ -100,14 +101,33 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
-      .bs-component
-        = link_to 'Nova prova', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
-        = link_to 'Novo trabalho', trabalho_path(@period, @subject), class: "btn btn-default"
-        = link_to 'Nova aula', new_period_subject_event_path(@period, @subject), class: "btn btn-default"
-
+      .panel.panel-primary
+        .panel-heading Adicionar
+        .panel-body
+          .bs-component
+            /= link_to 'Prova', new_period_subject_test_path(@period, @subject), class: "btn btn-default"
+            /= link_to 'Trabalho', trabalho_path(@period, @subject), class: "btn btn-default"
+            /= link_to 'Aula', new_period_subject_event_path(@period, @subject), class: "btn btn-default"
+            %button.btn{"data-target" => "#TestModalForm", "data-toggle" => "modal", :type => "button"} Prova
+            %button.btn{"data-target" => "#ProjectModalForm", "data-toggle" => "modal", :type => "button"} Trabalho
+            %button.btn{"data-target" => "#EventModalForm", "data-toggle" => "modal", :type => "button"} Aula
     .col-xs-4
       /%h5 Aproveitamento
       %canvas#canvas{:height => "300", :width => "450"}
+
+-#%table.table.table-hover
+  %thead
+    %th
+    %th
+    %th
+  %tbody
+    %tr.clickable{"data-target" => "#accordion", "data-toggle" => "collapse"}
+      %td br
+      %td braaa
+      %td brffffff
+    %tr
+      %td{colspan: "3"}
+        #accordion.collapse Hidden content
 
 :javascript
   var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value)*100 );

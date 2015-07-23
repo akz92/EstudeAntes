@@ -1,3 +1,5 @@
+=render "periods/modal"
+/=render "subjects/modal"
 %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   / Brand and toggle get grouped for better mobile display
   .container
@@ -16,7 +18,10 @@
             #{@current_period.number}º Período
             %b.caret
           %ul.dropdown-menu
-            %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period)
+            /%button.btn.btn-info.btn-lg{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
+            %li
+              %a{href: "#", "data-target" => "#SubjectModalForm", "data-toggle" => "modal"} Adicionar disciplina
+            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period)
             %li.divider
             %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@current_period), class: "icon-pencil icon-white"
             %li.divider
@@ -30,7 +35,9 @@
             - @other_periods.each do |period|
               %li= link_to "#{period.number}º Período", period_subjects_path(period)
               %li.divider
-            %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar novo periodo'.html_safe, new_period_path, class: "icon-plus icon-white"
+            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar novo periodo'.html_safe, new_period_path, "data-target" => "#PeriodModalForm", "data-toggle" => "modal"
+            %li
+              %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Adicionar período
         /%li= link_to "Outros períodos", periods_all_path
       %ul.nav.navbar-nav.pull-right
         %li

@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :new, :edit, :fullcalendar_events]
+  before_action :set_current_period#, only: [:index, :new, :edit, :fullcalendar_events]
   #before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
@@ -11,9 +11,10 @@ class PeriodsController < ApplicationController
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
     first_and_last_hour = Period.get_calendar_hours(@current_period)
-    @period = @periods.new
+    @period = @current_period
     if @current_period
       gon.subjects = @current_period.subjects.map &:attributes
+      @new_subject = @current_period.subjects
     end
     gon.mintime = first_and_last_hour.first
     gon.maxtime = first_and_last_hour.last
