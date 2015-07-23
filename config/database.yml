@@ -24,4 +24,4 @@ production:
   pool: 5
   template: template0
   username: deployer
-  password:
+  password: 

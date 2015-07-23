@@ -12,7 +12,9 @@ class PeriodsController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
     first_and_last_hour = Period.get_calendar_hours(@current_period)
     @period = @periods.new
-    gon.subjects = @current_period.subjects.map &:attributes
+    if @current_period
+      gon.subjects = @current_period.subjects.map &:attributes
+    end
     gon.mintime = first_and_last_hour.first
     gon.maxtime = first_and_last_hour.last
   end
@@ -89,7 +91,7 @@ class PeriodsController < ApplicationController
     end
 
     def set_current_period
-      @current_period = []
+      #@current_period = []
       @other_periods = []
       @dados_periodo = {"period_number" => []}
       periods = current_user.periods

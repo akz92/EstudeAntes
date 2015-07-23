@@ -29,6 +29,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
+    @subject = @period.subjects.find(params[:id])
   end
 
   # POST /subjects

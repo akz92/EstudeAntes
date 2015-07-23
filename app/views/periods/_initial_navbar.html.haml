@@ -12,17 +12,18 @@
     #navbarCollapse.collapse.navbar-collapse
       %ul.nav.navbar-nav.pull-right
         %li
-          #user_nav
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                - if current_user.name
-                  #{current_user.name}
-                - else
-                  #{current_user.email}
-                %b.caret
-              %ul.dropdown-menu
-                %li= link_to "Editar Conta", edit_user_registration_path
-                %li= link_to "Sair", destroy_user_session_path, :method => :delete
+          - if user_signed_in?
+            #user_nav
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  - if current_user && current_user.name
+                    #{current_user.name}
+                  - else
+                    #{current_user.email}
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to "Editar Conta", edit_user_registration_path
+                  %li= link_to "Sair", destroy_user_session_path, :method => :delete
 -#.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header

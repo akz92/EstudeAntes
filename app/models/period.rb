@@ -15,38 +15,41 @@ class Period < ActiveRecord::Base
     first_and_last_hour = []
     hours = []
 
-    period.subjects.each do |subject|
-      subject.events.each do |event|
-        hours << event.formatted_start_time
-        hours << event.formatted_end_time
+    if period
+      period.subjects.each do |subject|
+        subject.events.each do |event|
+          hours << event.formatted_start_time
+          hours << event.formatted_end_time
+        end
       end
     end
     
-    if hours != []
-      hours.sort!
-      first_and_last_hour << hours.first << hours.last
-    end
+    #if hours != []
+    #  hours.sort!
+    #  first_and_last_hour << hours.first << hours.last
+    #else
+    #  first_and_last_hour << "06:00" << "22:00"
+    #end
+    first_and_last_hour << "06:00" << "22:00"
 
     return first_and_last_hour
   end
 
   def self.get_events(period)
+    jsons = []
     events = []
-    #period[0].subjects.each do |subject|
-    #  subject.events.each do |event|
-    #    event.dates.each do |date|
     period.events.each do |event|
-      event.dates.each do |date|
-        fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
-        fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
-        events << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
+      event.fullcalendar_dates.each do |date|
+        events << date
       end
+      #event.dates.each do |date|
+      #  fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
+      #  fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
+      #  events << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
+      #end
     end
-    #    end
-    #  end
-    #end
   
-  return events
+    return events
   end
 
   def self.check_current_period(period)

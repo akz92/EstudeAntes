@@ -3,7 +3,7 @@ module ApplicationHelper
   def navbar_select
     if @current_period
       render partial: "/periods/navbar"
-    elsif @period
+    elsif @period && @period.current_period == false
       render partial: "/subjects/navbar"
     elsif @dados_periodo && @dados_periodo["period_number"] != []
       render partial: "/subjects/navbar"

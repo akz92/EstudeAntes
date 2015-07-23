@@ -17,6 +17,16 @@ class Event < ActiveRecord::Base
     Recurrence.new(options).events
   end
 
+  def self.fullcalendar_conversion(event)
+    dates = []
+    event.dates.each do |date|
+      fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
+      fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
+      dates << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
+    end
+    return dates
+  end
+
   def formatted_start_time
     self.start_time.strftime("%H:%M")
   end

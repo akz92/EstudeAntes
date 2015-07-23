@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720150414) do
+ActiveRecord::Schema.define(version: 20150723012730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150720150414) do
     t.datetime "updated_at"
     t.integer  "subject_id"
     t.string   "title"
+    t.jsonb    "fullcalendar_dates"
   end
 
   create_table "periods", force: :cascade do |t|
