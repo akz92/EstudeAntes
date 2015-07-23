@@ -6,38 +6,28 @@ class Period < ActiveRecord::Base
   after_initialize :init_values
   validates_presence_of :init_date, :final_date, :number
   validates_numericality_of :number
-  # validate :check_current_period
 
   def init_values
     self.mean ||= 0
   end
 
-  def self.get_period_info(periods)
-    dados = {"first_and_last_hour"=> [], "subjects"=> [], "period_number" => [], "period" => [], "current_period" => false}
-
-    periods.each do |period|
-      dados["period"] = period
-      dados["subjects"] = period.subjects
-      dados["period_number"] = period.number
-      if period.current_period
-        dados["current_period"] = true
-      end
-    end
-
+  def self.get_calendar_hours(period)
+    first_and_last_hour = []
     hours = []
-    dados["subjects"].each do |subject|
+
+    period.subjects.each do |subject|
       subject.events.each do |event|
         hours << event.formatted_start_time
         hours << event.formatted_end_time
       end
     end
     
-    unless hours == []
+    if hours != []
       hours.sort!
-      dados["first_and_last_hour"] << hours.first << hours.last
+      first_and_last_hour << hours.first << hours.last
     end
 
-    return dados
+    return first_and_last_hour
   end
 
   def self.get_events(period)
@@ -45,7 +35,7 @@ class Period < ActiveRecord::Base
     #period[0].subjects.each do |subject|
     #  subject.events.each do |event|
     #    event.dates.each do |date|
-    period[0].events.each do |event|
+    period.events.each do |event|
       event.dates.each do |date|
         fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
         fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)

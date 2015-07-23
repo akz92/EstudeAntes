@@ -10,11 +10,11 @@ class PeriodsController < ApplicationController
   # GET /periods.json
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
-    @dados = Period.get_period_info(@current_period)
+    first_and_last_hour = Period.get_calendar_hours(@current_period)
     @period = @periods.new
-    gon.subjects = @dados["subjects"].map &:attributes
-    gon.mintime = @dados["first_and_last_hour"].first
-    gon.maxtime = @dados["first_and_last_hour"].last
+    gon.subjects = @current_period.subjects.map &:attributes
+    gon.mintime = first_and_last_hour.first
+    gon.maxtime = first_and_last_hour.last
   end
 
   def fullcalendar_events
@@ -95,7 +95,7 @@ class PeriodsController < ApplicationController
       periods = current_user.periods
       periods.each do |period|
         if period.current_period
-          @current_period << period
+          @current_period = period
 	  @dados_periodo["period_number"] = period.number
         else
           @other_periods<< period

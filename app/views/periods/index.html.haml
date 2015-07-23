@@ -1,20 +1,20 @@
 =include_gon
 
 /= flash[:notice]
--if @dados["period_number"] != []
+-if @current_period
   .container-fluid
     .row
       = render "/periods/calendariosemanal"
       /%hr
       = render "periods/subjectstable"
 
--elsif @dados["period_number"] != [] && @dados["subjects"] != []
+-elsif @current_period && @current_period.subjects
   %h4.centertext= "Adicione os horários das disciplinas para visualizar o calendário"
   = render "periods/subjectstable"
 
--elsif @dados["period_number"] != []
+-elsif @current_period
   %h4.centertext= "Agora adicione as disciplinas"
-  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@dados["period"]), class: 'btn btn-primary'
+  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period), class: 'btn btn-primary'
 
 -else
   %h4.centertext= "Começe adicionando um período"
