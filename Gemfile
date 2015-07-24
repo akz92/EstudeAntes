@@ -72,4 +72,3 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "recurrence"#, :require => "recurrence/namespace"
 gem 'invisible_captcha'
-gem 'chart-js-rails'
