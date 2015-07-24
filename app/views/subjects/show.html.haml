@@ -17,7 +17,7 @@
 
 .container-fluid
   .row
-    .col-xs-8
+    .col-xs-12.col-md-8
       %table.table.table-condensed{:style => "border-collapse:collapse;"}
         %thead
           %tr
@@ -140,23 +140,10 @@
             %button.btn{"data-target" => "#TestModalForm", "data-toggle" => "modal", :type => "button"} Prova
             %button.btn{"data-target" => "#ProjectModalForm", "data-toggle" => "modal", :type => "button"} Trabalho
             %button.btn{"data-target" => "#EventModalForm", "data-toggle" => "modal", :type => "button"} Aula
-    .col-xs-4
+    .col-xs-12.col-md-4
       /%h5 Aproveitamento
-      %canvas#canvas{:height => "300", :width => "450"}
-
--#%table.table.table-hover
-  %thead
-    %th
-    %th
-    %th
-  %tbody
-    %tr.clickable{"data-target" => "#accordion", "data-toggle" => "collapse"}
-      %td br
-      %td braaa
-      %td brffffff
-    %tr
-      %td{colspan: "3"}
-        #accordion.collapse Hidden content
+      %canvas#canvas
+/{:height => "300", :width => "450"}
 
 :javascript
   var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value)*100 );
@@ -178,6 +165,11 @@
         ];
 
   var ctx = document.getElementById("canvas").getContext("2d");
+  var pixelRatio = window.devicePixelRatio || 1;
+  var width = $('canvas').parent().width();
+  var height = $('canvas').parent().height();
+  ctx.canvas.width = ( width) / pixelRatio;
+  ctx.canvas.height = (2 * height) / pixelRatio;
   var myNewChart = new Chart(ctx).Doughnut(data);
 
   new Chart(ctx).Dounghnut(data);
