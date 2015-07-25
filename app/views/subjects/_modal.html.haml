@@ -6,8 +6,14 @@
         %button.close{"data-dismiss" => "modal", :type => "button"}
         %h4.modal-title Adicionar disciplina
       .modal-body
-        = bootstrap_form_for([@current_period,@subject]) do |f|
-          = f.text_field :name, label: 'Nome', required: true
-          %button.btn.btn-primary{:type => "submit"} Salvar
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        - if @current_period
+          = bootstrap_form_for([@current_period,@subject]) do |f|
+            = f.text_field :name, label: 'Nome', required: true
+            %button.btn.btn-primary{:type => "submit"} Salvar
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+        - else
+          = bootstrap_form_for([@period,@period.subjects.new]) do |f|
+            = f.text_field :name, label: 'Nome', required: true
+            %button.btn.btn-primary{:type => "submit"} Salvar
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+      /.modal-footer

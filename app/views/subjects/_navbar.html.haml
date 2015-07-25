@@ -1,3 +1,4 @@
+= render "subjects/modal"
 %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   / Brand and toggle get grouped for better mobile display
   .container
@@ -16,7 +17,9 @@
             #{@period.number}º Período
             %b.caret
           %ul.dropdown-menu
-            %li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period)
+            %li
+              %a{href: "#", "data-target" => "#SubjectModalForm", "data-toggle" => "modal"} Adicionar disciplina
+            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period)
             %li.divider
             %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@period), class: "icon-pencil icon-white"
             %li.divider
