@@ -1,0 +1,16 @@
+#SignUpModalForm.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+        %h4.modal-title Crie uma conta
+      .modal-body
+        = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = f.email_field :email, label: 'Email', :required => true, :autofocus => true
+          = f.password_field :password, label: 'Senha', :required => true
+          = f.password_field :password_confirmation, label: 'Confirme a senha', :required => true
+          .bs-component
+            %button.btn.btn-primary{:type => "submit"} Criar
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+      /.modal-footer

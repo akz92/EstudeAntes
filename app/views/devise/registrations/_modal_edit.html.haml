@@ -1,0 +1,20 @@
+#EditUserModalForm.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+        %h4.modal-title Crie uma conta
+      .modal-body
+        = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+          = f.email_field :email, :required => true, :autofocus => true
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %p
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          = f.password_field :password, :autocomplete => "off", :hint => "deixe em branco caso não queira alterar a senha", :required => false
+          = f.password_field :password_confirmation, :required => false
+          = f.password_field :current_password, :hint => "nós precisamos da sua senha atual para confirmar suas mudanças", :required => true
+          .bs-component
+            %button.btn.btn-primary{:type => "submit"} Atualizar
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+      /.modal-footer

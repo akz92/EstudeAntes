@@ -1,0 +1,20 @@
+#EventModalForm.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+        %h4.modal-title Adicionar aula
+      .modal-body
+        = bootstrap_form_for [@period, @subject, @subject.events.new] do |f|
+          .container-fluid
+            = f.select :weekday, Date::DAYNAMES.zip((0..6).to_a), label: 'Dia da semana'
+            = f.select :every, [["Semanal", "week"], ["Diaria", "day"], ["Mensal", "month"]], label: 'Repeticao'
+            .row
+              .col-xs-6
+                = f.time_field :start_time, label: 'Horario de inicio', default: {minute: '00' }#, as: :time_picker
+              .col-xs-6
+                = f.time_field :end_time, label: 'Horario de termino', default:{minute: '00'}#, as: :time_picker
+            %button.btn.btn-primary{type: 'submit'} Salvar
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+      /.modal-footer
