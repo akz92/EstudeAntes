@@ -27,14 +27,14 @@ class Period < ActiveRecord::Base
     if hours != []
       hours.sort!
       first_and_last_hour << hours.first << hours.last
-      max_first_hour = "14:00"
-      if hours.first < max_first_hour
-        min_last_hour = "#{hours.first.to_i + 10}:00"
-      else
-        min_last_hour = "24:00"
-      end
-      first_and_last_hour[0] = max_first_hour if hours.first > max_first_hour
-      first_and_last_hour[1] = min_last_hour if hours.last < min_last_hour
+      #max_first_hour = "14:00"
+      #if hours.first < max_first_hour
+      #  min_last_hour = "#{hours.first.to_i + 10}:00"
+      #else
+      #  min_last_hour = "24:00"
+      #end
+      #first_and_last_hour[0] = max_first_hour if hours.first > max_first_hour
+      #first_and_last_hour[1] = min_last_hour if hours.last < min_last_hour
     else
       first_and_last_hour << "06:00" << "24:00"
     end

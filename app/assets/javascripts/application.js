@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require turbolinks
-//= require Chart
+//= require Chart.min
 //= require civem
 //= require moment
 //= require fullcalendar
