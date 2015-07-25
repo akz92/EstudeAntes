@@ -140,6 +140,31 @@ table, th, td {
   padding: 0 !important;
 }
 
+/*ul.nav li a, ul.nav li a:visited {
+    color: #E69700 !important;
+}
+
+ul.nav li a:hover, ul.nav li a:active {
+    color: #E69700 !important;
+}
+
+ul.nav li.active a {
+    color: #E69700 !important;
+}*/
+
+a:link { 
+  color: #E69700;
+}
+a:visited { 
+  color: #E69700;
+}
+a:hover { 
+  color: #E69700;
+}
+a:active { 
+  color: #E69700;
+}
+
 * {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;

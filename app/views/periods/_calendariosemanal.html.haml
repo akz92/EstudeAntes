@@ -7,6 +7,9 @@
 :javascript
   $('#calendar').fullCalendar({
   defaultView: "agendaWeek", 
+  theme: true,
+  height: "auto",
+  themeButtonIcons: false,
   header: {
     right: 'today prev,next month,agendaWeek,agendaDay'
   },
@@ -27,11 +30,14 @@
     }
   },
   buttonText: { 
+    prev: '<',
+    next: '>',
     today: 'hoje',
     month: 'mes',
     week: 'semana',
     day: 'dia'
   },
-  events: '/fullcalendar_events.json'
+  events: '/fullcalendar_events.json',
+    eventColor: '#1484E6'
 
   });
