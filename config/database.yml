@@ -4,8 +4,8 @@ development:
   database: agenda_development
   pool: 5
   template: template0
-  username: deployer
-  password:
+  username: postgres
+  password: 13242
 
 test:
   adapter: postgresql
@@ -13,8 +13,8 @@ test:
   database: agenda_test
   pool: 5
   template: template0
-  username: deployer
-  password:
+  username: postgres
+  password: 13242
 
 
 production:
@@ -23,5 +23,5 @@ production:
   database: agenda_production
   pool: 5
   template: template0
-  username: deployer
-  password: 
+  username: postgres
+  password: 13242

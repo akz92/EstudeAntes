@@ -4,4 +4,3 @@
 /db/*.sqlite3
 *.swp
 /public/assets/
-/config/initializers/secret_token.rb
