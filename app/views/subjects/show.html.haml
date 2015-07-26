@@ -18,7 +18,7 @@
 .container-fluid
   .row
     .col-xs-8
-      %table.table.table-condensed{:style => "border-collapse:collapse;"}
+      %table.table.table-striped.table-condensed{:style => "border-collapse:collapse;"}
         %thead
           %tr
             %th Provas
@@ -66,9 +66,9 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir essa prova?' }
       %br
-      %table.table.table-condensed{:style => "border-collapse:collapse;"}
+      %table.table.table-striped.table-condensed{:style => "border-collapse:collapse;"}
         %thead
-          %tr
+          %tr.grey
             %th Trabalhos
             %th Notas
         %tbody

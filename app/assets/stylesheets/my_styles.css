@@ -120,10 +120,10 @@ body{
   vertical-align: bottom;
 }
 
-table, th, td {
+/*table, th, td {
     border: 1px solid grey !important;
     border-collapse: collapse !important;
-}
+}*/
 
 .row-centered {
   text-align: center;
@@ -154,9 +154,11 @@ ul.nav li.active a {
 
 a:link { 
   color: #E69700;
+  text-decoration: none !important;
 }
 a:visited { 
   color: #E69700;
+  text-decoration: none !important;
 }
 a:hover { 
   color: #E69700;
