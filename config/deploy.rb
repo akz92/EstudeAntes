@@ -10,6 +10,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
+set :rails_env, 'production'
 set :domain, '45.55.69.69'
 set :deploy_to, '/home/deployer/akz.me'
 set :repository, 'git@github.com:akz92/agenda.git'
