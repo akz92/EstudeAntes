@@ -152,19 +152,19 @@ ul.nav li.active a {
     color: #E69700 !important;
 }*/
 
-a:link { 
-  color: #E69700;
+a:link {
   text-decoration: none !important;
 }
-a:visited { 
-  color: #E69700;
+a:visited {
   text-decoration: none !important;
 }
-a:hover { 
-  color: #E69700;
+a:hover {
 }
-a:active { 
-  color: #E69700;
+a:active {
+}
+
+.orangetext {
+  color: #e69700;
 }
 
 * {
