@@ -7,13 +7,16 @@ gem 'rails', '4.2.3'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
+#, '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
+#, '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
+#, '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -25,7 +28,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
+#, '~> 1.2'
 
 # Simple Form: modelo simplificado para formularios em geral
 #gem 'simple_form'
@@ -58,7 +62,8 @@ gem 'certified'
 gem 'brazilian-rails'
 gem 'gon'
 #gem 'pry', group: [:development]
-gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-i18n'
+#, '~> 4.0.0'
 gem "font-awesome-rails"
 #gem 'bootstrap-datetimepicker-rails'
 #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
