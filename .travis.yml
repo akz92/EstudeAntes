@@ -4,7 +4,11 @@ script: 'true'
 addons:
   postgresql: "9.4"
 
+rvm:
+  - 2.2.2
+
 before_script:
+  - bundle update
   - psql -c 'create database travis_ci_test;' -U postgres
 
 test:
