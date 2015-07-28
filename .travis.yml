@@ -11,6 +11,7 @@ rvm:
 before_script:
   - bundle install --no-deployment
   - psql -c 'create database travis_ci_test;' -U postgres
+  - CODECLIMATE_REPO_TOKEN=5ce1734b0cabfb053ca8870c3485b434214de9d970f17f5c407a6c11b5b1c00e bundle exec rake
 
 test:
   adapter: postgresql
