@@ -1,5 +1,6 @@
 language: ruby
 script: 'true'
+sudo: false
 
 addons:
   postgresql: "9.4"
@@ -8,6 +9,7 @@ rvm:
   - 2.2.2
 
 before_script:
+  - bundle install --no-deployment
   - psql -c 'create database travis_ci_test;' -U postgres
 
 test:
