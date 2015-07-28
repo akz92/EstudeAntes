@@ -74,5 +74,6 @@ gem "recurrence"#, :require => "recurrence/namespace"
 gem 'invisible_captcha'
 gem 'jquery-ui-themes'
 gem 'rspec-rails'
-gem 'factory_girl_rails'
-gem 'faker'
+#gem 'factory_girl_rails'
+#gem 'faker'
+gem 'validates_timeliness'

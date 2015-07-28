@@ -6,6 +6,7 @@ class Period < ActiveRecord::Base
   after_initialize :init_values
   validates_presence_of :init_date, :final_date, :number
   validates_numericality_of :number
+  validates_date :final_date, after: :init_date
 
   def init_values
     self.mean ||= 0

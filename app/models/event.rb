@@ -2,7 +2,10 @@ class Event < ActiveRecord::Base
   belongs_to :subject
   has_one :period, through: :subject
   attr_accessor :weekday
-  validates_presence_of :start_date, :every, :end_date
+  validates_presence_of :start_date, :every, :end_date, :start_time, :end_time, :title
+  validates_date :end_date, after: :start_date
+  validates_time :end_time, after: :start_time
+  validates :every, inclusion: { in: ["week", "month", "day"] }
 
   def dates(options={})
     options = {:every => every, :starts => start_date, :until => end_date}.merge(options)
