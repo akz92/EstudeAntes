@@ -144,6 +144,20 @@
       /%h5 Aproveitamento
       %canvas#canvas{:height => "300", :width => "450"}
 
+-#%table.table.table-hover
+  %thead
+    %th
+    %th
+    %th
+  %tbody
+    %tr.clickable{"data-target" => "#accordion", "data-toggle" => "collapse"}
+      %td br
+      %td braaa
+      %td brffffff
+    %tr
+      %td{colspan: "3"}
+        #accordion.collapse Hidden content
+
 :javascript
   var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value) * 100 );
 

@@ -74,8 +74,7 @@ body{
 }
 
 .centertext {
-  margin: auto !important;
-  text-align: center !important;
+  text-align: center;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
@@ -162,6 +161,10 @@ a:visited {
 a:hover {
 }
 a:active {
+}
+
+.orangetext {
+  color: #e69700;
 }
 
 * {

@@ -1,5 +1,4 @@
 =include_gon
-= render "periods/modal"
 
 /= flash[:notice]
 -if @current_period && @current_period.subjects.count >= 1
@@ -9,20 +8,12 @@
       /%hr
       = render "periods/subjectstable"
 -elsif @current_period
-  .container-fluid
-    .row.row-centered
-      .col-xs-12
-        %h4= "Agora adicione as disciplinas"
-        /%button.btn{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Adicionar disciplina
-        %h4= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period), class: 'btn btn-primary'
+  %h4.centertext= "Agora adicione as disciplinas"
+  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period), class: 'btn btn-primary'
 
 -else
-  .container-fluid
-    .row.row-centered
-      .col-xs-12
-        %h4= "Começe adicionado um período"
-        %button.btn{"data-target" => "#PeriodModalForm", "data-toggle" => "modal", :type => "button"} Adicionar Período
-  /%h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar período'.html_safe, new_period_path, class: 'btn btn-primary'
+  %h4.centertext= "Começe adicionando um período"
+  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar período'.html_safe, new_period_path, class: 'btn btn-primary'
 
 :javascript
 
