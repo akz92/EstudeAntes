@@ -73,3 +73,6 @@ gem 'momentjs-rails'
 gem "recurrence"#, :require => "recurrence/namespace"
 gem 'invisible_captcha'
 gem 'jquery-ui-themes'
+gem 'rspec-rails'
+gem 'factory_girl_rails'
+gem 'faker'

@@ -7399,3 +7399,6 @@ I, [2015-07-27T06:57:21.472459 #14400]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-07-28 11:08:00 -0400 ===
 [10616] * Starting control server on unix:///tmp/puma-status-1438096080176-10616
 [10616] - Worker 0 (pid: 10666) booted, phase: 0
+=== puma startup: 2015-07-28 12:54:51 -0400 ===
+[926] * Starting control server on unix:///tmp/puma-status-1438102491993-926
+[926] - Worker 0 (pid: 1007) booted, phase: 0
