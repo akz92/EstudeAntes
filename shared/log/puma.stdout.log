@@ -7359,3 +7359,43 @@ I, [2015-07-25T08:58:11.203720 #5123]  INFO -- omniauth: (facebook) Request phas
 === puma startup: 2015-07-26 17:45:25 -0400 ===
 [14350] * Starting control server on unix:///tmp/puma-status-1437947125777-14350
 [14350] - Worker 0 (pid: 14400) booted, phase: 0
+I, [2015-07-27T03:28:28.915839 #14400]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-27T06:28:55.478352 #14400]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-27T06:57:00.216972 #14400]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-27T06:57:14.139293 #14400]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-27T06:57:18.288556 #14400]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-27T06:57:18.382861 #14400] ERROR -- omniauth: (facebook) Authentication failure! invalid_credentials: OAuth2::Error, : 
+{"error":{"message":"This authorization code has been used.","type":"OAuthException","code":100}}
+I, [2015-07-27T06:57:20.788884 #14400]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-27T06:57:20.958246 #14400]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-27T06:57:21.472459 #14400]  INFO -- omniauth: (facebook) Callback phase initiated.
+[14350] - Gracefully shutting down workers...
+[14350] === puma shutdown: 2015-07-27 07:06:54 -0400 ===
+[14350] - Goodbye!
+=== puma startup: 2015-07-27 07:06:55 -0400 ===
+[26875] * Starting control server on unix:///tmp/puma-status-1437995215647-26875
+[26875] - Worker 0 (pid: 26925) booted, phase: 0
+[26875] - Gracefully shutting down workers...
+[26875] === puma shutdown: 2015-07-27 07:07:32 -0400 ===
+[26875] - Goodbye!
+=== puma startup: 2015-07-27 07:07:33 -0400 ===
+[26988] * Starting control server on unix:///tmp/puma-status-1437995253352-26988
+[26988] - Worker 0 (pid: 27038) booted, phase: 0
+[26988] - Gracefully shutting down workers...
+[26988] === puma shutdown: 2015-07-28 11:07:12 -0400 ===
+[26988] - Goodbye!
+=== puma startup: 2015-07-28 11:07:14 -0400 ===
+[10402] * Starting control server on unix:///tmp/puma-status-1438096034045-10402
+[10402] - Worker 0 (pid: 10453) booted, phase: 0
+[10402] - Gracefully shutting down workers...
+[10402] === puma shutdown: 2015-07-28 11:07:30 -0400 ===
+[10402] - Goodbye!
+=== puma startup: 2015-07-28 11:07:31 -0400 ===
+[10513] * Starting control server on unix:///tmp/puma-status-1438096051368-10513
+[10513] - Worker 0 (pid: 10563) booted, phase: 0
+[10513] - Gracefully shutting down workers...
+[10513] === puma shutdown: 2015-07-28 11:07:59 -0400 ===
+[10513] - Goodbye!
+=== puma startup: 2015-07-28 11:08:00 -0400 ===
+[10616] * Starting control server on unix:///tmp/puma-status-1438096080176-10616
+[10616] - Worker 0 (pid: 10666) booted, phase: 0
