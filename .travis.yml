@@ -6,7 +6,7 @@ addons:
   postgresql: "9.4"
   code_climate:
     repo_token:
-      secure: "XI/fO/0HpHAniwTZVUwJtZ4PmJZb0OPSDlYyaUk4m1RjSGfHGSmp3cy1aUcL4xVmyCBSYKmfiEBKBzMgAh/Rt7I9K/dbFD8/mY6lWbxKIHJpc9YT/4XoXEZndy+jN7eik8/oHgGzT2FAYSLZpCBrD/iAntUnmUK889LHXmJPvqE="
+      secure: "Nm6nOfTrUNClklI9FsWA1OSesqhCquSp7Tgveq6wexoKmhWHk5UrrsuwE7uYfItVp/8dWi5Dnd+2Z1KMjJzAhXnWz2Q4D/b8PNv2dvG2EdZaXZrQZYGeVlsxeV+R2+O/NzGEEjFXgwKHKpuzzD6qoE9N8c0LAtItcgYp3UrS9RM="
 
 rvm:
   - 2.2.2
