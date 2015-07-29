@@ -1,0 +1,47 @@
+/=render "periods/modal"
+/= render "periods/modal_edit"
+/=render 'devise/registrations/modal_edit'
+/=render "subjects/modal"
+%nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+  / Brand and toggle get grouped for better mobile display
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#{root_url}"} EstudeAntes
+    / Collection of nav links and other content for toggling
+    #navbarCollapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            #{@period.number}º Período
+            %b.caret
+          %ul.dropdown-menu
+            /%button.btn.btn-info.btn-lg{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
+            %li
+              %a{href: "#", "data-target" => "#SubjectModalForm", "data-toggle" => "modal"} Adicionar disciplina
+            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period)
+            %li.divider
+            %li
+              %a{href: "#", "data-target" => "#EditPeriodModalForm", "data-toggle" => "modal"} Editar
+            /%li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@current_period), class: "icon-pencil icon-white"
+            %li.divider
+            %li= link_to 'Deletar', @current_period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
+      %ul.nav.navbar-nav.pull-right
+        %li
+          #user_nav
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                - if current_user.name
+                  #{current_user.name}
+                - else
+                  #{current_user.email}
+                %b.caret
+              %ul.dropdown-menu
+                -#%li
+                  %a{href: "#", "data-target" => "#EditUserModalForm", "data-toggle" => "modal"} Editar conta
+                %li= link_to "Editar Conta", edit_user_registration_path
+                %li= link_to "Sair", destroy_user_session_path, :method => :delete
