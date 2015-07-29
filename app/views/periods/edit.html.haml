@@ -2,7 +2,7 @@
   .row
     .col-xs-4
       %h3 Editar periodo
-      - if @period.current_period
+      - if @period.is_current
         = render 'form', dom_id: 'edit_current'
       - else
         = render 'form', dom_id: 'edit'

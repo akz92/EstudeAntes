@@ -48,7 +48,7 @@ class PeriodsController < ApplicationController
     @period = @periods.new(period_params)
     @period = Period.check_current_period(@period)
 
-    if  @period.current_period && current_user.periods.where(current_period: true).count > 0
+    if  @period.is_current && current_user.periods.where(is_current: true).count > 0
       render action: "new"
       flash[:notice] = "Ja existe um periodo vigente."
     else
@@ -66,7 +66,7 @@ class PeriodsController < ApplicationController
 
     flash[:notice] = "Periodo atualizado com sucesso." if @period.update(period_params)
     respond_with(@period) do |format|
-      if @period.current_period
+      if @period.is_current
         format.html { redirect_to root_path }
       else
         format.html { redirect_to period_subjects_path(@period) }
@@ -97,7 +97,7 @@ class PeriodsController < ApplicationController
       @dados_periodo = {"period_number" => []}
       periods = current_user.periods
       periods.each do |period|
-        if period.current_period
+        if period.is_current
           @current_period = period
 	  @dados_periodo["period_number"] = period.number
         else
@@ -110,7 +110,7 @@ class PeriodsController < ApplicationController
     #  @other_periods = []
     #  periods = current_user.periods
     #  periods.each do |period|
-    #    unless period.current_period
+    #    unless period.is_current
     #      @other_periods << period
     #    end
     #  end

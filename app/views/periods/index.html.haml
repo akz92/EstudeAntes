@@ -2,6 +2,7 @@
 
 /= flash[:notice]
 -if @current_period && @current_period.subjects.count >= 1
+  - tab("is_current")
   .container-fluid
     .row
       = render "/periods/calendariosemanal"

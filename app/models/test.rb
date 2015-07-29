@@ -11,13 +11,13 @@ class Test < ActiveRecord::Base
        self.is_project ||= false
   end
 
-  def formatted_init_time
-    self.date.strftime("%H:%M")
-  end
+  #def formatted_init_time
+  #  self.date.strftime("%H:%M")
+  #end
 
-  def formatted_final_time
-    self.date.strftime("%H:%M")
-  end
+  #def formatted_final_time
+  #  self.date.strftime("%H:%M")
+  #end
 
   def self.period_number(period)
     dados_periodo = {"period_number" => []}

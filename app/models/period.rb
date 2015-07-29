@@ -62,9 +62,9 @@ class Period < ActiveRecord::Base
 
   def self.check_current_period(period)
     if ((Date.today >= period.start_date) && (Date.today <= period.end_date))
-      period.current_period = true
+      period.is_current = true
     else
-      period.current_period = false
+      period.is_current = false
     end
 
     return period

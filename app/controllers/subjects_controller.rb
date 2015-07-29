@@ -39,7 +39,7 @@ class SubjectsController < ApplicationController
 
     params[:notice] = "Disciplina criada com sucesso." if @subject.save
     respond_with(@subject) do |format|
-      if @period.current_period
+      if @period.is_current
         format.html { redirect_to root_path }
       else
         format.html { redirect_to period_subjects_path(@period) }
@@ -59,7 +59,7 @@ class SubjectsController < ApplicationController
   def destroy
     params[:notice] = "Disciplina removida com sucesso." if @subject.destroy
     respond_with(@subject) do |format|
-      if @period.current_period
+      if @period.is_current
         format.html { redirect_to root_url }
       else
         format.html { redirect_to period_subjects_path(@period, @subject) }
