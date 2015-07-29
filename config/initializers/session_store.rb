@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Agenda::Application.config.session_store :cookie_store, key: '_agenda_session'
+EstudeAntes::Application.config.session_store :cookie_store, key: '_estudeantes_session'

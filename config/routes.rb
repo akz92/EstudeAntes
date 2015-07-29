@@ -1,4 +1,4 @@
-Agenda::Application.routes.draw do
+EstudeAntes::Application.routes.draw do
 
   #resources :event_recurrences
   get 'auth/:provider/callback', to: 'sessions#create'
