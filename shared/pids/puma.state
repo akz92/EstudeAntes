@@ -1,5 +1,5 @@
 ---
-pid: 926
+pid: 3591
 config: !ruby/object:Puma::Configuration
   options:
     :min_threads: 1
@@ -7,21 +7,21 @@ config: !ruby/object:Puma::Configuration
     :quiet: false
     :debug: false
     :binds:
-    - unix:///home/deployer/agenda/shared/sockets/puma.sock
+    - unix:///home/deployer/estudeantes/shared/sockets/puma.sock
     :workers: 1
     :daemon: false
-    :worker_directory: "/home/deployer/agenda"
+    :worker_directory: "/home/deployer/estudeantes"
     :config_file: config/puma.rb
     :mode: :http
     :worker_timeout: 60
     :worker_shutdown_timeout: 30
     :environment: production
-    :redirect_stdout: "/home/deployer/agenda/shared/log/puma.stdout.log"
-    :redirect_stderr: "/home/deployer/agenda/shared/log/puma.stderr.log"
+    :redirect_stdout: "/home/deployer/estudeantes/shared/log/puma.stdout.log"
+    :redirect_stderr: "/home/deployer/estudeantes/shared/log/puma.stderr.log"
     :redirect_append: true
-    :pidfile: "/home/deployer/agenda/shared/pids/puma.pid"
-    :state: "/home/deployer/agenda/shared/pids/puma.state"
-    :control_url: unix:///tmp/puma-status-1438102491993-926
-    :control_url_temp: "/tmp/puma-status-1438102491993-926"
-    :control_auth_token: c168f24964d2dab24d9863b7b0fc1d
-    :tag: agenda
+    :pidfile: "/home/deployer/estudeantes/shared/pids/puma.pid"
+    :state: "/home/deployer/estudeantes/shared/pids/puma.state"
+    :control_url: unix:///tmp/puma-status-1438169573342-3591
+    :control_url_temp: "/tmp/puma-status-1438169573342-3591"
+    :control_auth_token: 118711e49632b91f5ecfbf9d2d938c
+    :tag: estudeantes

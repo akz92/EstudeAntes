@@ -7402,3 +7402,18 @@ I, [2015-07-27T06:57:21.472459 #14400]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-07-28 12:54:51 -0400 ===
 [926] * Starting control server on unix:///tmp/puma-status-1438102491993-926
 [926] - Worker 0 (pid: 1007) booted, phase: 0
+=== puma startup: 2015-07-29 07:29:25 -0400 ===
+[3265] * Starting control server on unix:///tmp/puma-status-1438169365499-3265
+[3265] - Worker 0 (pid: 3315) booted, phase: 0
+[3265] - Gracefully shutting down workers...
+[3265] === puma shutdown: 2015-07-29 07:31:28 -0400 ===
+[3265] - Goodbye!
+=== puma startup: 2015-07-29 07:31:29 -0400 ===
+[3449] * Starting control server on unix:///tmp/puma-status-1438169489392-3449
+[3449] - Worker 0 (pid: 3499) booted, phase: 0
+[3449] - Gracefully shutting down workers...
+[3449] === puma shutdown: 2015-07-29 07:32:52 -0400 ===
+[3449] - Goodbye!
+=== puma startup: 2015-07-29 07:32:53 -0400 ===
+[3591] * Starting control server on unix:///tmp/puma-status-1438169573342-3591
+[3591] - Worker 0 (pid: 3641) booted, phase: 0
