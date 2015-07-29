@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-module EstudeAntes
+module Estudeantes
   class Application < Rails::Application
     config.assets.paths << Rails.root.join("vendor","assets", "fonts")
     # Settings in config/environments/* take precedence over those specified here.
