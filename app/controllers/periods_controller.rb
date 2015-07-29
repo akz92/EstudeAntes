@@ -25,9 +25,9 @@ class PeriodsController < ApplicationController
     render json: events
   end
 
-  def all
-    Period.get_periods_and_means(@other_periods)
-  end
+  #def all
+  #  Period.get_periods_and_means(@other_periods)
+  #end
   # GET /periods/1
   # GET /periods/1.json
   def show
