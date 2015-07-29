@@ -18,7 +18,7 @@ class PeriodsControllerTest < ActionController::TestCase
 
   test "should create period" do
     assert_difference('Period.count') do
-      post :create, period: { final_date: @period.final_date, init_date: @period.init_date, number: @period.number }
+      post :create, period: { end_date: @period.end_date, start_date: @period.start_date, number: @period.number }
     end
 
     assert_redirected_to period_path(assigns(:period))
@@ -35,7 +35,7 @@ class PeriodsControllerTest < ActionController::TestCase
   end
 
   test "should update period" do
-    patch :update, id: @period, period: { final_date: @period.final_date, init_date: @period.init_date, number: @period.number }
+    patch :update, id: @period, period: { end_date: @period.end_date, start_date: @period.start_date, number: @period.number }
     assert_redirected_to period_path(assigns(:period))
   end
 

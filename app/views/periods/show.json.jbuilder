@@ -1,1 +1,1 @@
-json.extract! @period, :id, :init_date, :final_date, :number, :created_at, :updated_at
+json.extract! @period, :id, :start_date, :end_date, :number, :created_at, :updated_at

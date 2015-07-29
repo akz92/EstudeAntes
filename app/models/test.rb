@@ -1,5 +1,6 @@
 class Test < ActiveRecord::Base
   belongs_to :subject
+  validates_numericality_of :value
   validates_numericality_of :grade, :less_than_or_equal_to => :value, :message => 'can\'t be greater than the test value'
   validates_presence_of :date
   after_initialize :init_values

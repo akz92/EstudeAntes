@@ -35,9 +35,9 @@ class EventsController < ApplicationController
     @event = @subject.events.new(event_params)
     @event.title = @subject.name
     weekday = @event.weekday.to_i
-    @event.start_date= @period.init_date
-    @event.start_date += ((weekday - @period.init_date.wday) % 7)
-    @event.end_date = @period.final_date
+    @event.start_date= @period.start_date
+    @event.start_date += ((weekday - @period.start_date.wday) % 7)
+    @event.end_date = @period.end_date
     @event.fullcalendar_dates = Event.fullcalendar_conversion(@event)
 
     flash[:notice] = "Evento criado com sucesso." if @event.save
@@ -48,9 +48,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     weekday = @event.weekday.to_i
-    @event.start_date= @period.init_date
-    @event.start_date += ((weekday - @period.init_date.wday) % 7)
-    @event.end_date = @period.final_date
+    @event.start_date= @period.start_date
+    @event.start_date += ((weekday - @period.start_date.wday) % 7)
+    @event.end_date = @period.end_date
     @event.fullcalendar_dates = Event.fullcalendar_conversion(@event)
     flash[:notice] = "Evento atualizado com sucesso." if @event.update(event_params)
     respond_with(@event, location: period_subject_path(@period, @subject))

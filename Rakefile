@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Agenda::Application.load_tasks
+Estudeantes::Application.load_tasks

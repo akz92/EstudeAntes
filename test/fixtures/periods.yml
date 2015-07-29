@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  init_date: 2014-01-14
-  final_date: 2014-01-14
+  start_date: 2014-01-14
+  end_date: 2014-01-14
   number: 1
 
 two:
-  init_date: 2014-01-14
-  final_date: 2014-01-14
+  start_date: 2014-01-14
+  end_date: 2014-01-14
   number: 1

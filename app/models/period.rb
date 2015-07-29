@@ -4,9 +4,9 @@ class Period < ActiveRecord::Base
   has_many :subjects
   has_many :events, through: :subjects
   after_initialize :init_values
-  validates_presence_of :init_date, :final_date, :number
+  validates_presence_of :start_date, :end_date, :number
   validates_numericality_of :number
-  validates_date :final_date, after: :init_date
+  validates_date :end_date, after: :start_date
 
   def init_values
     self.mean ||= 0
@@ -61,7 +61,7 @@ class Period < ActiveRecord::Base
   end
 
   def self.check_current_period(period)
-    if ((Date.today >= period.init_date) && (Date.today <= period.final_date))
+    if ((Date.today >= period.start_date) && (Date.today <= period.end_date))
       period.current_period = true
     else
       period.current_period = false
