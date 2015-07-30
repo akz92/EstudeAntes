@@ -12,10 +12,11 @@
     / Collection of nav links and other content for toggling
     #navbarCollapse.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        - if @period.is_current
-          %a{href: "#{root_url}"} #{@period.number}º Período
-        - else 
-          %a{href: "#{period_subjects_path(@period)}"} #{@period.number}º Período
+        %li
+          - if @period.is_current
+            %a{href: "#{root_url}"} #{@period.number}º Período
+          - else 
+            %a{href: "#{period_subjects_path(@period)}"} #{@period.number}º Período
         -#%li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             #{@period.number}º Período
