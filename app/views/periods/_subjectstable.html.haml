@@ -6,19 +6,13 @@
         %th= "Notas"
     %tbody
       %tr
-      - if @current_period
-        - @current_period.subjects.each do |subject|
-          %tr
-            %td= link_to subject.name, period_subject_path(@current_period, subject)
-            %td= "#{trim(subject.grade)} / #{subject.value}"
-      - else
-        - @period.subjects.each do |subject|
-          %tr
-            %td= link_to subject.name, period_subject_path(@period, subject)
-            %td= "#{trim(subject.grade)} / #{subject.value}"
+      - @period.subjects.each do |subject|
+        %tr
+          %td= link_to subject.name, period_subject_path(@period, subject)
+          %td= "#{trim(subject.grade)} / #{subject.value}"
 
 .col-xs-12.col-md-5
-  -if ((@current_period && @current_period.subjects.count < 2) || (@period && @period.subjects.count < 2))
+  -if (@period && @period.subjects.count < 2)
     %h5.centertext= "Adicione pelo menos duas disciplinas para visualizar o gráfico do seu rendimento"
   -else
     %h5

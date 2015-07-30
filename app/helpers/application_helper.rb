@@ -6,10 +6,10 @@ module ApplicationHelper
 
   def navbar_select
     case @active_tab
-    when "is_current"
+    when "period"
       render partial: "/periods/navbar"
-    when "other_period"
-      render partial: "/periods/other_period_navbar"
+    #when "other_period"
+    #  render partial: "/periods/other_period_navbar"
     when "subject"
       render partial: "/subjects/navbar"
     else

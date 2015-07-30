@@ -1,16 +1,16 @@
 =include_gon
 
 /= flash[:notice]
--if @current_period && @current_period.subjects.count >= 1
-  - tab("is_current")
+-if @period && @period.subjects.count >= 1
+  - tab("period")
   .container-fluid
     .row
       = render "/periods/calendariosemanal"
       /%hr
       = render "periods/subjectstable"
--elsif @current_period
+-elsif @period
   %h4.centertext= "Agora adicione as disciplinas"
-  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period), class: 'btn btn-primary'
+  %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period), class: 'btn btn-primary'
 
 -else
   %h4.centertext= "Começe adicionando um período"

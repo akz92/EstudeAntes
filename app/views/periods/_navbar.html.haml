@@ -17,32 +17,33 @@
       %ul.nav.navbar-nav
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            #{@current_period.number}º Período
+            #{@period.number}º Período
             %b.caret
           %ul.dropdown-menu
             /%button.btn.btn-info.btn-lg{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
             %li
               %a{href: "#", "data-target" => "#SubjectModalForm", "data-toggle" => "modal"} Adicionar disciplina
-            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@current_period)
+            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period)
             %li.divider
             %li
               %a{href: "#", "data-target" => "#EditPeriodModalForm", "data-toggle" => "modal"} Editar
-            /%li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@current_period), class: "icon-pencil icon-white"
+            /%li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@period), class: "icon-pencil icon-white"
             %li.divider
-            %li= link_to 'Deletar', @current_period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            Outros Períodos
-            %b.caret
-          %ul.dropdown-menu
-            /- @dados["all_periods"].each do |period|
-            - @other_periods.each do |period|
-              %li= link_to "#{period.number}º Período", period_subjects_path(period)
-              %li.divider
-            /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar novo periodo'.html_safe, new_period_path, "data-target" => "#PeriodModalForm", "data-toggle" => "modal"
-            %li
-              %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Adicionar período
-        /%li= link_to "Outros períodos", periods_all_path
+            %li= link_to 'Deletar', @period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
+        - if @period.is_current
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Outros Períodos
+              %b.caret
+            %ul.dropdown-menu
+              /- @dados["all_periods"].each do |period|
+              - @other_periods.each do |period|
+                %li= link_to "#{period.number}º Período", period_subjects_path(period)
+                %li.divider
+              /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar novo periodo'.html_safe, new_period_path, "data-target" => "#PeriodModalForm", "data-toggle" => "modal"
+              %li
+                %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Adicionar período
+          /%li= link_to "Outros períodos", periods_all_path
       %ul.nav.navbar-nav.pull-right
         %li
           #user_nav
