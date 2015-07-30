@@ -1,8 +1,8 @@
 class Test < ActiveRecord::Base
   belongs_to :subject
-  validates_numericality_of :value
-  validates_numericality_of :grade, :less_than_or_equal_to => :value, :message => 'can\'t be greater than the test value'
-  validates_presence_of :date
+  validates_presence_of :date, :value, :grade, :subject_id
+  validates_numericality_of :value, :grade, :subject_id
+  validates_numericality_of :grade, less_than_or_equal_to: :value
   after_initialize :init_values
 
   def init_values
@@ -10,14 +10,6 @@ class Test < ActiveRecord::Base
        self.grade ||= 0
        self.is_project ||= false
   end
-
-  #def formatted_init_time
-  #  self.date.strftime("%H:%M")
-  #end
-
-  #def formatted_final_time
-  #  self.date.strftime("%H:%M")
-  #end
 
   def self.period_number(period)
     dados_periodo = {"period_number" => []}

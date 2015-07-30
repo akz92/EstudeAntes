@@ -1,12 +1,11 @@
 class Subject < ActiveRecord::Base
-  TITLE_MAX_LENGTH = 15
   belongs_to :period
   has_many :tests
   has_many :projects
   has_many :events
   after_initialize :init_values
   validates_presence_of :name, :period_id
-  validates_length_of :name, maximum: TITLE_MAX_LENGTH
+  validates_length_of :name, maximum: 15
   accepts_nested_attributes_for :tests, :reject_if => lambda { |a| a[:content].blank? }
 
   def init_values

@@ -83,3 +83,4 @@ gem 'rspec-rails'
 #gem 'faker'
 gem 'validates_timeliness'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'shoulda-matchers'
