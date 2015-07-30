@@ -7,16 +7,13 @@ class PeriodsController < ApplicationController
 
   # GET /periods
   # GET /periods.json
+  #@date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
   def index
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
-    first_and_last_hour = Period.get_calendar_hours(@current_period)
     @period = @current_period
     if @current_period
+      gon.calendar_hours = Period.get_calendar_hours(@current_period)
       gon.subjects = @current_period.subjects.map &:attributes
-      @new_subject = @current_period.subjects
     end
-    gon.mintime = first_and_last_hour.first
-    gon.maxtime = first_and_last_hour.last
   end
 
   def fullcalendar_events

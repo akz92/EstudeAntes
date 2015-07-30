@@ -14,26 +14,17 @@ class Period < ActiveRecord::Base
   end
 
   def self.get_calendar_hours(period)
-    first_and_last_hour = []
     hours = []
 
-    if period
-      period.subjects.each do |subject|
-        subject.events.each do |event|
-          hours << event.formatted_start_time
-          hours << event.formatted_end_time
-        end
-      end
-    end
-    
-    if hours != []
-      hours.sort!
-      first_and_last_hour << hours.first << hours.last
-    else
-      first_and_last_hour << "06:00" << "24:00"
+    period.events.each do |event|
+      hours << event.formatted_start_time << event.formatted_end_time
     end
 
-    return first_and_last_hour
+    hours.sort!
+    hours = ["06:00", "24:00"] if hours == []
+    hours = [hours.first, hours.last]
+
+    return hours
   end
 
   def self.get_events(period)
