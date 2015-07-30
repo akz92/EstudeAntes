@@ -14,11 +14,9 @@ class Subject < ActiveRecord::Base
   end
 
   def self.get_period_and_subjects(period)
-    dados = {"period" => [], "period_number" => [], "subjects" => []}
+    dados = {"period" => [], "subjects" => []}
 
     dados["period"] = period
-    dados["period_number"] = period.number
-
     period.subjects.each do |subject|
       dados["subjects"] << subject
     end
@@ -30,7 +28,6 @@ def self.get_tests_and_projects(subject)
   dados = {"tests" => [], "projects" => [], "events" => []}
   
   subject.tests.each do |test|
-  
     if test.is_project
       dados["projects"] << test
     else
@@ -38,9 +35,7 @@ def self.get_tests_and_projects(subject)
     end
   end
   
-  events = Event.where("subject_id = #{subject.id}")
-  
-  events.each do |event|
+  subject.events.each do |event|
     dados["events"] << event
   end
   

@@ -2,7 +2,6 @@ class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
   before_action :set_current_period#, only: [:index, :new, :edit, :fullcalendar_events]
-  #before_action :set_other_periods, only: [:all, :index]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
 
@@ -26,7 +25,7 @@ class PeriodsController < ApplicationController
   end
 
   def all
-    Period.get_periods_and_means(@other_periods)
+    #Period.get_periods_and_means(@other_periods)
   end
   # GET /periods/1
   # GET /periods/1.json
@@ -105,16 +104,6 @@ class PeriodsController < ApplicationController
         end
       end
     end
-
-    #def set_other_periods
-    #  @other_periods = []
-    #  periods = current_user.periods
-    #  periods.each do |period|
-    #    unless period.is_current
-    #      @other_periods << period
-    #    end
-    #  end
-    #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params

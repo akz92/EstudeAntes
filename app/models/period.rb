@@ -7,7 +7,7 @@ class Period < ActiveRecord::Base
   validates_presence_of :start_date, :end_date, :number, :user_id
   validates_numericality_of :number
   validates_date :end_date, after: :start_date
-  validates :number, uniqueness: true
+  validates_uniqueness_of :number
 
   def init_values
     self.mean ||= 0
@@ -29,14 +29,6 @@ class Period < ActiveRecord::Base
     if hours != []
       hours.sort!
       first_and_last_hour << hours.first << hours.last
-      #max_first_hour = "14:00"
-      #if hours.first < max_first_hour
-      #  min_last_hour = "#{hours.first.to_i + 10}:00"
-      #else
-      #  min_last_hour = "24:00"
-      #end
-      #first_and_last_hour[0] = max_first_hour if hours.first > max_first_hour
-      #first_and_last_hour[1] = min_last_hour if hours.last < min_last_hour
     else
       first_and_last_hour << "06:00" << "24:00"
     end
@@ -45,17 +37,12 @@ class Period < ActiveRecord::Base
   end
 
   def self.get_events(period)
-    jsons = []
     events = []
+
     period.events.each do |event|
       event.fullcalendar_dates.each do |date|
         events << date
       end
-      #event.dates.each do |date|
-      #  fullcalendar_start = DateTime.new(date.year, date.month, date.day, event.start_time.hour, event.start_time.min, event.start_time.sec, event.start_time.zone)
-      #  fullcalendar_end = DateTime.new(date.year, date.month, date.day, event.end_time.hour, event.end_time.min, event.end_time.sec, event.end_time.zone)
-      #  events << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
-      #end
     end
   
     return events
@@ -69,22 +56,5 @@ class Period < ActiveRecord::Base
     end
 
     return period
-  end
-
-  def self.get_periods_and_means(periods)
-    periods.each do |period|
-      unless period.subjects.size == 0
-        period.subjects.each do |subject|
-          unless subject.value == 0
-            period.mean += (subject.grade * 100) / subject.value
-          else
-            period.mean += 100
-          end
-        end
-        period.mean = period.mean / period.subjects.size
-      else
-        period.mean = 100
-      end
-    end
   end
 end

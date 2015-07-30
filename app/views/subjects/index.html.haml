@@ -4,7 +4,7 @@
 .container-fluid
   .row
     .col-xs-2
-      %h3= "#{@dados["period_number"]}º Periodo"
+      %h3= "#{@dados["period"].number}º Periodo"
 
 %br
 -if @dados["subjects"].count >= 1
