@@ -7588,3 +7588,15 @@ I, [2015-07-27T06:57:21.472459 #14400]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-07-30 15:35:21 -0400 ===
 [4845] * Starting control server on unix:///tmp/puma-status-1438284921270-4845
 [4845] - Worker 0 (pid: 4895) booted, phase: 0
+[4845] - Gracefully shutting down workers...
+[4845] === puma shutdown: 2015-07-30 15:42:15 -0400 ===
+[4845] - Goodbye!
+=== puma startup: 2015-07-30 15:42:16 -0400 ===
+[5203] * Starting control server on unix:///tmp/puma-status-1438285336571-5203
+[5203] - Worker 0 (pid: 5254) booted, phase: 0
+[5203] - Gracefully shutting down workers...
+[5203] === puma shutdown: 2015-07-30 15:43:18 -0400 ===
+[5203] - Goodbye!
+=== puma startup: 2015-07-30 15:43:20 -0400 ===
+[5278] * Starting control server on unix:///tmp/puma-status-1438285400139-5278
+[5278] - Worker 0 (pid: 5328) booted, phase: 0
