@@ -5,7 +5,7 @@ class Subject < ActiveRecord::Base
   has_many :projects
   has_many :events
   after_initialize :init_values
-  validates_presence_of :name
+  validates_presence_of :name, :period_id
   validates_length_of :name, maximum: TITLE_MAX_LENGTH
   accepts_nested_attributes_for :tests, :reject_if => lambda { |a| a[:content].blank? }
 

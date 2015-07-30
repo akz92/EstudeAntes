@@ -4,7 +4,7 @@ class Period < ActiveRecord::Base
   has_many :subjects
   has_many :events, through: :subjects
   after_initialize :init_values
-  validates_presence_of :start_date, :end_date, :number
+  validates_presence_of :start_date, :end_date, :number, :user_id
   validates_numericality_of :number
   validates_date :end_date, after: :start_date
 

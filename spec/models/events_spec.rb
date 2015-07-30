@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe Event do
+  it "is invalid without subject_id" do
+    event= Event.new(start_date: "01-01-2015", end_date: "05-01-2015", start_time: "01:00:00", end_time: "02:00:00", every: "week", title: "titulo")
+    expect(event).to be_invalid
+  end
   it "is invalid without a start date" do
     event= Event.new(end_date: "01-01-2015", start_time: "01:00:00", end_time: "02:00:00", every: "week", title: "titulo")
     expect(event).to be_invalid

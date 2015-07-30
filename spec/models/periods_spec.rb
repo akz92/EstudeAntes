@@ -1,6 +1,10 @@
 require 'rails_helper.rb'
 
 describe Period do
+  it "is invalid without user_id" do
+    period = Period.new(start_date: "01-01-2015", end_date: "05-05-2015", number: 1)
+    expect(period).to be_invalid
+  end
   it "is invalid without start_date" do
     period = Period.new(end_date: "05-05-2015", number: 1)
     expect(period).to be_invalid
