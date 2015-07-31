@@ -94,6 +94,11 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.4.0.0)
@@ -293,6 +298,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   devise
+  factory_girl_rails
   font-awesome-rails
   fullcalendar-rails
   gon
@@ -318,3 +324,6 @@ DEPENDENCIES
   turbolinks
   uglifier
   validates_timeliness
+
+BUNDLED WITH
+   1.10.5
