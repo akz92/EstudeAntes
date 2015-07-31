@@ -92,7 +92,7 @@ function js(){
     allDaySlot: false,
     slotDuration: "01:00:00",
     axisFormat: 'HH:mm',
-    //timeFormat: 'H(:mm)',
+    timeFormat: 'HH:mm',
     titleFormat: 'MMMM YYYY',
     //minTime: gon.mintime,
     //maxTime: gon.maxtime,
