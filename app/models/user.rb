@@ -21,13 +21,12 @@ class User < ActiveRecord::Base
       return_user.name = auth.info.name
     else
       return_user = self.create do |user|
-         user.provider = auth.provider
-         user.uid = auth.uid
-         user.name = auth.info.name
-         user.username = auth.info.username
-         user.email = auth.info.email
-         user.oauth_token = auth.credentials.token
-         user.oauth_expires_at = Time.at(auth.credentials.expires_at) 
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.name = auth.info.name
+        user.password = Devise.friendly_token[0,20]
+        user.email = auth.info.email
+        user.skip_confirmation!
       end
     end
 

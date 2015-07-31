@@ -3,3 +3,20 @@
     .navbar-header
       %a.navbar-brand{href: "#{root_url}"}
         EstudeAntes
+    - if user_signed_in?
+      .navbar-body
+        %ul.nav.navbar-nav.pull-right
+          %li
+            #user_nav
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  - if current_user.name
+                    #{current_user.name}
+                  - else
+                    #{current_user.email}
+                  %b.caret
+                %ul.dropdown-menu
+                  -#%li
+                    %a{href: "#", "data-target" => "#EditUserModalForm", "data-toggle" => "modal"} Editar conta
+                  %li= link_to "Editar Conta", edit_user_registration_path
+                  %li= link_to "Sair", destroy_user_session_path, :method => :delete

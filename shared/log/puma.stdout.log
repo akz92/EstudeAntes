@@ -8002,3 +8002,147 @@ I, [2015-07-27T06:57:21.472459 #14400]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-07-31 15:10:41 -0400 ===
 [3498] * Starting control server on unix:///tmp/puma-status-1438369841820-3498
 [3498] - Worker 0 (pid: 3548) booted, phase: 0
+[3498] - Gracefully shutting down workers...
+[3498] === puma shutdown: 2015-07-31 17:20:28 -0400 ===
+[3498] - Goodbye!
+=== puma startup: 2015-07-31 17:20:29 -0400 ===
+[6477] * Starting control server on unix:///tmp/puma-status-1438377629641-6477
+[6477] - Worker 0 (pid: 6527) booted, phase: 0
+I, [2015-07-31T17:21:31.392190 #6527]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:21:31.713697 #6527]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:21:32.198411 #6527]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:21:39.196100 #6527]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:21:39.364408 #6527] ERROR -- omniauth: (facebook) Authentication failure! invalid_credentials: OAuth2::Error, : 
+{"error":{"message":"This authorization code has been used.","type":"OAuthException","code":100}}
+I, [2015-07-31T17:21:42.929282 #6527]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:21:43.154888 #6527]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:21:43.989761 #6527]  INFO -- omniauth: (facebook) Callback phase initiated.
+[6477] - Gracefully shutting down workers...
+[6477] === puma shutdown: 2015-07-31 17:22:26 -0400 ===
+[6477] - Goodbye!
+=== puma startup: 2015-07-31 17:22:27 -0400 ===
+[6712] * Starting control server on unix:///tmp/puma-status-1438377747457-6712
+[6712] - Gracefully shutting down workers...
+[6762] Early termination of worker
+[6712] === puma shutdown: 2015-07-31 17:22:30 -0400 ===
+[6712] - Goodbye!
+=== puma startup: 2015-07-31 17:22:31 -0400 ===
+[6772] * Starting control server on unix:///tmp/puma-status-1438377751800-6772
+[6772] - Worker 0 (pid: 6822) booted, phase: 0
+I, [2015-07-31T17:22:35.124896 #6822]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:22:35.288130 #6822] ERROR -- omniauth: (facebook) Authentication failure! invalid_credentials: OAuth2::Error, : 
+{"error":{"message":"This authorization code has been used.","type":"OAuthException","code":100}}
+I, [2015-07-31T17:23:00.322964 #6822]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:23:00.530464 #6822]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:23:01.195576 #6822]  INFO -- omniauth: (facebook) Callback phase initiated.
+[6772] - Gracefully shutting down workers...
+[6772] === puma shutdown: 2015-07-31 17:23:49 -0400 ===
+[6772] - Goodbye!
+=== puma startup: 2015-07-31 17:23:50 -0400 ===
+[6865] * Starting control server on unix:///tmp/puma-status-1438377830045-6865
+[6865] - Worker 0 (pid: 6915) booted, phase: 0
+I, [2015-07-31T17:23:52.865590 #6915]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:23:53.020703 #6915] ERROR -- omniauth: (facebook) Authentication failure! invalid_credentials: OAuth2::Error, : 
+{"error":{"message":"This authorization code has been used.","type":"OAuthException","code":100}}
+I, [2015-07-31T17:23:56.692843 #6915]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:23:56.885264 #6915]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:23:57.326261 #6915]  INFO -- omniauth: (facebook) Callback phase initiated.
+[6865] - Gracefully shutting down workers...
+[6865] === puma shutdown: 2015-07-31 17:25:15 -0400 ===
+[6865] - Goodbye!
+=== puma startup: 2015-07-31 17:25:16 -0400 ===
+[6941] * Starting control server on unix:///tmp/puma-status-1438377916491-6941
+[6941] - Worker 0 (pid: 6991) booted, phase: 0
+I, [2015-07-31T17:25:23.879516 #6991]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:25:24.088282 #6991]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:25:24.812105 #6991]  INFO -- omniauth: (facebook) Callback phase initiated.
+[6941] - Gracefully shutting down workers...
+[6941] === puma shutdown: 2015-07-31 17:25:59 -0400 ===
+[6941] - Goodbye!
+=== puma startup: 2015-07-31 17:26:00 -0400 ===
+[7020] * Starting control server on unix:///tmp/puma-status-1438377960758-7020
+[7020] - Worker 0 (pid: 7070) booted, phase: 0
+I, [2015-07-31T17:26:05.355585 #7070]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:26:05.595724 #7070]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:26:06.032058 #7070]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:26:09.044504 #7070]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:26:09.243037 #7070]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:26:09.700027 #7070]  INFO -- omniauth: (facebook) Callback phase initiated.
+[7020] - Gracefully shutting down workers...
+[7020] === puma shutdown: 2015-07-31 17:31:17 -0400 ===
+[7020] - Goodbye!
+=== puma startup: 2015-07-31 17:31:18 -0400 ===
+[7115] * Starting control server on unix:///tmp/puma-status-1438378278252-7115
+[7115] - Worker 0 (pid: 7165) booted, phase: 0
+I, [2015-07-31T17:31:29.094614 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:31:29.326062 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:31:29.865397 #7165]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:39:15.241730 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:39:15.442801 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:39:15.985030 #7165]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:39:23.320282 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:39:23.510121 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:39:24.052987 #7165]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:39:28.105151 #7165]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:39:28.106366 #7165] ERROR -- omniauth: (facebook) Authentication failure! csrf_detected: OmniAuth::Strategies::OAuth2::CallbackError, csrf_detected | CSRF detected
+I, [2015-07-31T17:39:57.361693 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:39:57.572580 #7165]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:39:58.135937 #7165]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:40:02.043001 #7165]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:40:02.043567 #7165] ERROR -- omniauth: (facebook) Authentication failure! csrf_detected: OmniAuth::Strategies::OAuth2::CallbackError, csrf_detected | CSRF detected
+[7115] - Gracefully shutting down workers...
+[7115] === puma shutdown: 2015-07-31 17:41:50 -0400 ===
+[7115] - Goodbye!
+=== puma startup: 2015-07-31 17:41:51 -0400 ===
+[7270] * Starting control server on unix:///tmp/puma-status-1438378911682-7270
+[7270] - Worker 0 (pid: 7320) booted, phase: 0
+I, [2015-07-31T17:42:01.010308 #7320]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:42:01.344854 #7320]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:42:01.988261 #7320]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:42:12.899956 #7320]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:42:12.900686 #7320] ERROR -- omniauth: (facebook) Authentication failure! csrf_detected: OmniAuth::Strategies::OAuth2::CallbackError, csrf_detected | CSRF detected
+[7270] - Gracefully shutting down workers...
+[7270] === puma shutdown: 2015-07-31 17:43:23 -0400 ===
+[7270] - Goodbye!
+=== puma startup: 2015-07-31 17:43:24 -0400 ===
+[7347] * Starting control server on unix:///tmp/puma-status-1438379004203-7347
+[7347] - Worker 0 (pid: 7397) booted, phase: 0
+I, [2015-07-31T17:43:31.464934 #7397]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:43:31.777074 #7397]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:43:32.376839 #7397]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:43:38.965231 #7397]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:43:38.966639 #7397] ERROR -- omniauth: (facebook) Authentication failure! csrf_detected: OmniAuth::Strategies::OAuth2::CallbackError, csrf_detected | CSRF detected
+[7347] - Gracefully shutting down workers...
+[7347] === puma shutdown: 2015-07-31 17:47:58 -0400 ===
+[7347] - Goodbye!
+=== puma startup: 2015-07-31 17:47:58 -0400 ===
+[7439] * Starting control server on unix:///tmp/puma-status-1438379278938-7439
+[7439] - Worker 0 (pid: 7489) booted, phase: 0
+I, [2015-07-31T17:48:04.306965 #7489]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:48:04.874283 #7489]  INFO -- omniauth: (facebook) Callback phase initiated.
+I, [2015-07-31T17:48:09.391734 #7489]  INFO -- omniauth: (facebook) Callback phase initiated.
+E, [2015-07-31T17:48:09.394273 #7489] ERROR -- omniauth: (facebook) Authentication failure! csrf_detected: OmniAuth::Strategies::OAuth2::CallbackError, csrf_detected | CSRF detected
+I, [2015-07-31T17:51:24.899597 #7489]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:51:25.105992 #7489]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:51:25.660261 #7489]  INFO -- omniauth: (facebook) Callback phase initiated.
+[7439] - Gracefully shutting down workers...
+[7439] === puma shutdown: 2015-07-31 17:52:21 -0400 ===
+[7439] - Goodbye!
+=== puma startup: 2015-07-31 17:52:22 -0400 ===
+[7556] * Starting control server on unix:///tmp/puma-status-1438379542794-7556
+[7556] - Worker 0 (pid: 7606) booted, phase: 0
+[7556] - Gracefully shutting down workers...
+[7556] === puma shutdown: 2015-07-31 17:53:45 -0400 ===
+[7556] - Goodbye!
+=== puma startup: 2015-07-31 17:53:46 -0400 ===
+[7670] * Starting control server on unix:///tmp/puma-status-1438379626144-7670
+[7670] - Worker 0 (pid: 7720) booted, phase: 0
+[7670] - Gracefully shutting down workers...
+[7670] === puma shutdown: 2015-07-31 17:54:10 -0400 ===
+[7670] - Goodbye!
+=== puma startup: 2015-07-31 17:54:12 -0400 ===
+[7758] * Starting control server on unix:///tmp/puma-status-1438379652002-7758
+[7758] - Worker 0 (pid: 7808) booted, phase: 0
+I, [2015-07-31T17:55:51.427116 #7808]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:55:52.529694 #7808]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-07-31T17:55:53.756266 #7808]  INFO -- omniauth: (facebook) Callback phase initiated.
