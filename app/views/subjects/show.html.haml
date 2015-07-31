@@ -143,42 +143,4 @@
             %button.btn{"data-target" => "#EventModalForm", "data-toggle" => "modal", :type => "button"} Aula
     .col-xs-4
       /%h5 Aproveitamento
-      %canvas#canvas{:height => "300", :width => "450"}
-
--#%table.table.table-hover
-  %thead
-    %th
-    %th
-    %th
-  %tbody
-    %tr.clickable{"data-target" => "#accordion", "data-toggle" => "collapse"}
-      %td br
-      %td braaa
-      %td brffffff
-    %tr
-      %td{colspan: "3"}
-        #accordion.collapse Hidden content
-
-:javascript
-  var subjectPercentage = Math.round( (gon.subject.grade / gon.subject.value) * 100 );
-
-  if (gon.subject.grade === 0)
-  {
-    subjectPercentage = 100;
-  }
-
-  data = [
-    {
-      value : 100 - subjectPercentage,
-      color : "#E0E4CC"
-    },
-    {
-      value : subjectPercentage,
-      color : "#69D2E7"
-    }
-        ];
-
-  var ctx = document.getElementById("canvas").getContext("2d");
-  var myNewChart = new Chart(ctx).Doughnut(data);
-
-  new Chart(ctx).Dounghnut(data);
+      %canvas#aproveitamento{:height => "300", :width => "450"}

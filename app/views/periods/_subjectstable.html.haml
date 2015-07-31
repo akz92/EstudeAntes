@@ -12,7 +12,7 @@
           %td= "#{trim(subject.grade)} / #{subject.value}"
 
 .col-xs-12.col-md-5
-  -if (@period && @period.subjects.count < 2)
+  -if @period.subjects.count < 2
     %h5.centertext= "Adicione pelo menos duas disciplinas para visualizar o gráfico do seu rendimento"
   -else
     %h5

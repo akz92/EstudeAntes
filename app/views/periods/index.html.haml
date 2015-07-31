@@ -1,12 +1,11 @@
 =include_gon
 
-/= flash[:notice]
 -if @period && @period.subjects.count >= 1
   - tab("period")
   .container-fluid
     .row
-      = render "/periods/calendariosemanal"
-      /%hr
+      .col-xs-12.col-md-7
+        #calendar
       = render "periods/subjectstable"
 -elsif @period
   %h4.centertext= "Agora adicione as disciplinas"
@@ -15,81 +14,3 @@
 -else
   %h4.centertext= "Começe adicionando um período"
   %h4.centertext= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar período'.html_safe, new_period_path, class: 'btn btn-primary'
-
-:javascript
-
-  var subjectNames = new Array();
-  var subjectGrades = new Array();
-  var averageGrades = new Array();
-
-  for(var i = 0; i < gon.subjects.length; i++){
-    subjectNames.push(gon.subjects[i].name)
-    if (gon.subjects[i].value == 0) {
-      subjectGrades.push(gon.subjects[i].grade)
-    } else {
-      subjectGrades.push((100 * gon.subjects[i].grade)/gon.subjects[i].value)
-    }
-    averageGrades.push(60)
-  };
-
-  data = {
-    labels : subjectNames,
-    datasets : [
-      {
-        fillColor : "rgba(100,100,180,0.5)",
-        strokeColor : "#1484E6",
-        pointColor : "#1484E6",
-        pointStrokeColor : "#fff",
-        data : subjectGrades
-      },
-      //{
-      //  fillColor : "rgba(100,100,180,0.5)",
-      //  strokeColor : "rgba(100,100,180,1)",
-      //  pointColor : "rgba(100,100,180,1)",
-      //  pointStrokeColor : "#fff",
-      //  data : subjectGrades
-      //},
-      {
-        fillColor : "rgba(220,50,50,0.3)",
-        strokeColor : "#E69700",
-        pointColor : "rgba(0,0,0,0)",
-        pointStrokeColor : "rgba(0,0,0,0)",
-        data : averageGrades
-      }
-      //{
-      //  fillColor : "rgba(220,50,50,0.3)",
-      //  strokeColor : "rgba(220,50,50,1)",
-      //  pointColor : "rgba(0,0,0,0)",
-      //  pointStrokeColor : "rgba(0,0,0,0)",
-      //  data : averageGrades
-      //}
-      //{
-      //  fillColor : "rgba(220,50,50,0.3)",
-      //  strokeColor : "rgba(220,50,50,1)",
-      //  pointColor : "rgba(220,50,50,1)",
-      //  pointStrokeColor : "#fff",
-      //  pointDot: false,
-      //  data : averageGrades
-      //}
-    ]
-  }
-
-  var ctx = document.getElementById("canvas").getContext("2d");
-  var pixelRatio = window.devicePixelRatio || 1;
-  var width = $('canvas').parent().width();
-  var height = $('canvas').parent().height();
-  ctx.canvas.width = width / pixelRatio;
-  ctx.canvas.height = (1.5 * height) / pixelRatio;
-  var myNewChart = new Chart(ctx).Line(data);
-
-  var options = {
-    scaleOverride   : true,
-    scaleSteps      : 10,
-    scaleStepWidth  : 10,
-    scaleStartValue : 0,
-    datasetFill : false,
-    //responsive: true,
-    //maintainAspectRatio: true
-  }
-
-  new Chart(ctx).Line(data, options);
