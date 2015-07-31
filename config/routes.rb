@@ -1,14 +1,10 @@
 Estudeantes::Application.routes.draw do
 
-  #resources :event_recurrences
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
-  devise_for :user, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  #resources :home
-  #resources :dashboard
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  devise_for :user, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
+
   #new controller for static pages
   #resources :pages, :only => :show
   get '/help', to: 'pages#help', as: 'help'

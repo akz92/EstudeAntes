@@ -13,16 +13,24 @@ class User < ActiveRecord::Base
     (super == nil) ? '1' : super
   end
 
-  def self.find_for_facebook_oauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      #user.image = auth.info.image # assuming the user model has an image
-      user.skip_confirmation!
-      user.save!
+  def self.from_omniauth(auth)
+    if self.where(email: auth.info.email).exists?
+      return_user = self.where(email: auth.info.email).first
+      return_user.provider = auth.provider
+      return_user.uid = auth.uid
+      return_user.name = auth.info.name
+    else
+      return_user = self.create do |user|
+         user.provider = auth.provider
+         user.uid = auth.uid
+         user.name = auth.info.name
+         user.username = auth.info.username
+         user.email = auth.info.email
+         user.oauth_token = auth.credentials.token
+         user.oauth_expires_at = Time.at(auth.credentials.expires_at) 
+      end
     end
+
+  return_user
   end
 end
