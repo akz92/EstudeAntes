@@ -16,6 +16,7 @@
     %link{:href => "css/custom.css", :rel => "stylesheet", :type => "text/css"}/
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    = render partial: "layouts/flash_messages", flash: flash
   %body
     = navbar_select
     .container

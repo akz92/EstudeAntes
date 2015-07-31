@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period#, only: [:index, :new, :edit, :fullcalendar_events]
+  before_action :set_current_period, only: [:index, :fullcalendar_events]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
 
@@ -9,15 +9,14 @@ class PeriodsController < ApplicationController
   # GET /periods.json
   #@date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
   def index
-    @period = @current_period
-    if @current_period
-      gon.calendar_hours = Period.get_calendar_hours(@current_period)
-      gon.subjects = @current_period.subjects.map &:attributes
+    if @period
+      gon.calendar_hours = Period.get_calendar_hours(@period)
+      gon.subjects = @period.subjects.map &:attributes
     end
   end
 
   def fullcalendar_events
-    events = Period.get_events(@current_period)
+    events = Period.get_events(@period)
     render json: events
   end
 
@@ -43,16 +42,24 @@ class PeriodsController < ApplicationController
   def create
     @period = @periods.new(period_params)
     @period = Period.check_current_period(@period)
-
-    if  @period.is_current && current_user.periods.where(is_current: true).count > 0
-      render action: "new"
-      flash[:notice] = "Ja existe um periodo vigente."
+    if  @period.save
+      flash[:success] = "Periodo criado com sucesso." 
     else
-      flash[:notice] = "Periodo criado com sucesso." if  @period.save
-      respond_with(@period) do |format|
-        format.html { redirect_to root_path }
-      end
+      flash[:error] = "O periodo nao pode ser criado." 
     end
+    respond_with(@period) do |format|
+      format.html { redirect_to root_path }
+    end
+
+    #if  @period.is_current && current_user.periods.where(is_current: true).count > 0
+    #  render action: "new"
+    #  flash[:notice] = "Ja existe um periodo vigente."
+    #else
+    #  flash[:notice] = "Periodo criado com sucesso." if  @period.save
+    #  respond_with(@period) do |format|
+    #    format.html { redirect_to root_path }
+    #  end
+    #end
   end
 
   # PATCH/PUT /periods/1
@@ -88,16 +95,13 @@ class PeriodsController < ApplicationController
     end
 
     def set_current_period
-      #@current_period = []
       @other_periods = []
-      @dados_periodo = {"period_number" => []}
       periods = current_user.periods
       periods.each do |period|
         if period.is_current
-          @current_period = period
-	  @dados_periodo["period_number"] = period.number
+          @period = period
         else
-          @other_periods<< period
+          @other_periods << period
         end
       end
     end

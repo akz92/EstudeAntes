@@ -27,9 +27,7 @@ class Event < ActiveRecord::Base
   def self.fullcalendar_conversion(event)
     dates = []
     event.dates.each do |date|
-      fullcalendar_start = Event.format_datetime(date, event.start_time)
-      fullcalendar_end = Event.format_datetime(date, event.end_time)
-      dates << {id: event.id, title: event.title, start: fullcalendar_start.iso8601,  end: fullcalendar_end.iso8601}
+      dates << {id: event.id, title: event.title, start: Event.format_datetime(date, event.start_time), end: Event.format_datetime(date, event.end_time)}
     end
 
     return dates

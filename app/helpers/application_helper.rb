@@ -8,14 +8,22 @@ module ApplicationHelper
     case @active_tab
     when "period"
       render partial: "/periods/navbar"
-    #when "other_period"
-    #  render partial: "/periods/other_period_navbar"
     when "subject"
       render partial: "/subjects/navbar"
     else
       render partial: "/devise/sessions/navbar"
     end
-      
+  end
+
+  def alert_class_for(flash_type)
+    {
+      :success => 'alert-success',
+      :error => 'alert-danger',
+      :alert => 'alert-warning',
+      :notice => 'alert-info'
+    }[flash_type.to_sym] || flash_type.to_s
+  end 
+
     #if @current_period
     #  render partial: "/periods/navbar"
     #elsif @period && @period.is_current == false
@@ -25,7 +33,6 @@ module ApplicationHelper
     #else
     #  render partial: "/periods/initial_navbar"
     #end
-  end
 
   #def resource_name :user end 
   #def resource \@resource ||= User.new end 

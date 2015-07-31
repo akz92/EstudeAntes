@@ -1,7 +1,6 @@
 class SubjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-  before_action :get_period_number, only: [:index, :show, :edit, :new]
   respond_to :html, :json
 
   before_filter do
@@ -11,7 +10,6 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @dados = Subject.get_period_and_subjects(@period)
     gon.subjects = @period.subjects.map &:attributes
   end
 
@@ -72,11 +70,6 @@ class SubjectsController < ApplicationController
     def set_subject
       @period = Period.find(params[:period_id])
       @subject = @period.subjects.find(params[:id])
-    end
-
-    def get_period_number
-      @period = Period.find(params[:period_id])
-      @dados_periodo = Subject.get_period_and_subjects(@period)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

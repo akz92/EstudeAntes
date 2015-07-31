@@ -10,15 +10,4 @@ class Test < ActiveRecord::Base
        self.grade ||= 0
        self.is_project ||= false
   end
-
-  def self.period_number(period)
-    dados_periodo = {"period_number" => []}
-    dados_periodo["period_number"] = period.number
-
-    return dados_periodo
-  end
-
-  def self.init
-  end
-
 end

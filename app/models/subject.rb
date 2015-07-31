@@ -13,17 +13,6 @@ class Subject < ActiveRecord::Base
     self.grade ||= 0
   end
 
-  def self.get_period_and_subjects(period)
-    dados = {"period" => [], "subjects" => []}
-
-    dados["period"] = period
-    period.subjects.each do |subject|
-      dados["subjects"] << subject
-    end
-
-    return dados
-  end
-
 def self.get_tests_and_projects(subject)
   dados = {"tests" => [], "projects" => [], "events" => []}
   

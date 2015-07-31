@@ -8,9 +8,15 @@ class Period < ActiveRecord::Base
   validates_numericality_of :number
   validates_date :end_date, after: :start_date
   validates_uniqueness_of :number
+  validates_uniqueness_of :is_current, if: :is_current?
 
   def init_values
     self.mean ||= 0
+    self.is_current ||= false
+  end
+
+  def is_current?
+    self.is_current == true
   end
 
   def self.get_calendar_hours(period)
@@ -40,10 +46,8 @@ class Period < ActiveRecord::Base
   end
 
   def self.check_current_period(period)
-    if ((Date.today >= period.start_date) && (Date.today <= period.end_date))
+    if Date.today.between?(period.start_date, period.end_date)
       period.is_current = true
-    else
-      period.is_current = false
     end
 
     return period

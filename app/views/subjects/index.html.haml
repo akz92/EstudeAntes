@@ -4,10 +4,10 @@
 .container-fluid
   .row
     .col-xs-2
-      %h3= "#{@dados["period"].number}º Periodo"
+      %h3= "#{@period.number}º Periodo"
 
 %br
--if @dados["subjects"].count >= 1
+-if @period.subjects.count >= 1
   = render "periods/subjectstable"
 -else
   %p= "Este periodo nao possui disciplinas"

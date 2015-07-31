@@ -102,7 +102,6 @@ class TestsController < ApplicationController
 
     def get_period_number
       @period = Period.find(params[:period_id])
-      @dados_periodo = Test.period_number(@period)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
