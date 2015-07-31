@@ -40,7 +40,7 @@ class EventsController < ApplicationController
     @event.end_date = @period.end_date
     @event.fullcalendar_dates = Event.fullcalendar_conversion(@event)
 
-    flash[:notice] = "Evento criado com sucesso." if @event.save
+    flash[:success] = "Evento criado com sucesso." if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 

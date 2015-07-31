@@ -49,9 +49,9 @@ class TestsController < ApplicationController
     @subject.save
 
     if @test.is_project
-      flash[:notice] = "Trabalho adicionado com sucesso." if @test.save
+      flash[:success] = "Trabalho adicionado com sucesso." if @test.save
     else
-      flash[:notice] = "Prova adicionada com sucesso." if @test.save
+      flash[:success] = "Prova adicionada com sucesso." if @test.save
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
   end

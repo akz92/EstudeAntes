@@ -35,7 +35,7 @@ class SubjectsController < ApplicationController
   def create
     @subject = @period.subjects.new(subject_params)
 
-    params[:notice] = "Disciplina criada com sucesso." if @subject.save
+    flash[:success] = "Disciplina criada com sucesso." if @subject.save
     respond_with(@subject) do |format|
       if @period.is_current
         format.html { redirect_to root_path }
