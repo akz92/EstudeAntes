@@ -19,45 +19,6 @@ body{
   font-size: 10px;
 }
 
-.table-align.table-font.azul {
-  background-color: #007fff;
-}
-
-.table-align.table-font.amarelo {
-  background-color: #ffcc00;
-}
-
-.table-align.table-font.verde {
-  background-color: #008000;
-}
-
-.box {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-}
-
-.legenda {
-  margin: 0;
-  list-style: none;
-}
-
-.legenda li {
-  display: inline;
-}
-
-.box.azul {
-  border-left: 15px solid #007fff;
-}
-
-.box.amarelo {
-  border-left: 15px solid #ffcc00;
-}
-
-.box.verde {
- border-left: 15px solid #008000;
-}
-
 .align-right {
 	border: none;
   float: right;
@@ -77,7 +38,7 @@ body{
   text-align: center;
 }
 
-.table-striped>tbody>tr:nth-child(odd)>td,
+/*.table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
 	   background-color: #F8F8F8;
 }
@@ -85,7 +46,7 @@ body{
 .table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
 	   background-color: #FFFFFF;
-}
+}*/
 
 .navbar-inner {
 	background-color: #F8F8F8;
@@ -104,13 +65,13 @@ body{
   webkit-box-shadow: none;
 }
 
-.datewidth {
+/*.datewidth {
   width: 170px;
 }
 
 .gradewidth {
   width: 70px;
-}
+}*/
 
 .center {
   display: inline-block;
@@ -161,10 +122,6 @@ a:visited {
 a:hover {
 }
 a:active {
-}
-
-.orangetext {
-  color: #e69700;
 }
 
 * {
