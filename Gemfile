@@ -69,7 +69,7 @@ gem "font-awesome-rails"
 #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'jquery-turbolinks'
 #gem 'bootstrap-generators', '~> 3.3.4'
-gem 'puma'
+gem 'puma', group: :production
 #gem 'mina'
 gem 'bootstrap_form'
 gem 'bootstrap-social-rails'
@@ -78,9 +78,10 @@ gem 'momentjs-rails'
 gem "recurrence"#, :require => "recurrence/namespace"
 gem 'invisible_captcha'
 gem 'jquery-ui-themes'
-gem 'rspec-rails'
-gem 'factory_girl_rails'
+gem 'rspec-rails', group: :test
+gem 'factory_girl_rails', group: :test
 #gem 'faker'
 gem 'validates_timeliness'
 gem "codeclimate-test-reporter", group: :test, require: nil
-gem 'shoulda-matchers'
+gem 'simplecov', :require => false, :group => :test
+gem 'shoulda-matchers', group: :test

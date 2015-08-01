@@ -11,7 +11,7 @@
           %td= link_to subject.name, period_subject_path(@period, subject)
           %td= "#{trim(subject.grade)} / #{subject.value}"
 
-.col-xs-12.col-md-5
+.col-xs-12.col-md-5.pull-right
   -if @period.subjects.count < 2
     %h5.centertext= "Adicione pelo menos duas disciplinas para visualizar o gráfico do seu rendimento"
   -else

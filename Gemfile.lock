@@ -320,6 +320,7 @@ DEPENDENCIES
   sass-rails
   sdoc
   shoulda-matchers
+  simplecov
   therubyracer
   turbolinks
   uglifier

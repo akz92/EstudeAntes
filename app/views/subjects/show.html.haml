@@ -28,7 +28,7 @@
           - @dados["tests"] = @dados["tests"].sort_by &:date
           - @dados["tests"].each do |test|
             %tr.accordion-toggle{"data-target" => "##{test.id}", "data-toggle" => "collapse"}
-              %td.text-error= formatted_date(test.date)
+              %td.text-error= test.date
               %td.text-success #{test.grade} / #{test.value}
             %tr
               %td.hiddenRow{:colspan => "6"}
