@@ -1,6 +1,8 @@
 language: ruby
 script: 'true'
 sudo: false
+git:
+  depth: 1
 addons:
   postgresql: '9.4'
 rvm:
