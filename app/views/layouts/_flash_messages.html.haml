@@ -4,3 +4,5 @@
       %span{"aria-hidden" => "true"} ×
       %span.sr-only Close
     = message
+  :javascript
+    createAutoClosingAlert(".#{alert_class_for(type)}");
