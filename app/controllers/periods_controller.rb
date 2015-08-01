@@ -7,16 +7,15 @@ class PeriodsController < ApplicationController
 
   # GET /periods
   # GET /periods.json
-  #@date = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_week
   def index
     if @period
-      gon.calendar_hours = Period.get_calendar_hours(@period)
+      gon.calendar_hours = @period.get_calendar_hours
       gon.subjects = @period.subjects.map &:attributes
     end
   end
 
   def fullcalendar_events
-    events = Period.get_events(@period)
+    events = @period.get_events
     render json: events
   end
 
@@ -41,7 +40,7 @@ class PeriodsController < ApplicationController
   # POST /periods.json
   def create
     @period = @periods.new(period_params)
-    @period = Period.check_current_period(@period)
+    @period.is_current?
     if  @period.save
       flash[:success] = "Periodo criado com sucesso." 
     else

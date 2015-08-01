@@ -8,21 +8,12 @@ class Period < ActiveRecord::Base
   validates_numericality_of :number
   validates_date :end_date, after: :start_date
   validates_uniqueness_of :number
-  validates_uniqueness_of :is_current, if: :is_current?
+  validates_uniqueness_of :is_current, if: :true?
 
-  def init_values
-    self.mean ||= 0
-    self.is_current ||= false
-  end
-
-  def is_current?
-    self.is_current == true 
-  end
-
-  def self.get_calendar_hours(period)
+  def get_calendar_hours
     hours = []
 
-    period.events.each do |event|
+    self.events.each do |event|
       hours << event.formatted_start_time << event.formatted_end_time
     end
 
@@ -33,10 +24,10 @@ class Period < ActiveRecord::Base
     hours
   end
 
-  def self.get_events(period)
+  def get_events
     events = []
 
-    period.events.each do |event|
+    self.events.each do |event|
       event.fullcalendar_dates.each do |date|
         events << date
       end
@@ -44,10 +35,21 @@ class Period < ActiveRecord::Base
     events
   end
 
-  def self.check_current_period(period)
-    if Date.today.between?(period.start_date, period.end_date)
-      period.is_current = true
+  def is_current?
+    if Date.today.between?(self.start_date, self.end_date)
+      self.is_current = true
     end
-    period
+    self
+  end
+
+  private
+
+  def init_values
+    self.mean ||= 0
+    self.is_current ||= false
+  end
+
+  def true?
+    self.is_current == true 
   end
 end
