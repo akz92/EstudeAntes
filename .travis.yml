@@ -5,7 +5,7 @@ addons:
   postgresql: '9.4'
   code_climate:
     repo_token:
-      secure: Nm6nOfTrUNClklI9FsWA1OSesqhCquSp7Tgveq6wexoKmhWHk5UrrsuwE7uYfItVp/8dWi5Dnd+2Z1KMjJzAhXnWz2Q4D/b8PNv2dvG2EdZaXZrQZYGeVlsxeV+R2+O/NzGEEjFXgwKHKpuzzD6qoE9N8c0LAtItcgYp3UrS9RM=
+      secure: NGSr5Yl6KkJ/XUvRPM7nR801n2A82Rfnr7QqD90rL4VLMV9EK2fDAAnV2aDo0cDSQnBnX8pqVm4GH9SzKlYds9MHJxfUFtDwNmYtbXe0nZIyAUDzGvfrYFaCR6CmQNZ3fyJP1K96ht1yx7pOsHx65cq5cGngXjD0elZux/1j/8s=
 rvm:
 - 2.2.2
 before_script:
@@ -14,6 +14,3 @@ test:
   adapter: postgresql
   database: travis_ci_test
   username: postgres
-env:
-  global:
-    secure: NGSr5Yl6KkJ/XUvRPM7nR801n2A82Rfnr7QqD90rL4VLMV9EK2fDAAnV2aDo0cDSQnBnX8pqVm4GH9SzKlYds9MHJxfUFtDwNmYtbXe0nZIyAUDzGvfrYFaCR6CmQNZ3fyJP1K96ht1yx7pOsHx65cq5cGngXjD0elZux/1j/8s=
