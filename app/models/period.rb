@@ -16,7 +16,7 @@ class Period < ActiveRecord::Base
   end
 
   def is_current?
-    self.is_current == true
+    self.is_current == true 
   end
 
   def self.get_calendar_hours(period)
@@ -30,7 +30,7 @@ class Period < ActiveRecord::Base
     hours = ["06:00", "24:00"] if hours == []
     hours = [hours.first, hours.last]
 
-    return hours
+    hours
   end
 
   def self.get_events(period)
@@ -41,15 +41,13 @@ class Period < ActiveRecord::Base
         events << date
       end
     end
-  
-    return events
+    events
   end
 
   def self.check_current_period(period)
     if Date.today.between?(period.start_date, period.end_date)
       period.is_current = true
     end
-
-    return period
+    period
   end
 end

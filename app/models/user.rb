@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
         user.skip_confirmation!
       end
     end
-
-  return_user
+    return_user
   end
 end
