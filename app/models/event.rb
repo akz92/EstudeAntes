@@ -20,10 +20,6 @@ class Event < ActiveRecord::Base
     Recurrence.new(options).events
   end
 
-  def self.format_datetime(date, time)
-    return DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
-  end
-
   def self.fullcalendar_conversion(event)
     dates = []
     event.dates.each do |date|
@@ -40,4 +36,10 @@ class Event < ActiveRecord::Base
   def formatted_end_time
     self.end_time.strftime("%H:%M")
   end
+
+  private
+  def self.format_datetime(date, time)
+    return DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
+  end
+
 end

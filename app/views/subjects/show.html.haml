@@ -121,7 +121,8 @@
               %th
           %tbody
             %tr
-              - @dados["events"].each do |event|
+              /- @dados["events"].each do |event|
+              - @subject.events.each do |event|
                 %tr
                   %td
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")}"
