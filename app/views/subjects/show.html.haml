@@ -19,20 +19,21 @@
 .container-fluid
   .row
     .col-xs-8
-      %table.table.table-striped.table-condensed{:style => "border-collapse:collapse;"}
-        %thead
-          %tr
-            %th Provas
-            %th Notas
-        %tbody
-          - @dados["tests"] = @dados["tests"].sort_by &:date
-          - @dados["tests"].each do |test|
-            %tr.accordion-toggle{"data-target" => "##{test.id}", "data-toggle" => "collapse"}
-              %td.text-error= test.date
-              %td.text-success #{test.grade} / #{test.value}
+      - if @dados["tests"] != []
+        %table.table.table-striped.table-condensed{:style => "border-collapse:collapse;"}
+          %thead
             %tr
-              %td.hiddenRow{:colspan => "6"}
-                = dynamic_div(test.id, test.note)
+              %th Provas
+              %th Notas
+          %tbody
+            - @dados["tests"] = @dados["tests"].sort_by &:date
+            - @dados["tests"].each do |test|
+              %tr.accordion-toggle{"data-target" => "##{test.id}", "data-toggle" => "collapse"}
+                %td.text-error= test.date
+                %td.text-success #{test.grade} / #{test.value}
+              %tr
+                %td.hiddenRow{:colspan => "6"}
+                  = dynamic_div(test.id, test.note)
                 /#demo1.accordian-body.collapse Demo1
       -#%table.table.table-striped.table_border
         %thead.grey
@@ -67,20 +68,21 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir essa prova?' }
       %br
-      %table.table.table-striped.table-condensed{:style => "border-collapse:collapse;"}
-        %thead
-          %tr.grey
-            %th Trabalhos
-            %th Notas
-        %tbody
-          - @dados["projects"] = @dados["projects"].sort_by &:date
-          - @dados["projects"].each do |project|
-            %tr.accordion-toggle{"data-target" => "##{project.id}", "data-toggle" => "collapse"}
-              %td.text-error= formatted_date(project.date)
-              %td.text-success #{project.grade} / #{project.value}
-            %tr
-              %td.hiddenRow{:colspan => "6"}
-                = dynamic_div(project.id, project.note)
+      - if @dados["projects"] != []
+        %table.table.table-striped.table-condensed{:style => "border-collapse:collapse;"}
+          %thead
+            %tr.grey
+              %th Trabalhos
+              %th Notas
+          %tbody
+            - @dados["projects"] = @dados["projects"].sort_by &:date
+            - @dados["projects"].each do |project|
+              %tr.accordion-toggle{"data-target" => "##{project.id}", "data-toggle" => "collapse"}
+                %td.text-error= formatted_date(project.date)
+                %td.text-success #{project.grade} / #{project.value}
+              %tr
+                %td.hiddenRow{:colspan => "6"}
+                  = dynamic_div(project.id, project.note)
       -#%table.table.table-striped.table_border
         %thead.grey
           %tr
@@ -111,25 +113,26 @@
                     %li.divider
                     %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, project), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir esse trabalho?' }
       %br
-      %table.table.table-striped.table_border
-        %thead
-          %tr.grey
-            %th Aulas
-            %th
-        %tbody
-          %tr
-            - @dados["events"].each do |event|
-              %tr
-                %td
-                  = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")}"
-                %td
-                  .dropdown.align-right
-                    %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                      %b.caret
-                    %ul.dropdown-menu
-                      %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_event_path(@period, @subject, event)
-                      %li.divider
-                      %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
+      - if @dados["events"] != []
+        %table.table.table-striped.table_border
+          %thead
+            %tr.grey
+              %th Aulas
+              %th
+          %tbody
+            %tr
+              - @dados["events"].each do |event|
+                %tr
+                  %td
+                    = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")}"
+                  %td
+                    .dropdown.align-right
+                      %a.btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_event_path(@period, @subject, event)
+                        %li.divider
+                        %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
       .panel.panel-primary
         .panel-heading Adicionar

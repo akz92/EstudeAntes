@@ -1,7 +1,6 @@
 class Subject < ActiveRecord::Base
   belongs_to :period
   has_many :tests
-  has_many :projects
   has_many :events
   after_initialize :init_values
   validates_presence_of :name, :period_id
