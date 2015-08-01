@@ -3,9 +3,6 @@ script: 'true'
 sudo: false
 addons:
   postgresql: '9.4'
-  code_climate:
-    repo_token:
-      secure: NGSr5Yl6KkJ/XUvRPM7nR801n2A82Rfnr7QqD90rL4VLMV9EK2fDAAnV2aDo0cDSQnBnX8pqVm4GH9SzKlYds9MHJxfUFtDwNmYtbXe0nZIyAUDzGvfrYFaCR6CmQNZ3fyJP1K96ht1yx7pOsHx65cq5cGngXjD0elZux/1j/8s=
 rvm:
 - 2.2.2
 before_script:
