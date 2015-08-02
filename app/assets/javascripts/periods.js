@@ -1,4 +1,4 @@
-function js(){
+function fullCalendar(){
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek", 
     theme: true,
@@ -39,7 +39,9 @@ function js(){
       eventColor: '#1484E6'
   
   });
+}
 
+function lineChart(){
   var subjectNames = [];
   var subjectGrades = [];
   var averageGrades = [];
@@ -116,4 +118,4 @@ function js(){
 
   new Chart(ctx).Line(data, options);
 }
-jQuery(document).on("ready page:change", function() { js(); });
+jQuery(document).on("ready page:change", function() { fullCalendar(); lineChart();});
