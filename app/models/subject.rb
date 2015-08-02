@@ -25,6 +25,10 @@ class Subject < ActiveRecord::Base
     return dados
   end
 
+  def projects
+    self.tests.where(is_project: true)
+  end
+
   private
   def init_values
     self.value ||= 0
