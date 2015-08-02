@@ -6,7 +6,7 @@ $('document').ready(function(){
     subjectPercentage = 100;
   }
 
-  data = [
+  var data = [
     {
       value : 100 - subjectPercentage,
       color : "#E0E4CC"

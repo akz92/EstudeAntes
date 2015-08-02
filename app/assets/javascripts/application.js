@@ -29,5 +29,5 @@ window.location = window.location.href.replace(/#.*/, '');
 
 function createAutoClosingAlert(selector) {
    var alert = $(selector).alert();
-   window.setTimeout(function() { alert.alert('close') }, 5000);
+   window.setTimeout(function() { alert.alert('close'); }, 5000);
 }
