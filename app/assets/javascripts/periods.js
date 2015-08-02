@@ -116,4 +116,4 @@ function js(){
 
   new Chart(ctx).Line(data, options);
 }
-jQuery(document).on("ready page:change", function() { js() });
+jQuery(document).on("ready page:change", function() { js(); });
