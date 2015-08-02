@@ -40,21 +40,21 @@ function js(){
   
   });
 
-  var subjectNames = new Array();
-  var subjectGrades = new Array();
-  var averageGrades = new Array();
+  var subjectNames = [];
+  var subjectGrades = [];
+  var averageGrades = [];
 
   for(var i = 0; i < gon.subjects.length; i++){
-    subjectNames.push(gon.subjects[i].name)
-    if (gon.subjects[i].value == 0) {
-      subjectGrades.push(gon.subjects[i].grade)
+    subjectNames.push(gon.subjects[i].name);
+    if (gon.subjects[i].value === 0) {
+      subjectGrades.push(gon.subjects[i].grade);
     } else {
-      subjectGrades.push((100 * gon.subjects[i].grade)/gon.subjects[i].value)
+      subjectGrades.push((100 * gon.subjects[i].grade)/gon.subjects[i].value);
     }
-    averageGrades.push(60)
-  };
+    averageGrades.push(60);
+  }
 
-  data = {
+  var data = {
     labels : subjectNames,
     datasets : [
       {
@@ -94,7 +94,7 @@ function js(){
       //  data : averageGrades
       //}
     ]
-  }
+  };
 
   var ctx = document.getElementById("canvas").getContext("2d");
   var pixelRatio = window.devicePixelRatio || 1;
@@ -112,8 +112,8 @@ function js(){
     datasetFill : false,
     //responsive: true,
     //maintainAspectRatio: true
-  }
+  };
 
   new Chart(ctx).Line(data, options);
-};
-jQuery(document).on("ready page:change", function() { js() })
+}
+jQuery(document).on("ready page:change", function() { js() });
