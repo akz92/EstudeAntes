@@ -1,7 +1,6 @@
 class TestsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy]
-  before_action :get_period_number, only: [:new, :edit, :trabalho]
   respond_to :html, :json
   before_filter do
     @period = Period.find(params[:period_id])
@@ -95,13 +94,7 @@ class TestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
-      @period = Period.find(params[:period_id])
-      @subject = @period.subjects.find(params[:subject_id])
       @test = @subject.tests.find(params[:id])
-    end
-
-    def get_period_number
-      @period = Period.find(params[:period_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

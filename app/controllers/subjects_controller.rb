@@ -2,7 +2,6 @@ class SubjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
-
   before_filter do
     @period = Period.find(params[:period_id])
   end
@@ -16,7 +15,6 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
-    #@dados = @subject.get_tests_and_projects
     gon.subject = @subject
   end
 
