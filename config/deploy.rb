@@ -60,11 +60,11 @@ task :setup => :environment do
   queue %[
     repo_host=`echo $repo | sed -e 's/.*@//g' -e 's/:.*//g'` &&
     repo_port=`echo $repo | grep -o ':[0-9]*' | sed -e 's/://g'` &&
-    if [ -z "${repo_port}" ]; then repo_port=22; fi &&
+    if [ -z '${repo_port}' ]; then repo_port=22; fi &&
     ssh-keyscan -p $repo_port -H $repo_host >> ~/.ssh/known_hosts
   ]
 end
-desc "Deploys the current version to the server."
+desc 'Deploys the current version to the server.'
 task :deploy => :environment do
   to :before_hook do
     # Put things to run locally before ssh
