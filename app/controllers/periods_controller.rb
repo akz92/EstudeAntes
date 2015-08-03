@@ -42,7 +42,7 @@ class PeriodsController < ApplicationController
     @period = @periods.new(period_params)
     @period.is_current?
     if  @period.save
-      flash[:success] = 'Periodo criado com sucesso.' 
+      flash[:success] = 'Periodo criado com sucesso.'
     else
       flash[:error] = 'O periodo nao pode ser criado.' 
     end
