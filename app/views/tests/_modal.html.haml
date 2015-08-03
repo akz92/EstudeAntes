@@ -16,7 +16,7 @@
                 = f.number_field :grade, label: 'Minha nota', :step => 0.1
             = f.text_field :note, label: 'Detalhes'
             /%button.btn.btn-lg.btn-block.col-lg-2.btn-primary{:type => "submit"} Salvar prova
-            %button.btn.btn-primary{:name => "commit", :type => "submit", :value => "Salvar prova"} Salvar
+            %button.btn.btn-primary{:type => "submit"} Salvar
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
       /.modal-footer
 
@@ -37,6 +37,7 @@
               .col-xs-6
                 = f.number_field :grade, label: 'Minha nota', :step => 0.1
             = f.text_field :note, label: 'Detalhes'
-            %button.btn.btn-primary{:name => "commit", :type => "submit", :value => "Salvar trabalho"} Salvar
+            = f.hidden_field :is_project, value: true
+            %button.btn.btn-primary{:type => "submit"} Salvar
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
       /.modal-footer

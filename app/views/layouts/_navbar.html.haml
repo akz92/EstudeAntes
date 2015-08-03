@@ -20,7 +20,7 @@
           %li
             - if period.is_current
               %a{href: "#{root_url}"} #{period.number}º Período
-            - else 
+            - else
               %a{href: "#{period_subjects_path(period)}"} #{period.number}º Período
         -elsif period
           %li.dropdown

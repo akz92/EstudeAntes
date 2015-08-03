@@ -36,12 +36,6 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = @subject.tests.new(test_params)
-    @test.subject_name = @subject.name
-    if params[:commit] == 'Salvar prova'
-      @test.is_project = false
-    elsif params[:commit] == 'Salvar trabalho'
-      @test.is_project = true
-    end
 
     @subject.value += @test.value
     @subject.grade += @test.grade
