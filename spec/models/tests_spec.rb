@@ -13,7 +13,6 @@ describe Test do
   end
 
   it 'is invalid if grade is higher than value' do
-    #test = Test.new(date: '01-01-2015', grade: 10, value: 5)
     test = build(:test, value: 8, grade: 10)
     expect(test).to be_invalid
   end

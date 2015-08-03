@@ -7,15 +7,15 @@
     .row
       .col-xs-12.col-md-7
         #calendar
-      = render "periods/subjectstable"
+      = render 'periods/subjectstable'
 -elsif @period
   = render 'subjects/modal'
-  %div{:style => "text-align:center;"}
-    %h4= "Agora adicione as disciplinas"
-    %button.btn{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Adicionar disciplina
-    /%h4= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period), class: 'btn btn-primary'
+  %div{:style => 'text-align:center;'}
+    %h4= 'Agora adicione as disciplinas'
+    %button.btn{'data-target' => '#SubjectModalForm', 'data-toggle' => 'modal', :type => 'button'} Adicionar disciplina
+    /%h4= link_to '<i class='glyphicon glyphicon-plus'></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period), class: 'btn btn-primary'
 -else
-  %div{:style => "text-align:center;"}
-    %h4= "Comece adicionando um periodo"
-    %button.btn{"data-target" => "#PeriodModalForm", "data-toggle" => "modal", :type => "button"} Adicionar periodo
-  /%h4= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar período'.html_safe, new_period_path, class: 'btn btn-primary'
+  %div{:style => 'text-align:center;'}
+    %h4= 'Comece adicionando um periodo'
+    %button.btn{'data-target' => '#PeriodModalForm', 'data-toggle' => 'modal', :type => 'button'} Adicionar periodo
+  /%h4= link_to '<i class='glyphicon glyphicon-plus'></i> Adicionar período'.html_safe, new_period_path, class: 'btn btn-primary'

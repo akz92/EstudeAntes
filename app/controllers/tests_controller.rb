@@ -37,9 +37,9 @@ class TestsController < ApplicationController
   def create
     @test = @subject.tests.new(test_params)
     @test.subject_name = @subject.name
-    if params[:commit] == "Salvar prova"
+    if params[:commit] == 'Salvar prova'
       @test.is_project = false
-    elsif params[:commit] == "Salvar trabalho"
+    elsif params[:commit] == 'Salvar trabalho'
       @test.is_project = true
     end
 
@@ -48,9 +48,9 @@ class TestsController < ApplicationController
     @subject.save
 
     if @test.is_project
-      flash[:success] = "Trabalho adicionado com sucesso." if @test.save
+      flash[:success] = 'Trabalho adicionado com sucesso.' if @test.save
     else
-      flash[:success] = "Prova adicionada com sucesso." if @test.save
+      flash[:success] = 'Prova adicionada com sucesso.' if @test.save
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
@@ -59,9 +59,9 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1.json
   def update
     if @test.is_project
-      flash[:notice] = "Trabalho alterado com sucesso." if @test.save
+      flash[:notice] = 'Trabalho alterado com sucesso.' if @test.save
     else
-      flash[:notice] = "Prova alterada com sucesso." if @test.save
+      flash[:notice] = 'Prova alterada com sucesso.' if @test.save
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
 
@@ -84,9 +84,9 @@ class TestsController < ApplicationController
     @subject.save
 
     if @test.is_project
-      params[:notice] = "Trabalho removido com sucesso." if @test.destroy
+      params[:notice] = 'Trabalho removido com sucesso.' if @test.destroy
     else
-      params[:notice] = "Prova removida com sucesso" if @test.destroy
+      params[:notice] = 'Prova removida com sucesso' if @test.destroy
     end
     respond_with(@test, location: period_subject_path(@period, @subject))
   end

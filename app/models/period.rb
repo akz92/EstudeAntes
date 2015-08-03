@@ -12,10 +12,10 @@ class Period < ActiveRecord::Base
 
   def calendar_hours
     if self.events.empty?
-      hours = ["06:00", "22:00"]
+      hours = ['06:00', '22:00']
     else
-      hours = [self.events.min_by(&:start_time).start_time.strftime("%H:%M")]
-      hours << self.events.max_by(&:end_time).end_time.strftime("%H:%M")
+      hours = [self.events.min_by(&:start_time).start_time.strftime('%H:%M')]
+      hours << self.events.max_by(&:end_time).end_time.strftime('%H:%M')
     end
     hours
   end

@@ -42,19 +42,19 @@ class PeriodsController < ApplicationController
     @period = @periods.new(period_params)
     @period.is_current?
     if  @period.save
-      flash[:success] = "Periodo criado com sucesso." 
+      flash[:success] = 'Periodo criado com sucesso.' 
     else
-      flash[:error] = "O periodo nao pode ser criado." 
+      flash[:error] = 'O periodo nao pode ser criado.' 
     end
     respond_with(@period) do |format|
       format.html { redirect_to root_path }
     end
 
     #if  @period.is_current && current_user.periods.where(is_current: true).count > 0
-    #  render action: "new"
-    #  flash[:notice] = "Ja existe um periodo vigente."
+    #  render action: 'new'
+    #  flash[:notice] = 'Ja existe um periodo vigente.'
     #else
-    #  flash[:notice] = "Periodo criado com sucesso." if  @period.save
+    #  flash[:notice] = 'Periodo criado com sucesso.' if  @period.save
     #  respond_with(@period) do |format|
     #    format.html { redirect_to root_path }
     #  end
@@ -66,7 +66,7 @@ class PeriodsController < ApplicationController
   def update
     @period = Period.check_current_period(@period)
 
-    flash[:notice] = "Periodo atualizado com sucesso." if @period.update(period_params)
+    flash[:notice] = 'Periodo atualizado com sucesso.' if @period.update(period_params)
     respond_with(@period) do |format|
       if @period.is_current
         format.html { redirect_to root_path }
@@ -79,7 +79,7 @@ class PeriodsController < ApplicationController
   # DELETE /periods/1
   # DELETE /periods/1.json
   def destroy
-    flash[:notice] = "Periodo removido com sucesso." if @period.destroy
+    flash[:notice] = 'Periodo removido com sucesso.' if @period.destroy
     respond_with(@period)
   end
 

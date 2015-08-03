@@ -22,7 +22,6 @@ describe Event do
     expect(event).to be_invalid
   end
   it 'is invalid if start_time after end_time' do
-    #event= Event.new(start_date: '01-01-2015', end_date: '05-01-2015', start_time: '04:00:00', end_time: '03:00:00', title: 'titulo', every: 'week')
     event = build(:event, start_time: '12:00', end_time: '10:00')
     expect(event).to be_invalid
   end

@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :start_date, :every, :end_date, :start_time, :end_time, :title, :subject_id
   validates_date :end_date, after: :start_date
   validates_time :end_time, after: :start_time
-  validates_inclusion_of :every, in: ["week", "month", "day"]
+  validates_inclusion_of :every, in: ['week', 'month', 'day']
 
   def dates(options={})
     options = {:every => every, :starts => start_date, :until => end_date}.merge(options)

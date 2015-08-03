@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     @event.end_date = @period.end_date
     @event.fullcalendar_dates = @event.fullcalendar_conversion
 
-    flash[:success] = "Evento criado com sucesso." if @event.save
+    flash[:success] = 'Evento criado com sucesso.' if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 
@@ -51,14 +51,14 @@ class EventsController < ApplicationController
     @event.start_date += ((weekday - @period.start_date.wday) % 7)
     @event.end_date = @period.end_date
     @event.fullcalendar_dates = Event.fullcalendar_conversion(@event)
-    flash[:notice] = "Evento atualizado com sucesso." if @event.update(event_params)
+    flash[:notice] = 'Evento atualizado com sucesso.' if @event.update(event_params)
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    flash[:notice] = "Evento removido com sucesso." if @event.destroy
+    flash[:notice] = 'Evento removido com sucesso.' if @event.destroy
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 

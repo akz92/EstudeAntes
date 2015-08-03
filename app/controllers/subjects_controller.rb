@@ -33,7 +33,7 @@ class SubjectsController < ApplicationController
   def create
     @subject = @period.subjects.new(subject_params)
 
-    flash[:success] = "Disciplina criada com sucesso." if @subject.save
+    flash[:success] = 'Disciplina criada com sucesso.' if @subject.save
     respond_with(@subject) do |format|
       if @period.is_current
         format.html { redirect_to root_path }
@@ -46,14 +46,14 @@ class SubjectsController < ApplicationController
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
   def update
-    params[:notice] = "Disciplina alterada com sucesso." if @subject.update(subject_params)
+    params[:notice] = 'Disciplina alterada com sucesso.' if @subject.update(subject_params)
     respond_with(@subject, location: period_subject_path(@period, @subject))
   end
 
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    params[:notice] = "Disciplina removida com sucesso." if @subject.destroy
+    params[:notice] = 'Disciplina removida com sucesso.' if @subject.destroy
     respond_with(@subject) do |format|
       if @period.is_current
         format.html { redirect_to root_url }
