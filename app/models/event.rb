@@ -16,6 +16,8 @@ class Event < ActiveRecord::Base
                      options[:starts].strftime('%A').downcase.to_sym
                    when 'day', 'month'
                      options[:starts].day
+                   else
+                     raise "valor nao suportado: #{options[:every]}"
                    end
     Recurrence.new(options).events
   end

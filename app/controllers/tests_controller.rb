@@ -10,7 +10,7 @@ class TestsController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
-    @tests = @subject.tests.all
+    # @tests = @subject.tests.all
   end
 
   # GET /tests/1
@@ -25,7 +25,7 @@ class TestsController < ApplicationController
 
   # GET /tests/trabalho
   def trabalho
-    @test = @subject.tests.new
+    # @test = @subject.tests.new
   end
 
   # GET /tests/1/edit
