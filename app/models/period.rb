@@ -11,10 +11,9 @@ class Period < ActiveRecord::Base
   validates_uniqueness_of :is_current, if: :true?
 
   def calendar_hours
-    hours = []
-    hours << (self.events.min_by { |x| x.start_time }).formatted_start_time
-    hours << (self.events.max_by { |x| x.end_time }).formatted_end_time
-    hours = ["06:00", "24:00"] if hours == []
+    hours = [self.events.min_by(&:start_time).start_time.strftime("%H:%M")]
+    hours << self.events.max_by(&:end_time).end_time.strftime("%H:%M")
+    hours = ["06:00", "22:00"] if hours == []
     hours
   end
 

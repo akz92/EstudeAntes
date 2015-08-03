@@ -9,7 +9,7 @@
       - @period.subjects.each do |subject|
         %tr
           %td= link_to subject.name, period_subject_path(@period, subject)
-          %td= "#{trim(subject.grade)} / #{subject.value}"
+          %td= "#{number_with_precision(subject.grade, strip_insignificant_zeros: true)} / #{subject.value}"
 
 .col-xs-12.col-md-5.pull-right
   -if @period.subjects.count < 2
