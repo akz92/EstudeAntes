@@ -1,10 +1,8 @@
 =include_gon
 = render 'periods/modal'
-/iibbaab
 
 -if @period && @period.subjects.count >= 1
   = render 'periods/modal_edit'
-  - tab("period")
   .container-fluid
     .row
       .col-xs-12.col-md-7

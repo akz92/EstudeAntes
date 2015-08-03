@@ -18,7 +18,8 @@
     = csrf_meta_tags
     = Gon::Base.render_data
   %body
-    = navbar_select
+    /= navbar_select
+    = render "layouts/navbar" 
     .container
       = render partial: "layouts/flash_messages", flash: flash
       = yield
