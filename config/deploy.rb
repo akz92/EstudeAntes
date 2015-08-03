@@ -46,7 +46,7 @@ end
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
-task :setup => :environment do
+task setup: :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
 
@@ -65,7 +65,7 @@ task :setup => :environment do
   ]
 end
 desc 'Deploys the current version to the server.'
-task :deploy => :environment do
+task deploy: :environment do
   to :before_hook do
     # Put things to run locally before ssh
   end

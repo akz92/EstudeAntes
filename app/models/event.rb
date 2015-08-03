@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :every, in: ['week', 'month', 'day']
 
   def dates(options={})
-    options = {:every => every, :starts => start_date, :until => end_date}.merge(options)
+    options = {every: every, starts: start_date, until: end_date}.merge(options)
     options[:on] = case options[:every]
     when 'year'
       [options[:starts].month, options[:starts].day]
