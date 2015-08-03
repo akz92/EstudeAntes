@@ -34,13 +34,7 @@ class SubjectsController < ApplicationController
     @subject = @period.subjects.new(subject_params)
 
     flash[:success] = 'Disciplina criada com sucesso.' if @subject.save
-    respond_with(@subject) do |format|
-      if @period.is_current
-        format.html { redirect_to root_path }
-      else
-        format.html { redirect_to period_subjects_path(@period) }
-      end
-    end
+    respond_with(@subject, location: choose_redirect_path(@period))
   end
 
   # PATCH/PUT /subjects/1
@@ -54,13 +48,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1.json
   def destroy
     params[:notice] = 'Disciplina removida com sucesso.' if @subject.destroy
-    respond_with(@subject) do |format|
-      if @period.is_current
-        format.html { redirect_to root_url }
-      else
-        format.html { redirect_to period_subjects_path(@period, @subject) }
-      end
-    end
+    respond_with(@subject, location: choose_redirect_path(@period))
   end
 
   private

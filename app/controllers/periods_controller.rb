@@ -64,16 +64,10 @@ class PeriodsController < ApplicationController
   # PATCH/PUT /periods/1
   # PATCH/PUT /periods/1.json
   def update
-    @period = Period.check_current_period(@period)
+    @period.is_current?
 
     flash[:notice] = 'Periodo atualizado com sucesso.' if @period.update(period_params)
-    respond_with(@period) do |format|
-      if @period.is_current
-        format.html { redirect_to root_path }
-      else
-        format.html { redirect_to period_subjects_path(@period) }
-      end
-    end
+    respond_with(@period, location: choose_redirect_path(@period))
   end
 
   # DELETE /periods/1

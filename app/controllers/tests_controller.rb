@@ -41,22 +41,14 @@ class TestsController < ApplicationController
     @subject.grade += @test.grade
     @subject.save!
 
-    if @test.is_project
-      flash[:success] = 'Trabalho adicionado com sucesso.' if @test.save
-    else
-      flash[:success] = 'Prova adicionada com sucesso.' if @test.save
-    end
+    choose_flash_message if @test.save
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    if @test.is_project
-      flash[:notice] = 'Trabalho alterado com sucesso.' if @test.save
-    else
-      flash[:notice] = 'Prova alterada com sucesso.' if @test.save
-    end
+    choose_flash_message if @test.save
     respond_with(@test, location: period_subject_path(@period, @subject))
 
     @subject.value = 0
@@ -77,11 +69,7 @@ class TestsController < ApplicationController
     @subject.grade -= @test.grade
     @subject.save!
 
-    if @test.is_project
-      params[:notice] = 'Trabalho removido com sucesso.' if @test.destroy
-    else
-      params[:notice] = 'Prova removida com sucesso' if @test.destroy
-    end
+    choose_flash_message if @test.destroy
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
@@ -89,6 +77,14 @@ class TestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_test
       @test = @subject.tests.find(params[:id])
+    end
+
+    def choose_flash_message
+      if @test.is_project
+        flash[:success] = 'Trabalho adicionado com sucesso.'
+      else
+        flash[:success] = 'Prova adicionada com sucesso.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

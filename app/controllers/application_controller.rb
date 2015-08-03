@@ -2,4 +2,13 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  private
+  def choose_redirect_path(period)
+    if period.is_current
+      root_path
+    else
+      period_subjects_path(period)
+    end
+  end
 end
