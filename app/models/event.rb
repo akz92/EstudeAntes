@@ -20,10 +20,10 @@ class Event < ActiveRecord::Base
     Recurrence.new(options).events
   end
 
-  def self.fullcalendar_conversion(event)
+  def fullcalendar_conversion
     dates = []
-    event.dates.each do |date|
-      dates << {id: event.id, title: event.title, start: Event.format_datetime(date, event.start_time), end: Event.format_datetime(date, event.end_time)}
+    self.dates.each do |date|
+      dates << {id: self.id, title: self.title, start: Event.format_datetime(date, self.start_time), end: Event.format_datetime(date, self.end_time)}
     end
 
     return dates

@@ -9,7 +9,7 @@ class PeriodsController < ApplicationController
   # GET /periods.json
   def index
     if @period
-      gon.calendar_hours = @period.get_calendar_hours
+      gon.calendar_hours = @period.calendar_hours
       gon.subjects = @period.subjects.map &:attributes
     end
   end

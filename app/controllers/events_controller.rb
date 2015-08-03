@@ -34,11 +34,10 @@ class EventsController < ApplicationController
   def create
     @event = @subject.events.new(event_params)
     @event.title = @subject.name
-    weekday = @event.weekday.to_i
     @event.start_date= @period.start_date
-    @event.start_date += ((weekday - @period.start_date.wday) % 7)
+    @event.start_date += ((@event.weekday.to_i - @period.start_date.wday) % 7)
     @event.end_date = @period.end_date
-    @event.fullcalendar_dates = Event.fullcalendar_conversion(@event)
+    @event.fullcalendar_dates = @event.fullcalendar_conversion
 
     flash[:success] = "Evento criado com sucesso." if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))

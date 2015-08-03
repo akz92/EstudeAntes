@@ -10,17 +10,11 @@ class Period < ActiveRecord::Base
   validates_uniqueness_of :number
   validates_uniqueness_of :is_current, if: :true?
 
-  def get_calendar_hours
+  def calendar_hours
     hours = []
-
-    self.events.each do |event|
-      hours << event.formatted_start_time << event.formatted_end_time
-    end
-
-    hours.sort!
+    hours << (self.events.min_by { |x| x.start_time }).formatted_start_time
+    hours << (self.events.max_by { |x| x.end_time }).formatted_end_time
     hours = ["06:00", "24:00"] if hours == []
-    hours = [hours.first, hours.last]
-
     hours
   end
 
