@@ -7,8 +7,8 @@ class Event < ActiveRecord::Base
   validates_time :end_time, after: :start_time
   validates_inclusion_of :every, in: ['week', 'month', 'day']
 
-  def dates(options={})
-    options = {every: every, starts: start_date, until: end_date}.merge(options)
+  def dates(options = {})
+    options = { every: every, starts: start_date, until: end_date}.merge(options )
     options[:on] = case options[:every]
     when 'year'
       [options[:starts].month, options[:starts].day]
@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
   def fullcalendar_conversion
     dates = []
     self.dates.each do |date|
-      dates << {id: self.id, title: self.title, start: Event.format_datetime(date, self.start_time), end: Event.format_datetime(date, self.end_time)}
+      dates << { id: self.id, title: self.title, start: Event.format_datetime(date, self.start_time), end: Event.format_datetime(date, self.end_time) }
     end
 
     return dates

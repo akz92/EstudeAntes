@@ -1,5 +1,5 @@
 #encoding: utf-8
-class Period < ActiveRecord::Base  
+class Period < ActiveRecord::Base 
   belongs_to :user
   has_many :subjects
   has_many :events, through: :subjects

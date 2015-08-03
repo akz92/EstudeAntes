@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
       return_user = self.where(email: auth.info.email).first
     else
       return_user = self.create do |user|
-        user.password = Devise.friendly_token[0,20]
+        user.password = Devise.friendly_token[0, 20]
         user.email = auth.info.email
         user.skip_confirmation!
       end
