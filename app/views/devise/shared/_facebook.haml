@@ -1,7 +1,7 @@
 - if devise_mapping.omniauthable?
   /- resource_class.omniauth_providers.each do |provider|
   %a.btn.btn-block.btn-social.btn-facebook{href: "#{user_omniauth_authorize_path(:facebook)}"}
-    %i.fa.fa-facebook 
+    %i.fa.fa-facebook
     Entre pelo Facebook
     /= link_to " Entre com #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "fa fa-#{provider}"
   %br/

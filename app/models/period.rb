@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 class Period < ActiveRecord::Base
   belongs_to :user
   has_many :subjects
@@ -45,6 +45,6 @@ class Period < ActiveRecord::Base
   end
 
   def true?
-    self.is_current == true 
+    self.is_current == true
   end
 end

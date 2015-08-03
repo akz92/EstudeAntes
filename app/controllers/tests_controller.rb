@@ -45,7 +45,7 @@ class TestsController < ApplicationController
 
     @subject.value += @test.value
     @subject.grade += @test.grade
-    @subject.save
+    @subject.save!
 
     if @test.is_project
       flash[:success] = 'Trabalho adicionado com sucesso.' if @test.save
@@ -73,7 +73,7 @@ class TestsController < ApplicationController
       @subject.grade += test.grade
     end
 
-    @subject.save
+    @subject.save!
   end
 
   # DELETE /tests/1
@@ -81,7 +81,7 @@ class TestsController < ApplicationController
   def destroy
     @subject.value -= @test.value
     @subject.grade -= @test.grade
-    @subject.save
+    @subject.save!
 
     if @test.is_project
       params[:notice] = 'Trabalho removido com sucesso.' if @test.destroy
