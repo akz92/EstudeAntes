@@ -1,15 +1,15 @@
 =include_gon
-= render 'periods/modal'
+= render partial: 'periods/modal'
 
 -if @period && @period.subjects.count >= 1
-  = render 'periods/modal_edit'
+  = render partial: 'periods/modal_edit', locals: { period: @period }
   .container-fluid
     .row
       .col-xs-12.col-md-7
         #calendar
-      = render 'periods/subjectstable'
+      = render partial: 'periods/subjectstable', locals: { period: @period }
 -elsif @period
-  = render 'subjects/modal'
+  = render partial: 'subjects/modal', locals: { period: @period }
   %div{:style => 'text-align:center;'}
     %h4= 'Agora adicione as disciplinas'
     %button.btn{'data-target' => '#SubjectModalForm', 'data-toggle' => 'modal', :type => 'button'} Adicionar disciplina

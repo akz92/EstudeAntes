@@ -1,7 +1,7 @@
 # encoding: utf-8
 =include_gon
-= render 'events/modal'
-= render 'tests/modal'
+= render partial: 'events/modal', locals: { period: @period, subject: @subject }
+= render partial: 'tests/modal', locals: { period: @period, subject: @subject }
 .container-fluid
   .row
     .col-xs-2

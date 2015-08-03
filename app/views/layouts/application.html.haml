@@ -19,7 +19,7 @@
     = Gon::Base.render_data
   %body
     /= navbar_select
-    = render "layouts/navbar" 
+    = render partial: "layouts/navbar" , locals: { period: @period, subject: @subject, other_periods: @other_periods }
     .container
       = render partial: "layouts/flash_messages", flash: flash
       = yield

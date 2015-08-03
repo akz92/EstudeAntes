@@ -6,9 +6,9 @@
         %th= "Notas"
     %tbody
       %tr
-      - @period.subjects.each do |subject|
+      - period.subjects.each do |subject|
         %tr
-          %td= link_to subject.name, period_subject_path(@period, subject)
+          %td= link_to subject.name, period_subject_path(period, subject)
           %td= "#{number_with_precision(subject.grade, strip_insignificant_zeros: true)} / #{subject.value}"
 
 .col-xs-12.col-md-5.pull-right
