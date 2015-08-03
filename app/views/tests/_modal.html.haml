@@ -6,7 +6,7 @@
         %button.close{"data-dismiss" => "modal", :type => "button"}
         %h4.modal-title Adicionar prova
       .modal-body
-        = bootstrap_form_for [@period, @subject, Test.new] do |f|
+        = bootstrap_form_for [period, subject, Test.new] do |f|
           .container-fluid
             = f.datetime_local_field :date, label: 'Data'#, as: :datetime_picker
             .row
@@ -28,7 +28,7 @@
         %button.close{"data-dismiss" => "modal", :type => "button"}
         %h4.modal-title Adicionar trabalho
       .modal-body
-        = bootstrap_form_for [@period, @subject, Test.new] do |f|
+        = bootstrap_form_for [period, subject, Test.new] do |f|
           .container-fluid
             = f.datetime_local_field :date, label: 'Data'#, as: :datetime_picker
             .row
