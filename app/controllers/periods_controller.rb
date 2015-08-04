@@ -14,7 +14,7 @@ class PeriodsController < ApplicationController
     end
   end
 
-	# Provides a JSON containing every event's dates to be rendered by FullCalendar
+  # Provides a JSON containing every event's dates to be rendered by FullCalendar
   def fullcalendar_events
     events = @period.get_events
     render json: events

@@ -7,9 +7,9 @@ class Event < ActiveRecord::Base
   validates_time :end_time, after: :start_time
   validates_inclusion_of :every, in: ['week', 'month', 'day']
 
-	# Converts a recurrence rule to an array of dates using Recurrence gem
-	#
-	# @return [Array] an array containing every date between the corresponding period start and end date that meets the recurrence rule criteria
+  # Converts a recurrence rule to an array of dates using Recurrence gem
+  #
+  # @return [Array] an array containing every date between the corresponding period start and end date that meets the recurrence rule criteria
   def dates(options = {})
     options = { every: every, starts: start_date, until: end_date }.merge(options)
     options[:on] = case options[:every]
@@ -25,9 +25,9 @@ class Event < ActiveRecord::Base
     Recurrence.new(options).events
   end
 
-	# Converts an array of dates into a JSON according to FullCalendar's JSON format
-	#
-	# @return [Json] a JSON containing every date that the event occurs
+  # Converts an array of dates into a JSON according to FullCalendar's JSON format
+  #
+  # @return [Json] a JSON containing every date that the event occurs
   def fullcalendar_conversion
     dates = []
     self.dates.each do |date|
