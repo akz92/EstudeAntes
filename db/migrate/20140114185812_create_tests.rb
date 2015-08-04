@@ -3,10 +3,14 @@ class CreateTests < ActiveRecord::Migration
     create_table :tests do |t|
       t.datetime :date
       t.integer :value
-      t.integer :grade
+      t.float :grade
       t.string :note
+			t.boolean :is_project
+			t.integer :subject_id
 
       t.timestamps
     end
+
+		add_index :tests, :subject_id
   end
 end
