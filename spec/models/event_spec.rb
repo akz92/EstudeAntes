@@ -1,0 +1,28 @@
+require 'rails_helper'
+
+describe Event do
+  it { is_expected.to validate_presence_of :subject_id }
+  it { is_expected.to validate_presence_of :start_date }
+  it { is_expected.to validate_presence_of :end_date }
+  it { is_expected.to validate_presence_of :start_time }
+  it { is_expected.to validate_presence_of :end_time }
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :every }
+  it { is_expected.to validate_inclusion_of(:every).in_array(['month', 'week', 'day']) }
+  it { is_expected.to belong_to :subject }
+  it { is_expected.to have_one(:period).through(:subject) }
+
+  it 'is valid when built by FactoryGirl' do
+    event = build(:event)
+    expect(event).to be_valid
+  end
+
+  it 'is invalid if start_date after end_date' do
+    event = build(:event, start_date: '05-05-2015', end_date: '01-01-2015')
+    expect(event).to be_invalid
+  end
+  it 'is invalid if start_time after end_time' do
+    event = build(:event, start_time: '12:00', end_time: '10:00')
+    expect(event).to be_invalid
+  end
+end
