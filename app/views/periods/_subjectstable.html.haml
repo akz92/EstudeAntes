@@ -16,4 +16,6 @@
     %h5.centertext= "Adicione pelo menos duas disciplinas para visualizar o gráfico do seu rendimento"
   -else
     %h5
-    %canvas#canvas
+    /%canvas#canvas
+    .box-chart
+      %canvas#canvas{:style => "width:100%;"}

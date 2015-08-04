@@ -73,6 +73,8 @@ GEM
       activesupport (>= 3.0.0)
     builder (3.2.2)
     certified (1.0.0)
+    chart-js-rails (0.0.9)
+      railties (> 3.1)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
     coffee-rails (4.1.0)
@@ -295,6 +297,7 @@ DEPENDENCIES
   bootstrap_form
   brazilian-rails
   certified
+  chart-js-rails
   codeclimate-test-reporter
   coffee-rails
   devise
