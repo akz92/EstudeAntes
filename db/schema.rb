@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723012730) do
+ActiveRecord::Schema.define(version: 20140130151340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,44 +22,50 @@ ActiveRecord::Schema.define(version: 20150723012730) do
     t.date     "end_date"
     t.time     "start_time"
     t.time     "end_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "subject_id"
     t.string   "title"
     t.jsonb    "fullcalendar_dates"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "events", ["subject_id"], name: "index_events_on_subject_id", using: :btree
 
   create_table "periods", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "is_current"
     t.integer  "user_id"
-    t.float    "mean"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "periods", ["user_id"], name: "index_periods_on_user_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "period_id"
     t.integer  "value"
     t.float    "grade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "subjects", ["period_id"], name: "index_subjects_on_period_id", using: :btree
 
   create_table "tests", force: :cascade do |t|
     t.datetime "date"
     t.integer  "value"
     t.float    "grade"
     t.string   "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "subject_name"
     t.boolean  "is_project"
     t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "tests", ["subject_id"], name: "index_tests_on_subject_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,15 +78,15 @@ ActiveRecord::Schema.define(version: 20150723012730) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "name"
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

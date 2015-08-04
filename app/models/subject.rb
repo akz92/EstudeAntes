@@ -5,7 +5,10 @@ class Subject < ActiveRecord::Base
   after_initialize :init_values
   validates_presence_of :name, :period_id
   validates_length_of :name, maximum: 15
-  # accepts_nested_attributes_for :tests, reject_if: lambda { |a| a[:content].blank? }
+
+  # def tests
+  #  self.tests.where(is_project: false)
+  # end
 
   def projects
     self.tests.where(is_project: true)

@@ -40,7 +40,6 @@ class Period < ActiveRecord::Base
 
   private
   def init_values
-    self.mean ||= 0
     self.is_current ||= false
   end
 
