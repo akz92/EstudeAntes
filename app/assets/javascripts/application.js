@@ -16,7 +16,6 @@
 //= require bootstrap.min
 //= require turbolinks
 //= require Chart
-//= require civem
 //= require moment
 //= require fullcalendar
 //= require bootstrap
