@@ -1,11 +1,10 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :get_period_number, only: [:new, :edit]
   respond_to :html, :json
   before_filter do
-    @period = Period.find(params[:period_id])
-    @subject = @period.subjects.find(params[:subject_id])
+    @period = get_period(params[:period_id])
+    @subject = get_subject(@period, params[:subject_id])
   end
 
   # GET /events
@@ -66,13 +65,9 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @period = Period.find(params[:period_id])
+      @period = get_period(params[:period_id])
       @subject = @period.subjects.find(params[:subject_id])
       @event = @subject.events.find(params[:id])
-    end
-
-    def get_period_number
-      @period = Period.find(params[:period_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

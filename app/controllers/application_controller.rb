@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
       period_subjects_path(period)
     end
   end
+
+  def get_period(period_id)
+    Period.find(period_id)
+  end
+
+  def get_subject(period, subject_id)
+    period.subjects.find(subject_id)
+  end
 end

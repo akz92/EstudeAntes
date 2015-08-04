@@ -3,7 +3,7 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
   before_filter do
-    @period = Period.find(params[:period_id])
+    @period = get_period(params[:period_id])
   end
 
   # GET /subjects
@@ -54,8 +54,9 @@ class SubjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subject
-      @period = Period.find(params[:period_id])
-      @subject = @period.subjects.find(params[:id])
+      @period = get_period(params[:period_id])
+      # @subject = @period.subjects.find(params[:id])
+      @subject = get_subject(@period, params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
