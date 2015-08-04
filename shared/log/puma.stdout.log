@@ -8476,3 +8476,6 @@ I, [2015-08-04T07:08:25.727921 #13736]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-08-04 08:38:53 -0400 ===
 [18129] * Starting control server on unix:///tmp/puma-status-1438691933652-18129
 [18129] - Worker 0 (pid: 18179) booted, phase: 0
+I, [2015-08-04T11:38:59.192436 #18179]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-08-04T11:38:59.402164 #18179]  INFO -- omniauth: (facebook) Request phase initiated.
+I, [2015-08-04T11:39:00.036639 #18179]  INFO -- omniauth: (facebook) Callback phase initiated.

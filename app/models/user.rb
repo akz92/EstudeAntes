@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     (super == nil) ? '1' : super
   end
 
+	# Creates or updates a user with Facebook credentials
   def self.from_omniauth(auth)
     if self.where(email: auth.info.email).exists?
       return_user = self.where(email: auth.info.email).first
