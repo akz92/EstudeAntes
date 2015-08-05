@@ -16,6 +16,7 @@
 //= require bootstrap.min
 //= require turbolinks
 //= require Chart
+//= require Chart.HorizontalBar
 //= require moment
 //= require fullcalendar
 //= require bootstrap

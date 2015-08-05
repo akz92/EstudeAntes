@@ -14,15 +14,16 @@ class Period < ActiveRecord::Base
   #
   # @return [Array] a 2 element array containing the first and last hour to use as minTime and maxTime in FullCalendar
   def calendar_hours
-    if self.events.empty?
-      hours = ['06:00', '22:00']
-    else
-      hours=[]
-      hours << self.events.min_by(&:start_time)
-      hours << self.events.max_by(&:end_time)
-      hours = [hours[0].start_time.strftime('%H:%M'), hours[1].end_time.strftime('%H:%M')]
+    hours = ['06:00', '22:00']
+    unless self.events.empty?
+      hours = [self.events.min_by(&:start_time).start_time.strftime('%H:%M')]
+      hours << self.events.max_by(&:end_time).end_time.strftime('%H:%M')
     end
     hours
+  end
+
+  def chart_hash
+    Hash[ *self.subjects.all.map { |subject| [subject.name, (subject.grade / subject.value) * 100] }.flatten ]
   end
 
   # Converts an array of events JSONs into one single events JSON

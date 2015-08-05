@@ -6,9 +6,9 @@ class Subject < ActiveRecord::Base
   validates_presence_of :name, :period_id
   validates_length_of :name, maximum: 15
 
-  # def tests
-  #  self.tests.where(is_project: false)
-  # end
+  def tests_only
+   self.tests.where(is_project: false)
+  end
 
   def projects
     self.tests.where(is_project: true)

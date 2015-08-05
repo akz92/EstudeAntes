@@ -1,26 +1,3 @@
-//function lineChart(){
-//  var data = []
-//
-//  for(var i = 0; i < gon.subjects.length; i++){
-//    data.push({
-//                value: gon.subjects[i].grade,
-//                color:"#1484E6",
-//                //highlight: "#FF5A5E",
-//                label: gon.subjects[i].name
-//              });
-//  }
-//
-//  var ctx = document.getElementById("canvas").getContext("2d");
-//  var myNewChart = new Chart(ctx).PolarArea(data);
-//
-//  var options = {
-//    responsive: true,
-//    //maintainAspectRatio: true
-//  };
-//
-//  new Chart(ctx).PolarArea(data, options);
-//}
-
 function barChart(){
   var subjectNames = [];
   var subjectGrades = [];
@@ -46,16 +23,26 @@ function barChart(){
     ]
   }
 
+  //Chart.types.HorizontalBar.extend({
+  //  name: "HBarAlt",
+  //  draw: function(){
+  //    this.options.barValueSpacing = this.chart.height / 5;
+  //    Chart.types.HorizontalBar.prototype.draw.apply(this, arguments);
+  //  }
+  //});
+
   var ctx = document.getElementById("canvas").getContext("2d");
-  var myBarChart = new Chart(ctx).Bar(data);
+  //var horizontalBarChart = new Chart(ctx).HBarAlt(data);
+  var horizontalBarChart = new Chart(ctx).HorizontalBar(data);
 
   var options = {
-    barValueSpacing : 30,
+    barValueSpacing : 10,
     responsive : true,
     //maintainAspectRatio: true
   };
 
-  new Chart(ctx).Bar(data, options);
+  //new Chart(ctx).HBarAlt(data, options);
+  new Chart(ctx).HorizontalBar(data, options);
 
 }
 jQuery(document).on("ready page:change", function() { barChart();});

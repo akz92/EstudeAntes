@@ -2,6 +2,7 @@
 =include_gon
 = render partial: 'events/modal', locals: { period: @period, subject: @subject }
 = render partial: 'tests/modal', locals: { period: @period, subject: @subject }
+/= bar_chart @period.subjects.group(:name).sum(:grade), max: 100
 .container-fluid
   .row
     .col-xs-2
@@ -18,7 +19,7 @@
 .container-fluid
   .row
     .col-xs-8
-      - unless @subject.tests.empty?
+      - unless @subject.tests_only.empty?
         %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
           %thead
             %tr
@@ -27,7 +28,7 @@
           %tbody
             /- @dados['tests'] = @dados['tests'].sort_by &:date
             /- @dados['tests'].each do |test|
-            - @subject.tests.each do |test|
+            - @subject.tests_only.each do |test|
               %tr.accordion-toggle{'data-target' => "##{test.id}", 'data-toggle' => 'collapse'}
                 %td.text-error= test.date.strftime('%d de %B, %Y')
                 %td.text-success #{number_with_precision(test.grade, strip_insignificant_zeros: true)} / #{test.value}
@@ -148,4 +149,4 @@
             %button.btn{'data-target' => '#EventModalForm', 'data-toggle' => 'modal', :type => 'button'} Aula
     .col-xs-4
       /%h5 Aproveitamento
-      %canvas#aproveitamento{:height => '300', :width => '450'}
+      /%canvas#aproveitamento{:height => '300', :width => '450'}
