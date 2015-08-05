@@ -132,9 +132,9 @@
                       %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
                         %b.caret
                       %ul.dropdown-menu
-                        %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_event_path(@period, @subject, event)
+                        %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_subject_event_path(@subject, event)
                         %li.divider
-                        %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_event_path(@period, @subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
+                        %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, subject_event_path(@subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
       %br
       .panel.panel-primary
         .panel-heading Adicionar

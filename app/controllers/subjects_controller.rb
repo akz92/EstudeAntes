@@ -54,9 +54,7 @@ class SubjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subject
-      @period = get_period(params[:period_id])
-      # @subject = @period.subjects.find(params[:id])
-      @subject = get_subject(@period, params[:id])
+      @subject = get_subject(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

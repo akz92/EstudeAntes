@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
     Period.find(period_id)
   end
 
-  def get_subject(period, subject_id)
-    period.subjects.find(subject_id)
+  def get_subject(subject_id)
+    Subject.find(subject_id)
   end
+
 end

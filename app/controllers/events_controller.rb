@@ -3,8 +3,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
   before_filter do
-    @period = get_period(params[:period_id])
-    @subject = get_subject(@period, params[:subject_id])
+    @subject = get_subject(params[:subject_id])
+    @period = get_period(@subject.period_id)
   end
 
   # GET /events
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @period = get_period(params[:period_id])
-      @subject = @period.subjects.find(params[:subject_id])
+      @subject = get_subject(params[:subject_id])
       @event = @subject.events.find(params[:id])
     end
 

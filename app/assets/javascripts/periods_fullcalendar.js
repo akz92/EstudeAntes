@@ -1,6 +1,6 @@
 function fullCalendar(){
   $('#calendar').fullCalendar({
-    defaultView: "agendaWeek", 
+    defaultView: "agendaWeek",
     theme: true,
     height: "auto",
     themeButtonIcons: false,
@@ -27,7 +27,7 @@ function fullCalendar(){
         columnFormat: 'ddd D'
       }
     },
-    buttonText: { 
+    buttonText: {
       prev: '<',
       next: '>',
       today: 'hoje',
@@ -37,7 +37,7 @@ function fullCalendar(){
     },
     events: '/fullcalendar_events.json',
       eventColor: '#1484E6'
-  
+
   });
 }
 jQuery(document).on("ready page:change", function() { fullCalendar(); });

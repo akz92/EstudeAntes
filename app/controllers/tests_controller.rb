@@ -3,8 +3,8 @@ class TestsController < ApplicationController
   before_action :set_test, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
   before_filter do
-    @period = get_period(params[:period_id])
-    @subject =  get_subject(@period, params[:subject_id])
+    @subject =  get_subject(params[:subject_id])
+    @period = get_period(@subject.period_id)
   end
 
   # GET /tests

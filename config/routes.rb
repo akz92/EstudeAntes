@@ -13,17 +13,17 @@ Estudeantes::Application.routes.draw do
 
   #resources :periods, shallow: true do
   resources :periods do
-    resources :subjects do
-      resources :tests
-      resources :events
-    end
+    resources :subjects#  do
+  #     resources :tests
+  #     resources :events
+  #   end
   end
 
-  # resources :subjects do
-  #   resources :tests
-  #   resources :events
-  # end
-  
+  resources :subjects do
+    resources :tests
+    resources :events
+  end
+
   get '/fullcalendar_events', to: 'periods#fullcalendar_events', as: 'fullcalendar_events'
 
   # You can have the root of your site routed with "root"
