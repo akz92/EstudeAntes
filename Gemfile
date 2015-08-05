@@ -86,5 +86,3 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'simplecov', :require => false, :group => :test
 gem 'shoulda-matchers', group: :test
 gem 'chart-js-rails'
-gem 'chartkick'
-gem 'groupdate'

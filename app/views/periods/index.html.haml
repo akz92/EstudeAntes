@@ -1,4 +1,3 @@
-= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 =include_gon
 = render partial: 'periods/modal'
 
@@ -6,10 +5,9 @@
   = render partial: 'periods/modal_edit', locals: { period: @period }
   .container-fluid
     .row
-      .col-xs-12.col-md-7
+      .col-xs-12
+        /.col-md-7
         #calendar
-      .col-xs-12.col-md-5
-        /= bar_chart @period.chart_hash, max: 100
       = render partial: 'periods/subjectstable', locals: { period: @period }
 -elsif @period
   = render partial: 'subjects/modal', locals: { period: @period }

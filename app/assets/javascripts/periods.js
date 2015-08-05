@@ -36,7 +36,7 @@ function barChart(){
   var horizontalBarChart = new Chart(ctx).HorizontalBar(data);
 
   var options = {
-    barValueSpacing : 10,
+    //barValueSpacing : 10,
     responsive : true,
     //maintainAspectRatio: true
   };
