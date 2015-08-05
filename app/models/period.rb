@@ -17,8 +17,10 @@ class Period < ActiveRecord::Base
     if self.events.empty?
       hours = ['06:00', '22:00']
     else
-      hours = [self.events.min_by(&:start_time).start_time.strftime('%H:%M')]
-      hours << self.events.max_by(&:end_time).end_time.strftime('%H:%M')
+      hours=[]
+      hours << self.events.min_by(&:start_time)
+      hours << self.events.max_by(&:end_time)
+      hours = [hours[0].start_time.strftime('%H:%M'), hours[1].end_time.strftime('%H:%M')]
     end
     hours
   end

@@ -18,7 +18,7 @@
 .container-fluid
   .row
     .col-xs-8
-      - if @subject.tests.count > 0
+      - unless @subject.tests.empty?
         %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
           %thead
             %tr
@@ -68,7 +68,7 @@
                       %li.divider
                       %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir essa prova?' }
       %br
-      - if @subject.projects.count > 0
+      - unless @subject.projects.empty?
         %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
           %thead
             %tr.grey
@@ -114,7 +114,7 @@
                     %li.divider
                     %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, project), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir esse trabalho?' }
       %br
-      - if @subject.events.count > 0
+      - unless @subject.events.empty?
         %table.table.table-striped.table_border
           %thead
             %tr.grey
