@@ -9,14 +9,14 @@ class TestsController < ApplicationController
 
   # GET /tests
   # GET /tests.json
-  def index
-    # @tests = @subject.tests.all
-  end
+  # def index
+  #    @tests = @subject.tests.all
+  # end
 
   # GET /tests/1
   # GET /tests/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /tests/new
   def new

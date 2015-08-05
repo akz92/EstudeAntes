@@ -9,14 +9,14 @@ class EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
-  def index
-    @events = @subject.events.all
-  end
+  # def index
+  #   @events = @subject.events.all
+  # end
 
   # GET /events/1
   # GET /events/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /events/new
   def new
