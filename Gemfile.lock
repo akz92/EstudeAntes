@@ -129,9 +129,6 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
-    httparty (0.13.5)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     invisible_captcha (0.8.0)
       rails
@@ -145,8 +142,6 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-themes (0.0.11)
-      httparty
     json (1.8.3)
     jwt (1.5.1)
     less (2.6.0)
@@ -310,7 +305,6 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   jquery-turbolinks
-  jquery-ui-themes
   less-rails
   momentjs-rails
   omniauth-facebook
@@ -328,3 +322,6 @@ DEPENDENCIES
   turbolinks
   uglifier
   validates_timeliness
+
+BUNDLED WITH
+   1.10.5

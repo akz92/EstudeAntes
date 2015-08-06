@@ -1,0 +1,30 @@
+#calendar .fc-today{
+   background-color: #C5DDFC;
+}
+
+
+#calendar .fc-bg{
+  background-color: #EEEEEE;
+}
+
+#calendar .fc th, .fc td{
+  border-color: #AAAAAA;
+}
+
+#calendar .fc-event{
+  text-decoration: none;
+}
+
+#calendar .fc-button{
+  color: white;
+  background-color: #1484E6;
+  text-shadow: none;
+}
+
+#calendar .fc-state-active{
+  background-color: #0F5796;
+}
+
+#calendar .fc-toolbar h2{
+  font-size: 25px;
+}

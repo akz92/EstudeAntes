@@ -1,9 +1,9 @@
 function fullCalendar(){
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
-    theme: true,
+    //theme: true,
     height: "auto",
-    themeButtonIcons: false,
+    //themeButtonIcons: false,
     header: {
       left: 'today prev,next',
       center: 'title',
