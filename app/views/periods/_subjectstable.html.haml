@@ -1,4 +1,5 @@
 .col-xs-12.col-md-6
+  %br
   %table.table.table-striped
     %thead.grey
       %tr
@@ -8,7 +9,7 @@
       %tr
       - period.subjects.each do |subject|
         %tr
-          %td= link_to subject.name, period_subject_path(period, subject)
+          %td= link_to subject.name, period_subject_path(period, subject), {style: 'color: #1484E6 !important;', class: 'css_class'}
           %td= "#{number_with_precision(subject.grade, strip_insignificant_zeros: true)} / #{subject.value}"
 
 .col-xs-12.col-md-6.pull-right
