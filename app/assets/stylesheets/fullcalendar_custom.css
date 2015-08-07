@@ -12,6 +12,7 @@
 
 #calendar .fc-event{
   text-decoration: none;
+  border-radius: 0;
 }
 
 #calendar .fc-button{
@@ -29,6 +30,18 @@
 }
 
 #calendar .fc-toolbar {
-  background-color: #2ecc71;
+  background-color: #76BBD8;
   margin-bottom: none !important;
+}
+
+#calendar .fc-state-default{
+  background-image: none;
+}
+
+#calendar body .fc{
+  border-radius:1px;
+}
+
+#calendar .fc-event-container{
+  margin: 0;
 }

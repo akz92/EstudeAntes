@@ -107,7 +107,11 @@ a:hover {
 a:active {
 }
 
-* {
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+  background-color: #2c3e50;
+}
+
+/** {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   border-radius: 0 !important;
@@ -115,4 +119,4 @@ a:active {
   outline: 0 !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-}
+}*/

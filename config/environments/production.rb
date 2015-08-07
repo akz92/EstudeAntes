@@ -28,7 +28,7 @@ Estudeantes::Application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
-  config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+  #config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -102,5 +102,5 @@ Estudeantes::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   #trying to solve precompile issue
-  Rails.application.config.assets.precompile += %w( * )
+  #Rails.application.config.assets.precompile += %w( * )
 end

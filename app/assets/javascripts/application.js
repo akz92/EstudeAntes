@@ -13,13 +13,12 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require bootstrap.min
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require Chart
 //= require Chart.HorizontalBar
 //= require moment
 //= require fullcalendar
-//= require bootstrap
 //= require_tree .
 //
 if (window.location.href.indexOf('#_=_') > 0) {

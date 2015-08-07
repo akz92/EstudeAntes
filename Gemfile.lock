@@ -37,7 +37,13 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.2)
+    autoprefixer-rails (5.2.1.1)
+      execjs
+      json
     bcrypt (3.1.10)
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.3.0)
     bootstrap-social-rails (4.8.0)
       railties (>= 3.1)
     bootstrap_form (2.3.0)
@@ -288,6 +294,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   bootstrap-social-rails
   bootstrap_form
   brazilian-rails
@@ -322,3 +329,6 @@ DEPENDENCIES
   turbolinks
   uglifier
   validates_timeliness
+
+BUNDLED WITH
+   1.10.5
