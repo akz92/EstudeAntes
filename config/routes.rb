@@ -8,7 +8,6 @@ Estudeantes::Application.routes.draw do
   #new controller for static pages
   #resources :pages, :only => :show
   # get '/help', to: 'pages#help', as: 'help'
-  # get '/periods/all', to: 'periods#all'
   # get '/periods/:period_id/subjects/:subject_id/tests/trabalho', to: 'tests#trabalho', as: 'trabalho'
 
   #resources :periods, shallow: true do
@@ -18,6 +17,8 @@ Estudeantes::Application.routes.draw do
   #     resources :events
   #   end
   end
+
+  get '/periods/all', to: 'periods#all'
 
   resources :subjects do
     resources :tests, only: [:new, :create, :edit, :update, :destroy]

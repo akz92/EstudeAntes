@@ -1,7 +1,7 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :fullcalendar_events]
+  before_action :set_current_period, only: [:index, :fullcalendar_events, :all]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
 
@@ -20,9 +20,8 @@ class PeriodsController < ApplicationController
     render json: events
   end
 
-  # def all
-  #    Period.get_periods_and_means(@other_periods)
-  # end
+  def all
+  end
   # GET /periods/1
   # GET /periods/1.json
   # def show
