@@ -19,6 +19,8 @@
   color: white;
   background-color: #1484E6;
   text-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #calendar .fc-state-active{
@@ -30,18 +32,34 @@
 }
 
 #calendar .fc-toolbar {
-  background-color: #76BBD8;
-  margin-bottom: none !important;
+  background-color: #EEEEEE;
+  margin-bottom: 0;
+  line-height: 1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  /*border-color: #AAAAAA;
+  border-style: solid;
+  border-width: 1px;*/
 }
 
 #calendar .fc-state-default{
   background-image: none;
 }
 
-#calendar body .fc{
-  border-radius:1px;
-}
-
 #calendar .fc-event-container{
   margin: 0;
+}
+
+#calendar .fc-prev-button{
+  border-top-left-radius: 4px;
+}
+
+#calendar .fc-agendaWeek-button{
+  border-top-right-radius: 4px;
+}
+
+#calendar .fc-state-disabled{
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+  background-color: #0F5796;
 }

@@ -5,7 +5,7 @@ function fullCalendar(){
     height: "auto",
     //themeButtonIcons: false,
     header: {
-      left: 'today prev,next',
+      left: 'prev,today,next',
       center: 'title',
       right: 'month,agendaWeek'//,agendaDay'
     },
@@ -28,8 +28,6 @@ function fullCalendar(){
       }
     },
     buttonText: {
-      prev: '<',
-      next: '>',
       today: 'hoje',
       month: 'mes',
       week: 'semana',
