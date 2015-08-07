@@ -322,6 +322,3 @@ DEPENDENCIES
   turbolinks
   uglifier
   validates_timeliness
-
-BUNDLED WITH
-   1.10.5

@@ -9,6 +9,16 @@
         /.col-md-7
         #calendar
       = render partial: 'periods/subjectstable', locals: { period: @period }
+      -#.col-xs-12
+        %ul#tabs.nav.nav-tabs{"data-tabs" => "tabs"}
+          - @period.subjects.each do |subject|
+            %li
+              %a{"data-toggle" => "tab", :href => "#red"} #{subject.name}
+        #my-tab-content.tab-content
+          - @period.subjects.each do |subject|
+            #red.tab-pane
+              %h1 Red
+              %p red red red red red red
 -elsif @period
   = render partial: 'subjects/modal', locals: { period: @period }
   %div{:style => 'text-align:center;'}

@@ -2,7 +2,6 @@
    background-color: #C5DDFC;
 }
 
-
 #calendar .fc-bg{
   background-color: #EEEEEE;
 }
@@ -27,4 +26,9 @@
 
 #calendar .fc-toolbar h2{
   font-size: 25px;
+}
+
+#calendar .fc-toolbar {
+  background-color: #2ecc71;
+  margin-bottom: none !important;
 }

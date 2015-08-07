@@ -1,7 +1,6 @@
 .col-xs-12.col-md-6
   %br
-  %table.table{style: 'background-color: white;'}
-    /.table-striped
+  %table.table.table-striped
     %thead
       %tr
         %th= "Disciplinas"
@@ -18,31 +17,3 @@
   /%canvas#canvas
   .box-chart
     %canvas#canvas{:style => "width:100%;"}
-
-%ul#tabs.nav.nav-tabs{"data-tabs" => "tabs"}
-  %li.active
-    %a{"data-toggle" => "tab", :href => "#red"} Red
-  %li
-    %a{"data-toggle" => "tab", :href => "#orange"} Orange
-  %li
-    %a{"data-toggle" => "tab", :href => "#yellow"} Yellow
-  %li
-    %a{"data-toggle" => "tab", :href => "#green"} Green
-  %li
-    %a{"data-toggle" => "tab", :href => "#blue"} Blue
-#my-tab-content.tab-content
-  #red.tab-pane.active
-    %h1 Red
-    %p red red red red red red
-  #orange.tab-pane
-    %h1 Orange
-    %p orange orange orange orange orange
-  #yellow.tab-pane
-    %h1 Yellow
-    %p yellow yellow yellow yellow yellow
-  #green.tab-pane
-    %h1 Green
-    %p green green green green green
-  #blue.tab-pane
-    %h1 Blue
-    %p blue blue blue blue blue
