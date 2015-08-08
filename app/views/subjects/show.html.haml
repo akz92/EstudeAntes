@@ -2,7 +2,6 @@
 =include_gon
 = render partial: 'events/modal', locals: { period: @period, subject: @subject }
 = render partial: 'tests/modal', locals: { period: @period, subject: @subject }
-/= bar_chart @period.subjects.group(:name).sum(:grade), max: 100
 .container-fluid
   .row
     .col-xs-2
@@ -18,112 +17,20 @@
 
 .container-fluid
   .row
-    .col-xs-8
-      - unless @subject.tests_only.empty?
-        %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
-          %thead
-            %tr
-              %th Provas
-              %th Notas
-          %tbody
-            /- @dados['tests'] = @dados['tests'].sort_by &:date
-            /- @dados['tests'].each do |test|
-            - @subject.tests_only.each do |test|
-              %tr.accordion-toggle{'data-target' => "##{test.id}", 'data-toggle' => 'collapse'}
-                %td.text-error= test.date.strftime('%d de %B, %Y')
-                %td.text-success #{number_with_precision(test.grade, strip_insignificant_zeros: true)} / #{test.value}
-              %tr
-                %td.hiddenRow{:colspan => '6'}
-                  = dynamic_div(test.id, test.note)
-                /#demo1.accordian-body.collapse Demo1
-      -#%table.table.table-striped.table_border
-        %thead.grey
-          - if @dados['tests'] == []
-            - if @dados['projects'] == []
-              %td.table_border= 'Essa disciplina ainda não tem provas nem trabalhos'
-            - else
-              %td.table_border= 'Essa disciplina ainda não tem provas'
-          - else
-            %th Provas
-            %th Nota
-            %th Materia
-            %th
-
-        %tbody
-          %tr
-            - @dados['tests'] = @dados['tests'].sort_by &:date
-            - @dados['tests'].each do |test|
-              %tr
-                %td.datewidth
-                  = formatted_date(test.date)
-                %td.gradewidth
-                  #{test.grade} / #{test.value}
-                %td
-                  #{test.note}
-                %td
-                  .dropdown.align-right
-                    %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-                      %b.caret
-                    %ul.dropdown-menu
-                      %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_test_path(@period, @subject, test)
-                      %li.divider
-                      %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir essa prova?' }
+    .col-xs-12.col-md-3
+      = render partial: 'tests_table', locals: { tests: @subject.tests_only }
       %br
-      - unless @subject.projects.empty?
-        %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
-          %thead
-            %tr.grey
-              %th Trabalhos
-              %th Notas
-          %tbody
-            /- @dados['projects'] = @dados['projects'].sort_by &:date
-            /- @dados['projects'].each do |project|
-            - @subject.projects.each do |project|
-              %tr.accordion-toggle{'data-target' => "##{project.id}", 'data-toggle' => 'collapse'}
-                %td.text-error= project.date.strftime('%d de %B, %Y')
-                %td.text-success #{number_with_precision(project.grade, strip_insignificant_zeros: true)} / #{project.value}
-              %tr
-                %td.hiddenRow{:colspan => '6'}
-                  = dynamic_div(project.id, project.note)
-      -#%table.table.table-striped.table_border
-        %thead.grey
-          %tr
-            - if @dados['projects'] == []
-              -unless @dados['tests'] == []
-                %td.table_border= 'Essa disciplina ainda não tem trabalhos'
-            - else
-              %th Trabalhos
-              %th Nota
-              %th Detalhes
-              %th
-        %tbody
-          - @dados['projects'] = @dados['projects'].sort_by &:date
-          - @dados['projects'].each do |project|
-            %tr
-              %td.datewidth
-                = formatted_date(project.date)
-              %td.gradewidth
-                #{project.grade} / #{project.value}
-              %td
-                #{project.note}
-              %td
-                .dropdown.align-right
-                  %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_test_path(@period, @subject, project)
-                    %li.divider
-                    %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_test_path(@period, @subject, project), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir esse trabalho?' }
+    .col-xs-12.col-md-3
+      = render partial: 'tests_table', locals: { tests: @subject.projects }
       %br
+    .col-xs-12.col-md-3
       - unless @subject.events.empty?
         %table.table.table-striped.table_border
           %thead
-            %tr.grey
+            %tr
               %th Aulas
-              %th
           %tbody
             %tr
-              /- @dados['events'].each do |event|
               - @subject.events.each do |event|
                 %tr
                   %td
@@ -141,12 +48,9 @@
         .panel-heading Adicionar
         .panel-body
           .bs-component
-            /= link_to 'Prova', new_period_subject_test_path(@period, @subject), class: 'btn btn-default'
-            /= link_to 'Trabalho', trabalho_path(@period, @subject), class: 'btn btn-default'
-            /= link_to 'Aula', new_period_subject_event_path(@period, @subject), class: 'btn btn-default'
             %button.btn{'data-target' => '#TestModalForm', 'data-toggle' => 'modal', :type => 'button'} Prova
             %button.btn{'data-target' => '#ProjectModalForm', 'data-toggle' => 'modal', :type => 'button'} Trabalho
             %button.btn{'data-target' => '#EventModalForm', 'data-toggle' => 'modal', :type => 'button'} Aula
-    .col-xs-4
+    .col-xs-12.col-md-3
       /%h5 Aproveitamento
-      /%canvas#aproveitamento{:height => '300', :width => '450'}
+      %canvas#aproveitamento{:height => '300', :width => '450'}
