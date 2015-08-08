@@ -10,7 +10,10 @@
       - tests.each do |test|
         %tr.accordion-toggle{'data-target' => "##{test.id}", 'data-toggle' => 'collapse'}
           %td
-            %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "hover", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+            - if test.date > Date.today
+              %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "hover", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+            - else
+              %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade} <br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "hover", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
           %td
             .dropdown.align-right
               %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
