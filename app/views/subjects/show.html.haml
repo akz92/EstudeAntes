@@ -2,27 +2,33 @@
 =include_gon
 = render partial: 'events/modal', locals: { period: @period, subject: @subject }
 = render partial: 'tests/modal', locals: { period: @period, subject: @subject }
+= render partial: 'modal_edit', locals: { period: @period, subject: @subject }
 .container-fluid
   .row
     .col-xs-2
       %h3= @subject.name
     .col-xs-1
       .dropdown.align-left
-        %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-          %b.caret
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %i.fa.fa-plus{ style: 'font-size:1.5em;' }
         %ul.dropdown-menu
-          %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_path(@period, @subject)
+          %li
+            %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
           %li.divider
-            %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, period_subject_path(@period, @subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a disciplina?' }
+          %li
+            %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
+          %li.divider
+          %li
+            %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
+      %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"}
+      /%li.fa.fa-pencil-square-o= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_path(@period, @subject)
 
 .container-fluid
   .row
     .col-xs-12.col-md-3
-      = render partial: 'tests_table', locals: { tests: @subject.tests_only }
-      %br
+      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
     .col-xs-12.col-md-3
-      = render partial: 'tests_table', locals: { tests: @subject.projects }
-      %br
+      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
     .col-xs-12.col-md-3
       - unless @subject.events.empty?
         %table.table.table-striped.table_border
@@ -43,8 +49,8 @@
                         %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_subject_event_path(@subject, event)
                         %li.divider
                         %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, subject_event_path(@subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
-      %br
-      .panel.panel-primary
+      /%br
+      -#.panel.panel-primary
         .panel-heading Adicionar
         .panel-body
           .bs-component
@@ -53,4 +59,4 @@
             %button.btn{'data-target' => '#EventModalForm', 'data-toggle' => 'modal', :type => 'button'} Aula
     .col-xs-12.col-md-3
       /%h5 Aproveitamento
-      %canvas#aproveitamento{:height => '300', :width => '450'}
+      %canvas#aproveitamento{:height => '200', :width => '200'}

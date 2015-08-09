@@ -4,8 +4,8 @@
 
 #calendar .fc-time-grid > .fc-bg{
   background-color: #EEEEEE;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-color: #AAAAAA;
   border-style: solid;
   border-width: 1px;
