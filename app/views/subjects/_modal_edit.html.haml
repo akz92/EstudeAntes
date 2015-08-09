@@ -1,0 +1,14 @@
+#EditSubjectModalForm.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+        %h4.modal-title Editar disciplina
+      .modal-body
+        = bootstrap_form_for([period, subject]) do |f|
+          = f.text_field :name, label: 'Nome', required: true
+          %button.btn.btn-primary{:type => "submit"} Salvar
+          = button_to 'Deletar', period_subject_path(period, subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'
+          /%button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+      /.modal-footer
