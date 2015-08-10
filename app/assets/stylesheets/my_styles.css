@@ -3,49 +3,11 @@ body{
   background-color: white;
 }
 
-/*.table .table-align {
-  padding: 2px;
-  border-radius: 4px;
-}
-
-.table .table-font{
-  font-size: 14px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.table .date-font {
-  font-size: 10px;
-}
-
-.align-right {
-	border: none;
-  float: right;
-}*/
-
-.grey {
-  background-color: #F8F8F8;
-}
-
 .login {
   background-color: #F8F8F8;
   border: 1px solid #e8e8e8;
   padding: 25px;
 }
-
-/*.centertext {
-  text-align: center;
-}
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-	   background-color: #F8F8F8;
-}
-
-.table-striped>tbody>tr:nth-child(even)>td,
-.table-striped>tbody>tr:nth-child(even)>th {
-	   background-color: #FFFFFF;
-}*/
 
 .navbar-inner {
 	background-color: #F8F8F8;
@@ -83,18 +45,6 @@ body{
   margin-right: -4px;
 }
 
-/*ul.nav li a, ul.nav li a:visited {
-  text-decoration: none !important;
-}
-
-ul.nav li a:hover, ul.nav li a:active {
-  text-decoration: none !important;
-}
-
-ul.nav li.active a {
-  text-decoration: none !important;
-}*/
-
 a:link {
   text-decoration: none !important;
 }
@@ -110,16 +60,6 @@ a:active {
   background-color: #2c3e50;
 }
 
-/** {
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
-  background-image: none !important;
-  outline: 0 !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-}*/
-
 .subject-header{
   background-color: #3498db;
   color: white;
@@ -131,4 +71,10 @@ a:active {
 
 button.subject_header:hover {
   color: #2c3e50;
+}
+
+thead.flatable {
+  color: white;
+  background-color: #e74c3c;
+  border-radius: 5px !important;
 }

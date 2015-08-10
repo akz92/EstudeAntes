@@ -25,23 +25,6 @@
             %li.divider
             %li
               %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
-      -#.col-xs-2
-        %br
-        %br
-        .dropdown.align-left
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            %i.fa.fa-plus{ style: 'font-size:1.5em;' }
-          %ul.dropdown-menu
-            %li
-              %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
-            %li.divider
-            %li
-              %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
-            %li.divider
-            %li
-              %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
-        %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"}
-        /%li.fa.fa-pencil-square-o= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_path(@period, @subject)
 
 .container
   .row
@@ -53,7 +36,7 @@
     - unless @subject.events.empty?
       .col-xs-12.col-md-3
         %table.table.table-striped.table_border
-          %thead
+          %thead.flatable
             %tr
               %th Aulas
           %tbody
