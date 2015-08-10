@@ -3,49 +3,55 @@
 = render partial: 'events/modal', locals: { period: @period, subject: @subject }
 = render partial: 'tests/modal', locals: { period: @period, subject: @subject }
 = render partial: 'modal_edit', locals: { period: @period, subject: @subject }
-.container-fluid
-  .row
-    .col-xs-2
-      /%h3= @subject.name
-      .dropdown
-        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-          #{@subject.name}
-          %span.caret
-        %ul.dropdown-menu
-          %li.dropdown-header Adicionar
-          %li
-            %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
-          %li
-            %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
-          %li
-            %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
-          %li.divider
-          %li
-            %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
-    -#.col-xs-1
-      .dropdown.align-left
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %i.fa.fa-plus{ style: 'font-size:1.5em;' }
-        %ul.dropdown-menu
-          %li
-            %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
-          %li.divider
-          %li
-            %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
-          %li.divider
-          %li
-            %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
-      %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"}
-      /%li.fa.fa-pencil-square-o= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_path(@period, @subject)
+.subject-header
+  .container
+    .row
+      .col-xs-12
+        %br
+        %br
+        .dropdown.inline
+          %button.subject_header.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", style: 'background-color: #3498db;'}
+            /#{@subject.name}
+            %h3.inline= @subject.name
+            %span.caret
+          %ul.dropdown-menu
+            %li.dropdown-header Adicionar
+            %li
+              %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
+            %li
+              %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
+            %li
+              %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
+            %li.divider
+            %li
+              %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
+      -#.col-xs-2
+        %br
+        %br
+        .dropdown.align-left
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            %i.fa.fa-plus{ style: 'font-size:1.5em;' }
+          %ul.dropdown-menu
+            %li
+              %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
+            %li.divider
+            %li
+              %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
+            %li.divider
+            %li
+              %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
+        %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"}
+        /%li.fa.fa-pencil-square-o= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_subject_path(@period, @subject)
 
-.container-fluid
+.container
   .row
+    %br
     .col-xs-12.col-md-3
       = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
     .col-xs-12.col-md-3
       = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
-    .col-xs-12.col-md-3
-      - unless @subject.events.empty?
+    - unless @subject.events.empty?
+      .col-xs-12.col-md-3
         %table.table.table-striped.table_border
           %thead
             %tr
