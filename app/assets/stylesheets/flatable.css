@@ -1,0 +1,38 @@
+#flatable {
+  thead {
+    color: white;
+    background-color: #F5AB35;
+  }
+  
+  table th:first-child {
+    border-top-left-radius: 5px;
+    border-right: 1px solid white;
+  }
+  
+  table th:last-child {
+    border-top-right-radius: 5px;
+  }
+  
+  table td:first-child {
+    border-right: 1px solid #EEEEEE;
+  }
+
+  table td:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+#subject_flatable {
+  thead {
+    color: white;
+    background-color: #F5AB35;
+  }
+
+  table th{
+    border-radius: 5px 5px 0 0;
+  }
+
+  table td:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
