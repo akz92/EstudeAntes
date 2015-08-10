@@ -4,11 +4,6 @@
 
 #calendar .fc-time-grid > .fc-bg{
   background-color: #EEEEEE;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-color: #AAAAAA;
-  border-style: solid;
-  border-width: 1px;
 }
 
 #calendar .fc-event{
@@ -89,7 +84,13 @@ table tr th:last-child {
   border-right: 0;
 }
 
-#calendar .fc-widget-header{
+/*#calendar .fc-widget-header{
   border-left: 1px solid #AAAAAA;
   border-right: 1px solid #AAAAAA;
+}*/
+
+#calendar .fc-view{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #AAAAAA;
 }
