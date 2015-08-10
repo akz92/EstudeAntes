@@ -17,6 +17,4 @@
               %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade} <br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "hover", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
             - else
               %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade}", "data-placement" => "bottom", "data-trigger" => "hover", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
-            %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditTestModalForm", "data-toggle" => "modal"}
-          -#%td
-            = link_to '', edit_subject_test_path(test.subject_id, test), class: 'fa fa-pencil-square-o'
+            %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(test)}", "data-toggle" => "modal"}

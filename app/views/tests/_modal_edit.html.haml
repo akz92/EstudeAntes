@@ -1,10 +1,8 @@
-#EditTestModalForm.modal.fade{:role => "dialog"}
+.modal.fade{:id => "#{dom_id(test)}", :role => "dialog"}
   .modal-dialog
-    / Modal content
     .modal-content
       .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-        %h4.modal-title Adicionar prova
+        %h4.modal-title Editar prova
       .modal-body
         = bootstrap_form_for [subject, test] do |f|
           .container-fluid
@@ -17,28 +15,5 @@
             = f.text_field :note, label: 'Detalhes'
             %button.btn.btn-primary{:type => "submit"} Salvar
             = button_to 'Deletar', subject_test_path(subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
-      /.modal-footer
-
-#EditProjectModalForm.modal.fade{:role => "dialog"}
-  .modal-dialog
-    / Modal content
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-        %h4.modal-title Adicionar trabalho
-      .modal-body
-        = bootstrap_form_for [subject, test] do |f|
-          .container-fluid
-            = f.datetime_local_field :date, label: 'Data'
-            .row
-              .col-xs-6
-                = f.number_field :value, label: 'Valor'
-              .col-xs-6
-                = f.number_field :grade, label: 'Minha nota', :step => 0.1
-            = f.text_field :note, label: 'Detalhes'
-            = f.hidden_field :is_project, value: true
-            %button.btn.btn-primary{:type => "submit"} Salvar
-            = button_to 'Deletar', subject_test_path(subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+            /%button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
       /.modal-footer
