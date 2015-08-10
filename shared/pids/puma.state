@@ -1,5 +1,5 @@
 ---
-pid: 4884
+pid: 14733
 config: !ruby/object:Puma::Configuration
   options:
     :min_threads: 1
@@ -21,7 +21,7 @@ config: !ruby/object:Puma::Configuration
     :redirect_append: true
     :pidfile: "/home/deployer/estudeantes/shared/pids/puma.pid"
     :state: "/home/deployer/estudeantes/shared/pids/puma.state"
-    :control_url: unix:///tmp/puma-status-1439207822957-4884
-    :control_url_temp: "/tmp/puma-status-1439207822957-4884"
-    :control_auth_token: 1d5261b6c886c0ce6bb78d2ef80c35e
+    :control_url: unix:///tmp/puma-status-1439215239374-14733
+    :control_url_temp: "/tmp/puma-status-1439215239374-14733"
+    :control_auth_token: 3788d9821a8696b3865eab29cc38
     :tag: estudeantes
