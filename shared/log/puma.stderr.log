@@ -19213,3 +19213,4 @@ DEPRECATION WARNING: The configuration option `config.serve_static_assets` has b
 /home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:15: warning: duplicated key at line 15 ignored: "data-content"
 /home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:17: warning: duplicated key at line 17 ignored: "data-content"
 /home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:19: warning: duplicated key at line 19 ignored: "data-content"
+=== puma startup: 2015-08-10 10:33:40 -0400 ===
