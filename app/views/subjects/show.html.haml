@@ -13,7 +13,8 @@
           %button.subject_header.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", style: 'background-color: #3498db;'}
             /#{@subject.name}
             %h1.inline= @subject.name
-            %span.caret
+            &nbsp
+            %span.fa.fa-angle-down{style: 'font-size: 2em;'}
           %ul.dropdown-menu
             %li.dropdown-header Adicionar
             %li
@@ -35,18 +36,18 @@
       = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
     - unless @subject.events.empty?
       .col-xs-12.col-md-3
-        %table.table.table-striped.table_border
+        %table.table.table-striped
           %thead.flatable
             %tr
-              %th Aulas
+              %th.flatable Aulas
           %tbody
             %tr
               - @subject.events.each do |event|
                 %tr
                   %td
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime('%H:%M')} - #{event.end_time.strftime('%H:%M')}"
-                  %td
-                    .dropdown.align-right
+                    %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditEventModalForm", "data-toggle" => "modal"}
+                    -#.dropdown.align-right
                       %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
                         %b.caret
                       %ul.dropdown-menu

@@ -1,16 +1,17 @@
 .col-xs-12.col-md-6
   %br
-  %table.table.table-striped
-    %thead.flatable
-      %tr
-        %th= "Disciplinas"
-        %th= "Notas"
-    %tbody
-      %tr
-      - period.subjects.each do |subject|
+  #flatable
+    %table.table.table-striped
+      %thead.flatable
         %tr
-          %td= link_to subject.name, period_subject_path(period, subject), {style: 'color: #1484E6 !important;', class: 'css_class'}
-          %td= "#{number_with_precision(subject.grade, strip_insignificant_zeros: true)} / #{subject.value}"
+          %th.leftflatable= "Disciplinas"
+          %th.rightflatable= "Notas"
+      %tbody
+        %tr
+        - period.subjects.each do |subject|
+          %tr
+            %td.flatable= link_to subject.name, period_subject_path(period, subject), {style: 'color: #1484E6 !important;', class: 'css_class'}
+            %td= "#{number_with_precision(subject.grade, strip_insignificant_zeros: true)} / #{subject.value}"
 
 .col-xs-12.col-md-6.pull-right
   %h5

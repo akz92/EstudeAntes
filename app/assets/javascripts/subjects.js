@@ -13,8 +13,7 @@ $('document').ready(function(){
     },
     {
       value : subjectPercentage,
-      //color : "#69D2E7"
-      color : "#3498db"
+      color : "#89C4F4"
     }
         ];
 

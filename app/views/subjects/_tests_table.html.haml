@@ -3,9 +3,9 @@
     %thead.flatable
       %tr
         - if tests.first.is_project
-          %th Trabalhos
+          %th.flatable Trabalhos
         - else
-          %th Provas
+          %th.flatable Provas
     %tbody
       - tests.each do |test|
         = render partial: 'tests/modal_edit', locals: { subject: subject, test: test }
