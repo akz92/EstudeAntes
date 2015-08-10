@@ -6,8 +6,23 @@
 .container-fluid
   .row
     .col-xs-2
-      %h3= @subject.name
-    .col-xs-1
+      /%h3= @subject.name
+      .dropdown
+        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+          #{@subject.name}
+          %span.caret
+        %ul.dropdown-menu
+          %li.dropdown-header Adicionar
+          %li
+            %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
+          %li
+            %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
+          %li
+            %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
+          %li.divider
+          %li
+            %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
+    -#.col-xs-1
       .dropdown.align-left
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %i.fa.fa-plus{ style: 'font-size:1.5em;' }
