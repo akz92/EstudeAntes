@@ -3,6 +3,10 @@ body{
   background-color: white;
 }
 
+.centertext {
+  text-align: center;
+}
+
 .login {
   background-color: #F8F8F8;
   border: 1px solid #e8e8e8;
@@ -61,7 +65,7 @@ a:active {
 }
 
 .subject-header{
-  background-color: #3498db;
+  background-color: #3498DB;
   color: white;
 }
 
@@ -70,7 +74,7 @@ a:active {
 }
 
 button.subject_header:hover {
-  color: #2c3e50;
+  color: #F5AB35;
 }
 
 #flatable {
