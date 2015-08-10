@@ -1,20 +1,21 @@
 - unless tests.empty?
-  %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
-    %thead.flatable
-      %tr
-        - if tests.first.is_project
-          %th.flatable Trabalhos
-        - else
-          %th.flatable Provas
-    %tbody
-      - tests.each do |test|
-        = render partial: 'tests/modal_edit', locals: { subject: subject, test: test }
-        %tr.accordion-toggle{'data-target' => "##{test.id}", 'data-toggle' => 'collapse'}
-          %td
-            - if test.date > Date.today && !test.note.empty?
-              %a#popoverData.btn{"data-toggle" => "popover", "data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Materia: #{test.note}", "data-placement" => "bottom", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
-            - elsif test.date < Date.today && !test.note.empty?
-              %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade} <br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
-            - else
-              %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
-            %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(test)}", "data-toggle" => "modal"}
+  #subject_flatable
+    %table.table.table-striped.table-condensed{:style => 'border-collapse:collapse;'}
+      %thead.flatable
+        %tr
+          - if tests.first.is_project
+            %th Trabalhos
+          - else
+            %th Provas
+      %tbody
+        - tests.each do |test|
+          = render partial: 'tests/modal_edit', locals: { subject: subject, test: test }
+          %tr.accordion-toggle{'data-target' => "##{test.id}", 'data-toggle' => 'collapse'}
+            %td
+              - if test.date > Date.today && !test.note.empty?
+                %a#popoverData.btn{"data-toggle" => "popover", "data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Materia: #{test.note}", "data-placement" => "bottom", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+              - elsif test.date < Date.today && !test.note.empty?
+                %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade} <br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+              - else
+                %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{test.grade}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+              %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(test)}", "data-toggle" => "modal"}

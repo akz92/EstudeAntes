@@ -91,4 +91,23 @@ button.subject_header:hover {
   table td:first-child {
     border-right: 1px solid #EEEEEE;
   }
+
+  table td:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+#subject_flatable {
+  thead {
+    color: white;
+    background-color: #F5AB35;
+  }
+
+  table th{
+    border-radius: 5px 5px 0 0;
+  }
+
+  table td:last-child {
+    border-radius: 0 0 5px 5px;
+  }
 }

@@ -17,7 +17,7 @@ function barChart(){
     labels : subjectNames,
     datasets : [
       {
-        fillColor:"#1484E6",
+        fillColor:"#89C4F4",
         data : subjectGrades
       }
     ]
