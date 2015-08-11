@@ -8,7 +8,7 @@
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %p
         Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.password_field :password, label: 'Senha', :autocomplete => "off", :hint => "deixe em branco caso não queira alterar a senha", :required => false
+    = f.password_field :password, label: 'Nova senha', :autocomplete => "off", :hint => "deixe em branco caso não queira alterar a senha", :required => false
     = f.password_field :password_confirmation, label: 'Confirme a senha', :required => false
     = f.password_field :current_password, label: 'Senha atual', :hint => "nós precisamos da sua senha atual para confirmar suas mudanças", :required => true
     %button.btn.btn-primary{value: "submit"} Atualizar
