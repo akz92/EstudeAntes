@@ -31,10 +31,8 @@
   .row
     %br
     #subject_flatable
-      .col-xs-12.col-md-3
-        = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
-      .col-xs-12.col-md-3
-        = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
+      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
+      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
       - unless @subject.events.empty?
         .col-xs-12.col-md-3
           %table.table.table-striped
@@ -48,6 +46,6 @@
                   %td
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime('%H:%M')} - #{event.end_time.strftime('%H:%M')}"
                     %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(event)}", "data-toggle" => "modal"}
-      .col-xs-12.col-md-3
+      .col-xs-12.col-md-3.pull-right
         /%h4 Aproveitamento
         %canvas#aproveitamento{:height => '200', :width => '200'}
