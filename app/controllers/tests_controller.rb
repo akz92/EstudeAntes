@@ -41,14 +41,14 @@ class TestsController < ApplicationController
     @subject.grade += @test.grade
     @subject.save!
 
-    choose_flash_message if @test.save
+    choose_flash_message('adicionad') if @test.save
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    choose_flash_message if @test.save
+    choose_flash_message('alterad') if @test.save
     respond_with(@test, location: period_subject_path(@period, @subject))
 
     @subject.value = 0
@@ -69,7 +69,7 @@ class TestsController < ApplicationController
     @subject.grade -= @test.grade
     @subject.save!
 
-    choose_flash_message if @test.destroy
+    choose_flash_message('removid') if @test.destroy
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
@@ -80,11 +80,11 @@ class TestsController < ApplicationController
       @test = @subject.tests.find(params[:id])
     end
 
-    def choose_flash_message
+    def choose_flash_message(state)
       if @test.is_project
-        flash[:success] = 'Trabalho adicionado com sucesso.'
+        flash[:success] = "Trabalho #{state}o com sucesso."
       else
-        flash[:success] = 'Prova adicionada com sucesso.'
+        flash[:success] = "Prova #{state}a com sucesso."
       end
     end
 

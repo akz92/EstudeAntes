@@ -47,5 +47,5 @@
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime('%H:%M')} - #{event.end_time.strftime('%H:%M')}"
                     %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(event)}", "data-toggle" => "modal"}
       .col-xs-12.col-md-3.pull-right
-        %h4.text-center Aproveitamento
+        /%h4.text-center Aproveitamento
         %canvas#aproveitamento{:height => '200', :width => '200'}
