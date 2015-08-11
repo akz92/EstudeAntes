@@ -20,6 +20,6 @@
   %body
     /= navbar_select
     = render partial: "layouts/navbar" , locals: { period: @period, subject: @subject, other_periods: @other_periods }
+    = render partial: "layouts/flash_messages", flash: flash
     /.container
     = yield
-    = render partial: "layouts/flash_messages", flash: flash

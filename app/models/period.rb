@@ -23,7 +23,7 @@ class Period < ActiveRecord::Base
   end
 
   def chart_hash
-    Hash[ *self.subjects.all.map { |subject| [subject.name, (subject.grade / subject.value) * 100] }.flatten ]
+    Hash[*self.subjects.all.map { |subject| [subject.name, (subject.grade / subject.value) * 100] }.flatten]
   end
 
   # Converts an array of events JSONs into one single events JSON

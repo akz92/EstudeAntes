@@ -30,38 +30,24 @@
 .container
   .row
     %br
-    .col-xs-12.col-md-3
-      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
-    .col-xs-12.col-md-3
-      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
-    - unless @subject.events.empty?
+    #subject_flatable
       .col-xs-12.col-md-3
-        %table.table.table-striped
-          %thead.flatable
-            %tr
-              %th.flatable Aulas
-          %tbody
-            %tr
+        = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
+      .col-xs-12.col-md-3
+        = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
+      - unless @subject.events.empty?
+        .col-xs-12.col-md-3
+          %table.table.table-striped
+            %thead.flatable
+              %tr
+                %th Aulas
+            %tbody
               - @subject.events.each do |event|
+                = render partial: 'events/modal_edit', locals: { subject: @subject, event: event }
                 %tr
                   %td
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime('%H:%M')} - #{event.end_time.strftime('%H:%M')}"
-                    %a.fa.fa-pencil-square-o{href: "#", "data-target" => "#EditEventModalForm", "data-toggle" => "modal"}
-                    -#.dropdown.align-right
-                      %a.btn.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-                        %b.caret
-                      %ul.dropdown-menu
-                        %li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_subject_event_path(@subject, event)
-                        %li.divider
-                        %li= link_to '<i class="glyphicon glyphicon-trash"></i> Deletar'.html_safe, subject_event_path(@subject, event), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
-      /%br
-      -#.panel.panel-primary
-        .panel-heading Adicionar
-        .panel-body
-          .bs-component
-            %button.btn{'data-target' => '#TestModalForm', 'data-toggle' => 'modal', :type => 'button'} Prova
-            %button.btn{'data-target' => '#ProjectModalForm', 'data-toggle' => 'modal', :type => 'button'} Trabalho
-            %button.btn{'data-target' => '#EventModalForm', 'data-toggle' => 'modal', :type => 'button'} Aula
-    .col-xs-12.col-md-3
-      /%h5 Aproveitamento
-      %canvas#aproveitamento{:height => '200', :width => '200'}
+                    %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(event)}", "data-toggle" => "modal"}
+      .col-xs-12.col-md-3
+        /%h4 Aproveitamento
+        %canvas#aproveitamento{:height => '200', :width => '200'}
