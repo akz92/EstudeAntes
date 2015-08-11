@@ -48,7 +48,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    choose_flash_message('alterad') if @test.save
+    choose_flash_message('alterad') if @test.update(test_params)
     respond_with(@test, location: period_subject_path(@period, @subject))
 
     @subject.value = 0
