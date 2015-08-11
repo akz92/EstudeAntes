@@ -2,12 +2,12 @@
   .modal-dialog
     / Modal content
     .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-        %h4.modal-title Adicionar disciplina
-      .modal-body
-        = bootstrap_form_for([period, Subject.new]) do |f|
+      = bootstrap_form_for([period, Subject.new]) do |f|
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+          %h4.modal-title Adicionar disciplina
+        .modal-body
           = f.text_field :name, label: 'Nome', required: true
+        .modal-footer
           %button.btn.btn-primary{:type => "submit"} Salvar
           %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
-      /.modal-footer

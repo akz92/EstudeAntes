@@ -2,11 +2,11 @@
   .modal-dialog
     / Modal content
     .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-        %h4.modal-title Adicionar periodo
-      .modal-body
-        = bootstrap_form_for Period.new do |f|
+      = bootstrap_form_for Period.new do |f|
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+          %h4.modal-title Adicionar periodo
+        .modal-body
           .container-fluid
             .row
               .col-xs-6
@@ -14,6 +14,6 @@
               .col-xs-6
                 = f.date_field :end_date, label: 'Data final', required:true#, as: :date_picker
             = f.number_field :number, in: 1..20, label: 'Numero do periodo', required: true
-            %button.btn.btn-primary{:type => "submit"} Salvar
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
-      /.modal-footer
+        .modal-footer
+          %button.btn.btn-primary{:type => "submit"} Salvar
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar

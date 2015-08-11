@@ -19642,3 +19642,52 @@ DEPRECATION WARNING: The configuration option `config.serve_static_assets` has b
 === puma startup: 2015-08-11 17:40:56 -0400 ===
 === puma startup: 2015-08-11 17:41:32 -0400 ===
 === puma startup: 2015-08-11 17:42:03 -0400 ===
+=== puma startup: 2015-08-11 17:43:09 -0400 ===
+=== puma startup: 2015-08-11 17:44:19 -0400 ===
+=== puma startup: 2015-08-11 17:45:45 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:47:29 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:48:45 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:49:34 -0400 ===
+=== puma startup: 2015-08-11 17:50:37 -0400 ===
+=== puma startup: 2015-08-11 17:52:24 -0400 ===
+=== puma startup: 2015-08-11 17:53:19 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:54:02 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:55:28 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:56:09 -0400 ===
+=== puma startup: 2015-08-11 17:56:57 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:57:31 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-11 17:58:49 -0400 ===
+=== puma startup: 2015-08-11 17:59:28 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"

@@ -2,11 +2,11 @@
   .modal-dialog
     / Modal content
     .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-        %h4.modal-title Adicionar prova
-      .modal-body
-        = bootstrap_form_for [subject, Test.new] do |f|
+      = bootstrap_form_for [subject, Test.new] do |f|
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+          %h4.modal-title Adicionar prova
+        .modal-body
           .container-fluid
             = f.datetime_local_field :date, label: 'Data'#, as: :datetime_picker
             .row
@@ -15,20 +15,19 @@
               .col-xs-6
                 = f.number_field :grade, label: 'Minha nota', :step => 0.1
             = f.text_field :note, label: 'Detalhes'
-            /%button.btn.btn-lg.btn-block.col-lg-2.btn-primary{:type => "submit"} Salvar prova
-            %button.btn.btn-primary{:type => "submit"} Salvar
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
-      /.modal-footer
+        .modal-footer
+          %button.btn.btn-primary{:type => "submit"} Salvar
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
 
 #ProjectModalForm.modal.fade{:role => "dialog"}
   .modal-dialog
     / Modal content
     .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-        %h4.modal-title Adicionar trabalho
-      .modal-body
-        = bootstrap_form_for [subject, Test.new] do |f|
+      = bootstrap_form_for [subject, Test.new] do |f|
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+          %h4.modal-title Adicionar prova
+        .modal-body
           .container-fluid
             = f.datetime_local_field :date, label: 'Data'#, as: :datetime_picker
             .row
@@ -38,6 +37,6 @@
                 = f.number_field :grade, label: 'Minha nota', :step => 0.1
             = f.text_field :note, label: 'Detalhes'
             = f.hidden_field :is_project, value: true
-            %button.btn.btn-primary{:type => "submit"} Salvar
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
-      /.modal-footer
+        .modal-footer
+          %button.btn.btn-primary{:type => "submit"} Salvar
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
