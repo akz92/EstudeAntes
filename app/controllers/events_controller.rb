@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    flash[:notice] = 'Evento atualizado com sucesso.' if @event.by_date(event_params, @period, @subject)
+    flash[:notice] = 'Evento atualizado com sucesso.' if @event.update_by_date(event_params, @period, @subject)
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 
@@ -54,8 +54,8 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @period = get_period(params[:period_id])
       @subject = get_subject(params[:subject_id])
+      @period = get_period(@subject.period_id)
       @event = @subject.events.find(params[:id])
     end
 
