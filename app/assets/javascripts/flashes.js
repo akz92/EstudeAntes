@@ -7,6 +7,8 @@ $(document).ready(function() {
         closer_hover: false,
         labels: { close: 'Fechar' }
       },
+      delay: 5000,
+      mouse_reset: false,
       text: params.message,
       type: params.type
     });
