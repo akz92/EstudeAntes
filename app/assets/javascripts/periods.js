@@ -23,16 +23,7 @@ function barChart(){
     ]
   }
 
-  //Chart.types.HorizontalBar.extend({
-  //  name: "HBarAlt",
-  //  draw: function(){
-  //    this.options.barValueSpacing = this.chart.height / 5;
-  //    Chart.types.HorizontalBar.prototype.draw.apply(this, arguments);
-  //  }
-  //});
-
   var ctx = document.getElementById("canvas").getContext("2d");
-  //var horizontalBarChart = new Chart(ctx).HBarAlt(data);
   var horizontalBarChart = new Chart(ctx).HorizontalBar(data);
 
   var options = {
@@ -41,7 +32,6 @@ function barChart(){
     //maintainAspectRatio: true
   };
 
-  //new Chart(ctx).HBarAlt(data, options);
   new Chart(ctx).HorizontalBar(data, options);
 
 }

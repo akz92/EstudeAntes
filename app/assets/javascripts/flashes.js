@@ -1,7 +1,19 @@
 $(document).ready(function() {
   $(window).bind('rails:flash', function(e, params) {
+    //var translated_title = '';
+    //switch(params.type) {
+    //  case 'success':
+    //    translated_title = 'sucesso';
+    //    break;
+    //  case 'error':
+    //    translated_title = 'erro';
+    //    break;
+    //  default:
+    //    translated_title = 'info';
+    //}
+
     new PNotify({
-      title: params.type,
+      title: false,//translated_title,//params.type,
       buttons: {
         closer: false,
         sticker: false,
