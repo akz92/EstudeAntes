@@ -3,6 +3,7 @@ $(document).ready(function() {
     new PNotify({
       title: params.type,
       buttons: {
+        closer: false,
         sticker: false,
         closer_hover: false,
         labels: { close: 'Fechar' }

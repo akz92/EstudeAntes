@@ -11098,3 +11098,15 @@ I, [2015-08-12T14:13:14.125150 #16620]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-08-12 15:43:52 -0400 ===
 [20906] * Starting control server on unix:///tmp/puma-status-1439408632078-20906
 [20906] - Worker 0 (pid: 20956) booted, phase: 0
+[20906] - Gracefully shutting down workers...
+[20906] === puma shutdown: 2015-08-12 16:00:30 -0400 ===
+[20906] - Goodbye!
+=== puma startup: 2015-08-12 16:00:31 -0400 ===
+[22264] * Starting control server on unix:///tmp/puma-status-1439409631102-22264
+[22264] - Worker 0 (pid: 22314) booted, phase: 0
+[22264] - Gracefully shutting down workers...
+[22264] === puma shutdown: 2015-08-12 16:03:43 -0400 ===
+[22264] - Goodbye!
+=== puma startup: 2015-08-12 16:03:44 -0400 ===
+[22619] * Starting control server on unix:///tmp/puma-status-1439409824927-22619
+[22619] - Worker 0 (pid: 22669) booted, phase: 0
