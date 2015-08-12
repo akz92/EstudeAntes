@@ -11,7 +11,6 @@
         %li.dropdown-header Adicionar
         %li
           %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Periodo
-%br
 
 - @other_periods.each do |period|
   = render partial: 'subjects/modal', locals:{ period: period }
@@ -37,9 +36,9 @@
                 %a{href: "#", "data-target" => "##{dom_id(period, :edit_period)}", "data-toggle" => "modal"} Editar
               %li.divider
               %li= link_to 'Deletar', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
-  %br
   -if period.subjects.count >= 1
     .container
       = render partial: 'periods/subjectstable', locals: { period: period }
+      %br
   -else
     %p= 'Este periodo nao possui disciplinas'

@@ -1,7 +1,8 @@
 - if !subject && period
-  = render partial: "periods/modal"
   = render partial: "periods/modal_edit", locals: { period: period }
   = render partial: "subjects/modal", locals: { period: period }
+- if !subject && other_periods
+  = render partial: "periods/modal"
 - if user_signed_in?
   = render partial: "devise/registrations/modal_edit"
 %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
@@ -22,7 +23,20 @@
             - if period.is_current
               %a{href: "#{root_url}"} #{period.number}º Período
             - else
-              %a{href: "#{period_subjects_path(period)}"} #{period.number}º Período
+              %a{href: "#{root_url}"} Periodo atual
+              %li= link_to 'Outros periodos', periods_all_path
+              /%a{href: "#{period_subjects_path(period)}"} #{period.number}º Período
+        - elsif other_periods
+          %li
+            %a{href: "#{root_url}"} Periodo atual
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Outros periodos
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Adicionar periodo
+
         -elsif period
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -39,7 +53,8 @@
               /%li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@period), class: "icon-pencil icon-white"
               %li.divider
               %li= link_to 'Deletar', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
-          %li= link_to 'Outros periodos', periods_all_path
+          - if period.is_current
+            %li= link_to 'Outros periodos', periods_all_path
           -#- if period.is_current
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
