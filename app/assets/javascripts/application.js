@@ -19,11 +19,14 @@
 //= require Chart.HorizontalBar
 //= require moment
 //= require fullcalendar
+//= require pnotify
+//= require unobtrusive_flash
+//= require flashes
 //= require_tree .
 //
-if (window.location.href.indexOf('#_=_') > 0) {
 
-window.location = window.location.href.replace(/#.*/, '');
+if (window.location.href.indexOf('#_=_') > 0) {
+  window.location = window.location.href.replace(/#.*/, '');
 }
 
 //function createAutoClosingAlert(selector) {

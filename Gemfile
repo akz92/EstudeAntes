@@ -86,3 +86,5 @@ gem 'simplecov', :require => false, :group => :test
 gem 'shoulda-matchers', group: :test
 gem 'chart-js-rails'
 gem 'bootstrap-sass'
+gem 'pnotify-rails'
+gem 'unobtrusive_flash'
