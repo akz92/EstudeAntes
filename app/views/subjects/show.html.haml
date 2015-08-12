@@ -41,9 +41,16 @@
               - @subject.events.each do |event|
                 = render partial: 'events/modal_edit', locals: { subject: @subject, event: event }
                 %tr
-                  %td
+                  %td.inline
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime('%H:%M')} - #{event.end_time.strftime('%H:%M')}"
-                    %a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(event)}", "data-toggle" => "modal"}
+                    /%a.fa.fa-pencil-square-o{href: "#", "data-target" => "##{dom_id(event)}", "data-toggle" => "modal"}
+                    .dropdown.inline
+                      %a.fa.fa-pencil-square-o.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                      %ul.dropdown-menu
+                        %li
+                          %a{href: "#", "data-target" => "##{dom_id(event)}", "data-toggle" => "modal"} Editar
+                        %li.divider
+                        %li= link_to 'Deletar', subject_event_path(@subject, event), method: :delete, data: { confirm: 'Tem certeza que deseja deletar a aula?' }
       .col-xs-12.col-md-3.pull-right
         /%h4.text-center Aproveitamento
         %canvas#aproveitamento{:height => '200', :width => '200'}

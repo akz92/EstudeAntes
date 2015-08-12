@@ -11110,3 +11110,39 @@ I, [2015-08-12T14:13:14.125150 #16620]  INFO -- omniauth: (facebook) Callback ph
 === puma startup: 2015-08-12 16:03:44 -0400 ===
 [22619] * Starting control server on unix:///tmp/puma-status-1439409824927-22619
 [22619] - Worker 0 (pid: 22669) booted, phase: 0
+[22619] - Gracefully shutting down workers...
+[22619] === puma shutdown: 2015-08-12 16:18:45 -0400 ===
+[22619] - Goodbye!
+=== puma startup: 2015-08-12 16:18:46 -0400 ===
+[23169] * Starting control server on unix:///tmp/puma-status-1439410726202-23169
+[23169] - Worker 0 (pid: 23219) booted, phase: 0
+[23169] - Gracefully shutting down workers...
+[23169] === puma shutdown: 2015-08-12 16:20:50 -0400 ===
+[23169] - Goodbye!
+=== puma startup: 2015-08-12 16:20:51 -0400 ===
+[23644] * Starting control server on unix:///tmp/puma-status-1439410851371-23644
+[23644] - Worker 0 (pid: 23694) booted, phase: 0
+[23644] - Gracefully shutting down workers...
+[23644] === puma shutdown: 2015-08-12 16:21:17 -0400 ===
+[23644] - Goodbye!
+=== puma startup: 2015-08-12 16:21:17 -0400 ===
+[23833] * Starting control server on unix:///tmp/puma-status-1439410877935-23833
+[23833] - Worker 0 (pid: 23883) booted, phase: 0
+[23833] - Gracefully shutting down workers...
+[23833] === puma shutdown: 2015-08-12 16:21:48 -0400 ===
+[23833] - Goodbye!
+=== puma startup: 2015-08-12 16:21:49 -0400 ===
+[24122] * Starting control server on unix:///tmp/puma-status-1439410909761-24122
+[24122] - Worker 0 (pid: 24172) booted, phase: 0
+[24122] - Gracefully shutting down workers...
+[24122] === puma shutdown: 2015-08-12 16:23:44 -0400 ===
+[24122] - Goodbye!
+=== puma startup: 2015-08-12 16:23:45 -0400 ===
+[24785] * Starting control server on unix:///tmp/puma-status-1439411025296-24785
+[24785] - Worker 0 (pid: 24835) booted, phase: 0
+[24785] - Gracefully shutting down workers...
+[24785] === puma shutdown: 2015-08-12 16:24:10 -0400 ===
+[24785] - Goodbye!
+=== puma startup: 2015-08-12 16:24:10 -0400 ===
+[25007] * Starting control server on unix:///tmp/puma-status-1439411050786-25007
+[25007] - Worker 0 (pid: 25057) booted, phase: 0
