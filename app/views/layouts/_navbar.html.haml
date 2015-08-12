@@ -52,7 +52,7 @@
                 %a{href: "#", "data-target" => "##{dom_id(period, :edit_period)}", "data-toggle" => "modal"} Editar
               /%li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@period), class: "icon-pencil icon-white"
               %li.divider
-              %li= link_to 'Deletar', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
+              %li= link_to 'Deletar', period_path(period), method: :delete, data: { confirm: 'Tem certeza que deseja deletar o periodo?' }
           - if period.is_current
             %li= link_to 'Outros periodos', periods_all_path
           -#- if period.is_current
