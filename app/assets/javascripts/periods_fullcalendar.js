@@ -17,8 +17,6 @@ function fullCalendar(){
     axisFormat: 'HH:mm',
     timeFormat: 'HH:mm',
     titleFormat: 'MMMM YYYY',
-    //minTime: gon.mintime,
-    //maxTime: gon.maxtime,
     minTime: gon.calendar_hours[0],
     maxTime: gon.calendar_hours[1],
     scrollTime: "00:00:00",
@@ -34,7 +32,7 @@ function fullCalendar(){
       day: 'dia'
     },
     events: '/fullcalendar_events.json',
-      eventColor: '#1484E6'
+    eventColor: '#1484E6'
 
   });
 }

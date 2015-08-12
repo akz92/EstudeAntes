@@ -10461,3 +10461,39 @@ I, [2015-08-11T17:50:47.148340 #5041]  INFO -- omniauth: (facebook) Callback pha
 === puma startup: 2015-08-11 17:59:28 -0400 ===
 [7630] * Starting control server on unix:///tmp/puma-status-1439330368296-7630
 [7630] - Worker 0 (pid: 7680) booted, phase: 0
+[7630] - Gracefully shutting down workers...
+[7630] === puma shutdown: 2015-08-11 20:37:05 -0400 ===
+[7630] - Goodbye!
+=== puma startup: 2015-08-11 20:37:07 -0400 ===
+[9099] * Starting control server on unix:///tmp/puma-status-1439339827022-9099
+[9099] - Worker 0 (pid: 9149) booted, phase: 0
+[9099] - Gracefully shutting down workers...
+[9099] === puma shutdown: 2015-08-11 20:38:36 -0400 ===
+[9099] - Goodbye!
+=== puma startup: 2015-08-11 20:38:37 -0400 ===
+[9292] * Starting control server on unix:///tmp/puma-status-1439339917296-9292
+[9292] - Worker 0 (pid: 9342) booted, phase: 0
+[9292] - Gracefully shutting down workers...
+[9292] === puma shutdown: 2015-08-11 20:48:05 -0400 ===
+[9292] - Goodbye!
+=== puma startup: 2015-08-11 20:48:06 -0400 ===
+[9689] * Starting control server on unix:///tmp/puma-status-1439340486920-9689
+[9689] - Worker 0 (pid: 9739) booted, phase: 0
+[9689] - Gracefully shutting down workers...
+[9689] === puma shutdown: 2015-08-11 20:52:15 -0400 ===
+[9689] - Goodbye!
+=== puma startup: 2015-08-11 20:52:16 -0400 ===
+[10016] * Starting control server on unix:///tmp/puma-status-1439340736049-10016
+[10016] - Worker 0 (pid: 10068) booted, phase: 0
+[10016] - Gracefully shutting down workers...
+[10016] === puma shutdown: 2015-08-11 20:56:32 -0400 ===
+[10016] - Goodbye!
+=== puma startup: 2015-08-11 20:56:32 -0400 ===
+[10449] * Starting control server on unix:///tmp/puma-status-1439340992983-10449
+[10449] - Worker 0 (pid: 10499) booted, phase: 0
+[10449] - Gracefully shutting down workers...
+[10449] === puma shutdown: 2015-08-11 20:57:34 -0400 ===
+[10449] - Goodbye!
+=== puma startup: 2015-08-11 20:57:35 -0400 ===
+[10765] * Starting control server on unix:///tmp/puma-status-1439341055751-10765
+[10765] - Worker 0 (pid: 10815) booted, phase: 0
