@@ -1,7 +1,7 @@
 - unless tests.empty?
   .col-xs-12.col-md-3
     %table.table.table-striped
-      %thead.flatable
+      %thead
         %tr
           - if tests.first.is_project
             %th Trabalhos
@@ -11,13 +11,13 @@
         - tests.each do |test|
           = render partial: 'tests/modal_edit', locals: { subject: subject, test: test }
           %tr.accordion-toggle{'data-target' => "##{test.id}", 'data-toggle' => 'collapse'}
-            %td.inline
+            %td
               - if test.date > Date.today && !test.note.empty?
-                %a#popoverData.btn{"data-toggle" => "popover", "data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Materia: #{test.note}", "data-placement" => "bottom", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+                %a.remove_padding#popoverData.btn{"data-toggle" => "popover", "data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Materia: #{test.note}", "data-placement" => "bottom", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
               - elsif test.date < Date.today && !test.note.empty?
-                %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{number_with_precision(test.grade, strip_insignificant_zeros: true)}<br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+                %a.remove_padding#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{number_with_precision(test.grade, strip_insignificant_zeros: true)}<br> Materia: #{test.note}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
               - else
-                %a#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{number_with_precision(test.grade, strip_insignificant_zeros: true)}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
+                %a.remove_padding#popoverData.btn{"data-content" => "Popover with data-trigger", "data-html" => "true", "data-original-title" => "#{test.date.strftime('%d de %B, %Y')}", "data-content" => "Valor: #{test.value} <br> Nota: #{number_with_precision(test.grade, strip_insignificant_zeros: true)}", "data-placement" => "bottom", "data-trigger" => "focus", :href => "#", :rel => "popover"} #{test.date.strftime('%d de %B, %Y')}
               .dropdown.inline
                 %a.fa.fa-pencil-square-o.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                 %ul.dropdown-menu
