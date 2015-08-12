@@ -1,22 +1,23 @@
 =include_gon
 = render partial: 'periods/modal'
 
-.container
-  -if @period && !@period.subjects.empty?
-    = render partial: 'periods/modal_edit', locals: { period: @period }
-    .container-fluid
-      .row
-        .col-xs-12
-          %br
-          /.col-md-7
-          #calendar
-        = render partial: 'periods/subjectstable', locals: { period: @period }
-  -elsif @period
+-if @period && !@period.subjects.empty?
+  = render partial: 'periods/modal_edit', locals: { period: @period }
+  .container
+    .row
+      .col-xs-12
+        %br
+        /.col-md-7
+        #calendar
+    = render partial: 'periods/subjectstable', locals: { period: @period }
+-elsif @period
+  .container
     = render partial: 'subjects/modal', locals: { period: @period }
     %div{:style => 'text-align:center;'}
       %h4= 'Agora adicione as disciplinas'
       %button.btn{'data-target' => '#SubjectModalForm', 'data-toggle' => 'modal', :type => 'button'} Adicionar disciplina
-  -else
+-else
+  .container
     %div{:style => 'text-align:center;'}
       %h4= 'Comece adicionando um periodo'
       %button.btn{'data-target' => '#PeriodModalForm', 'data-toggle' => 'modal', :type => 'button'} Adicionar periodo

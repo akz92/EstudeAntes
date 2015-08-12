@@ -1,7 +1,8 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :fullcalendar_events, :all]
+  before_action :set_current_period, only: [:index, :fullcalendar_events]
+  before_action :set_other_periods, only: [:all]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
 
@@ -88,12 +89,19 @@ class PeriodsController < ApplicationController
     end
 
     def set_current_period
-      @other_periods = []
       periods = current_user.periods
       periods.each do |period|
         if period.is_current
           @period = period
-        else
+        end
+      end
+    end
+
+    def set_other_periods
+      @other_periods = []
+      periods = current_user.periods
+      periods.each do |period|
+        unless period.is_current
           @other_periods << period
         end
       end

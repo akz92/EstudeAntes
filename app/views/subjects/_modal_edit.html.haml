@@ -10,4 +10,4 @@
           = f.text_field :name, label: 'Nome', required: true
         .modal-footer
           %button.btn.btn-primary{:type => "submit"} Salvar
-          = button_to 'Deletar', period_subject_path(period, subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'
+          /= button_to 'Deletar', period_subject_path(period, subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'
