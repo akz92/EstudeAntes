@@ -12,4 +12,5 @@
     = f.password_field :password_confirmation, label: 'Confirme a senha', :required => false
     = f.password_field :current_password, label: 'Senha atual', :hint => "nós precisamos da sua senha atual para confirmar suas mudanças", :required => true
     %button.btn.btn-primary{value: "submit"} Atualizar
-    = link_to 'Cancelar', root_url, class: "btn btn-warning"
+    /= link_to 'Cancelar', root_url, class: "btn btn-warning"
+    %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar

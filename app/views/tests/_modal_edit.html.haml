@@ -15,5 +15,7 @@
             = f.text_field :note, label: 'Detalhes'
 
         .modal-footer
-          = button_to 'Salvar', type: "submit", class: 'btn btn-primary'
-          = button_to 'Deletar', subject_test_path(subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'
+          %button.btn.btn-primary{type: 'submit'} Salvar
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+          /= button_to 'Salvar', type: "submit", class: 'btn btn-primary'
+          /= button_to 'Deletar', subject_test_path(subject, test), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }, class: 'btn btn-danger'

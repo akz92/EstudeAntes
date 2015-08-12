@@ -22,7 +22,8 @@
         %li
           %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
         %li.divider
-        %li= link_to 'Deletar', period_subject_path(@period, @subject), method: :delete
+        /%li= link_to 'Deletar', period_subject_path(@period, @subject), method: :delete
+        %li= link_to 'Deletar', period_subject_path(@period, @subject), method: :delete, data: { confirm: 'Voce tem certeza que deseja excluir a aula?' }
 
 .container
   .row
