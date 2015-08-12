@@ -3,28 +3,24 @@
 = render partial: 'events/modal', locals: { period: @period, subject: @subject }
 = render partial: 'tests/modal', locals: { period: @period, subject: @subject }
 = render partial: 'modal_edit', locals: { period: @period, subject: @subject }
-.subject-header
+#header
   .container
-    .row
-      .col-xs-12
-        %br
-        %br
-        .dropdown.inline
-          %button.subject_header.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", style: 'background-color: transparent;'}
-            %h1.inline= @subject.name
-            &nbsp
-            %span.fa.fa-angle-down{style: 'font-size: 2em;'}
-          %ul.dropdown-menu
-            %li.dropdown-header Adicionar
-            %li
-              %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
-            %li
-              %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
-            %li
-              %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
-            %li.divider
-            %li
-              %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
+    .dropdown
+      %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", style: 'background-color: transparent;'}
+        %h1.inline= @subject.name
+        &nbsp
+        %span.fa.fa-angle-down{style: 'font-size: 2em;'}
+      %ul.dropdown-menu
+        %li.dropdown-header Adicionar
+        %li
+          %a{href: "#", "data-target" => "#TestModalForm", "data-toggle" => "modal"} Prova
+        %li
+          %a{href: "#", "data-target" => "#ProjectModalForm", "data-toggle" => "modal"} Trabalho
+        %li
+          %a{href: "#", "data-target" => "#EventModalForm", "data-toggle" => "modal"} Aula
+        %li.divider
+        %li
+          %a{href: "#", "data-target" => "#EditSubjectModalForm", "data-toggle" => "modal"} Editar
 
 .container
   .row
@@ -35,7 +31,7 @@
       - unless @subject.events.empty?
         .col-xs-12.col-md-3
           %table.table.table-striped
-            %thead.flatable
+            %thead
               %tr
                 %th Aulas
             %tbody

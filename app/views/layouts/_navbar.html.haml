@@ -31,15 +31,16 @@
             %ul.dropdown-menu
               /%button.btn.btn-info.btn-lg{"data-target" => "#SubjectModalForm", "data-toggle" => "modal", :type => "button"} Open Modal
               %li
-                %a{href: "#", "data-target" => "#SubjectModalForm", "data-toggle" => "modal"} Adicionar disciplina
+                %a{href: "#", "data-target" => "##{dom_id(period, :subject)}", "data-toggle" => "modal"} Adicionar disciplina
               /%li= link_to '<i class="glyphicon glyphicon-plus"></i> Adicionar disciplina'.html_safe, new_period_subject_path(@period)
               %li.divider
               %li
-                %a{href: "#", "data-target" => "#EditPeriodModalForm", "data-toggle" => "modal"} Editar
+                %a{href: "#", "data-target" => "##{dom_id(period, :edit_period)}", "data-toggle" => "modal"} Editar
               /%li= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_period_path(@period), class: "icon-pencil icon-white"
               %li.divider
               %li= link_to 'Deletar', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
-          - if period.is_current
+          %li= link_to 'Outros periodos', periods_all_path
+          -#- if period.is_current
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                 Outros Períodos

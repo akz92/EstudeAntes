@@ -6,15 +6,19 @@ h3{
 	display: inline-block;
 }
 
-.subject-header{
+.inline {
+  display: inline-block;
+}
+
+#subject_header {
   background-color: #3498DB;
   color: white;
-}
 
-button.subject_header:hover {
-  color: #2C3E50;
-}
+  button:hover {
+    color: #2C3E50;
+  }
 
-button.subject_header:focus {
-  color: white;
+  button:focus {
+    color: white;
+  }
 }
