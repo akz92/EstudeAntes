@@ -27,9 +27,24 @@ describe Event do
     expect(event).to be_invalid
   end
 
-  it 'gets every date of ocurrence of the event' do
+  it 'gets every date of ocurrence of the event weekly' do
     event = build(:event)
     expect(event.dates).to eq([Date.new(2015, 8, 10), Date.new(2015, 8, 17)])
+  end
+
+  it 'gets every date of ocurrence of the event yearly' do
+    event = build(:event, every: 'year')
+    expect(event.dates).to eq([Date.new(2015, 8, 10)])
+  end
+
+  it 'gets every date of ocurrence of the event daily' do
+    event = build(:event, every: 'day', end_date: '2015-08-11')
+    expect(event.dates).to eq([Date.new(2015, 8, 10), Date.new(2015, 8, 11)])
+  end
+
+  it 'raises error if every value not valid' do
+    event = build(:event, every: 'decade')
+    expect { event.dates }.to raise_error('valor nao suportado: decade')
   end
 
   it 'converts a date and time into a datetime' do
