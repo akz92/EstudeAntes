@@ -88,3 +88,4 @@ gem 'chart-js-rails'
 gem 'bootstrap-sass'
 gem 'pnotify-rails'
 gem 'unobtrusive_flash'
+gem 'coveralls', require: false
