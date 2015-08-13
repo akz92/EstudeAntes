@@ -20045,3 +20045,13 @@ DEPRECATION WARNING: The configuration option `config.serve_static_assets` has b
 === puma startup: 2015-08-13 09:43:35 -0400 ===
 === puma startup: 2015-08-13 09:45:33 -0400 ===
 === puma startup: 2015-08-13 09:45:57 -0400 ===
+=== puma startup: 2015-08-13 10:01:07 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-13 10:02:18 -0400 ===
+=== puma startup: 2015-08-13 10:02:54 -0400 ===
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:16: warning: duplicated key at line 16 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:18: warning: duplicated key at line 18 ignored: "data-content"
+/home/deployer/estudeantes/app/views/subjects/_tests_table.html.haml:20: warning: duplicated key at line 20 ignored: "data-content"
+=== puma startup: 2015-08-13 10:03:53 -0400 ===

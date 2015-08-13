@@ -31,7 +31,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = @subject.events.by_date(event_params, @period, @subject)
+    @event = @subject.events.new(event_params)
+    @event = @event.by_date(event_params, @period, @subject)
 
     flash[:success] = 'Evento criado com sucesso.' if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
@@ -40,14 +41,16 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    flash[:notice] = 'Evento atualizado com sucesso.' if @event.update_by_date(event_params, @period, @subject)
+    @event.update(event_params)
+    @event = @event.by_date(event_params, @period, @subject)
+    flash[:success] = 'Evento atualizado com sucesso.' if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    flash[:notice] = 'Evento removido com sucesso.' if @event.destroy
+    flash[:success] = 'Evento removido com sucesso.' if @event.destroy
     respond_with(@event, location: period_subject_path(@period, @subject))
   end
 

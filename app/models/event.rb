@@ -37,25 +37,17 @@ class Event < ActiveRecord::Base
     return dates
   end
 
-  def update_by_date(params, period, subject)
-    self.update(params)
-    self.start_date = period.start_date + ((params[:weekday].to_i - period.start_date.wday) % 7)
+  def by_date(params, period, subject)
+    # event = subject.events.new(params)
+    self.title ||= subject.name
+    self.start_date = period.start_date + ((self.weekday.to_i - period.start_date.wday) % 7)
     self.end_date ||= period.end_date
     self.fullcalendar_dates = self.fullcalendar_conversion
-    self.save
+    self
   end
 
   private
   def self.format_datetime(date, time)
     return DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
-  end
-
-  def self.by_date(params, period, subject)
-    event = subject.events.new(params)
-    event.title ||= subject.name
-    event.start_date = period.start_date + ((event.weekday.to_i - period.start_date.wday) % 7)
-    event.end_date ||= period.end_date
-    event.fullcalendar_dates = event.fullcalendar_conversion
-    event
   end
 end

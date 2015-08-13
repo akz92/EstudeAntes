@@ -20,5 +20,4 @@ class ApplicationController < ActionController::Base
   def get_subject(subject_id)
     Subject.find(subject_id)
   end
-
 end
