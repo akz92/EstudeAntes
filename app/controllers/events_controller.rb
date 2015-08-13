@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = @subject.events.new(event_params)
-    @event = @event.by_date(event_params, @period, @subject)
+    @event = @event.by_date(@period, @subject)
 
     flash[:success] = 'Evento criado com sucesso.' if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     @event.update(event_params)
-    @event = @event.by_date(event_params, @period, @subject)
+    @event = @event.by_date(@period, @subject)
     flash[:success] = 'Evento atualizado com sucesso.' if @event.save
     respond_with(@event, location: period_subject_path(@period, @subject))
   end

@@ -58,4 +58,21 @@ describe Event do
 
     expect(event.fullcalendar_conversion).to eq(dates)
   end
+
+  it 'sets event params that depends on its period or subject' do
+    period = create(:period, id: 1)
+    subject = create(:subject, id: 1, period_id: 1)
+    event = create(:event, subject_id: 1)
+    manual_event = event
+    event = event.by_date(period, subject)
+    manual_event.title = subject.name
+    manual_event.start_date = period.start_date + ((manual_event.weekday.to_i - period.start_date.wday) % 7)
+    manual_event.end_date = period.end_date
+    manual_event.fullcalendar_dates = manual_event.fullcalendar_conversion
+    expect(event).to eq(manual_event)
+    # expect(event.title).to eq(subject.name)
+    # expect(event.start_date).to eq(period.start_date + ((event.weekday.to_i - period.start_date.wday) % 7))
+    # expect(event.end_date).to eq(period.end_date)
+    # expect(event.fullcalendar_dates).to eq(event.fullcalendar_conversion)
+  end
 end
