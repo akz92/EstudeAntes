@@ -22,22 +22,22 @@ class Period < ActiveRecord::Base
     hours
   end
 
-  def chart_hash
-    Hash[*self.subjects.all.map { |subject| [subject.name, (subject.grade / subject.value) * 100] }.flatten]
-  end
+  # def chart_hash
+  #   Hash[*self.subjects.all.map { |subject| [subject.name, (subject.grade / subject.value) * 100] }.flatten]
+  # end
 
   # Converts an array of events JSONs into one single events JSON
   #
   # @return [Json] one single events JSON
   def get_events
-    events = []
+    dates = []
 
     self.events.each do |event|
       event.fullcalendar_dates.each do |date|
-        events << date
+        dates << date
       end
     end
-    events
+    dates
   end
 
   # Defines the Period as current based on its start and end dates
