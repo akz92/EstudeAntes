@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :period do
-    start_date '01-01-2015'
-    end_date '05-05-2015'
+    start_date '01-08-2015'
+    end_date '31-08-2015'
     number 1
     user_id 1
     is_current 'false'

@@ -32,9 +32,11 @@ class Period < ActiveRecord::Base
   def get_events
     dates = []
 
-    self.events.each do |event|
-      event.fullcalendar_dates.each do |date|
-        dates << date
+    unless self.events.empty?
+      self.events.each do |event|
+        event.fullcalendar_dates.each do |date|
+          dates << date
+        end
       end
     end
     dates

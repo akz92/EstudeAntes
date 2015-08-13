@@ -38,11 +38,13 @@ describe Period do
     expect(period.calendar_hours).to eq(['10:00', '12:00'])
   end
 
-  # it 'gets every event dates' do
-  #   period = create(:period, id: 1, start_date: '01-08-2015', end_date: '07-08-2015')
-  #   subject = create(:subject, period_id: 1, id: 1)
-  #   event = create(:event, subject_id: 1, start_time: '10:00', end_time: '12:00')
-  #   event.fullcalendar_dates = event.fullcalendar_conversion
-  #   expect(period.get_events).to eq([(Date.today -1.week).monday])
-  # end
+  it 'gets every event dates' do
+    period = create(:period, id: 1)
+    subject = create(:subject, period_id: 1, id: 1)
+    event = create(:event, subject_id: 1, start_time: '10:00', end_time: '12:00')
+    event = event.by_date(period, subject)
+    event.save!
+    event.fullcalendar_dates = event.fullcalendar_conversion
+    expect(period.get_events).to eq(event.fullcalendar_dates)
+  end
 end
