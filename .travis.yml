@@ -13,3 +13,6 @@ test:
   adapter: postgresql
   database: travis_ci_test
   username: postgres
+addons:
+  code_climate:
+    repo_token: 291c5bd8afa95421a09175a285e6bbff1fdcd7148b0cbd55db679253fd142856
