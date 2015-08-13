@@ -130,21 +130,6 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/pages_controller.rb": [
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null
-      ],
       "/home/deployer/estudeantes/app/controllers/periods_controller.rb": [
         1,
         1,
@@ -621,6 +606,6 @@
         null
       ]
     },
-    "timestamp": 1439473590
+    "timestamp": 1439473710
   }
 }
