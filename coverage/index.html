@@ -14,18 +14,18 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-08-13T15:48:22-04:00">2015-08-13T15:48:22-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-08-14T07:13:34-04:00">2015-08-14T07:13:34-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">59.86%</span></span>
+    (<span class="covered_percent"><span class="red">63.38%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.31
+         1.38
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>12</b> files in total.
     <b>284</b> relevant lines. 
-    <span class="green"><b>170</b> lines covered</span> and
-    <span class="red"><b>114</b> lines missed </span>
+    <span class="green"><b>180</b> lines covered</span> and
+    <span class="red"><b>104</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -162,12 +162,12 @@
       
       <tr>
         <td class="strong"><a href="#792f7ef9c221b8c6ed71382c941b239ad1b5d3bb" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="red strong">42.11 %</td>
+        <td class="green strong">94.74 %</td>
         <td>33</td>
         <td>19</td>
-        <td>8</td>
-        <td>11</td>
-        <td>0.4</td>
+        <td>18</td>
+        <td>1</td>
+        <td>1.5</td>
       </tr>
       
     </tbody>
@@ -286,11 +286,11 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="yellow">89.72%</span></span>
+    (<span class="covered_percent"><span class="green">99.07%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.81
+         3.0
        </span>
     </span> hits/line)
   </h2>
@@ -298,8 +298,8 @@
   <div>
     <b>5</b> files in total.
     <b>107</b> relevant lines. 
-    <span class="green"><b>96</b> lines covered</span> and
-    <span class="red"><b>11</b> lines missed </span>
+    <span class="green"><b>106</b> lines covered</span> and
+    <span class="red"><b>1</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -357,12 +357,12 @@
       
       <tr>
         <td class="strong"><a href="#792f7ef9c221b8c6ed71382c941b239ad1b5d3bb" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="red strong">42.11 %</td>
+        <td class="green strong">94.74 %</td>
         <td>33</td>
         <td>19</td>
-        <td>8</td>
-        <td>11</td>
-        <td>0.4</td>
+        <td>18</td>
+        <td>1</td>
+        <td>1.5</td>
       </tr>
       
     </tbody>
@@ -3944,11 +3944,11 @@
         <div class="source_table" id="792f7ef9c221b8c6ed71382c941b239ad1b5d3bb">
   <div class="header">
     <h3>app/models/user.rb</h3>
-    <h4><span class="red">42.11 %</span> covered</h4>
+    <h4><span class="green">94.74 %</span> covered</h4>
     <div>
       <b>19</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>11</b> lines missed.</span>
+      <span class="green"><b>18</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -4057,14 +4057,14 @@
           <code class="ruby">  def self.from_omniauth(auth)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="18">
-          
+        <li class="covered" data-hits="3" data-linenumber="18">
+          <span class="hits">3</span>
           
           <code class="ruby">    if self.where(email: auth.info.email).exists?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="19">
-          
+        <li class="covered" data-hits="2" data-linenumber="19">
+          <span class="hits">2</span>
           
           <code class="ruby">      return_user = self.where(email: auth.info.email).first</code>
         </li>
@@ -4075,26 +4075,26 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="21">
-          
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
           
           <code class="ruby">      return_user = self.create do |user|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="22">
-          
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
           
           <code class="ruby">        user.password = Devise.friendly_token[0, 20]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
           
           <code class="ruby">        user.email = auth.info.email</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="24">
-          
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
           
           <code class="ruby">        user.skip_confirmation!</code>
         </li>
@@ -4111,20 +4111,20 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="27">
-          
+        <li class="covered" data-hits="3" data-linenumber="27">
+          <span class="hits">3</span>
           
           <code class="ruby">    return_user.provider = auth.provider</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="28">
-          
+        <li class="covered" data-hits="3" data-linenumber="28">
+          <span class="hits">3</span>
           
           <code class="ruby">    return_user.uid = auth.uid</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="29">
-          
+        <li class="covered" data-hits="3" data-linenumber="29">
+          <span class="hits">3</span>
           
           <code class="ruby">    return_user.name = auth.info.name</code>
         </li>
@@ -4135,8 +4135,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="31">
-          
+        <li class="covered" data-hits="3" data-linenumber="31">
+          <span class="hits">3</span>
           
           <code class="ruby">    return_user</code>
         </li>
