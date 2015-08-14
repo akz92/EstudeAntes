@@ -11,18 +11,15 @@ Estudeantes::Application.routes.draw do
   # get '/periods/:period_id/subjects/:subject_id/tests/trabalho', to: 'tests#trabalho', as: 'trabalho'
 
   #resources :periods, shallow: true do
-  resources :periods, only: [:index, :new, :create, :edit, :update, :destroy] do
-    resources :subjects#  do
-  #     resources :tests
-  #     resources :events
-  #   end
+  resources :periods, only: [:index, :create, :update, :destroy] do
+    resources :subjects, only: [:show, :create, :update, :destroy]
   end
 
   get '/periods/all', to: 'periods#all'
 
   resources :subjects do
-    resources :tests, only: [:new, :create, :edit, :update, :destroy]
-    resources :events, only: [:new, :create, :edit, :update, :destroy]
+    resources :tests, only: [:create, :update, :destroy]
+    resources :events, only: [:create, :update, :destroy]
   end
 
   get '/fullcalendar_events', to: 'periods#fullcalendar_events', as: 'fullcalendar_events'

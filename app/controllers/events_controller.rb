@@ -7,27 +7,6 @@ class EventsController < ApplicationController
     @period = get_period(@subject.period_id)
   end
 
-  # GET /events
-  # GET /events.json
-  # def index
-  #   @events = @subject.events.all
-  # end
-
-  # GET /events/1
-  # GET /events/1.json
-  # def show
-  # end
-
-  # GET /events/new
-  def new
-    @event = @subject.events.new
-  end
-
-  # GET /events/1/edit
-  def edit
-    @event.weekday = @event.start_date.wday
-  end
-
   # POST /events
   # POST /events.json
   def create

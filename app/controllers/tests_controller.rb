@@ -7,39 +7,11 @@ class TestsController < ApplicationController
     @period = get_period(@subject.period_id)
   end
 
-  # GET /tests
-  # GET /tests.json
-  # def index
-  #    @tests = @subject.tests.all
-  # end
-
-  # GET /tests/1
-  # GET /tests/1.json
-  # def show
-  # end
-
-  # GET /tests/new
-  def new
-    @test = @subject.tests.new
-  end
-
-  # GET /tests/trabalho
-  def trabalho
-    # @test = @subject.tests.new
-  end
-
-  # GET /tests/1/edit
-  def edit
-  end
-
   # POST /tests
   # POST /tests.json
   def create
     @test = @subject.tests.new(test_params)
-
-    @subject.value += @test.value
-    @subject.grade += @test.grade
-    @subject.save!
+    update_subject_value_and_grade('create')
 
     choose_flash_message('adicionad') if @test.save
     respond_with(@test, location: period_subject_path(@period, @subject))
@@ -50,24 +22,13 @@ class TestsController < ApplicationController
   def update
     choose_flash_message('alterad') if @test.update(test_params)
     respond_with(@test, location: period_subject_path(@period, @subject))
-
-    @subject.value = 0
-    @subject.grade = 0
-
-    @subject.tests.each do |test|
-      @subject.value += test.value
-      @subject.grade += test.grade
-    end
-
-    @subject.save!
+    update_subject_value_and_grade('update')
   end
 
   # DELETE /tests/1
   # DELETE /tests/1.json
   def destroy
-    @subject.value -= @test.value
-    @subject.grade -= @test.grade
-    @subject.save!
+    update_subject_value_and_grade('destroy')
 
     choose_flash_message('removid') if @test.destroy
     respond_with(@test, location: period_subject_path(@period, @subject))
@@ -86,6 +47,27 @@ class TestsController < ApplicationController
       else
         flash[:success] = "Prova #{state}a com sucesso."
       end
+    end
+
+    def update_subject_value_and_grade(method)
+      case method
+      when 'update'
+        @subject.value = 0
+        @subject.grade = 0
+
+        @subject.tests.each do |test|
+          @subject.value += test.value
+          @subject.grade += test.grade
+        end
+      when 'destroy'
+        @subject.value -= @test.value
+        @subject.grade -= @test.grade
+      else
+        @subject.value += @test.value
+        @subject.grade += @test.grade
+      end
+      @subject.save!
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

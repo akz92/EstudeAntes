@@ -6,28 +6,6 @@ class SubjectsController < ApplicationController
     @period = get_period(params[:period_id])
   end
 
-  # GET /subjects
-  # GET /subjects.json
-  def index
-    gon.subjects = @period.subjects.map &:attributes
-  end
-
-  # GET /subjects/1
-  # GET /subjects/1.json
-  # def show
-  #   gon.subject = @subject
-  # end
-
-  # GET /subjects/new
-  def new
-    @subject = @period.subjects.new
-  end
-
-  # GET /subjects/1/edit
-  def edit
-    @subject = @period.subjects.find(params[:id])
-  end
-
   # POST /subjects
   # POST /subjects.json
   def create

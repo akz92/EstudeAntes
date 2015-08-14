@@ -23,19 +23,6 @@ class PeriodsController < ApplicationController
 
   def all
   end
-  # GET /periods/1
-  # GET /periods/1.json
-  # def show
-  # end
-
-  # GET /periods/new
-  def new
-    @period = @periods.new
-  end
-
-  # GET /periods/1/edit
-  def edit
-  end
 
   # POST /periods
   # POST /periods.json
@@ -50,16 +37,6 @@ class PeriodsController < ApplicationController
     respond_with(@period) do |format|
       format.html { redirect_to root_path }
     end
-
-   # if  @period.is_current && current_user.periods.where(is_current: true).count > 0
-    #  render action: 'new'
-    #  flash[:notice] = 'Ja existe um periodo vigente.'
-   # else
-    #  flash[:notice] = 'Periodo criado com sucesso.' if  @period.save
-    #  respond_with(@period) do |format|
-    #    format.html { redirect_to root_path }
-    #  end
-   # end
   end
 
   # PATCH/PUT /periods/1
@@ -67,14 +44,14 @@ class PeriodsController < ApplicationController
   def update
     @period.is_current?
 
-    flash[:notice] = 'Periodo atualizado com sucesso.' if @period.update(period_params)
+    flash[:success] = 'Periodo atualizado com sucesso.' if @period.update(period_params)
     respond_with(@period, location: choose_redirect_path(@period))
   end
 
   # DELETE /periods/1
   # DELETE /periods/1.json
   def destroy
-    flash[:notice] = 'Periodo removido com sucesso.' if @period.destroy
+    flash[:success] = 'Periodo removido com sucesso.' if @period.destroy
     respond_with(@period)
   end
 
