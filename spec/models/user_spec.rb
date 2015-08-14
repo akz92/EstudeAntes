@@ -1,6 +1,11 @@
 require 'rails_helper.rb'
 
 describe User do
+  it 'has remember_me to true by default' do
+    user = build(:user)
+    expect(user.remember_me).to eq('1')
+  end
+
   it 'if facebook email already registered dont create new' do
     expect {
       user = create(:user)
@@ -10,6 +15,7 @@ describe User do
       facebook_user.save!
     }.to change{ User.count }.by(1)
   end
+
   it 'updates a user with his facebook credentials' do
     user = create(:user)
     user.skip_confirmation!
