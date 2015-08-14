@@ -18,6 +18,7 @@ require 'spec_helper'
 require 'rspec/rails'
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, :type => :controller
 end
 
 OmniAuth.config.test_mode = true
