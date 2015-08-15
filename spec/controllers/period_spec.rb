@@ -14,11 +14,11 @@ describe PeriodsController do
 
   describe '#create' do
     before(:each) do
-      post :create, period: attributes_for(:period, user_id: subject.current_user.id)
+      post :create, period: attributes_for(:period)
     end
     
     context 'success' do
-      it { expect(subject.current_user.periods.count).to eq(1) }
+      it { expect(Period.count).to eq(1) }
       it { expect(response).to redirect_to(root_path) }
       it { expect(flash[:success]).to be_present }
     end
@@ -26,7 +26,7 @@ describe PeriodsController do
     context 'error' do
       it 'flashes error message' do
         # creating another period with same ID to get an error
-        post :create, period: attributes_for(:period, user_id: subject.current_user.id)
+        post :create, period: attributes_for(:period)
         expect(flash[:error]).to be_present
       end
     end
@@ -39,7 +39,7 @@ describe PeriodsController do
     end
 
     before(:each) do
-      @period = create(:period, user_id: subject.current_user.id)
+      @period = create(:period)
       put :update, id: @period.id, period: attr
       @period.reload
     end
@@ -57,20 +57,20 @@ describe PeriodsController do
     # end
   end
 
-  # describe '#destroy' do
-  #   before do
-  #     post :create, period: attributes_for(:period, user_id: subject.current_user.id)
-  #   end
+  describe '#destroy' do
+    before(:each) do
+      @period = create(:period)
+    end
 
-  #   it 'destroys the period' do
-  #     expect {
-  #       delete :destroy, id: 1
-  #     }.to change(subject.current_user.periods, :count).by(-1)
-  #   end
+    it 'destroys the period' do
+      expect {
+        delete :destroy, id: @period.id
+      }.to change(Period, :count).by(-1)
+    end
 
-  #   # it 'flashes success message if destroyed' do
-  #   #   delete :destroy, id: 1
-  #   #   expect(flash[:success]).to be_present
-  #   # end
-  # end
+    it 'flashes success message' do
+      delete :destroy, id: @period.id
+      expect(flash[:success]).to be_present
+    end
+  end
 end

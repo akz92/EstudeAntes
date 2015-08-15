@@ -21,9 +21,6 @@ class PeriodsController < ApplicationController
     render json: events
   end
 
-  def all
-  end
-
   # POST /periods
   # POST /periods.json
   def create
