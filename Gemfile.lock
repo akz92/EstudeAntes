@@ -356,6 +356,3 @@ DEPENDENCIES
   uglifier
   unobtrusive_flash
   validates_timeliness
-
-BUNDLED WITH
-   1.10.5
