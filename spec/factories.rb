@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :period do
-    start_date '01-08-2015'
-    end_date '31-08-2015'
+    start_date (Date.today - 7) 
+    end_date (Date.today + 7)
     number 1
     user_id 1
     is_current 'false'
@@ -31,6 +31,7 @@ FactoryGirl.define do
   end
 
   factory :user do
+    id 1
     email 'user@example.com'
     password '12345678'
   end

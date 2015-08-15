@@ -48,6 +48,8 @@ class Period < ActiveRecord::Base
   def is_current?
     if Date.today.between?(self.start_date, self.end_date)
       self.is_current = true
+    else
+      self.is_current = false
     end
     self
   end
