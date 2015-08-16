@@ -22,14 +22,18 @@ class SubjectsController < ApplicationController
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
   def update
-    params[:notice] = 'Disciplina alterada com sucesso.' if @subject.update(subject_params)
+    if @subject.update(subject_params)
+      flash[:success] = 'Disciplina alterada com sucesso.'
+    else
+      flash[:error] = 'Disciplina nao pode ser alterada.'
+    end
     respond_with(@subject, location: period_subject_path(@period, @subject))
   end
 
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    params[:notice] = 'Disciplina removida com sucesso.' if @subject.destroy
+    flash[:success] = 'Disciplina removida com sucesso.' if @subject.destroy
     respond_with(@subject, location: choose_redirect_path(@period))
   end
 
