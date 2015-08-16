@@ -4,7 +4,7 @@ describe PeriodsController do
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
     user = create(:user)
-    user.confirm # or set a confirmed_at inside the factory. Only necessary if you are using the "confirmable" module
+    user.confirm
     sign_in user
   end
 
@@ -30,6 +30,16 @@ describe PeriodsController do
         expect(flash[:error]).to be_present
       end
     end
+
+    context 'older period' do
+      before do
+        post :create, period: attributes_for(:period, start_date: '01-01-2015', end_date: '05-05-2015')
+      end
+
+      it 'redirects to period_subjects_path if older period' do
+        expect(response).to redirect_to(periods_all_path)
+      end
+    end
   
   end
 
@@ -37,6 +47,10 @@ describe PeriodsController do
     let(:attr) do
       { number: 2 }
     end
+
+    # let(:older_attr) do
+    #   { start_date: '01-01-2015', end_date: '05-05-2015', is_current: false }
+    # end
 
     before(:each) do
       @period = create(:period)
@@ -48,11 +62,10 @@ describe PeriodsController do
     it { expect(@period.number).to eql attr[:number] }
     it { expect(flash[:success]).to be_present }
 
-    # it 'redirects to period subjects path if older period' do
-    #   put :update, id: @period.id, period: { start_date: '01-01-2014', end_date: '01-02-2015' }
+    # it 'redirects to period_subjects_path if older period' do
+    #   put :update, id: @period.id, period: older_attr
     #   @period.reload
-    #   expect(@period.is_current).to be false
-    #   # expect(response).to redirect_to(period_subjects_path(@period))
+    #   expect(response).to redirect_to(period_subjects_path(@period))
     # end
   end
 

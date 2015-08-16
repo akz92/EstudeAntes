@@ -16,7 +16,7 @@ describe TestsController do
     before(:each) do
       @period = create(:period, id: 1)
       @subject = create(:subject, id: 1, period_id: @period.id)
-      post :create, test: attributes_for(:test), period_id: @period.id, subject_id: @subject.id
+      post :create, test: attributes_for(:test, id: 1), period_id: @period.id, subject_id: @subject.id
     end
     
     context 'success' do
@@ -28,7 +28,7 @@ describe TestsController do
     # context 'error' do
     #   it 'flashes error message' do
     #     # creating a test without date to raise validation error
-    #     post :create, test: attributes_for(:test, date: nil), period_id: @period.id, subject_id: @subject.id
+    #     post :create, test: attributes_for(:test, id: 1), period_id: @period.id, subject_id: @subject.id
     #     expect(flash[:error]).to be_present
     #   end
     # end

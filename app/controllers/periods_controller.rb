@@ -32,7 +32,7 @@ class PeriodsController < ApplicationController
       flash[:error] = 'O periodo nao pode ser criado.'
     end
     respond_with(@period) do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to choose_redirect_path(@period) }
     end
   end
 

@@ -26,6 +26,12 @@ describe Period do
     expect(period.is_current).to eq(true)
   end
 
+  it 'is not current if Date.today outside dates' do
+    period = build(:period, start_date: '01-01-2015', end_date: '01-05-2015')
+    period = period.is_current?
+    expect(period.is_current).to eq(false)
+  end
+
   it 'has default calendar hours if events empty' do
     period = build(:period)
     expect(period.calendar_hours).to eq(['06:00', '22:00'])

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     if period.is_current
       root_path
     else
-      period_subjects_path(period)
+      periods_all_path
     end
   end
 
