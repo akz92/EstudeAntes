@@ -13,7 +13,12 @@ class TestsController < ApplicationController
     @test = @subject.tests.new(test_params)
     update_subject_value_and_grade('create')
 
-    choose_flash_message('adicionad') if @test.save
+    if @test.save
+      choose_flash_message('adicionad') 
+    else
+      choose_error_message('adicionad') 
+    end
+
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
@@ -46,6 +51,14 @@ class TestsController < ApplicationController
         flash[:success] = "Trabalho #{state}o com sucesso."
       else
         flash[:success] = "Prova #{state}a com sucesso."
+      end
+    end
+
+    def choose_error_message(state)
+      if @test.is_project
+        flash[:error] = "Trabalho nao pode ser #{state}o."
+      else
+        flash[:error] = "Prova nao pode ser #{state}a."
       end
     end
 
