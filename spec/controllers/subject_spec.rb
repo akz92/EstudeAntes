@@ -15,13 +15,21 @@ describe SubjectsController do
   describe '#create' do
     before(:each) do
       @period = create(:period, id: 1)
-      post :create, subject: attributes_for(:subject, period_id: 1)
+      post :create, subject: attributes_for(:subject), period_id: 1
     end
     
     context 'success' do
-      # it { expect(Subject.count).to eq(1) }
-      # it { expect(response).to redirect_to(root_path) }
-      # it { expect(flash[:success]).to be_present }
+      it { expect(Subject.count).to eq(1) }
+      it { expect(response).to redirect_to(root_path) }
+      it { expect(flash[:success]).to be_present }
+    end
+
+    context 'error' do
+      it 'flashes error message' do
+        # creating a subject with name greater than 15 chars to raise validation error
+        post :create, subject: attributes_for(:subject, name: 'name_greater_than_15_chars'), period_id: 1
+        expect(flash[:error]).to be_present
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_subject, only: [:show, :update, :destroy]
   respond_to :html, :json
   before_filter do
     @period = get_period(params[:period_id])
@@ -11,7 +11,11 @@ class SubjectsController < ApplicationController
   def create
     @subject = @period.subjects.new(subject_params)
 
-    flash[:success] = 'Disciplina criada com sucesso.' if @subject.save
+    if @subject.save
+      flash[:success] = 'Disciplina criada com sucesso.'# if @subject.save
+    else
+      flash[:error] = 'Disciplina nao pode ser criada.'
+    end
     respond_with(@subject, location: choose_redirect_path(@period))
   end
 

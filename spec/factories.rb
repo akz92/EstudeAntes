@@ -4,7 +4,7 @@ FactoryGirl.define do
     end_date (Date.today + 7)
     number 1
     user_id 1
-    is_current 'false'
+    is_current 'true'
     id 1
   end
 
@@ -28,6 +28,7 @@ FactoryGirl.define do
   factory :subject do
     name 'Math'
     period_id 1
+    id 1
   end
 
   factory :user do
