@@ -48,7 +48,7 @@ describe Event do
   end
 
   it 'converts a date and time into a datetime' do
-    event = create(:event, subject_id: 1, start_date:'01-01-2015', start_time: '10:00')
+    event = create(:event, subject_id: 1, start_date: '01-01-2015', start_time: '10:00')
     expect(Event.format_datetime(event.dates[0], event.start_time)).to eq(DateTime.new(2015, 1, 1, 10, 0, 0))
   end
 

@@ -33,8 +33,8 @@ describe Period do
 
   it 'has event calendar hours if events not empty' do
     period = create(:period, id: 1)
-    subject = create(:subject, period_id: 1, id: 1)
-    event = create(:event, subject_id: 1, start_time: '10:00', end_time: '12:00')
+    create(:subject, period_id: 1, id: 1)
+    create(:event, subject_id: 1, start_time: '10:00', end_time: '12:00')
     expect(period.calendar_hours).to eq(['10:00', '12:00'])
   end
 

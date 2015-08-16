@@ -7,6 +7,6 @@
 
 %br
 -if @period.subjects.count >= 1
-  = render partial: 'periods/subjectstable', locals: { period: @period }
+  = render 'periods/subjectstable', locals: { period: @period }
 -else
   %p= 'Este periodo nao possui disciplinas'

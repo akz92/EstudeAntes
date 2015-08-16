@@ -1,5 +1,5 @@
 =include_gon
-= render partial: 'periods/modal'
+= render 'periods/modal'
 
 -if @period && !@period.subjects.empty?
   = render partial: 'periods/modal_edit', locals: { period: @period }

@@ -65,9 +65,7 @@ class PeriodsController < ApplicationController
     def set_current_period
       periods = current_user.periods
       periods.each do |period|
-        if period.is_current
-          @period = period
-        end
+        @period = period if period.is_current
       end
     end
 
@@ -75,9 +73,7 @@ class PeriodsController < ApplicationController
       @other_periods = []
       periods = current_user.periods
       periods.each do |period|
-        unless period.is_current
-          @other_periods << period
-        end
+        @other_periods << period unless period.is_current
       end
     end
 

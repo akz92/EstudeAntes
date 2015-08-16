@@ -13,7 +13,7 @@ describe User do
       user.save!
       facebook_user = User.from_omniauth(OmniAuth.config.mock_auth[:facebook])
       facebook_user.save!
-    }.to change{ User.count }.by(1)
+    }.to change { User.count }.by(1)
   end
 
   it 'updates a user with his facebook credentials' do
@@ -29,7 +29,7 @@ describe User do
     expect {
       facebook_user = User.from_omniauth(OmniAuth.config.mock_auth[:facebook])
       facebook_user.save
-    }.to change{ User.count}.by(1)
+    }.to change { User.count }.by(1)
 
   end
 end

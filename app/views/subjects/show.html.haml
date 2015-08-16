@@ -1,8 +1,8 @@
 # encoding: utf-8
 =include_gon
-= render partial: 'events/modal', locals: { period: @period, subject: @subject }
-= render partial: 'tests/modal', locals: { period: @period, subject: @subject }
-= render partial: 'modal_edit', locals: { period: @period, subject: @subject }
+= render 'events/modal', locals: { period: @period, subject: @subject }
+= render 'tests/modal', locals: { period: @period, subject: @subject }
+= render 'modal_edit', locals: { period: @period, subject: @subject }
 #header
   .container
     .dropdown
@@ -29,8 +29,8 @@
   .row
     %br
     #subject_flatable
-      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
-      = render partial: 'tests_table', locals: { subject: @subject, tests: @subject.projects }
+      = render 'tests_table', locals: { subject: @subject, tests: @subject.tests_only }
+      = render 'tests_table', locals: { subject: @subject, tests: @subject.projects }
       - unless @subject.events.empty?
         .col-xs-12.col-md-3
           %table.table.table-striped
@@ -39,7 +39,7 @@
                 %th Aulas
             %tbody
               - @subject.events.each do |event|
-                = render partial: 'events/modal_edit', locals: { subject: @subject, event: event }
+                = render 'events/modal_edit', locals: { subject: @subject, event: event }
                 %tr
                   %td
                     = "#{Date::DAYNAMES[event.start_date.wday]} #{event.start_time.strftime('%H:%M')} - #{event.end_time.strftime('%H:%M')}"

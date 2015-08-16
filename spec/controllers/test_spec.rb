@@ -2,7 +2,7 @@ require 'rails_helper.rb'
 
 describe TestsController do
   before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
     user = create(:user)
     user.confirm
     sign_in user

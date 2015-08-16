@@ -2,7 +2,7 @@ require 'rails_helper.rb'
 
 describe PeriodsController do
   before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
     user = create(:user)
     user.confirm # or set a confirmed_at inside the factory. Only necessary if you are using the "confirmable" module
     sign_in user
@@ -47,7 +47,6 @@ describe PeriodsController do
     it { expect(response).to redirect_to(root_path) }
     it { expect(@period.number).to eql attr[:number] }
     it { expect(flash[:success]).to be_present }
-
 
     # it 'redirects to period subjects path if older period' do
     #   put :update, id: @period.id, period: { start_date: '01-01-2014', end_date: '01-02-2015' }

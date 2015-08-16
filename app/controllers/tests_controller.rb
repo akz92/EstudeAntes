@@ -14,9 +14,9 @@ class TestsController < ApplicationController
     update_subject_value_and_grade('create')
 
     if @test.save
-      choose_flash_message('adicionad') 
+      choose_flash_message('adicionad')
     else
-      choose_error_message('adicionad') 
+      choose_error_message('adicionad')
     end
 
     respond_with(@test, location: period_subject_path(@period, @subject))
