@@ -13,8 +13,8 @@
           %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Periodo
 
 - @other_periods.each do |period|
-  = render 'subjects/modal', locals:{ period: period }
-  = render 'modal_edit', locals:{ period: period }
+  = render partial: 'subjects/modal', locals:{ period: period }
+  = render partial: 'modal_edit', locals:{ period: period }
   #other_period_header
     .container
       .row
@@ -38,7 +38,7 @@
               %li= link_to 'Deletar', period, method: :delete, data: { confirm: 'Tem certeza que deseja deletar o período?' }
   -if period.subjects.count >= 1
     .container
-      = render 'periods/subjectstable', locals: { period: period }
+      = render partial: 'periods/subjectstable', locals: { period: period }
       %br
   -else
     %p= 'Este periodo nao possui disciplinas'
