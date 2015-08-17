@@ -2,17 +2,17 @@
 = render 'periods/modal'
 
 -if @period && !@period.subjects.empty?
-  = render partial: 'periods/modal_edit', locals: { period: @period }
+  = render 'periods/modal_edit', period: @period
   .container
     .row
       .col-xs-12
         %br
         /.col-md-7
         #calendar
-    = render partial: 'periods/subjectstable', locals: { period: @period }
+    = render 'periods/subjectstable', period: @period
 -elsif @period
   .container
-    = render partial: 'subjects/modal', locals: { period: @period }
+    = render 'subjects/modal', period: @period
     %div{:style => 'text-align:center;'}
       %h4= 'Agora adicione as disciplinas'
       %button.btn{'data-target' => '#SubjectModalForm', 'data-toggle' => 'modal', :type => 'button'} Adicionar disciplina
