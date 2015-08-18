@@ -1,12 +1,7 @@
 require 'rails_helper.rb'
 
 describe PeriodsController do
-  before(:each) do
-    @request.env['devise.mapping'] = Devise.mappings[:user]
-    user = create(:user)
-    user.confirm
-    sign_in user
-  end
+  login_user
 
   it 'has a current_user' do
     expect(subject.current_user).not_to be_nil
@@ -16,7 +11,7 @@ describe PeriodsController do
     before(:each) do
       post :create, period: attributes_for(:period)
     end
-    
+
     context 'success' do
       it { expect(Period.count).to eq(1) }
       it { expect(response).to redirect_to(root_path) }
@@ -40,7 +35,7 @@ describe PeriodsController do
         expect(response).to redirect_to(periods_all_path)
       end
     end
-  
+
   end
 
   describe '#update' do

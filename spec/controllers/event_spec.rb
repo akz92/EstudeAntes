@@ -1,12 +1,7 @@
 require 'rails_helper.rb'
 
 describe EventsController do
-  before(:each) do
-    @request.env['devise.mapping'] = Devise.mappings[:user]
-    user = create(:user)
-    user.confirm
-    sign_in user
-  end
+  login_user
 
   it 'has a current_user' do
     expect(subject.current_user).not_to be_nil
@@ -18,7 +13,7 @@ describe EventsController do
       @subject = create(:subject, id: 1, period_id: @period.id)
       post :create, event: attributes_for(:event), period_id: @period.id, subject_id: @subject.id
     end
-    
+
     context 'success' do
       it { expect(Event.count).to eq(1) }
       it { expect(response).to redirect_to(period_subject_path(@period, @subject)) }
