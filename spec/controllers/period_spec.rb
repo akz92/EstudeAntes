@@ -3,10 +3,6 @@ require 'rails_helper.rb'
 describe PeriodsController do
   login_user
 
-  it 'has a current_user' do
-    expect(subject.current_user).not_to be_nil
-  end
-
   describe '#create' do
     before(:each) do
       post :create, period: attributes_for(:period)
