@@ -17,11 +17,11 @@ class Period < ActiveRecord::Base
     hours = []
 
     self.events.each do |event|
-      hours << event.formatted_start_time << event.formatted_end_time
+      hours << event.start_time.strftime('%H:%M') << event.end_time.strftime('%H:%M')
     end
 
     hours.sort!
-    hours = ["06:00", "24:00"] if hours == []
+    hours = ["06:00", "22:00"] if hours == []
     hours = [hours.first, hours.last]
 
     hours
