@@ -82,3 +82,4 @@ gem 'bootstrap-sass'
 gem 'pnotify-rails'
 gem 'unobtrusive_flash'
 gem 'coveralls', require: false
+gem 'database_cleaner'

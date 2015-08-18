@@ -3,10 +3,6 @@ require 'rails_helper.rb'
 describe EventsController do
   login_user
 
-  it 'has a current_user' do
-    expect(subject.current_user).not_to be_nil
-  end
-
   describe '#create' do
     before(:each) do
       @period = create(:period, id: 1)
