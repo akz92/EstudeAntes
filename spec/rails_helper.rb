@@ -12,25 +12,27 @@ SimpleCov.start 'rails'
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
-# require File.dirname(__FILE__) + '/support/controller_macros'
-# require File.dirname(__FILE__) + '/support/factory_girl'
-
-# Requires every file in support sub-folder
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-
+require File.dirname(__FILE__) + '/support/controller_macros'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-
-require 'database_cleaner'
-DatabaseCleaner.strategy = :truncation
-
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
 end
 
+OmniAuth.config.test_mode = true
+omniauth_hash = { 'provider' => 'facebook',
+                  'uid' => '12345',
+                  'info' => {
+                    'name' => 'user',
+                    'email' => 'user@example.com'
+                  }
+}
+
+OmniAuth.config.add_mock(:facebook, omniauth_hash)
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

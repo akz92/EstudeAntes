@@ -8,6 +8,11 @@ describe Subject do
   it { is_expected.to have_many :tests }
   it { is_expected.to have_many :events }
 
+  it 'is valid when built by FactoryGirl' do
+    subject = create(:subject)
+    expect(subject).to be_valid
+  end
+
   it 'gets tests only' do
     subject = create(:subject, id: 1)
     test = create(:test, subject_id: 1)

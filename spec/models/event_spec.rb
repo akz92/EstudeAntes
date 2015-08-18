@@ -12,6 +12,11 @@ describe Event do
   it { is_expected.to belong_to :subject }
   it { is_expected.to have_one(:period).through(:subject) }
 
+  it 'is valid when built by FactoryGirl' do
+    event = build(:event)
+    expect(event).to be_valid
+  end
+
   it 'is invalid if start_date after end_date' do
     event = build(:event, start_date: '05-05-2015', end_date: '01-01-2015')
     expect(event).to be_invalid

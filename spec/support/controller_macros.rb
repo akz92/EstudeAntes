@@ -6,8 +6,6 @@ module ControllerMacros
       user = create(:user)
       user.confirm
       sign_in user
-
-      expect(subject.current_user).not_to be_nil
     end
   end
 end
