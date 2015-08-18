@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/deployer/estudeantes/app/models/user.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/models/user.rb": [
         1,
         null,
         null,
@@ -36,7 +36,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/application_controller.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -61,7 +61,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/events_controller.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/controllers/events_controller.rb": [
         1,
         1,
         1,
@@ -111,7 +111,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/periods_controller.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/controllers/periods_controller.rb": [
         1,
         1,
         1,
@@ -197,7 +197,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/subjects_controller.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/controllers/subjects_controller.rb": [
         1,
         1,
         1,
@@ -249,7 +249,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/tests_controller.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/controllers/tests_controller.rb": [
         1,
         1,
         1,
@@ -300,17 +300,25 @@
         null,
         1,
         8,
+        8,
         0,
         null,
         8,
         null,
         null,
-        null,
-        1,
         0,
         0,
         null,
         0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -341,7 +349,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/controllers/user/omniauth_callbacks_controller.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/controllers/user/omniauth_callbacks_controller.rb": [
         1,
         null,
         1,
@@ -358,7 +366,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/models/event.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/models/event.rb": [
         1,
         1,
         1,
@@ -412,7 +420,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/models/period.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/models/period.rb": [
         null,
         1,
         1,
@@ -431,6 +439,8 @@
         1,
         2,
         2,
+        1,
+        1,
         1,
         1,
         null,
@@ -482,7 +492,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/models/subject.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/models/subject.rb": [
         1,
         1,
         1,
@@ -506,7 +516,7 @@
         null,
         null
       ],
-      "/home/deployer/estudeantes/app/models/test.rb": [
+      "/Users/akz/Dropbox/dev/rails/estudeantes/app/models/test.rb": [
         1,
         1,
         1,
@@ -523,6 +533,6 @@
         null
       ]
     },
-    "timestamp": 1439815565
+    "timestamp": 1439857654
   }
 }

@@ -14,9 +14,9 @@ class TestsController < ApplicationController
     update_subject_value_and_grade('create')
 
     if @test.save
-      choose_flash_message('adicionad')
+      choose_flash_message('success', 'adicionad')
     else
-      choose_error_message('adicionad')
+      choose_flash_message('error', 'adicionad')
     end
 
     respond_with(@test, location: period_subject_path(@period, @subject))
@@ -25,7 +25,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    choose_flash_message('alterad') if @test.update(test_params)
+    choose_flash_message('success', 'alterad') if @test.update(test_params)
     respond_with(@test, location: period_subject_path(@period, @subject))
     update_subject_value_and_grade('update')
   end
@@ -35,7 +35,7 @@ class TestsController < ApplicationController
   def destroy
     update_subject_value_and_grade('destroy')
 
-    choose_flash_message('removid') if @test.destroy
+    choose_flash_message('success', 'removid') if @test.destroy
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
@@ -46,19 +46,19 @@ class TestsController < ApplicationController
       @test = @subject.tests.find(params[:id])
     end
 
-    def choose_flash_message(state)
-      if @test.is_project
-        flash[:success] = "Trabalho #{state}o com sucesso."
+    def choose_flash_message(state, type)
+      if state == 'success'
+        if @test.is_project
+          flash[:success] = "Trabalho #{type}o com sucesso."
+        else
+          flash[:success] = "Prova #{type}a com sucesso."
+        end
       else
-        flash[:success] = "Prova #{state}a com sucesso."
-      end
-    end
-
-    def choose_error_message(state)
-      if @test.is_project
-        flash[:error] = "Trabalho nao pode ser #{state}o."
-      else
-        flash[:error] = "Prova nao pode ser #{state}a."
+        if @test.is_project
+          flash[:error] = "Trabalho nao pode ser #{type}o."
+        else
+          flash[:error] = "Prova nao pode ser #{type}a."
+        end
       end
     end
 
