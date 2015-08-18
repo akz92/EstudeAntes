@@ -21,7 +21,7 @@ class Period < ActiveRecord::Base
     end
 
     hours.sort!
-    hours = ["06:00", "22:00"] if hours == []
+    hours = ['06:00', '22:00'] if hours == []
     hours = [hours.first, hours.last]
 
     hours

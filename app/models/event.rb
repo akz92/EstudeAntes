@@ -37,6 +37,7 @@ class Event < ActiveRecord::Base
     return dates
   end
 
+  # Finishes the creation or update of an Event object editing values that depend on the Event period or subject
   def by_date(period, subject)
     self.title = subject.name
     self.start_date = period.start_date + ((self.weekday.to_i - period.start_date.wday) % 7)
