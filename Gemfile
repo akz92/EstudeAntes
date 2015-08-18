@@ -29,10 +29,6 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
-#, '~> 1.2'
-
-# Simple Form: modelo simplificado para formularios em geral
-#gem 'simple_form'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -53,17 +49,14 @@ end
 gem 'therubyracer'
 gem 'devise'
 gem 'haml-rails'
-#gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails', :branch => 'bootstrap3'
 gem 'less-rails'
 #gem 'better_errors'
-#gem 'ice_cube'
 gem 'omniauth-facebook'
 gem 'certified'
 gem 'brazilian-rails'
 gem 'gon'
 #gem 'pry', group: [:development]
 gem 'rails-i18n'
-#, '~> 4.0.0'
 gem "font-awesome-rails"
 #gem 'bootstrap-datetimepicker-rails'
 #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
@@ -75,7 +68,7 @@ gem 'bootstrap_form'
 gem 'bootstrap-social-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem "recurrence"#, :require => "recurrence/namespace"
+gem "recurrence"
 gem 'invisible_captcha'
 gem 'rspec-rails', group: :test
 gem 'factory_girl_rails', group: :test
