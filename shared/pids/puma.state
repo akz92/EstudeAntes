@@ -1,6 +1,8 @@
 ---
-pid: 14047
+pid: 4647
 config: !ruby/object:Puma::Configuration
+  cli_options: 
+  conf: 
   options:
     :min_threads: 1
     :max_threads: 6
@@ -10,9 +12,8 @@ config: !ruby/object:Puma::Configuration
     - unix:///home/deployer/estudeantes/shared/sockets/puma.sock
     :workers: 1
     :daemon: false
-    :worker_directory: "/home/deployer/estudeantes"
-    :config_file: config/puma.rb
     :mode: :http
+    :before_fork: []
     :worker_timeout: 60
     :worker_shutdown_timeout: 30
     :environment: production
@@ -21,7 +22,9 @@ config: !ruby/object:Puma::Configuration
     :redirect_append: true
     :pidfile: "/home/deployer/estudeantes/shared/pids/puma.pid"
     :state: "/home/deployer/estudeantes/shared/pids/puma.state"
-    :control_url: unix:///tmp/puma-status-1439815507063-14047
-    :control_url_temp: "/tmp/puma-status-1439815507063-14047"
-    :control_auth_token: a8e094657926c3a4ee9ef54f7f7d8c19
+    :control_url: unix:///tmp/puma-status-1439900252132-4647
+    :worker_directory: "/home/deployer/estudeantes"
+    :config_file: config/puma.rb
+    :control_url_temp: "/tmp/puma-status-1439900252132-4647"
+    :control_auth_token: d4103cd699bde7a146b862e3d1a94148
     :tag: estudeantes
