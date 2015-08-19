@@ -9,12 +9,8 @@ FactoryGirl.define do
   end
 
   factory :event do
-    # start_date Faker::Date.backward(60)
-    # end_date Faker::Date.forward(60)
     start_date '10-08-2015'
     end_date '20-08-2015'
-    # start_time Faker::Time.between(DateTime.now - 2,DateTime.now).strftime('%H:%M')
-    # end_time Faker::Time.between(DateTime.now + 1,DateTime.now + 3).strftime('%H:%M')
     start_time '10:00'
     end_time '12:00'
     title Faker::Name.name[0..14]

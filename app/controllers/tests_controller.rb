@@ -14,9 +14,9 @@ class TestsController < ApplicationController
     update_subject_value_and_grade('create')
 
     if @test.save
-      choose_flash_message('success', 'adicionad')
+      choose_flash_message(':success', 'adicionad')
     else
-      choose_flash_message('error', 'adicionad')
+      choose_flash_message(':error', 'adicionad')
     end
 
     respond_with(@test, location: period_subject_path(@period, @subject))
@@ -25,7 +25,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
-    choose_flash_message('success', 'alterad') if @test.update(test_params)
+    choose_flash_message(':success', 'alterad') if @test.update(test_params)
     respond_with(@test, location: period_subject_path(@period, @subject))
     update_subject_value_and_grade('update')
   end
@@ -35,7 +35,7 @@ class TestsController < ApplicationController
   def destroy
     update_subject_value_and_grade('destroy')
 
-    choose_flash_message('success', 'removid') if @test.destroy
+    choose_flash_message(':success', 'removid') if @test.destroy
     respond_with(@test, location: period_subject_path(@period, @subject))
   end
 
@@ -47,18 +47,13 @@ class TestsController < ApplicationController
     end
 
     def choose_flash_message(state, type)
-      if state == 'success'
-        if @test.is_project
-          flash[:success] = "Trabalho #{type}o com sucesso."
-        else
-          flash[:success] = "Prova #{type}a com sucesso."
-        end
+      error_string = ''
+      error_string = 'nao pode ser'if state == ':error'
+
+      if @test.is_project
+        flash[state] = "Trabalho #{error_string} #{type}o."
       else
-        if @test.is_project
-          flash[:error] = "Trabalho nao pode ser #{type}o."
-        else
-          flash[:error] = "Prova nao pode ser #{type}a."
-        end
+        flash[state] = "Prova #{error_string} #{type}a."
       end
     end
 
