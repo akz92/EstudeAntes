@@ -63,18 +63,11 @@ class PeriodsController < ApplicationController
     end
 
     def set_current_period
-      periods = current_user.periods
-      periods.each do |period|
-        @period = period if period.is_current
-      end
+      @period = current_user.periods.find_by(is_current: true)
     end
 
     def set_other_periods
-      @other_periods = []
-      periods = current_user.periods
-      periods.each do |period|
-        @other_periods << period unless period.is_current
-      end
+      @other_periods = current_user.periods.reject { |x| x.is_current }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -32,7 +32,6 @@ class Subject < ActiveRecord::Base
       self.grade += test.grade
     end
     self.save!
-
   end
 
   private
