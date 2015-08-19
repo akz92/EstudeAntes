@@ -1,5 +1,5 @@
 ---
-pid: 4647
+pid: 32142
 config: !ruby/object:Puma::Configuration
   cli_options: 
   conf: 
@@ -22,9 +22,9 @@ config: !ruby/object:Puma::Configuration
     :redirect_append: true
     :pidfile: "/home/deployer/estudeantes/shared/pids/puma.pid"
     :state: "/home/deployer/estudeantes/shared/pids/puma.state"
-    :control_url: unix:///tmp/puma-status-1439900252132-4647
+    :control_url: unix:///tmp/puma-status-1439984335355-32142
     :worker_directory: "/home/deployer/estudeantes"
     :config_file: config/puma.rb
-    :control_url_temp: "/tmp/puma-status-1439900252132-4647"
-    :control_auth_token: d4103cd699bde7a146b862e3d1a94148
+    :control_url_temp: "/tmp/puma-status-1439984335355-32142"
+    :control_auth_token: f3342d4400efe7db1449edb7b8c99
     :tag: estudeantes

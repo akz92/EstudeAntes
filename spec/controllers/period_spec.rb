@@ -5,7 +5,7 @@ describe PeriodsController do
 
   describe '#create' do
     before(:each) do
-      post :create, period: attributes_for(:period)
+      post :create, period: attributes_for(:period, user_id: subject.current_user.id)
     end
 
     context 'success' do
@@ -24,7 +24,7 @@ describe PeriodsController do
 
     context 'older period' do
       before do
-        post :create, period: attributes_for(:period, start_date: '01-01-2015', end_date: '05-05-2015')
+        post :create, period: attributes_for(:period, start_date: '01-01-2015', end_date: '05-05-2015', user_id: subject.current_user.id)
       end
 
       it 'redirects to period_subjects_path if older period' do
@@ -44,7 +44,7 @@ describe PeriodsController do
     # end
 
     before(:each) do
-      @period = create(:period)
+      @period = create(:period, user_id: subject.current_user.id)
       put :update, id: @period.id, period: attr
       @period.reload
     end
@@ -62,7 +62,7 @@ describe PeriodsController do
 
   describe '#destroy' do
     before(:each) do
-      @period = create(:period)
+      @period = create(:period, user_id: subject.current_user.id)
     end
 
     it 'destroys the period' do

@@ -22,6 +22,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'faker'
 
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
@@ -29,6 +30,9 @@ DatabaseCleaner.strategy = :truncation
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
+  config.before(:suite) do
+    Faker::Config.locale = 'br'
+  end
 end
 
 # Add additional requires below this line. Rails is not loaded until this point!

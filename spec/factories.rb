@@ -1,39 +1,43 @@
 FactoryGirl.define do
   factory :period do
-    start_date (Date.today - 7) 
-    end_date (Date.today + 7)
-    number 1
-    user_id 1
+    start_date Faker::Date.backward(90)
+    end_date Faker::Date.forward(90)
+    number Faker::Number.number(1)
+    user_id Faker::Number.number(1)
     is_current 'true'
-    id 1
+    id Faker::Number.number(1)
   end
 
   factory :event do
+    # start_date Faker::Date.backward(60)
+    # end_date Faker::Date.forward(60)
     start_date '10-08-2015'
     end_date '20-08-2015'
+    # start_time Faker::Time.between(DateTime.now - 2,DateTime.now).strftime('%H:%M')
+    # end_time Faker::Time.between(DateTime.now + 1,DateTime.now + 3).strftime('%H:%M')
     start_time '10:00'
     end_time '12:00'
-    title 'Math'
+    title Faker::Name.name[0..14]
     every 'week'
-    subject_id 1
+    subject_id Faker::Number.number(1)
   end
 
   factory :test do
-    date '01-01-2015'
-    subject_id 1
-    value 10
-    grade 8
+    date Faker::Date.forward(90)
+    subject_id Faker::Number.number(1)
+    value Faker::Number.between(10, 30)
+    grade Faker::Number.between(0,10)
   end
 
   factory :subject do
-    name 'Math'
-    period_id 1
-    id 1
+    name Faker::Name.name[0..14]
+    period_id Faker::Number.number(1)
+    id Faker::Number.number(1)
   end
 
   factory :user do
-    id 1
-    email 'user@example.com'
-    password '12345678'
+    email Faker::Internet.email
+    password Faker::Internet.password(8)
+    id Faker::Number.number(1)
   end
 end

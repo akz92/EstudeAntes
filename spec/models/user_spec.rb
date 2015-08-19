@@ -8,7 +8,7 @@ describe User do
 
   it 'if facebook email already registered dont create new' do
     expect {
-      user = create(:user)
+      user = create(:user, email: 'user@example.com')
       user.skip_confirmation!
       user.save!
       facebook_user = User.from_omniauth(OmniAuth.config.mock_auth[:facebook])
@@ -17,7 +17,7 @@ describe User do
   end
 
   it 'updates a user with his facebook credentials' do
-    user = create(:user)
+    user = create(:user, email: 'user@example.com')
     user.skip_confirmation!
     user.save!
     facebook_user = User.from_omniauth(OmniAuth.config.mock_auth[:facebook])

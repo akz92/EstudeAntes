@@ -72,7 +72,7 @@ gem "recurrence"
 gem 'invisible_captcha'
 gem 'rspec-rails', group: :test
 gem 'factory_girl_rails', group: :test
-#gem 'faker'
+gem 'faker'
 gem 'validates_timeliness'
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'simplecov', :require => false, :group => :test
