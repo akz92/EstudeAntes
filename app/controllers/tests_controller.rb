@@ -11,7 +11,7 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = @subject.tests.new(test_params)
-    update_subject_value_and_grade('create')
+    @subject.update_value_and_grade('create', @test)
 
     if @test.save
       choose_flash_message(':success', 'adicionad')
@@ -27,13 +27,13 @@ class TestsController < ApplicationController
   def update
     choose_flash_message(':success', 'alterad') if @test.update(test_params)
     respond_with(@test, location: period_subject_path(@period, @subject))
-    update_subject_value_and_grade('update')
+    @subject.update_value_and_grade('update', @test)
   end
 
   # DELETE /tests/1
   # DELETE /tests/1.json
   def destroy
-    update_subject_value_and_grade('destroy')
+    @subject.update_value_and_grade('destroy', @test)
 
     choose_flash_message(':success', 'removid') if @test.destroy
     respond_with(@test, location: period_subject_path(@period, @subject))
@@ -51,31 +51,10 @@ class TestsController < ApplicationController
       error_string = 'nao pode ser'if state == ':error'
 
       if @test.is_project
-        flash[state] = "Trabalho #{error_string} #{type}o."
+        flash[:success] = "Trabalho #{error_string} #{type}o."
       else
-        flash[state] = "Prova #{error_string} #{type}a."
+        flash[:success] = "Prova #{error_string} #{type}a."
       end
-    end
-
-    def update_subject_value_and_grade(method)
-      case method
-      when 'update'
-        @subject.value = 0
-        @subject.grade = 0
-
-        @subject.tests.each do |test|
-          @subject.value += test.value
-          @subject.grade += test.grade
-        end
-      when 'destroy'
-        @subject.value -= @test.value
-        @subject.grade -= @test.grade
-      else
-        @subject.value += @test.value
-        @subject.grade += @test.grade
-      end
-      @subject.save!
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
