@@ -11,7 +11,7 @@ describe SubjectsController do
 
     context 'success' do
       it { expect(Subject.count).to eq(1) }
-      it { expect(response).to redirect_to(root_path) }
+      it { is_expected.to redirect_to(root_path) }
       it { expect(flash[:success]).to be_present }
     end
 
@@ -41,7 +41,7 @@ describe SubjectsController do
     end
 
     context 'success' do
-      it { expect(response).to redirect_to(period_subject_path(@period, @subject)) }
+      it { is_expected.to redirect_to(period_subject_path(@period, @subject)) }
       it { expect(@subject.name).to eql attr[:name] }
       it { expect(flash[:success]).to be_present }
     end

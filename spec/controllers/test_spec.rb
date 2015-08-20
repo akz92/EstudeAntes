@@ -12,7 +12,7 @@ describe TestsController do
 
     context 'success' do
       it { expect(Test.count).to eq(1) }
-      it { expect(response).to redirect_to(period_subject_path(@period, @subject)) }
+      it { is_expected.to redirect_to(period_subject_path(@period, @subject)) }
       it { expect(flash[:success]).to be_present }
     end
 
@@ -43,7 +43,7 @@ describe TestsController do
     end
 
     context 'success' do
-      it { expect(response).to redirect_to(period_subject_path(@period, @subject)) }
+      it { is_expected.to redirect_to(period_subject_path(@period, @subject)) }
       it { expect(@test.value).to eql attr[:value] }
       it { expect(flash[:success]).to be_present }
     end

@@ -10,7 +10,7 @@ describe PeriodsController do
 
     context 'success' do
       it { expect(Period.count).to eq(1) }
-      it { expect(response).to redirect_to(root_path) }
+      it { is_expected.to redirect_to(root_path) }
       it { expect(flash[:success]).to be_present }
     end
 
@@ -27,9 +27,7 @@ describe PeriodsController do
         post :create, period: attributes_for(:period, start_date: '01-01-2015', end_date: '05-05-2015', user_id: subject.current_user.id)
       end
 
-      it 'redirects to period_subjects_path if older period' do
-        expect(response).to redirect_to(periods_all_path)
-      end
+      it{ is_expected.to redirect_to periods_all_path }
     end
 
   end
@@ -49,7 +47,7 @@ describe PeriodsController do
       @period.reload
     end
 
-    it { expect(response).to redirect_to(root_path) }
+    it{ is_expected.to redirect_to root_path }
     it { expect(@period.number).to eql attr[:number] }
     it { expect(flash[:success]).to be_present }
 
