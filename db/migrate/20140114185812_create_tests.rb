@@ -5,7 +5,7 @@ class CreateTests < ActiveRecord::Migration
       t.integer :value
       t.float :grade
       t.string :note
-			t.boolean :is_project
+			t.boolean :is_project, default: false
 			t.integer :subject_id
 
       t.timestamps
