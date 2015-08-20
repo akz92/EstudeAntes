@@ -3,6 +3,17 @@ require 'rails_helper.rb'
 describe PeriodsController do
   login_user
 
+  describe '#fullcalendar_events' do
+    before(:each) do
+      create(:period, user_id: subject.current_user.id)
+      get :fullcalendar_events, format: :json
+    end
+
+    it 'response should be json format' do
+      expect(response.content_type.to_s).to eq Mime::Type.lookup_by_extension(:json).to_s
+    end
+  end
+
   describe '#create' do
     before(:each) do
       post :create, period: attributes_for(:period, user_id: subject.current_user.id)
