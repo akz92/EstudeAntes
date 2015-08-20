@@ -6,7 +6,7 @@ describe PeriodsController do
   describe '#fullcalendar_events' do
     before(:each) do
       create(:period, user_id: subject.current_user.id)
-      get :fullcalendar_events, format: :json
+      get :fullcalendar_events#, format: :json
     end
 
     it 'response should be json format' do

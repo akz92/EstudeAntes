@@ -1,7 +1,6 @@
 class PeriodsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_period, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_period, only: [:index, :fullcalendar_events, :all]
+  before_action :set_current_period, except:[:create]
   before_action :set_other_periods, only: [:all]
   before_action :set_periods, only: [:new, :create, :index]
   respond_to :html, :json
@@ -53,11 +52,6 @@ class PeriodsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_period
-      @period = current_user.periods.find(params[:id])
-    end
-
     def set_periods
       @periods = current_user.periods
     end
