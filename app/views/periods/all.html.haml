@@ -1,17 +1,5 @@
 =include_gon
 
--#header
-  .container
-    .dropdown
-      %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", style: 'background-color: transparent;'}
-        %h1.inline Outros periodos
-        &nbsp
-        %span.fa.fa-angle-down{style: 'font-size: 2em;'}
-      %ul.dropdown-menu
-        %li.dropdown-header Adicionar
-        %li
-          %a{href: "#", "data-target" => "#PeriodModalForm", "data-toggle" => "modal"} Periodo
-
 - @other_periods.each do |period|
   = render 'subjects/modal', period: period
   = render 'modal_edit', period: period
@@ -24,9 +12,6 @@
               %h4.inline #{period.number}º Período
               &nbsp
               %span.fa.fa-angle-down{style: 'font-size: 1.3em;'}
-            -#%a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              #{period.number}º Período
-              %b.caret
             %ul.dropdown-menu
               %li.dropdown-header Adicionar
               %li

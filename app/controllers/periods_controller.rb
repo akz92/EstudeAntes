@@ -2,7 +2,7 @@ class PeriodsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_current_period, except:[:create]
   before_action :set_other_periods, only: [:all]
-  before_action :set_periods, only: [:new, :create, :index]
+  before_action :set_periods, only: [:new, :create, :index, :destroy]
   respond_to :html, :json
 
   # GET /periods
@@ -47,8 +47,9 @@ class PeriodsController < ApplicationController
   # DELETE /periods/1
   # DELETE /periods/1.json
   def destroy
-    flash[:success] = 'Periodo removido com sucesso.' if @period.destroy
-    respond_with(@period)
+    period = @periods.find_by(id: params[:id])
+    flash[:success] = 'Periodo removido com sucesso.' if period.destroy
+    respond_with(period)
   end
 
   private
